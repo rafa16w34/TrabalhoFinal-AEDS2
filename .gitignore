@@ -7,7 +7,7 @@ env/
 venv/
 # Datasets e Arquivos Pesados
 archive.zip
-extracted_data/*.csv
+extracted_data/
 # Ignorar arquivos do Mac/Windows caso alguém baixe depois
 .DS_Store
 Thumbs.db
