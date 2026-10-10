@@ -3,7 +3,11 @@ import csv
 import math
 import os
 import hashlib
-from networkx.drawing.nx_pydot import write_dot
+
+import json
+import networkx.algorithms.community as nx_comm
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class BloomFilter:
     """
@@ -35,6 +39,7 @@ class BloomFilter:
                 return False
         return True
 
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def carregar_titulos_jogos(caminho_csv):
     """
@@ -52,6 +57,43 @@ def carregar_titulos_jogos(caminho_csv):
             
     return titulos
 
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+def carregar_tags_jogos(caminho_json):
+    """
+    Lê o arquivo JSON do banco de dados e mapeia:
+    app(id) -> conjunto de tags
+    """
+
+    tags_jogo = {}
+    if not os.path.exists(caminho_json):
+        return tags_jogo
+
+    with open(caminho_json, mode='r', encoding='utf-8') as f:
+
+        for linha in f:
+            dados = json.loads(linha.strip())
+            app_id = str(dados.get('app_id',''))
+
+            lista_tags = dados.get('tags', [])
+            tags_jogo[app_id] = set(lista_tags)
+
+    return tags_jogo
+
+def jaccard(tags_jogo_a,tags_jogos_b):
+    """
+    Calculo simples de similaridade de Jaccard (0.00 ou 1.00)
+    """
+
+    if not  tags_jogo_a or not tags_jogos_b: #Se não houverem tags cadastradas, devo avaliar o banco de dados para confirmar se existe essa possibilidade
+        return 0.1
+
+    intercessao = len(tags_jogo_a.intersection(tags_jogos_b))
+    uniao = len(tags_jogo_a.union(tags_jogos_b))
+
+    return (intercessao/uniao)
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def construir_grafo(caminho_csv):
     """Constrói o grafo bipartido de Usuários e Jogos a partir do CSV"""
@@ -94,8 +136,9 @@ def construir_grafo(caminho_csv):
     print(f"Grafo construído! Vértices: {G.number_of_nodes()} | Arestas: {G.number_of_edges()}")
     return G
 
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-def recomendar_jogos(G, jogo_alvo_id, top_k_users=50, top_n_jogos=10):
+def recomendar_jogos(G, jogo_alvo_id, comunidades, dicionario_tags, top_k_users=50, top_n_jogos=10):
     """
     Busca em Largura (BFS) utilizando Filtro de Bloom para gerenciar os visitados.
     Retorna também os top_usuarios para podermos desenhar o Graphviz.
@@ -131,12 +174,31 @@ def recomendar_jogos(G, jogo_alvo_id, top_k_users=50, top_n_jogos=10):
             if visitados.possivelmente_contem(node_jogo):
                 continue
             
-            peso_jogo = dados_aresta_destino['weight']
-            score = peso_usuario * peso_jogo
-            
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+            score_colaborativo = peso_usuario * dados_aresta_destino['weight']
+
+            id_limpo = node_jogo.replace("game_","")
+
+            bonus_louvain = 1.0
+            if comunidades.get(node_alvo) == comunidades.get(node_jogo):
+                bonus_louvain = 3.0
+
+
+            tags_alvo = dicionario_tags.get(jogo_alvo_id, set())
+            tags_recomendado = dicionario_tags.get(id_limpo,set())
+
+            fator_jaccard = jaccard(tags_alvo, tags_recomendado)
+
+            if fator_jaccard < 0.2: continue
+
+            score_final = score_colaborativo * bonus_louvain * (fator_jaccard + 0.1)
+
             if node_jogo not in pontuacao_jogos:
                 pontuacao_jogos[node_jogo] = 0
-            pontuacao_jogos[node_jogo] += score
+            pontuacao_jogos[node_jogo] += score_final
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
             
             visitados.adicionar(node_jogo)
 
@@ -148,45 +210,14 @@ def recomendar_jogos(G, jogo_alvo_id, top_k_users=50, top_n_jogos=10):
 
     return recomendacoes_ordenadas[:top_n_jogos], top_usuarios
 
-
-def gerar_arquivo_dot(G, jogo_alvo_id, top_usuarios, recomendacoes, dicionario_titulos):#Apenas da recomendação
-    """
-    Gera um Subgrafo contendo apenas a pesquisa atual e exporta para o Graphviz (.dot).
-    """
-    print("\nGerando arquivo .dot para o Graphviz...")
-    subgrafo = nx.Graph()
-    
-    node_alvo = f"game_{jogo_alvo_id}"
-    titulo_alvo = dicionario_titulos.get(jogo_alvo_id, f"ID: {jogo_alvo_id}")
-    
-    # 1. Adiciona o Jogo Pesquisado (Centro)
-    subgrafo.add_node(node_alvo, label=f'"{titulo_alvo}"', color="red", style="filled", shape="box")
-    
-    # 2. Adiciona os Usuários Fortes e liga eles ao jogo alvo
-    for node_user, _ in top_usuarios:
-        subgrafo.add_node(node_user, label="Usuário", color="lightblue", style="filled", shape="circle")
-        subgrafo.add_edge(node_alvo, node_user)
-        
-    # 3. Adiciona os Jogos Recomendados e liga os usuários a eles
-    for jogo_id, _ in recomendacoes:
-        id_limpo = jogo_id.replace("game_", "")
-        titulo = dicionario_titulos.get(id_limpo, f"ID: {id_limpo}")
-        subgrafo.add_node(jogo_id, label=f'"{titulo}"', color="lightgreen", style="filled", shape="box")
-        
-        # Procura quais dos Top Users jogaram o jogo recomendado
-        for node_user, _ in top_usuarios:
-            if G.has_edge(node_user, jogo_id):
-                subgrafo.add_edge(node_user, jogo_id)
-
-    # 4. Salva no disco
-    write_dot(subgrafo, "recomendacoes_graphviz.dot")
-    print("Arquivo 'recomendacoes_graphviz.dot' gerado com sucesso na raiz do projeto!")
-
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 if __name__ == "__main__":
+
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     ARQUIVO_AMOSTRA = os.path.join(BASE_DIR, 'extracted_data', 'sampled_recommendations.csv')
     ARQUIVO_GAMES = os.path.join(BASE_DIR, 'extracted_data', 'games.csv')
+    ARQUIVO_JSON = os.path.join(BASE_DIR, 'extracted_data', 'games_metadata.json')
 
     # Carrega os títulos dos jogos antes de rodar o grafo
     dicionario_titulos = carregar_titulos_jogos(ARQUIVO_GAMES)
@@ -194,19 +225,29 @@ if __name__ == "__main__":
     # Constrói a estrutura
     grafo = construir_grafo(ARQUIVO_AMOSTRA)
 
+    dicionario_tags = carregar_tags_jogos(ARQUIVO_JSON)
+
+    print("\nExecutando Algoritmo de Louvain...")
+    lista_comunidades = nx_comm.louvain_communities(grafo, weight='weight')
+    
+    # Transforma a lista de grupos em um dicionário rápido (nó -> ID da comunidade)
+    dicionario_comunidades = {}
+    for id_comunidade, grupo_de_nos in enumerate(lista_comunidades):
+        for no in grupo_de_nos:
+            dicionario_comunidades[no] = id_comunidade
+    print(f"Louvain finalizado! Foram encontradas {len(lista_comunidades)} comunidades (Super Nós).")
+
     if grafo:
-        JOGO_PESQUISA = "271590" # GTA V
+        #JOGO_PESQUISA = "271590" # GTA V
+        JOGO_PESQUISA = "304240" # Resident Evil HD Remaster
         titulo_pesquisa = dicionario_titulos.get(JOGO_PESQUISA, JOGO_PESQUISA)
         print(f"\nAlvo da Pesquisa: {titulo_pesquisa}")
         
         # Agora a função retorna as recomendações E a lista de usuários top (para podermos desenhar)
-        resultado, top_users = recomendar_jogos(grafo, JOGO_PESQUISA, top_k_users=50, top_n_jogos=10)
+        resultado, top_users = recomendar_jogos(grafo, JOGO_PESQUISA, dicionario_comunidades, dicionario_tags , top_k_users=50, top_n_jogos=10)
         
         print(f"\n--- TOP 10 RECOMENDAÇÕES (Otimizadas com Bloom Filter) ---")
         for i, (jogo_id, score) in enumerate(resultado):
             id_limpo = jogo_id.replace("game_", "")
             titulo = dicionario_titulos.get(id_limpo, "Nome Desconhecido")
             print(f"{i+1}º Lugar - {titulo} | Score: {score:.2f}")
-
-        # Chama a função para exportar o grafo para o Graphviz
-        gerar_arquivo_dot(grafo, JOGO_PESQUISA, top_users, resultado, dicionario_titulos)
