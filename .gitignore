@@ -8,6 +8,11 @@ venv/
 # Datasets e Arquivos Pesados
 archive.zip
 extracted_data/
+
+# Arquivos de Grafo pesados (>100MB não permitidos pelo GitHub)
+output/*.gexf
+!output/universo_super_nos.gexf
+
 # Ignorar arquivos do Mac/Windows caso alguém baixe depois
 .DS_Store
 Thumbs.db
