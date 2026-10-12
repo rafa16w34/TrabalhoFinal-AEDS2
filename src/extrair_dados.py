@@ -4,7 +4,7 @@ from collections import defaultdict
 
 def extrair(input_path, output_path, min_hours=5.0, min_jogos_por_usuario=3, min_avaliacoes_por_jogo=10):
     """
-    Algoritmo de 2 Passos para limapar dataset
+    Algoritmo de 2 Passos para limpar dataset
     Passo 1: Descobre o grau dos vértices
     Passo 2: Filtra os dados encontrados usando K-CORE
     """
@@ -39,7 +39,7 @@ def extrair(input_path, output_path, min_hours=5.0, min_jogos_por_usuario=3, min
                 hours_str = row.get('hours', '0')
                 hours = float(hours_str) if hours_str else 0.0
 
-                #Apenas receomndados e com horas minímas
+                # Apenas recomendados e com horas mínimas
                 if is_recommended in ['true', '1'] and hours >= min_hours:
                     user_id = row.get('user_id')
                     app_id = row.get('app_id')
@@ -91,7 +91,7 @@ def extrair(input_path, output_path, min_hours=5.0, min_jogos_por_usuario=3, min
                 continue
 
     print("="*50)
-    print("FILTTRAGEM CONCLUÍDA!")
+    print("FILTRAGEM CONCLUÍDA!")
     print(f"Total de arestas analisadas: {linhas_lidas_passo1}")
     print(f"Total de arestas salvas: {linhas_salvas}")
     print(f"Arquivo gerado: {output_path}")
@@ -99,9 +99,10 @@ def extrair(input_path, output_path, min_hours=5.0, min_jogos_por_usuario=3, min
 
 
 if __name__ == "__main__":
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    INPUT_FILE = os.path.join(BASE_DIR, 'extracted_data', 'recommendations.csv')
-    OUTPUT_FILE = os.path.join(BASE_DIR, 'extracted_data', 'sampled_recommendations.csv')
+    SRC_DIR = os.path.dirname(os.path.abspath(__file__))
+    PROJECT_ROOT = os.path.abspath(os.path.join(SRC_DIR, '..'))
+    INPUT_FILE = os.path.join(PROJECT_ROOT, 'extracted_data', 'recommendations.csv')
+    OUTPUT_FILE = os.path.join(PROJECT_ROOT, 'extracted_data', 'sampled_recommendations.csv')
 
     #K-Core
     extrair(
