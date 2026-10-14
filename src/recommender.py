@@ -58,53 +58,87 @@ def carregar_titulos_jogos(caminho_csv):
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# Adicione estas variáveis globais logo antes da função carregar_tags_jogos
+IDF_TABLE = {}
+TOTAL_DOCS = 0
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 def carregar_tags_jogos(caminho_json):
     """
-    Lê o arquivo JSON do banco de dados e mapeia:
-    app(id) -> conjunto de tags e genero
+    Lê o arquivo JSON do banco de dados, mapeia tags/gêneros e pré-calcula a tabela TF-IDF.
     """
-
+    global IDF_TABLE, TOTAL_DOCS
     metadados = {}
     if not os.path.exists(caminho_json):
         return metadados
 
-    with open(caminho_json, mode='r', encoding='utf-8') as f:
+    doc_frequencies = {}
+    TOTAL_DOCS = 0
 
+    with open(caminho_json, mode='r', encoding='utf-8') as f:
         for linha in f:
             dados = json.loads(linha.strip())
             app_id = str(dados.get('app_id',''))
-
-            metadados[app_id] = {'tags': set(dados.get('tags',[])), 'genres': set(dados.get('genres',[]))}
             
+            tags = set(dados.get('tags',[]))
+            genres = set(dados.get('genres',[]))
+            metadados[app_id] = {'tags': tags, 'genres': genres}
+            
+            # Contabiliza frequências para o cálculo IDF
+            for t in tags:
+                k = f"tag_{t.strip().lower()}"
+                doc_frequencies[k] = doc_frequencies.get(k, 0) + 1
+            for g in genres:
+                k = f"gen_{g.strip().lower()}"
+                doc_frequencies[k] = doc_frequencies.get(k, 0) + 1
+            
+            TOTAL_DOCS += 1
+
+    # Pré-computa e armazena os valores de IDF globalmente
+    for termo, freq in doc_frequencies.items():
+        IDF_TABLE[termo] = math.log((1 + TOTAL_DOCS) / (1 + freq)) + 1.0
 
     return metadados
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-def jaccard(meta_a, meta_b, peso_genre = 0.5, peso_tag=0.5):
+def jaccard(meta_a, meta_b, peso_genre = 1.5, peso_tag = 1.0):
     """
-    Calculo simples de similaridade de Jaccard (0.00 ou 1.00)
+    Cálculo de similaridade Weighted Jaccard com TF-IDF usando a tabela global.
     """
+    global IDF_TABLE
 
-    tag_a = meta_a.get('tags',set())
-    tag_b = meta_b.get('tags',set())
-    gen_a = meta_a.get('genres',set())
-    gen_b = meta_b.get('genres',set())
+    tags_a = {f"tag_{t.strip().lower()}" for t in meta_a.get('tags', set()) if t}
+    tags_b = {f"tag_{t.strip().lower()}" for t in meta_b.get('tags', set()) if t}
+    gen_a = {f"gen_{g.strip().lower()}" for g in meta_a.get('genres', set()) if g}
+    gen_b = {f"gen_{g.strip().lower()}" for g in meta_b.get('genres', set()) if g}
 
-    if not  tag_a or not tag_b: #Se não houverem tags cadastradas, devo avaliar o banco de dados para confirmar se existe essa possibilidade
-        return 0.1
+    tokens_a = tags_a | gen_a
+    tokens_b = tags_b | gen_b
 
-    if gen_a and gen_b:
-        uniao_gen = gen_a.union(gen_b)
-        j_gen = len(gen_a.intersection(gen_b)) / len(uniao_gen) if uniao_gen else 0.0
-    else:
-        j_gen = 0.00
+    if not tokens_a or not tokens_b:
+        return 0.0
 
-    uniao_tag = tag_a.union(tag_b)
-    j_tag = len(tag_a.intersection(tag_b)) / len(uniao_tag) if uniao_tag else 0.0
+    intersecao = tokens_a.intersection(tokens_b)
+    uniao = tokens_a.union(tokens_b)
 
-    return ((peso_genre * j_gen) + (peso_tag * j_tag))
+    if not intersecao:
+        return 0.0
 
+    soma_intersecao = 0.0
+    soma_uniao = 0.0
+
+    for token in uniao:
+        # Multiplicador estrutural de prioridade
+        multiplicador = peso_genre if token.startswith("gen_") else peso_tag
+        peso_final = multiplicador * IDF_TABLE.get(token, 1.0)
+
+        soma_uniao += peso_final
+        if token in intersecao:
+            soma_intersecao += peso_final
+
+    return soma_intersecao / soma_uniao if soma_uniao > 0 else 0.0
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def construir_grafo(caminho_csv):
