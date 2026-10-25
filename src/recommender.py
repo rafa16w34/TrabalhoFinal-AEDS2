@@ -1,0 +1,316 @@
+import networkx as nx
+import csv
+import math
+import os
+import hashlib
+
+import json
+import re
+import unicodedata
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+class BloomFilter:
+    """
+    Filtro de Bloom para gerenciar nós visitados na BFS de forma otimizada.
+    """
+    def __init__(self, estimativa_elementos, probabilidade_falso_positivo=0.01):
+        numerador = -(estimativa_elementos * math.log(probabilidade_falso_positivo))
+        denominador = (math.log(2) ** 2)
+        self.tamanho_bit_array = int(numerador / denominador)
+        self.qtd_hashes = int((self.tamanho_bit_array / estimativa_elementos) * math.log(2))
+        self.bit_array = [False] * self.tamanho_bit_array
+        print(f"[Bloom Filter] Criado com {self.tamanho_bit_array} bits e {self.qtd_hashes} hashes.")
+
+    def _gerar_hashes(self, item):
+        posicoes = []
+        hash_base = int(hashlib.md5(item.encode('utf-8')).hexdigest(), 16)
+        for i in range(self.qtd_hashes):
+            pos = (hash_base + (i * 987654321)) % self.tamanho_bit_array
+            posicoes.append(pos)
+        return posicoes
+
+    def adicionar(self, item):
+        for posicao in self._gerar_hashes(item):
+            self.bit_array[posicao] = True
+
+    def possivelmente_contem(self, item):
+        for posicao in self._gerar_hashes(item):
+            if not self.bit_array[posicao]:
+                return False
+        return True
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+def carregar_titulos_jogos(caminho_csv):
+    """
+    Lê o arquivo games.csv e retorna um dicionário mapeando ID -> Título.
+    """
+    titulos = {}
+    if not os.path.exists(caminho_csv):
+        print(f"Aviso: {caminho_csv} não encontrado. Nomes dos jogos não serão exibidos.")
+        return titulos
+
+    with open(caminho_csv, mode='r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            titulos[row.get('app_id', '')] = row.get('title', 'Desconhecido')
+            
+    return titulos
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Adicione estas variáveis globais logo antes da função carregar_tags_jogos
+IDF_TABLE = {}
+TOTAL_DOCS = 0
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SUFIXOS_DEV = r'\b(inc|llc|ltd|limited|co|corp|corporation|gmbh|s\.?a|s\.?r\.?l|plc|k\.?k|games|game|studios|studio|software|softworks|entertainment|interactive|productions|development|digital|media|north|south|west|east|montreal|toronto|kiev|shanghai|paris|annecy|sofia|bucharest|quebec|usa|japan|uk|online|works)\b\.?'
+PREFIXOS_DEV = r'^(and|in collaboration with|a)\s+'
+
+def chave_developer(nome):
+    """
+    Normaliza o nome do estúdio de forma puramente algorítmica:
+    - Descarta ports técnicos de Mac/Linux que geram afinidades falsas.
+    - Poda em laço termos societários, filiais e termos genéricos de estúdio.
+    """
+    if re.search(r'\((mac|linux|pc|remastered)', nome, re.I):
+        return ""
+    nome = unicodedata.normalize('NFKD', nome).encode('ascii', 'ignore').decode()
+    nome = nome.lower().replace(',', ' ')
+    nome = re.sub(r'[^\w\s]', ' ', nome)
+    nome = re.sub(r'\s+', ' ', nome).strip()
+    nome = re.sub(PREFIXOS_DEV, '', nome).strip()
+
+    while True:
+        novo = re.sub(r'\s+' + SUFIXOS_DEV + r'$', '', nome).strip()
+        if novo and novo != nome:
+            nome = novo
+        else:
+            break
+    return nome
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+def carregar_tags_jogos(caminho_json):
+    """
+    Lê o arquivo JSON do banco de dados, mapeia tags/gêneros e pré-calcula a tabela TF-IDF.
+    """
+    global IDF_TABLE, TOTAL_DOCS
+    metadados = {}
+    if not os.path.exists(caminho_json):
+        return metadados
+
+    doc_frequencies = {}
+    TOTAL_DOCS = 0
+
+    with open(caminho_json, mode='r', encoding='utf-8') as f:
+        for linha in f:
+            dados = json.loads(linha.strip())
+            app_id = str(dados.get('app_id',''))
+            
+            tags = set(dados.get('tags',[]))
+            genres = set(dados.get('genres',[]))
+            developers = {chave_developer(d) for d in (dados.get('developers') or []) if d}
+            developers.discard('')
+            metadados[app_id] = {'tags': tags, 'genres': genres, 'developers': developers}
+            
+            # Contabiliza frequências para o cálculo IDF
+            for t in tags:
+                k = f"tag_{t.strip().lower()}"
+                doc_frequencies[k] = doc_frequencies.get(k, 0) + 1
+            for g in genres:
+                k = f"gen_{g.strip().lower()}"
+                doc_frequencies[k] = doc_frequencies.get(k, 0) + 1
+            
+            TOTAL_DOCS += 1
+
+    # Pré-computa e armazena os valores de IDF globalmente
+    for termo, freq in doc_frequencies.items():
+        IDF_TABLE[termo] = math.log((1 + TOTAL_DOCS) / (1 + freq)) + 1.0
+
+    return metadados
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+def jaccard(meta_a, meta_b):
+    """
+    Cálculo de similaridade de conteúdo:
+    - Jaccard ponderado com IDF^2 exclusivamente sobre as tags (hiper-valoriza nichos).
+    - Gênero oficial atua como multiplicador suave de congruência e desempate.
+    Retorna: (fator_tags, bonus_genero)
+    """
+    global IDF_TABLE
+
+    tags_a = {f"tag_{t.strip().lower()}" for t in meta_a.get('tags', set()) if t}
+    tags_b = {f"tag_{t.strip().lower()}" for t in meta_b.get('tags', set()) if t}
+
+    if not tags_a or not tags_b:
+        return 0.0, 1.0
+
+    intersecao = tags_a.intersection(tags_b)
+    uniao = tags_a.union(tags_b)
+
+    if not intersecao:
+        return 0.0, 1.0
+
+    soma_intersecao = 0.0
+    soma_uniao = 0.0
+
+    for token in uniao:
+        # IDF ao quadrado esmaga tags genéricas e potencializa tags raras
+        peso_token = (IDF_TABLE.get(token, 1.0)) ** 2
+        soma_uniao += peso_token
+        if token in intersecao:
+            soma_intersecao += peso_token
+
+    fator_tags = (soma_intersecao / soma_uniao) if soma_uniao > 0 else 0.0
+
+    # Multiplicador suave de gênero: +10% de bônus caso compartilhem categoria macro
+    gen_a = meta_a.get('genres', set())
+    gen_b = meta_b.get('genres', set())
+
+    if gen_a and gen_b:
+        if gen_a.intersection(gen_b):
+            bonus_genero = 1.15  # Bônus de afinidade macro
+        else:
+            bonus_genero = 0.65  # Penalidade: gêneros oficiais incompatíveis
+    else:
+        bonus_genero = 1.0
+
+    return fator_tags, bonus_genero
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+def construir_grafo(caminho_csv):
+    """Constrói o grafo bipartido de Usuários e Jogos a partir do CSV"""
+    if not os.path.exists(caminho_csv):
+        print(f"ERRO: O arquivo {caminho_csv} não existe.")
+        return None
+
+    G = nx.Graph()
+    print("Carregando o K-Core do CSV para a memória... Isso pode levar um instante.")
+
+    linhas_lidas = 0
+    with open(caminho_csv, mode='r', encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            linhas_lidas += 1
+            if linhas_lidas % 1000000 == 0:
+                print(f"   -> Adicionando ao grafo: {linhas_lidas} conexões processadas...")
+                
+            app_id = row.get('app_id')
+            user_id = row.get('user_id')
+            hours_str = row.get('hours', '0')
+            
+            try:
+                hours = float(hours_str) if hours_str else 0.0
+            except ValueError:
+                continue
+
+            if not app_id or not user_id:
+                continue
+
+            node_jogo = f"game_{app_id}"
+            node_user = f"user_{user_id}"
+            peso = math.log(1 + hours)
+
+            # Salvando o app_id como atributo do nó para facilitar no graphviz
+            G.add_node(node_jogo, tipo='jogo', nome_original=app_id)
+            G.add_node(node_user, tipo='usuario', nome_original=user_id)
+            G.add_edge(node_jogo, node_user, weight=peso)
+
+    print(f"Grafo construído! Vértices: {G.number_of_nodes()} | Arestas: {G.number_of_edges()}")
+    return G
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+def recomendar_jogos(G, jogo_alvo_id, comunidades, dicionario_tags, top_k_users=50, top_n_jogos=10, bonus_dev=0.1):
+    """
+    Busca em Largura (BFS) utilizando Filtro de Bloom para gerenciar os visitados.
+    Retorna também os top_usuarios para podermos desenhar o Graphviz.
+    bonus_dev: valor somado ao fator de similaridade quando os jogos compartilham um estúdio.
+    """
+    node_alvo = f"game_{jogo_alvo_id}"
+    if node_alvo not in G:
+        print(f"O jogo {jogo_alvo_id} não foi encontrado no Grafo.")
+        return [], []
+
+    print(f"\nIniciando Busca em Largura (BFS) para o alvo: {jogo_alvo_id}...")
+
+    visitados = BloomFilter(estimativa_elementos=100000, probabilidade_falso_positivo=0.01)
+    visitados.adicionar(node_alvo)
+
+    # NÍVEL 1: Encontrar os Top Usuários
+    usuarios_vizinhos = G[node_alvo]
+    usuarios_ordenados = sorted(
+        usuarios_vizinhos.items(), 
+        key=lambda x: x[1]['weight'], 
+        reverse=True
+    )
+    top_usuarios = usuarios_ordenados[:top_k_users]
+
+    pontuacao_jogos = {}
+
+    # NÍVEL 2: Expandir para os Jogos recomendados
+    for node_user, dados_aresta_origem in top_usuarios:
+        peso_usuario = dados_aresta_origem['weight']
+        jogos_do_usuario = G[node_user]
+        
+        for node_jogo, dados_aresta_destino in jogos_do_usuario.items():
+
+             # O Filtro de Bloom barra o próprio jogo alvo, para não recomendar ele mesmo
+            if visitados.possivelmente_contem(node_jogo):
+                continue
+            
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+            score_colaborativo = peso_usuario * dados_aresta_destino['weight']
+
+            id_limpo = node_jogo.replace("game_","")
+
+            bonus_louvain = 1.0
+            if comunidades.get(node_alvo) == comunidades.get(node_jogo):
+                bonus_louvain = 3.0
+
+
+            meta_alvo = dicionario_tags.get(jogo_alvo_id, {})
+            meta_recomendado = dicionario_tags.get(id_limpo, {})
+
+            fator_jaccard, bonus_genero = jaccard(meta_alvo, meta_recomendado)
+
+            # Com IDF^2, jogos sem afinidade de nicho caem abaixo de 0.20
+            if fator_jaccard < 0.20:
+                continue
+
+            # Bônus de estúdio: aplicado só a quem já passou no filtro temático
+            if meta_alvo.get('developers', set()) & meta_recomendado.get('developers', set()):
+                fator_jaccard += bonus_dev
+
+            # Score composto do nó
+            score_final = score_colaborativo * bonus_louvain * bonus_genero * (fator_jaccard + 0.1)
+
+            # Acumula pontuação para cada usuário que recomenda o jogo
+            if node_jogo not in pontuacao_jogos:
+                pontuacao_jogos[node_jogo] = 0
+            pontuacao_jogos[node_jogo] += score_final
+            
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   
+    # Punição de Populares
+    
+    for node_jogo in pontuacao_jogos:
+        grau = G.degree(node_jogo)
+        if grau > 0:
+            pontuacao_jogos[node_jogo] /= (grau ** 0.35)
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    recomendacoes_ordenadas = sorted(
+        pontuacao_jogos.items(), 
+        key=lambda item: item[1], 
+        reverse=True
+    )
+
+    return recomendacoes_ordenadas[:top_n_jogos], top_usuarios
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
