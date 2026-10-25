@@ -5,6 +5,8 @@ import os
 import hashlib
 
 import json
+import re
+import unicodedata
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -64,6 +66,33 @@ TOTAL_DOCS = 0
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+SUFIXOS_DEV = r'\b(inc|llc|ltd|limited|co|corp|corporation|gmbh|s\.?a|s\.?r\.?l|plc|k\.?k|games|game|studios|studio|software|softworks|entertainment|interactive|productions|development|digital|media|north|south|west|east|montreal|toronto|kiev|shanghai|paris|annecy|sofia|bucharest|quebec|usa|japan|uk|online|works)\b\.?'
+PREFIXOS_DEV = r'^(and|in collaboration with|a)\s+'
+
+def chave_developer(nome):
+    """
+    Normaliza o nome do estúdio de forma puramente algorítmica:
+    - Descarta ports técnicos de Mac/Linux que geram afinidades falsas.
+    - Poda em laço termos societários, filiais e termos genéricos de estúdio.
+    """
+    if re.search(r'\((mac|linux|pc|remastered)', nome, re.I):
+        return ""
+    nome = unicodedata.normalize('NFKD', nome).encode('ascii', 'ignore').decode()
+    nome = nome.lower().replace(',', ' ')
+    nome = re.sub(r'[^\w\s]', ' ', nome)
+    nome = re.sub(r'\s+', ' ', nome).strip()
+    nome = re.sub(PREFIXOS_DEV, '', nome).strip()
+
+    while True:
+        novo = re.sub(r'\s+' + SUFIXOS_DEV + r'$', '', nome).strip()
+        if novo and novo != nome:
+            nome = novo
+        else:
+            break
+    return nome
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 def carregar_tags_jogos(caminho_json):
     """
     Lê o arquivo JSON do banco de dados, mapeia tags/gêneros e pré-calcula a tabela TF-IDF.
@@ -83,7 +112,9 @@ def carregar_tags_jogos(caminho_json):
             
             tags = set(dados.get('tags',[]))
             genres = set(dados.get('genres',[]))
-            metadados[app_id] = {'tags': tags, 'genres': genres}
+            developers = {chave_developer(d) for d in (dados.get('developers') or []) if d}
+            developers.discard('')
+            metadados[app_id] = {'tags': tags, 'genres': genres, 'developers': developers}
             
             # Contabiliza frequências para o cálculo IDF
             for t in tags:
@@ -103,42 +134,52 @@ def carregar_tags_jogos(caminho_json):
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-def jaccard(meta_a, meta_b, peso_genre = 1.5, peso_tag = 1.0):
+def jaccard(meta_a, meta_b):
     """
-    Cálculo de similaridade Weighted Jaccard com TF-IDF usando a tabela global.
+    Cálculo de similaridade de conteúdo:
+    - Jaccard ponderado com IDF^2 exclusivamente sobre as tags (hiper-valoriza nichos).
+    - Gênero oficial atua como multiplicador suave de congruência e desempate.
+    Retorna: (fator_tags, bonus_genero)
     """
     global IDF_TABLE
 
     tags_a = {f"tag_{t.strip().lower()}" for t in meta_a.get('tags', set()) if t}
     tags_b = {f"tag_{t.strip().lower()}" for t in meta_b.get('tags', set()) if t}
-    gen_a = {f"gen_{g.strip().lower()}" for g in meta_a.get('genres', set()) if g}
-    gen_b = {f"gen_{g.strip().lower()}" for g in meta_b.get('genres', set()) if g}
 
-    tokens_a = tags_a | gen_a
-    tokens_b = tags_b | gen_b
+    if not tags_a or not tags_b:
+        return 0.0, 1.0
 
-    if not tokens_a or not tokens_b:
-        return 0.0
-
-    intersecao = tokens_a.intersection(tokens_b)
-    uniao = tokens_a.union(tokens_b)
+    intersecao = tags_a.intersection(tags_b)
+    uniao = tags_a.union(tags_b)
 
     if not intersecao:
-        return 0.0
+        return 0.0, 1.0
 
     soma_intersecao = 0.0
     soma_uniao = 0.0
 
     for token in uniao:
-        # Multiplicador estrutural de prioridade
-        multiplicador = peso_genre if token.startswith("gen_") else peso_tag
-        peso_final = multiplicador * IDF_TABLE.get(token, 1.0)
-
-        soma_uniao += peso_final
+        # IDF ao quadrado esmaga tags genéricas e potencializa tags raras
+        peso_token = (IDF_TABLE.get(token, 1.0)) ** 2
+        soma_uniao += peso_token
         if token in intersecao:
-            soma_intersecao += peso_final
+            soma_intersecao += peso_token
 
-    return soma_intersecao / soma_uniao if soma_uniao > 0 else 0.0
+    fator_tags = (soma_intersecao / soma_uniao) if soma_uniao > 0 else 0.0
+
+    # Multiplicador suave de gênero: +10% de bônus caso compartilhem categoria macro
+    gen_a = meta_a.get('genres', set())
+    gen_b = meta_b.get('genres', set())
+
+    if gen_a and gen_b:
+        if gen_a.intersection(gen_b):
+            bonus_genero = 1.15  # Bônus de afinidade macro
+        else:
+            bonus_genero = 0.65  # Penalidade: gêneros oficiais incompatíveis
+    else:
+        bonus_genero = 1.0
+
+    return fator_tags, bonus_genero
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def construir_grafo(caminho_csv):
@@ -184,10 +225,11 @@ def construir_grafo(caminho_csv):
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-def recomendar_jogos(G, jogo_alvo_id, comunidades, dicionario_tags, top_k_users=50, top_n_jogos=10):
+def recomendar_jogos(G, jogo_alvo_id, comunidades, dicionario_tags, top_k_users=50, top_n_jogos=10, bonus_dev=0.1):
     """
     Busca em Largura (BFS) utilizando Filtro de Bloom para gerenciar os visitados.
     Retorna também os top_usuarios para podermos desenhar o Graphviz.
+    bonus_dev: valor somado ao fator de similaridade quando os jogos compartilham um estúdio.
     """
     node_alvo = f"game_{jogo_alvo_id}"
     if node_alvo not in G:
@@ -235,18 +277,32 @@ def recomendar_jogos(G, jogo_alvo_id, comunidades, dicionario_tags, top_k_users=
             meta_alvo = dicionario_tags.get(jogo_alvo_id, {})
             meta_recomendado = dicionario_tags.get(id_limpo, {})
 
-            fator_jaccard = jaccard(meta_alvo, meta_recomendado)
+            fator_jaccard, bonus_genero = jaccard(meta_alvo, meta_recomendado)
 
-            if fator_jaccard < 0.2: 
+            # Com IDF^2, jogos sem afinidade de nicho caem abaixo de 0.20
+            if fator_jaccard < 0.20:
                 continue
 
-            score_final = score_colaborativo * bonus_louvain * (fator_jaccard + 0.1)
+            # Bônus de estúdio: aplicado só a quem já passou no filtro temático
+            if meta_alvo.get('developers', set()) & meta_recomendado.get('developers', set()):
+                fator_jaccard += bonus_dev
 
-            #Acumula pontuação para cada user que recomenda o jogo
+            # Score composto do nó
+            score_final = score_colaborativo * bonus_louvain * bonus_genero * (fator_jaccard + 0.1)
+
+            # Acumula pontuação para cada usuário que recomenda o jogo
             if node_jogo not in pontuacao_jogos:
                 pontuacao_jogos[node_jogo] = 0
             pontuacao_jogos[node_jogo] += score_final
-
+            
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   
+    # Punição de Populares
+    
+    for node_jogo in pontuacao_jogos:
+        grau = G.degree(node_jogo)
+        if grau > 0:
+            pontuacao_jogos[node_jogo] /= (grau ** 0.35)
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     recomendacoes_ordenadas = sorted(

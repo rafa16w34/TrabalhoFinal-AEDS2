@@ -27,6 +27,25 @@ CACHE_LEGADO_GENEROS = os.path.join(PROJECT_ROOT, "extracted_data", "genres_cach
 
 TOP_N_TAGS = 20
 
+# Sufixos societários que aparecem após vírgula (ex: "FromSoftware, Inc.")
+SUFIXOS_EMPRESA = {"inc", " Inc.", "inc.", "llc", "llc.", "ltd", "ltd.", "co", "co.", "co. ltd", "co., ltd.",
+                   "corp", "corp.", "corporation", "gmbh", "s.a.", "sa", "s.r.l.", "srl",
+                   "limited", "plc", "ab", "oy", "as", "a/s", "pty ltd", "k.k."}
+
+
+def normalizar_developers(lista):
+    """Reúne sufixos de empresa ao nome anterior e padroniza 'Traveller\'s Tales' como 'TT Games'."""
+    resultado = []
+    for nome in lista or []:
+        n = nome.strip()
+        if 'traveller' in n.lower():
+            n = 'TT Games'
+        if resultado and n.lower() in SUFIXOS_EMPRESA:
+            resultado[-1] = f"{resultado[-1]}, {n}"
+        elif n not in resultado:
+            resultado.append(n)
+    return resultado
+
 
 def carregar_jogos_do_grafo(caminho_grafo):
     """Retorna o conjunto de App IDs únicos presentes no grafo amostrado."""
@@ -114,7 +133,8 @@ def salvar_cache(cache):
 def identificar_jogos_pendentes(caminho_metadata, jogos_grafo, info_jogos, cache):
     """
     Identifica quais jogos do grafo necessitam de consulta à API.
-    Critério: se faltar 'tags' OU faltar 'genres' tanto no JSON quanto no cache.
+    Critério: se faltar 'tags' OU 'genres' (no JSON e no cache), ou se o
+    jogo ainda nunca teve 'developers' consultado (chave ausente no cache).
     """
     pendentes = []
 
@@ -141,8 +161,11 @@ def identificar_jogos_pendentes(caminho_metadata, jogos_grafo, info_jogos, cache
 
             precisa_tags = (not tags_atuais) and (not tags_no_cache)
             precisa_generos = (not generos_atuais) and (not generos_no_cache)
+            # Presença da chave indica que a API já foi consultada com sucesso
+            # (mesmo que o jogo não tenha developer cadastrado)
+            precisa_devs = ("developers" not in dado) and ("developers" not in dados_cache)
 
-            if precisa_tags or precisa_generos:
+            if precisa_tags or precisa_generos or precisa_devs:
                 titulo, reviews = info_jogos.get(app_id, (f"App {app_id}", 0))
                 pendentes.append((reviews, app_id, titulo))
 
@@ -156,6 +179,8 @@ def consultar_steamspy(app_id, titulo, tentativas=3):
     Faz UMA ÚNICA chamada à API do SteamSpy e extrai SIMULTANEAMENTE:
       1. Top 20 tags comunitárias ordenadas por votos
       2. Lista de gêneros oficiais
+      3. Lista de estúdios desenvolvedores (developers)
+    Em caso de falha de rede, retorna None nos três campos.
     """
     url = f"https://steamspy.com/api.php?request=appdetails&appid={app_id}"
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
@@ -179,16 +204,22 @@ def consultar_steamspy(app_id, titulo, tentativas=3):
                 if genre_str:
                     generos = [g.strip() for g in genre_str.split(",") if g.strip()]
 
-                return app_id, titulo, top_tags, generos
+                # 3. Extração de Developers
+                developers = []
+                dev_str = dados.get("developer", "")
+                if dev_str:
+                    developers = normalizar_developers([d.strip() for d in dev_str.split(",") if d.strip()])
+
+                return app_id, titulo, top_tags, generos, developers
         except Exception:
             time.sleep(0.4 * (tentativa + 1))
 
-    return app_id, titulo, [], []
+    return app_id, titulo, None, None, None
 
 
 def atualizar_metadata_json(caminho_metadata, cache):
     """
-    Atualiza 'games_metadata.json' gravando 'tags' e 'genres' com escrita atômica.
+    Atualiza 'games_metadata.json' gravando 'tags', 'genres' e 'developers' com escrita atômica.
     """
     caminho_temp = caminho_metadata + ".tmp"
     atualizados = 0
@@ -216,6 +247,13 @@ def atualizar_metadata_json(caminho_metadata, cache):
                     dado["genres"] = novos_generos
                     modificado = True
 
+                # Atualiza ou adiciona developers
+                if "developers" in cache[app_id]:
+                    novos_devs = cache[app_id]["developers"]
+                    if dado.get("developers") != novos_devs:
+                        dado["developers"] = novos_devs
+                        modificado = True
+
             if "genres" not in dado:
                 dado["genres"] = []
                 modificado = True
@@ -232,7 +270,7 @@ def atualizar_metadata_json(caminho_metadata, cache):
 def main():
     print("=" * 70)
     print("   PIPELINE UNIFICADO DE ENRIQUECIMENTO DE DADOS (STEAMSPY API)")
-    print("   Coleta simultânea: Tags da Comunidade + Gêneros Oficiais")
+    print("   Coleta simultânea: Tags + Gêneros Oficiais + Developers")
     print("=" * 70)
 
     # 1. Carregar dependências
@@ -243,6 +281,10 @@ def main():
 
     # 2. Carregar Cache
     cache = carregar_ou_inicializar_cache()
+    # Corrige developers já salvos com sufixos separados
+    for dados_cache in cache.values():
+        if "developers" in dados_cache:
+            dados_cache["developers"] = normalizar_developers(dados_cache["developers"])
     print(f" -> Jogos presentes no cache: {len(cache)}")
 
     # 3. Identificar pendências
@@ -254,6 +296,7 @@ def main():
     if total_pendentes > 0:
         print(f"\n[2/5] Consultando SteamSpy API em lote para {total_pendentes} jogos...")
         concluidos = 0
+        falhas = 0
 
         with ThreadPoolExecutor(max_workers=5) as executor:
             futuros = {
@@ -262,20 +305,28 @@ def main():
             }
 
             for futuro in as_completed(futuros):
-                app_id, titulo, tags, generos = futuro.result()
+                app_id, titulo, tags, generos, developers = futuro.result()
                 concluidos += 1
 
-                cache[app_id] = {
-                    "tags": tags or cache.get(app_id, {}).get("tags", []),
-                    "genres": generos or cache.get(app_id, {}).get("genres", [])
-                }
+                if tags is None:
+                    # Falha de rede: não grava nada, será tentado na próxima execução
+                    falhas += 1
+                else:
+                    anterior = cache.get(app_id, {})
+                    cache[app_id] = {
+                        "tags": tags or anterior.get("tags", []),
+                        "genres": generos or anterior.get("genres", []),
+                        "developers": developers
+                    }
 
                 if concluidos % 25 == 0 or concluidos == total_pendentes:
-                    print(f"  [{concluidos}/{total_pendentes}] Processado: {titulo} ({app_id}) "
-                          f"-> {len(tags)} tags | {len(generos)} gêneros")
+                    devs_txt = ", ".join(developers) if developers else "-"
+                    print(f"  [{concluidos}/{total_pendentes}] {titulo} ({app_id}) -> Dev: {devs_txt}")
                     salvar_cache(cache)
 
         salvar_cache(cache)
+        if falhas:
+            print(f" -> Atenção: {falhas} consultas falharam. Rode o script novamente para tentar de novo.")
     else:
         print("\n[2/5] Nenhuma consulta necessária: todos os jogos já estão cacheados ou enriquecidos!")
 
@@ -297,7 +348,9 @@ def main():
         dados = cache.get(aid, {})
         tags = dados.get("tags", [])
         generos = dados.get("genres", [])
+        devs = dados.get("developers", [])
         print(f" • {titulo} (ID {aid}):")
+        print(f"   - Developer: {devs}")
         print(f"   - Gêneros : {generos}")
         print(f"   - Top Tags: {tags[:6]}... ({len(tags)} tags no total)\n")
     print("-" * 70)
