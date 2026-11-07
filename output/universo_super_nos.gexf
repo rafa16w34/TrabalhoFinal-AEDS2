@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
-  <meta lastmodifieddate="2026-10-14">
+  <meta lastmodifieddate="2026-11-06">
     <creator>NetworkX 2.8.8</creator>
   </meta>
   <graph defaultedgetype="undirected" mode="static" name="">
@@ -12,92 +12,92 @@
       <attribute id="4" title="exemplos" type="string" />
     </attributes>
     <nodes>
-      <node id="super_no_0" label="Super Nó 0: Simulation (260 jogos)">
+      <node id="super_no_0" label="Super Nó 0: Action (946 jogos)">
         <attvalues>
           <attvalue for="0" value="0" />
-          <attvalue for="1" value="Simulation" />
-          <attvalue for="2" value="260" />
-          <attvalue for="3" value="3750" />
-          <attvalue for="4" value="Cities: Skylines, Euro Truck Simulator 2, Kerbal Space Program, War Thunder" />
+          <attvalue for="1" value="Action" />
+          <attvalue for="2" value="946" />
+          <attvalue for="3" value="28241" />
+          <attvalue for="4" value="The Witcher® 3: Wild Hunt, DOOM, Dying Light, Tomb Raider" />
         </attvalues>
       </node>
-      <node id="super_no_1" label="Super Nó 1: Action (460 jogos)">
+      <node id="super_no_1" label="Super Nó 1: Indie (791 jogos)">
         <attvalues>
           <attvalue for="0" value="1" />
-          <attvalue for="1" value="Action" />
-          <attvalue for="2" value="460" />
-          <attvalue for="3" value="9082" />
-          <attvalue for="4" value="DARK SOULS™ III, ELDEN RING, METAL GEAR SOLID V: THE PHANTOM PAIN, The Elder Scrolls V: Skyrim Special Edition" />
+          <attvalue for="1" value="Indie" />
+          <attvalue for="2" value="791" />
+          <attvalue for="3" value="20480" />
+          <attvalue for="4" value="Deep Rock Galactic, The Binding of Isaac: Rebirth, Stardew Valley, Hades" />
         </attvalues>
       </node>
-      <node id="super_no_2" label="Super Nó 2: Action (307 jogos)">
+      <node id="super_no_2" label="Super Nó 2: Action (536 jogos)">
         <attvalues>
           <attvalue for="0" value="2" />
           <attvalue for="1" value="Action" />
-          <attvalue for="2" value="307" />
-          <attvalue for="3" value="9510" />
-          <attvalue for="4" value="No Man's Sky, Warframe, Arma 3, Destiny 2" />
+          <attvalue for="2" value="536" />
+          <attvalue for="3" value="20203" />
+          <attvalue for="4" value="DARK SOULS™ III, ELDEN RING, METAL GEAR SOLID V: THE PHANTOM PAIN, DARK SOULS™ II: Scholar of the First Sin" />
         </attvalues>
       </node>
-      <node id="super_no_3" label="Super Nó 3: Action (767 jogos)">
+      <node id="super_no_3" label="Super Nó 3: Strategy (721 jogos)">
         <attvalues>
           <attvalue for="0" value="3" />
-          <attvalue for="1" value="Action" />
-          <attvalue for="2" value="767" />
-          <attvalue for="3" value="12101" />
-          <attvalue for="4" value="The Witcher® 3: Wild Hunt, Cyberpunk 2077, Red Dead Redemption 2, Grand Theft Auto V" />
+          <attvalue for="1" value="Strategy" />
+          <attvalue for="2" value="721" />
+          <attvalue for="3" value="37097" />
+          <attvalue for="4" value="RimWorld, No Man's Sky, Factorio, Sid Meier's Civilization® V" />
         </attvalues>
       </node>
-      <node id="super_no_4" label="Super Nó 4: Indie (725 jogos)">
+      <node id="super_no_4" label="Super Nó 4: Action (124 jogos)">
         <attvalues>
           <attvalue for="0" value="4" />
-          <attvalue for="1" value="Indie" />
-          <attvalue for="2" value="725" />
-          <attvalue for="3" value="11180" />
-          <attvalue for="4" value="Borderlands 2, Deep Rock Galactic, Terraria, The Binding of Isaac: Rebirth" />
+          <attvalue for="1" value="Action" />
+          <attvalue for="2" value="124" />
+          <attvalue for="3" value="10589" />
+          <attvalue for="4" value="Cyberpunk 2077, Red Dead Redemption 2, Warframe, Destiny 2" />
         </attvalues>
       </node>
-      <node id="super_no_5" label="Super Nó 5: Action (193 jogos)">
+      <node id="super_no_5" label="Super Nó 5: RPG (37 jogos)">
         <attvalues>
           <attvalue for="0" value="5" />
-          <attvalue for="1" value="Action" />
-          <attvalue for="2" value="193" />
-          <attvalue for="3" value="6659" />
-          <attvalue for="4" value="Fallout 4, Team Fortress 2, Fallout: New Vegas, Garry's Mod" />
+          <attvalue for="1" value="RPG" />
+          <attvalue for="2" value="37" />
+          <attvalue for="3" value="5243" />
+          <attvalue for="4" value="Fallout 4, Fallout: New Vegas, Borderlands 2, The Elder Scrolls V: Skyrim Special Edition" />
         </attvalues>
       </node>
-      <node id="super_no_6" label="Super Nó 6: Strategy (592 jogos)">
+      <node id="super_no_6" label="Super Nó 6: Action (599 jogos)">
         <attvalues>
           <attvalue for="0" value="6" />
-          <attvalue for="1" value="Strategy" />
-          <attvalue for="2" value="592" />
-          <attvalue for="3" value="14127" />
-          <attvalue for="4" value="RimWorld, Factorio, Divinity: Original Sin 2 - Definitive Edition, Sid Meier's Civilization® V" />
+          <attvalue for="1" value="Action" />
+          <attvalue for="2" value="599" />
+          <attvalue for="3" value="34914" />
+          <attvalue for="4" value="Team Fortress 2, Garry's Mod, Left 4 Dead 2, Grand Theft Auto V" />
         </attvalues>
       </node>
     </nodes>
     <edges>
-      <edge source="super_no_0" target="super_no_5" id="0" weight="36696.67676546621" />
-      <edge source="super_no_0" target="super_no_2" id="1" weight="62633.5729122982" />
-      <edge source="super_no_0" target="super_no_6" id="2" weight="70582.44974914023" />
-      <edge source="super_no_0" target="super_no_1" id="3" weight="14244.22032013853" />
-      <edge source="super_no_0" target="super_no_3" id="4" weight="58491.95073961776" />
-      <edge source="super_no_0" target="super_no_4" id="5" weight="33609.98827311395" />
-      <edge source="super_no_1" target="super_no_5" id="6" weight="67123.81731174118" />
-      <edge source="super_no_1" target="super_no_6" id="7" weight="116195.63937391815" />
-      <edge source="super_no_1" target="super_no_2" id="8" weight="86622.13443853875" />
-      <edge source="super_no_1" target="super_no_4" id="9" weight="144495.02067242752" />
-      <edge source="super_no_1" target="super_no_3" id="10" weight="163547.1167701205" />
-      <edge source="super_no_2" target="super_no_5" id="11" weight="100819.88040030119" />
-      <edge source="super_no_2" target="super_no_6" id="12" weight="206542.35733646163" />
-      <edge source="super_no_2" target="super_no_4" id="13" weight="141594.50529121744" />
-      <edge source="super_no_2" target="super_no_3" id="14" weight="150841.20597685815" />
-      <edge source="super_no_3" target="super_no_5" id="15" weight="151023.22438002765" />
-      <edge source="super_no_3" target="super_no_6" id="16" weight="180772.76329444218" />
-      <edge source="super_no_3" target="super_no_4" id="17" weight="165281.65117215604" />
-      <edge source="super_no_4" target="super_no_5" id="18" weight="120026.24745223191" />
-      <edge source="super_no_4" target="super_no_6" id="19" weight="170927.7802800032" />
-      <edge source="super_no_5" target="super_no_6" id="20" weight="96256.26278350988" />
+      <edge source="super_no_0" target="super_no_5" id="0" weight="130841.77264652724" />
+      <edge source="super_no_0" target="super_no_6" id="1" weight="502678.8499945228" />
+      <edge source="super_no_0" target="super_no_3" id="2" weight="440581.47822216124" />
+      <edge source="super_no_0" target="super_no_1" id="3" weight="321953.19296075834" />
+      <edge source="super_no_0" target="super_no_2" id="4" weight="348201.3953744742" />
+      <edge source="super_no_0" target="super_no_4" id="5" weight="245984.7162581349" />
+      <edge source="super_no_1" target="super_no_5" id="6" weight="56591.75848265402" />
+      <edge source="super_no_1" target="super_no_6" id="7" weight="388062.5164584082" />
+      <edge source="super_no_1" target="super_no_3" id="8" weight="355712.0426936253" />
+      <edge source="super_no_1" target="super_no_2" id="9" weight="242075.4797475117" />
+      <edge source="super_no_1" target="super_no_4" id="10" weight="90544.51201843921" />
+      <edge source="super_no_2" target="super_no_5" id="11" weight="63901.20923756806" />
+      <edge source="super_no_2" target="super_no_6" id="12" weight="278557.875267953" />
+      <edge source="super_no_2" target="super_no_3" id="13" weight="261566.4438460723" />
+      <edge source="super_no_2" target="super_no_4" id="14" weight="153971.37466631833" />
+      <edge source="super_no_3" target="super_no_5" id="15" weight="143006.6746003353" />
+      <edge source="super_no_3" target="super_no_6" id="16" weight="572171.3339213107" />
+      <edge source="super_no_3" target="super_no_4" id="17" weight="265154.5403087002" />
+      <edge source="super_no_4" target="super_no_5" id="18" weight="48527.6997516359" />
+      <edge source="super_no_4" target="super_no_6" id="19" weight="218626.90418521003" />
+      <edge source="super_no_5" target="super_no_6" id="20" weight="129020.84503822833" />
     </edges>
   </graph>
 </gexf>

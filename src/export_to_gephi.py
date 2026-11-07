@@ -60,6 +60,11 @@ def exportar_para_gephi_hibrido(seed):
         for no in grupo_de_nos:
             no_para_comunidade[no] = id_comunidade
 
+    caminho_cache_json = os.path.join(OUTPUT_DIR, "comunidades_louvain.json")
+    with open(caminho_cache_json, 'w', encoding='utf-8') as f_cache:
+        json.dump(no_para_comunidade, f_cache)
+    print(f" -> Cache de comunidades salvo em '{caminho_cache_json}'.")
+
     # 3. Injeta atributos ricos em cada nó para visualização e agrupamento no Gephi
     print("\n[3/5] Injetando atributos nos nós (Labels, Comunidade, Tipo e Gêneros)...")
     jogos_por_comunidade = {i: [] for i in range(total_comunidades)}
