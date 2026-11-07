@@ -47,7 +47,7 @@ def inicializacao():
     metadados = carregar_tags_jogos(caminho_json, caminho_games=caminho_games)
 
     print('Construindo Grafo bipartido...')
-    grafo = construir_grafo(caminho_amostra)
+    grafo = construir_grafo(caminho_amostra, caminho_games=caminho_games, min_positive_ratio=65.0)
 
     if not grafo:
         print("ERRO: Não foi possível construir o grafo.")
@@ -99,6 +99,15 @@ def recomendar(grafo, titulos, metadados, comunidades):
             continue
 
         nome_alvo = titulos.get(id_alvo, f"Jogo {id_alvo}")
+        node_alvo = f"game_{id_alvo}"
+        if node_alvo not in grafo:
+            pr = metadados.get(id_alvo, {}).get('positive_ratio')
+            if pr is not None and pr < 65.0:
+                print(f"\n[AVISO] O jogo '{nome_alvo}' (App ID: {id_alvo}) foi excluído previamente do grafo devido à sua baixa taxa de avaliações positivas na Steam ({pr}% < corte de 65%).")
+            else:
+                print(f"\n[AVISO] O jogo '{nome_alvo}' (App ID: {id_alvo}) não foi encontrado no grafo filtrado.")
+            continue
+
         print(f" Buscando Recomendações para: {nome_alvo} (ID: {id_alvo})")
 
         resultados, top_users = recomendar_jogos(
@@ -106,7 +115,6 @@ def recomendar(grafo, titulos, metadados, comunidades):
             id_alvo, 
             comunidades, 
             metadados, 
-            top_k_users=50, 
             top_n_jogos=10
         )
         if not resultados:
@@ -138,6 +146,7 @@ def main():
         print("  [1] Recomendar Jogos (Interativo)")
         print("  [2] Recomendar em Lote (Arquivo jogos_entrada.txt)")
         print("  [3] Gerar arquivo Gephi")
+        print("  [4] Iniciar Interface Web (Navegador)")
         print("  [0] Sair")
         print("=" * 70)
         escolha = input("Digite uma das opcoes acima: ").strip()
@@ -150,6 +159,10 @@ def main():
 
         elif escolha == "3":
             menu_exportar()
+
+        elif escolha == "4":
+            import servidor_web
+            servidor_web.iniciar_servidor(porta=5000, abrir_navegador=True, motor=(grafo, titulos, metadados, comunidades))
 
         elif escolha == "0":
             print("\nFinalizando programa...")
