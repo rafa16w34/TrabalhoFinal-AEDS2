@@ -1,0 +1,1601 @@
+================================================================================
+ RELATÓRIO DE RECOMENDAÇÕES EM LOTE (AEDS 2 - SISTEMA HÍBRIDO)
+ Data de Geração: 06/11/2026 20:46:11
+ Total de Jogos Alvo Processados: 104
+================================================================================
+
+--------------------------------------------------------------------------------
+JOGO ALVO #1: ELDEN RING (App ID: 1245620)
+Gêneros Oficiais: Action, RPG | Super-Nó Louvain: 4
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 374320     | DARK SOULS™ III                          | 223.87   | Mesma     
+  2º   | 335300     | DARK SOULS™ II: Scholar of the First Sin | 131.96   | Mesma     
+  3º   | 814380     | Sekiro™: Shadows Die Twice - GOTY Edition | 128.52   | Mesma     
+  4º   | 570940     | DARK SOULS™: REMASTERED                  | 112.64   | Mesma     
+  5º   | 582010     | Monster Hunter: World                    | 109.30   | Mesma     
+  6º   | 485510     | Nioh: Complete Edition                   | 75.82    | Mesma     
+  7º   | 1325200    | Nioh 2 – The Complete Edition            | 68.08    | Mesma     
+  8º   | 236430     | DARK SOULS™ II                           | 44.28    | Mesma     
+  9º   | 1446780    | MONSTER HUNTER RISE                      | 39.33    | Mesma     
+ 10º   | 292030     | The Witcher® 3: Wild Hunt                | 23.38    | Nó 1      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #2: Euro Truck Simulator 2 (App ID: 227300)
+Gêneros Oficiais: Simulation, Indie | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 270880     | American Truck Simulator                 | 383.23   | Mesma     
+  2º   | 427100     | Fernbus Simulator                        | 86.33    | Mesma     
+  3º   | 447020     | Farming Simulator 17                     | 64.68    | Mesma     
+  4º   | 313160     | Farming Simulator 15                     | 55.54    | Mesma     
+  5º   | 244210     | Assetto Corsa                            | 45.41    | Mesma     
+  6º   | 787860     | Farming Simulator 19                     | 33.29    | Mesma     
+  7º   | 675010     | MudRunner                                | 27.27    | Mesma     
+  8º   | 446800     | Transport Fever                          | 27.22    | Mesma     
+  9º   | 1149620    | Gas Station Simulator                    | 27.08    | Mesma     
+ 10º   | 24010      | Train Simulator Classic                  | 26.23    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #3: DRAGON BALL FighterZ (App ID: 678950)
+Gêneros Oficiais: Action | Super-Nó Louvain: 4
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 520440     | GUILTY GEAR Xrd REV 2                    | 100.33   | Mesma     
+  2º   | 1372280    | MELTY BLOOD: TYPE LUMINA                 | 83.92    | Mesma     
+  3º   | 586140     | BlazBlue Centralfiction                  | 76.86    | Mesma     
+  4º   | 348550     | GUILTY GEAR XX ACCENT CORE PLUS R        | 70.66    | Mesma     
+  5º   | 1384160    | GUILTY GEAR -STRIVE-                     | 64.63    | Mesma     
+  6º   | 310950     | Street Fighter V                         | 64.24    | Mesma     
+  7º   | 389730     | TEKKEN 7                                 | 56.53    | Mesma     
+  8º   | 388750     | BlazBlue: Chronophantasma Extend         | 51.95    | Mesma     
+  9º   | 702890     | BlazBlue: Cross Tag Battle               | 51.22    | Mesma     
+ 10º   | 1090630    | Granblue Fantasy: Versus                 | 48.40    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #4: Sonic Mania (App ID: 584400)
+Gêneros Oficiais: Casual, Adventure, Action | Super-Nó Louvain: 3
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 71340      | Sonic Generations Collection             | 117.07   | Mesma     
+  2º   | 213610     | Sonic Adventure 2                        | 82.57    | Mesma     
+  3º   | 71250      | Sonic Adventure DX                       | 61.25    | Mesma     
+  4º   | 203650     | Sonic the Hedgehog 4 - Episode II        | 51.58    | Mesma     
+  5º   | 1794960    | Sonic Origins                            | 42.87    | Mesma     
+  6º   | 785260     | Team Sonic Racing™                       | 31.16    | Mesma     
+  7º   | 34270      | SEGA Mega Drive and Genesis Classics     | 30.77    | Mesma     
+  8º   | 248310     | Freedom Planet                           | 22.56    | Nó 0      
+  9º   | 595500     | Freedom Planet 2                         | 10.74    | Nó 0      
+ 10º   | 601810     | Spark the Electric Jester                | 9.94     | Nó 0      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #5: Among Us (App ID: 945360)
+Gêneros Oficiais: Casual | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 466240     | Deceit                                   | 23.41    | Mesma     
+  2º   | 953880     | First Class Trouble                      | 13.47    | Mesma     
+  3º   | 880940     | Pummel Party                             | 9.33     | Nó 0      
+  4º   | 506500     | Party Panic                              | 5.21     | Mesma     
+  5º   | 1361000    | In Silence                               | 4.93     | Mesma     
+  6º   | 400080     | Out of Space                             | 4.06     | Nó 0      
+  7º   | 323850     | Move or Die                              | 3.40     | Nó 0      
+  8º   | 1005300    | The Jackbox Party Pack 6                 | 3.21     | Nó 0      
+  9º   | 437920     | Tricky Towers                            | 1.28     | Nó 0      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #6: Grand Theft Auto V (App ID: 271590)
+Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1174180    | Red Dead Redemption 2                    | 85.48    | Mesma     
+  2º   | 646910     | The Crew™ 2                              | 39.54    | Mesma     
+  3º   | 259080     | Just Cause 2: Multiplayer Mod            | 25.95    | Mesma     
+  4º   | 12210      | Grand Theft Auto IV: The Complete Edition | 18.99    | Nó 3      
+  5º   | 50130      | Mafia II (Classic)                       | 17.39    | Nó 1      
+  6º   | 1551360    | Forza Horizon 5                          | 16.31    | Mesma     
+  7º   | 234140     | Mad Max                                  | 11.96    | Nó 1      
+  8º   | 391220     | Rise of the Tomb Raider™                 | 11.80    | Nó 1      
+  9º   | 307690     | Sleeping Dogs: Definitive Edition        | 11.70    | Nó 1      
+ 10º   | 107410     | Arma 3                                   | 11.68    | Nó 2      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #7: Cyberpunk 2077 (App ID: 1091500)
+Gêneros Oficiais: RPG | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 292030     | The Witcher® 3: Wild Hunt                | 48.74    | Nó 1      
+  2º   | 377160     | Fallout 4                                | 22.24    | Mesma     
+  3º   | 20900      | The Witcher: Enhanced Edition Director's Cut | 15.30    | Nó 1      
+  4º   | 22380      | Fallout: New Vegas                       | 9.27     | Nó 3      
+  5º   | 578650     | The Outer Worlds                         | 8.63     | Nó 1      
+  6º   | 637650     | FINAL FANTASY XV WINDOWS EDITION         | 8.13     | Nó 1      
+  7º   | 954740     | Terminator: Resistance                   | 6.25     | Nó 1      
+  8º   | 337000     | Deus Ex: Mankind Divided                 | 6.16     | Nó 1      
+  9º   | 606880     | GreedFall                                | 5.95     | Nó 1      
+ 10º   | 1777620    | Soul Hackers 2                           | 5.63     | Nó 4      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #8: Hollow Knight (App ID: 367520)
+Gêneros Oficiais: Adventure, Indie, Action | Super-Nó Louvain: 0
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 504230     | Celeste                                  | 51.46    | Mesma     
+  2º   | 268910     | Cuphead                                  | 48.45    | Mesma     
+  3º   | 588650     | Dead Cells                               | 40.18    | Mesma     
+  4º   | 549260     | Alwa's Awakening                         | 31.09    | Mesma     
+  5º   | 553420     | TUNIC                                    | 23.60    | Mesma     
+  6º   | 1057090    | Ori and the Will of the Wisps            | 22.78    | Nó 1      
+  7º   | 387290     | Ori and the Blind Forest: Definitive Edition | 20.10    | Nó 1      
+  8º   | 283640     | Salt and Sanctuary                       | 19.67    | Mesma     
+  9º   | 583470     | The End Is Nigh                          | 19.64    | Mesma     
+ 10º   | 774361     | Blasphemous                              | 18.69    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #9: LEGO® Harry Potter: Years 1-4 (App ID: 21130)
+Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 1
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 204120     | LEGO® Harry Potter: Years 5-7            | 206.45   | Mesma     
+  2º   | 311770     | LEGO® Pirates of the Caribbean: The Video Game | 78.20    | Mesma     
+  3º   | 267530     | The LEGO® Movie - Videogame              | 52.34    | Mesma     
+  4º   | 249130     | LEGO® Marvel™ Super Heroes               | 46.91    | Mesma     
+  5º   | 32450      | LEGO® Indiana Jones™ 2: The Adventure Continues | 45.47    | Mesma     
+  6º   | 214510     | LEGO® The Lord of the Rings™             | 42.06    | Mesma     
+  7º   | 32330      | LEGO® Indiana Jones™: The Original Adventures | 41.71    | Mesma     
+  8º   | 21000      | LEGO® Batman™: The Videogame             | 36.06    | Mesma     
+  9º   | 438640     | LEGO® STAR WARS™: The Force Awakens      | 33.58    | Mesma     
+ 10º   | 32510      | LEGO® Star Wars™ III - The Clone Wars™   | 31.26    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #10: Resident Evil (App ID: 304240)
+Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 4
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 254700     | Resident Evil 4 (2005)                   | 215.77   | Mesma     
+  2º   | 883710     | Resident Evil 2                          | 202.26   | Mesma     
+  3º   | 339340     | Resident Evil 0                          | 187.05   | Mesma     
+  4º   | 21690      | Resident Evil 5                          | 108.60   | Mesma     
+  5º   | 222480     | Resident Evil Revelations                | 104.33   | Mesma     
+  6º   | 418370     | Resident Evil 7 Biohazard                | 103.74   | Mesma     
+  7º   | 952060     | Resident Evil 3                          | 83.32    | Mesma     
+  8º   | 1196590    | Resident Evil Village                    | 64.77    | Mesma     
+  9º   | 221040     | Resident Evil 6                          | 62.48    | Mesma     
+ 10º   | 287290     | Resident Evil Revelations 2              | 30.87    | Nó 1      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #11: Stardew Valley (App ID: 413150)
+Gêneros Oficiais: Simulation, Indie, RPG | Super-Nó Louvain: 0
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 105600     | Terraria                                 | 49.12    | Mesma     
+  2º   | 599140     | Graveyard Keeper                         | 25.17    | Mesma     
+  3º   | 751780     | Forager                                  | 22.54    | Mesma     
+  4º   | 211820     | Starbound                                | 18.72    | Mesma     
+  5º   | 666140     | My Time At Portia                        | 14.28    | Nó 2      
+  6º   | 1210320    | Potion Craft: Alchemist Simulator        | 14.13    | Mesma     
+  7º   | 1084600    | My Time at Sandrock                      | 11.33    | Nó 2      
+  8º   | 1401590    | Disney Dreamlight Valley                 | 10.43    | Nó 5      
+  9º   | 673950     | Farm Together                            | 8.24     | Nó 5      
+ 10º   | 47890      | The Sims™ 3                              | 2.16     | Nó 3      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #12: Rust (App ID: 252490)
+Gêneros Oficiais: Indie, Massively Multiplayer, Adventure, RPG, Action | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 242760     | The Forest                               | 101.58   | Mesma     
+  2º   | 4000       | Garry's Mod                              | 56.09    | Mesma     
+  3º   | 648800     | Raft                                     | 39.41    | Mesma     
+  4º   | 304930     | Unturned                                 | 27.39    | Mesma     
+  5º   | 387990     | Scrap Mechanic                           | 25.83    | Mesma     
+  6º   | 305620     | The Long Dark                            | 24.82    | Nó 2      
+  7º   | 892970     | Valheim                                  | 24.61    | Nó 2      
+  8º   | 105600     | Terraria                                 | 24.23    | Nó 0      
+  9º   | 346110     | ARK: Survival Evolved                    | 24.03    | Nó 2      
+ 10º   | 239140     | Dying Light                              | 21.25    | Nó 1      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #13: The Sims™ 4 (App ID: 1222670)
+Gêneros Oficiais: Casual, Adventure, Simulation, Free To Play | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1401590    | Disney Dreamlight Valley                 | 32.90    | Mesma     
+  2º   | 47890      | The Sims™ 3                              | 21.39    | Nó 3      
+  3º   | 493340     | Planet Coaster                           | 15.90    | Mesma     
+  4º   | 613100     | House Flipper                            | 15.40    | Mesma     
+  5º   | 703080     | Planet Zoo                               | 14.22    | Nó 2      
+  6º   | 413150     | Stardew Valley                           | 10.87    | Nó 0      
+  7º   | 621060     | PC Building Simulator                    | 9.61     | Mesma     
+  8º   | 894940     | Littlewood                               | 2.86     | Nó 0      
+  9º   | 666140     | My Time At Portia                        | 2.39     | Nó 2      
+ 10º   | 1999360    | Placid Plastic Duck Simulator            | 1.98     | Nó 0      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #14: Jogo Desconhecido (12120) (App ID: 12120)
+Gêneros Oficiais: N/D | Super-Nó Louvain: -1
+--------------------------------------------------------------------------------
+  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).
+
+--------------------------------------------------------------------------------
+JOGO ALVO #15: Divine Divinity (App ID: 214170)
+Gêneros Oficiais: RPG | Super-Nó Louvain: 1
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 219780     | Divinity II: Developer's Cut             | 79.56    | Mesma     
+  2º   | 12320      | Sacred Gold                              | 33.14    | Mesma     
+  3º   | 373420     | Divinity: Original Sin - Enhanced Edition | 30.69    | Mesma     
+  4º   | 1930       | Two Worlds Epic Edition                  | 29.91    | Mesma     
+  5º   | 39500      | Gothic® 3                                | 17.23    | Mesma     
+  6º   | 288470     | Fable Anniversary                        | 16.52    | Mesma     
+  7º   | 65540      | Gothic 1                                 | 15.58    | Mesma     
+  8º   | 40300      | Risen                                    | 12.37    | Mesma     
+  9º   | 39190      | Dungeon Siege                            | 10.00    | Mesma     
+ 10º   | 249230     | Risen 3 - Titan Lords                    | 9.11     | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #16: Half-Life: Alyx (App ID: 546560)
+Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 3
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 220        | Half-Life 2                              | 60.40    | Mesma     
+  2º   | 420        | Half-Life 2: Episode Two                 | 46.74    | Mesma     
+  3º   | 70         | Half-Life                                | 44.40    | Mesma     
+  4º   | 380        | Half-Life 2: Episode One                 | 38.07    | Mesma     
+  5º   | 50         | Half-Life: Opposing Force                | 24.12    | Mesma     
+  6º   | 130        | Half-Life: Blue Shift                    | 23.89    | Mesma     
+  7º   | 782330     | DOOM Eternal                             | 17.58    | Mesma     
+  8º   | 362890     | Black Mesa                               | 16.90    | Mesma     
+  9º   | 379720     | DOOM                                     | 14.47    | Mesma     
+ 10º   | 823500     | BONEWORKS                                | 14.18    | Nó 5      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #17: Resident Evil 2 (App ID: 883710)
+Gêneros Oficiais: Action | Super-Nó Louvain: 4
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 952060     | Resident Evil 3                          | 205.11   | Mesma     
+  2º   | 418370     | Resident Evil 7 Biohazard                | 192.54   | Mesma     
+  3º   | 304240     | Resident Evil                            | 152.53   | Mesma     
+  4º   | 1196590    | Resident Evil Village                    | 130.37   | Mesma     
+  5º   | 254700     | Resident Evil 4 (2005)                   | 125.18   | Mesma     
+  6º   | 339340     | Resident Evil 0                          | 102.08   | Mesma     
+  7º   | 21690      | Resident Evil 5                          | 91.55    | Mesma     
+  8º   | 222480     | Resident Evil Revelations                | 78.90    | Mesma     
+  9º   | 221040     | Resident Evil 6                          | 75.38    | Mesma     
+ 10º   | 287290     | Resident Evil Revelations 2              | 38.99    | Nó 1      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #18: Resident Evil 7 Biohazard (App ID: 418370)
+Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 4
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 883710     | Resident Evil 2                          | 211.55   | Mesma     
+  2º   | 1196590    | Resident Evil Village                    | 191.83   | Mesma     
+  3º   | 952060     | Resident Evil 3                          | 93.38    | Mesma     
+  4º   | 222480     | Resident Evil Revelations                | 89.10    | Mesma     
+  5º   | 21690      | Resident Evil 5                          | 77.94    | Mesma     
+  6º   | 254700     | Resident Evil 4 (2005)                   | 70.48    | Mesma     
+  7º   | 304240     | Resident Evil                            | 66.29    | Mesma     
+  8º   | 339340     | Resident Evil 0                          | 45.97    | Mesma     
+  9º   | 530620     | Resident Evil 7 Teaser: Beginning Hour   | 30.59    | Nó 1      
+ 10º   | 414700     | Outlast 2                                | 30.16    | Nó 1      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #19: Jogo Desconhecido (2054970) (App ID: 2054970)
+Gêneros Oficiais: N/D | Super-Nó Louvain: -1
+--------------------------------------------------------------------------------
+  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).
+
+--------------------------------------------------------------------------------
+JOGO ALVO #20: Jogo Desconhecido (1190460) (App ID: 1190460)
+Gêneros Oficiais: N/D | Super-Nó Louvain: -1
+--------------------------------------------------------------------------------
+  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).
+
+--------------------------------------------------------------------------------
+JOGO ALVO #21: Terraria (App ID: 105600)
+Gêneros Oficiais: Adventure, Indie, Action, RPG | Super-Nó Louvain: 0
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 211820     | Starbound                                | 110.02   | Mesma     
+  2º   | 322330     | Don't Starve Together                    | 40.70    | Mesma     
+  3º   | 538100     | Feel The Snow                            | 38.06    | Mesma     
+  4º   | 413150     | Stardew Valley                           | 19.69    | Mesma     
+  5º   | 1621690    | Core Keeper                              | 18.23    | Mesma     
+  6º   | 219740     | Don't Starve                             | 16.77    | Mesma     
+  7º   | 268750     | Magicite                                 | 13.34    | Mesma     
+  8º   | 305620     | The Long Dark                            | 12.60    | Nó 2      
+  9º   | 264710     | Subnautica                               | 12.09    | Nó 2      
+ 10º   | 751780     | Forager                                  | 12.09    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #22: Hades (App ID: 1145360)
+Gêneros Oficiais: Indie, Action, RPG | Super-Nó Louvain: 0
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 588650     | Dead Cells                               | 42.71    | Mesma     
+  2º   | 1217060    | Gunfire Reborn                           | 36.70    | Mesma     
+  3º   | 1794680    | Vampire Survivors                        | 36.33    | Mesma     
+  4º   | 646570     | Slay the Spire                           | 30.58    | Mesma     
+  5º   | 881100     | Noita                                    | 22.86    | Mesma     
+  6º   | 656350     | UnderMine                                | 21.80    | Mesma     
+  7º   | 262060     | Darkest Dungeon®                         | 19.17    | Mesma     
+  8º   | 1123770    | Curse of the Dead Gods                   | 19.08    | Mesma     
+  9º   | 632360     | Risk of Rain 2                           | 16.97    | Mesma     
+ 10º   | 247080     | Crypt of the NecroDancer                 | 15.78    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #23: Marvel’s Spider-Man Remastered (App ID: 1817070)
+Gêneros Oficiais: Casual, Adventure, Action | Super-Nó Louvain: 1
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1817190    | Marvel’s Spider-Man: Miles Morales       | 416.92   | Mesma     
+  2º   | 1659420    | UNCHARTED™: Legacy of Thieves Collection | 70.05    | Mesma     
+  3º   | 534380     | Dying Light 2 Stay Human                 | 49.82    | Mesma     
+  4º   | 208650     | Batman™: Arkham Knight                   | 29.71    | Mesma     
+  5º   | 750920     | Shadow of the Tomb Raider: Definitive Edition | 29.59    | Mesma     
+  6º   | 1850570    | DEATH STRANDING DIRECTOR'S CUT           | 28.58    | Mesma     
+  7º   | 1088850    | Marvel's Guardians of the Galaxy         | 24.82    | Mesma     
+  8º   | 1151640    | Horizon Zero Dawn™ Complete Edition      | 24.65    | Mesma     
+  9º   | 200260     | Batman: Arkham City - Game of the Year Edition | 24.34    | Mesma     
+ 10º   | 391220     | Rise of the Tomb Raider™                 | 23.07    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #24: Cuphead (App ID: 268910)
+Gêneros Oficiais: Indie, Action | Super-Nó Louvain: 0
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 367520     | Hollow Knight                            | 46.20    | Mesma     
+  2º   | 238460     | BattleBlock Theater®                     | 24.25    | Mesma     
+  3º   | 400630     | Wuppo: Definitive Edition                | 18.98    | Mesma     
+  4º   | 250760     | Shovel Knight: Treasure Trove            | 12.74    | Mesma     
+  5º   | 274190     | Broforce                                 | 12.42    | Mesma     
+  6º   | 1509960    | PICO PARK                                | 11.34    | Mesma     
+  7º   | 531510     | Just Shapes & Beats                      | 9.95     | Mesma     
+  8º   | 534550     | Guacamelee! 2                            | 7.10     | Mesma     
+  9º   | 1257360    | Bloodstained: Curse of the Moon 2        | 6.94     | Mesma     
+ 10º   | 584400     | Sonic Mania                              | 4.75     | Nó 3      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #25: Valheim (App ID: 892970)
+Gêneros Oficiais: Adventure, Indie, Action, RPG | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 346110     | ARK: Survival Evolved                    | 113.65   | Mesma     
+  2º   | 1604030    | V Rising                                 | 106.67   | Mesma     
+  3º   | 815370     | Green Hell                               | 103.06   | Mesma     
+  4º   | 1169040    | Necesse                                  | 69.00    | Mesma     
+  5º   | 440900     | Conan Exiles                             | 60.50    | Mesma     
+  6º   | 526870     | Satisfactory                             | 56.85    | Mesma     
+  7º   | 275850     | No Man's Sky                             | 40.48    | Mesma     
+  8º   | 264710     | Subnautica                               | 39.09    | Mesma     
+  9º   | 251570     | 7 Days to Die                            | 36.02    | Mesma     
+ 10º   | 648800     | Raft                                     | 35.54    | Nó 5      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #26: The Binding of Isaac: Rebirth (App ID: 250900)
+Gêneros Oficiais: Action | Super-Nó Louvain: 0
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 113200     | The Binding of Isaac                     | 189.37   | Mesma     
+  2º   | 311690     | Enter the Gungeon                        | 76.56    | Mesma     
+  3º   | 588650     | Dead Cells                               | 73.31    | Mesma     
+  4º   | 242680     | Nuclear Throne                           | 52.75    | Mesma     
+  5º   | 1145360    | Hades                                    | 48.74    | Mesma     
+  6º   | 632360     | Risk of Rain 2                           | 35.49    | Mesma     
+  7º   | 512900     | Streets of Rogue                         | 34.90    | Mesma     
+  8º   | 239350     | Spelunky                                 | 30.70    | Mesma     
+  9º   | 1123770    | Curse of the Dead Gods                   | 30.38    | Mesma     
+ 10º   | 247080     | Crypt of the NecroDancer                 | 28.23    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #27: Counter-Strike: Global Offensive (App ID: 730)
+Gêneros Oficiais: Action, Free To Play | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 570        | Dota 2                                   | 86.03    | Mesma     
+  2º   | 359550     | Tom Clancy's Rainbow Six® Siege          | 75.19    | Mesma     
+  3º   | 1407200    | World of Tanks                           | 32.29    | Mesma     
+  4º   | 500        | Left 4 Dead                              | 26.72    | Nó 3      
+  5º   | 444090     | Paladins®                                | 25.83    | Mesma     
+  6º   | 1172470    | Apex Legends™                            | 25.72    | Mesma     
+  7º   | 550        | Left 4 Dead 2                            | 23.70    | Nó 3      
+  8º   | 240        | Counter-Strike: Source                   | 17.92    | Nó 3      
+  9º   | 440        | Team Fortress 2                          | 16.97    | Nó 3      
+ 10º   | 10         | Counter-Strike                           | 13.82    | Nó 3      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #28: Dota 2 (App ID: 570)
+Gêneros Oficiais: Action, Strategy, Free To Play | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 730        | Counter-Strike: Global Offensive         | 108.67   | Mesma     
+  2º   | 444090     | Paladins®                                | 53.54    | Mesma     
+  3º   | 359550     | Tom Clancy's Rainbow Six® Siege          | 43.03    | Mesma     
+  4º   | 386360     | SMITE®                                   | 33.09    | Nó 2      
+  5º   | 813820     | Realm Royale Reforged                    | 15.98    | Mesma     
+  6º   | 240        | Counter-Strike: Source                   | 11.94    | Nó 3      
+  7º   | 291480     | Warface                                  | 8.48     | Nó 3      
+  8º   | 1049590    | Eternal Return                           | 7.32     | Nó 0      
+  9º   | 504370     | Battlerite                               | 6.31     | Nó 0      
+ 10º   | 222880     | Insurgency                               | 5.43     | Nó 3      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #29: Team Fortress 2 (App ID: 440)
+Gêneros Oficiais: Action, Free To Play | Super-Nó Louvain: 3
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 550        | Left 4 Dead 2                            | 72.31    | Mesma     
+  2º   | 300        | Day of Defeat: Source                    | 31.82    | Mesma     
+  3º   | 240        | Counter-Strike: Source                   | 23.90    | Mesma     
+  4º   | 730        | Counter-Strike: Global Offensive         | 23.36    | Nó 5      
+  5º   | 550650     | Black Squad                              | 21.52    | Mesma     
+  6º   | 222880     | Insurgency                               | 21.28    | Mesma     
+  7º   | 1250       | Killing Floor                            | 17.96    | Mesma     
+  8º   | 500        | Left 4 Dead                              | 17.01    | Mesma     
+  9º   | 1240440    | Halo Infinite                            | 14.85    | Mesma     
+ 10º   | 444200     | World of Tanks Blitz                     | 12.90    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #30: PUBG: BATTLEGROUNDS (App ID: 578080)
+Gêneros Oficiais: Adventure, Massively Multiplayer, Action, Free To Play | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 730        | Counter-Strike: Global Offensive         | 116.31   | Mesma     
+  2º   | 359550     | Tom Clancy's Rainbow Six® Siege          | 98.95    | Mesma     
+  3º   | 252490     | Rust                                     | 58.74    | Mesma     
+  4º   | 444090     | Paladins®                                | 38.05    | Mesma     
+  5º   | 381210     | Dead by Daylight                         | 34.46    | Mesma     
+  6º   | 1677740    | Stumble Guys                             | 28.84    | Mesma     
+  7º   | 1172470    | Apex Legends™                            | 23.49    | Mesma     
+  8º   | 550650     | Black Squad                              | 23.28    | Nó 3      
+  9º   | 1241100    | POLYGON                                  | 20.77    | Mesma     
+ 10º   | 1158940    | Blazing Sails                            | 20.21    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #31: DayZ (App ID: 221100)
+Gêneros Oficiais: Adventure, Massively Multiplayer, Action | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 107410     | Arma 3                                   | 63.41    | Mesma     
+  2º   | 581320     | Insurgency: Sandstorm                    | 35.02    | Mesma     
+  3º   | 376210     | The Isle                                 | 33.95    | Mesma     
+  4º   | 108600     | Project Zomboid                          | 32.70    | Mesma     
+  5º   | 299740     | Miscreated                               | 27.02    | Mesma     
+  6º   | 594650     | Hunt: Showdown                           | 21.88    | Mesma     
+  7º   | 252490     | Rust                                     | 21.53    | Nó 5      
+  8º   | 526160     | The Wild Eight                           | 21.33    | Mesma     
+  9º   | 815370     | Green Hell                               | 20.78    | Mesma     
+ 10º   | 251570     | 7 Days to Die                            | 19.73    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #32: The Witcher® 3: Wild Hunt (App ID: 292030)
+Gêneros Oficiais: RPG | Super-Nó Louvain: 1
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 20900      | The Witcher: Enhanced Edition Director's Cut | 118.58   | Mesma     
+  2º   | 20920      | The Witcher 2: Assassins of Kings Enhanced Edition | 101.49   | Mesma     
+  3º   | 812140     | Assassin's Creed® Odyssey                | 36.96    | Mesma     
+  4º   | 288470     | Fable Anniversary                        | 35.94    | Mesma     
+  5º   | 39510      | Gothic II: Gold Edition                  | 31.63    | Mesma     
+  6º   | 356190     | Middle-earth™: Shadow of War™            | 31.56    | Mesma     
+  7º   | 973760     | Thronebreaker: The Witcher Tales         | 28.68    | Mesma     
+  8º   | 589360     | Ni no Kuni™ II: Revenant Kingdom         | 26.07    | Mesma     
+  9º   | 411300     | ELEX                                     | 20.82    | Mesma     
+ 10º   | 1091500    | Cyberpunk 2077                           | 20.57    | Nó 2      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #33: Baldur's Gate 3 (App ID: 1086940)
+Gêneros Oficiais: Adventure, RPG, Strategy | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 435150     | Divinity: Original Sin 2 - Definitive Edition | 85.09    | Mesma     
+  2º   | 640820     | Pathfinder: Kingmaker - Enhanced Plus Edition | 54.37    | Mesma     
+  3º   | 560130     | Pillars of Eternity II: Deadfire         | 47.53    | Mesma     
+  4º   | 704450     | Neverwinter Nights: Enhanced Edition     | 30.82    | Mesma     
+  5º   | 321800     | Icewind Dale: Enhanced Edition           | 24.59    | Mesma     
+  6º   | 228280     | Baldur's Gate: Enhanced Edition          | 23.92    | Mesma     
+  7º   | 272270     | Torment: Tides of Numenera               | 22.52    | Mesma     
+  8º   | 257350     | Baldur's Gate II: Enhanced Edition       | 18.94    | Mesma     
+  9º   | 1328670    | Mass Effect™ Legendary Edition           | 9.51     | Nó 1      
+ 10º   | 362960     | Tyranny                                  | 8.99     | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #34: Jogo Desconhecido (2358720) (App ID: 2358720)
+Gêneros Oficiais: N/D | Super-Nó Louvain: -1
+--------------------------------------------------------------------------------
+  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).
+
+--------------------------------------------------------------------------------
+JOGO ALVO #35: Sid Meier’s Civilization® VI (App ID: 289070)
+Gêneros Oficiais: Strategy | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 8930       | Sid Meier's Civilization® V              | 135.35   | Mesma     
+  2º   | 1124300    | HUMANKIND™                               | 92.64    | Mesma     
+  3º   | 1158310    | Crusader Kings III                       | 42.99    | Mesma     
+  4º   | 281990     | Stellaris                                | 41.79    | Mesma     
+  5º   | 392110     | ENDLESS™ Space 2                         | 40.93    | Mesma     
+  6º   | 646500     | Egypt: Old Kingdom                       | 38.85    | Mesma     
+  7º   | 779340     | Total War: THREE KINGDOMS                | 36.20    | Mesma     
+  8º   | 312450     | Order of Battle: World War II            | 35.64    | Mesma     
+  9º   | 394360     | Hearts of Iron IV                        | 34.33    | Mesma     
+ 10º   | 1072040    | Panzer Corps 2                           | 31.70    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #36: Apex Legends™ (App ID: 1172470)
+Gêneros Oficiais: Adventure, Action, Free To Play | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 730        | Counter-Strike: Global Offensive         | 109.08   | Mesma     
+  2º   | 1085660    | Destiny 2                                | 49.86    | Mesma     
+  3º   | 444090     | Paladins®                                | 43.26    | Mesma     
+  4º   | 813820     | Realm Royale Reforged                    | 39.57    | Mesma     
+  5º   | 359550     | Tom Clancy's Rainbow Six® Siege          | 36.51    | Mesma     
+  6º   | 1677740    | Stumble Guys                             | 32.45    | Mesma     
+  7º   | 321360     | Primal Carnage: Extinction               | 22.49    | Mesma     
+  8º   | 10         | Counter-Strike                           | 15.78    | Nó 3      
+  9º   | 1237970    | Titanfall® 2                             | 14.90    | Nó 3      
+ 10º   | 440        | Team Fortress 2                          | 13.79    | Nó 3      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #37: Red Dead Redemption 2 (App ID: 1174180)
+Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 271590     | Grand Theft Auto V                       | 111.10   | Mesma     
+  2º   | 292030     | The Witcher® 3: Wild Hunt                | 19.98    | Nó 1      
+  3º   | 391220     | Rise of the Tomb Raider™                 | 18.50    | Nó 1      
+  4º   | 307690     | Sleeping Dogs: Definitive Edition        | 16.58    | Nó 1      
+  5º   | 1030840    | Mafia: Definitive Edition                | 16.38    | Nó 1      
+  6º   | 287700     | METAL GEAR SOLID V: THE PHANTOM PAIN     | 15.41    | Nó 1      
+  7º   | 447040     | Watch_Dogs® 2                            | 13.56    | Nó 1      
+  8º   | 460930     | Tom Clancy's Ghost Recon® Wildlands      | 12.40    | Nó 1      
+  9º   | 243470     | Watch_Dogs™                              | 7.79     | Nó 1      
+ 10º   | 601430     | The Evil Within 2                        | 6.64     | Nó 1      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #38: Destiny 2 (App ID: 1085660)
+Gêneros Oficiais: Adventure, Action, Free To Play | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 230410     | Warframe                                 | 66.72    | Mesma     
+  2º   | 1172470    | Apex Legends™                            | 56.64    | Mesma     
+  3º   | 438100     | VRChat                                   | 40.35    | Mesma     
+  4º   | 813820     | Realm Royale Reforged                    | 19.55    | Mesma     
+  5º   | 550650     | Black Squad                              | 18.85    | Nó 3      
+  6º   | 755790     | Ring of Elysium                          | 18.85    | Mesma     
+  7º   | 49520      | Borderlands 2                            | 17.10    | Nó 3      
+  8º   | 304930     | Unturned                                 | 16.90    | Mesma     
+  9º   | 1241100    | POLYGON                                  | 15.61    | Mesma     
+ 10º   | 1240440    | Halo Infinite                            | 15.38    | Nó 3      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #39: Sekiro™: Shadows Die Twice - GOTY Edition (App ID: 814380)
+Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 4
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 374320     | DARK SOULS™ III                          | 120.86   | Mesma     
+  2º   | 1245620    | ELDEN RING                               | 115.09   | Mesma     
+  3º   | 335300     | DARK SOULS™ II: Scholar of the First Sin | 57.64    | Mesma     
+  4º   | 570940     | DARK SOULS™: REMASTERED                  | 54.62    | Mesma     
+  5º   | 582010     | Monster Hunter: World                    | 54.60    | Mesma     
+  6º   | 485510     | Nioh: Complete Edition                   | 46.34    | Mesma     
+  7º   | 678960     | CODE VEIN                                | 18.14    | Mesma     
+  8º   | 1325200    | Nioh 2 – The Complete Edition            | 16.82    | Mesma     
+  9º   | 367520     | Hollow Knight                            | 16.21    | Nó 0      
+ 10º   | 812140     | Assassin's Creed® Odyssey                | 13.43    | Nó 1      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #40: DARK SOULS™ III (App ID: 374320)
+Gêneros Oficiais: Action | Super-Nó Louvain: 4
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1245620    | ELDEN RING                               | 166.41   | Mesma     
+  2º   | 814380     | Sekiro™: Shadows Die Twice - GOTY Edition | 152.21   | Mesma     
+  3º   | 570940     | DARK SOULS™: REMASTERED                  | 142.53   | Mesma     
+  4º   | 335300     | DARK SOULS™ II: Scholar of the First Sin | 136.22   | Mesma     
+  5º   | 582010     | Monster Hunter: World                    | 93.05    | Mesma     
+  6º   | 485510     | Nioh: Complete Edition                   | 59.84    | Mesma     
+  7º   | 236430     | DARK SOULS™ II                           | 53.73    | Mesma     
+  8º   | 678960     | CODE VEIN                                | 31.47    | Mesma     
+  9º   | 1325200    | Nioh 2 – The Complete Edition            | 28.04    | Mesma     
+ 10º   | 292030     | The Witcher® 3: Wild Hunt                | 13.86    | Nó 1      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #41: BioShock Infinite (App ID: 8870)
+Gêneros Oficiais: Action | Super-Nó Louvain: 1
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 8850       | BioShock® 2                              | 35.36    | Mesma     
+  2º   | 205100     | Dishonored                               | 26.23    | Mesma     
+  3º   | 201810     | Wolfenstein: The New Order               | 23.16    | Mesma     
+  4º   | 350080     | Wolfenstein: The Old Blood               | 15.85    | Mesma     
+  5º   | 238010     | Deus Ex: Human Revolution - Director's Cut | 15.11    | Mesma     
+  6º   | 412020     | Metro Exodus                             | 13.44    | Mesma     
+  7º   | 220        | Half-Life 2                              | 12.92    | Nó 3      
+  8º   | 420        | Half-Life 2: Episode Two                 | 8.85     | Nó 3      
+  9º   | 228300     | Remember Me                              | 8.60     | Mesma     
+ 10º   | 380        | Half-Life 2: Episode One                 | 8.31     | Nó 3      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #42: Tomb Raider (App ID: 203160)
+Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 1
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 391220     | Rise of the Tomb Raider™                 | 148.69   | Mesma     
+  2º   | 750920     | Shadow of the Tomb Raider: Definitive Edition | 89.87    | Mesma     
+  3º   | 8140       | Tomb Raider: Underworld                  | 85.96    | Mesma     
+  4º   | 7000       | Tomb Raider: Legend                      | 49.11    | Mesma     
+  5º   | 8000       | Tomb Raider: Anniversary                 | 48.87    | Mesma     
+  6º   | 209000     | Batman™: Arkham Origins                  | 32.63    | Mesma     
+  7º   | 268050     | The Evil Within                          | 28.41    | Mesma     
+  8º   | 204100     | Max Payne 3                              | 26.41    | Mesma     
+  9º   | 1659420    | UNCHARTED™: Legacy of Thieves Collection | 24.26    | Mesma     
+ 10º   | 224960     | Tomb Raider I                            | 22.34    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #43: Horizon Zero Dawn™ Complete Edition (App ID: 1151640)
+Gêneros Oficiais: Adventure, Action, RPG | Super-Nó Louvain: 1
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 750920     | Shadow of the Tomb Raider: Definitive Edition | 58.10    | Mesma     
+  2º   | 391220     | Rise of the Tomb Raider™                 | 54.23    | Mesma     
+  3º   | 812140     | Assassin's Creed® Odyssey                | 51.24    | Mesma     
+  4º   | 582160     | Assassin's Creed® Origins                | 44.98    | Mesma     
+  5º   | 1222140    | Detroit: Become Human                    | 44.52    | Mesma     
+  6º   | 356190     | Middle-earth™: Shadow of War™            | 38.67    | Mesma     
+  7º   | 412020     | Metro Exodus                             | 38.52    | Mesma     
+  8º   | 1817070    | Marvel’s Spider-Man Remastered           | 25.91    | Mesma     
+  9º   | 371660     | Far Cry® Primal                          | 21.86    | Mesma     
+ 10º   | 1222690    | Dragon Age™ Inquisition                  | 21.32    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #44: Halo: The Master Chief Collection (App ID: 976730)
+Gêneros Oficiais: Action | Super-Nó Louvain: 3
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1240440    | Halo Infinite                            | 82.21    | Mesma     
+  2º   | 362890     | Black Mesa                               | 40.83    | Mesma     
+  3º   | 782330     | DOOM Eternal                             | 38.77    | Mesma     
+  4º   | 208200     | DOOM 3                                   | 31.13    | Mesma     
+  5º   | 459220     | Halo Wars: Definitive Edition            | 28.05    | Mesma     
+  6º   | 1058020    | STAR WARS™ Battlefront (Classic 2004)    | 25.74    | Mesma     
+  7º   | 379720     | DOOM                                     | 25.50    | Mesma     
+  8º   | 41000      | Serious Sam HD: The First Encounter      | 23.53    | Mesma     
+  9º   | 2300       | DOOM II                                  | 20.90    | Mesma     
+ 10º   | 10680      | Aliens vs. Predator™                     | 20.39    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #45: Sea of Thieves 2023 Edition (App ID: 1172620)
+Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1085660    | Destiny 2                                | 21.23    | Mesma     
+  2º   | 755500     | ONE PIECE World Seeker                   | 10.69    | Nó 4      
+  3º   | 298110     | Far Cry® 4                               | 6.67     | Nó 1      
+  4º   | 1238860    | Battlefield 4™                           | 6.46     | Nó 3      
+  5º   | 221100     | DayZ                                     | 5.76     | Nó 2      
+  6º   | 326410     | Windward                                 | 3.51     | Nó 2      
+  7º   | 1604030    | V Rising                                 | 2.65     | Nó 2      
+  8º   | 10180      | Call of Duty®: Modern Warfare® 2 (2009)  | 1.66     | Nó 3      
+  9º   | 242050     | Assassin’s Creed® IV Black Flag™         | 1.38     | Nó 1      
+ 10º   | 1293830    | Forza Horizon 4                          | 1.34     | Nó 1      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #46: Celeste (App ID: 504230)
+Gêneros Oficiais: Adventure, Indie, Action | Super-Nó Louvain: 0
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 583470     | The End Is Nigh                          | 67.90    | Mesma     
+  2º   | 367520     | Hollow Knight                            | 47.36    | Mesma     
+  3º   | 70300      | VVVVVV                                   | 47.30    | Mesma     
+  4º   | 40800      | Super Meat Boy                           | 28.61    | Mesma     
+  5º   | 829280     | Kaze and the Wild Masks                  | 27.15    | Mesma     
+  6º   | 835430     | La-Mulana 2                              | 25.56    | Mesma     
+  7º   | 1061090    | Jump King                                | 19.18    | Mesma     
+  8º   | 368340     | CrossCode                                | 16.39    | Mesma     
+  9º   | 250760     | Shovel Knight: Treasure Trove            | 14.23    | Mesma     
+ 10º   | 460950     | Katana ZERO                              | 14.09    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #47: Dead by Daylight (App ID: 381210)
+Gêneros Oficiais: Action | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 438740     | Friday the 13th: The Game                | 64.01    | Mesma     
+  2º   | 1549180    | Propnight                                | 37.93    | Mesma     
+  3º   | 550        | Left 4 Dead 2                            | 25.34    | Nó 3      
+  4º   | 1274570    | DEVOUR                                   | 16.79    | Mesma     
+  5º   | 239140     | Dying Light                              | 12.23    | Nó 1      
+  6º   | 1250       | Killing Floor                            | 11.85    | Nó 3      
+  7º   | 883710     | Resident Evil 2                          | 10.54    | Nó 4      
+  8º   | 1361000    | In Silence                               | 10.08    | Mesma     
+  9º   | 383150     | Dead Island Definitive Edition           | 10.07    | Nó 1      
+ 10º   | 238320     | Outlast                                  | 9.28     | Nó 1      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #48: Jogo Desconhecido (252950) (App ID: 252950)
+Gêneros Oficiais: N/D | Super-Nó Louvain: -1
+--------------------------------------------------------------------------------
+  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).
+
+--------------------------------------------------------------------------------
+JOGO ALVO #49: The Elder Scrolls® Online (App ID: 306130)
+Gêneros Oficiais: Adventure, Massively Multiplayer, Action, RPG | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 9900       | Star Trek Online                         | 46.17    | Mesma     
+  2º   | 109600     | Neverwinter                              | 40.09    | Mesma     
+  3º   | 238960     | Path of Exile                            | 33.41    | Mesma     
+  4º   | 39210      | FINAL FANTASY XIV Online                 | 33.10    | Mesma     
+  5º   | 367500     | Dragon's Dogma: Dark Arisen              | 31.38    | Mesma     
+  6º   | 212500     | The Lord of the Rings Online™            | 27.40    | Mesma     
+  7º   | 582010     | Monster Hunter: World                    | 18.24    | Nó 4      
+  8º   | 327070     | Gloria Victis: Medieval MMORPG           | 17.13    | Mesma     
+  9º   | 1063730    | New World                                | 17.13    | Mesma     
+ 10º   | 8500       | EVE Online                               | 16.55    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #50: Need for Speed™ Heat (App ID: 1222680)
+Gêneros Oficiais: Adventure, Action, Sports, Racing | Super-Nó Louvain: 1
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1262540    | Need for Speed™                          | 137.20   | Mesma     
+  2º   | 1262600    | Need for Speed™ Rivals                   | 122.49   | Mesma     
+  3º   | 1262580    | Need for Speed™ Payback                  | 92.17    | Mesma     
+  4º   | 1293830    | Forza Horizon 4                          | 52.33    | Mesma     
+  5º   | 703860     | GRID                                     | 48.29    | Mesma     
+  6º   | 1307710    | GRID Legends                             | 40.50    | Mesma     
+  7º   | 1328660    | Need for Speed™ Hot Pursuit Remastered   | 32.16    | Mesma     
+  8º   | 1815780    | Asphalt 9: Legends                       | 31.55    | Mesma     
+  9º   | 1551360    | Forza Horizon 5                          | 25.20    | Nó 5      
+ 10º   | 621830     | WRC 7 FIA World Rally Championship       | 23.43    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #51: Slay the Spire (App ID: 646570)
+Gêneros Oficiais: Indie, Strategy | Super-Nó Louvain: 0
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1102190    | Monster Train                            | 74.86    | Mesma     
+  2º   | 1108370    | Ratropolis                               | 51.41    | Mesma     
+  3º   | 1135810    | Vault of the Void                        | 42.53    | Mesma     
+  4º   | 1296610    | Peglin                                   | 40.21    | Mesma     
+  5º   | 590380     | Into the Breach                          | 40.07    | Mesma     
+  6º   | 588650     | Dead Cells                               | 37.02    | Mesma     
+  7º   | 262060     | Darkest Dungeon®                         | 35.32    | Mesma     
+  8º   | 861540     | Dicey Dungeons                           | 31.93    | Mesma     
+  9º   | 919370     | Overdungeon                              | 27.98    | Mesma     
+ 10º   | 249050     | Dungeon of the ENDLESS™                  | 25.84    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #52: Warframe (App ID: 230410)
+Gêneros Oficiais: Action, Free To Play, RPG | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1085660    | Destiny 2                                | 33.10    | Mesma     
+  2º   | 2087030    | Shatterline                              | 14.91    | Mesma     
+  3º   | 99900      | Spiral Knights                           | 13.90    | Nó 0      
+  4º   | 212160     | Vindictus                                | 11.81    | Nó 2      
+  5º   | 242720     | GunZ 2: The Second Duel                  | 10.65    | Nó 3      
+  6º   | 1286830    | STAR WARS™: The Old Republic™            | 9.80     | Nó 2      
+  7º   | 1201240    | BLEACH Brave Souls                       | 8.99     | Nó 4      
+  8º   | 365590     | Tom Clancy’s The Division™               | 8.24     | Nó 1      
+  9º   | 9900       | Star Trek Online                         | 8.00     | Nó 2      
+ 10º   | 49520      | Borderlands 2                            | 6.78     | Nó 3      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #53: Path of Exile (App ID: 238960)
+Gêneros Oficiais: Indie, Massively Multiplayer, Free To Play, Adventure, RPG, Action | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 219990     | Grim Dawn                                | 109.30   | Mesma     
+  2º   | 1286830    | STAR WARS™: The Old Republic™            | 65.14    | Mesma     
+  3º   | 212160     | Vindictus                                | 54.73    | Mesma     
+  4º   | 1343400    | RuneScape ®                              | 54.47    | Mesma     
+  5º   | 899770     | Last Epoch                               | 41.18    | Mesma     
+  6º   | 212500     | The Lord of the Rings Online™            | 38.95    | Mesma     
+  7º   | 225640     | Sacred 2 Gold                            | 34.54    | Mesma     
+  8º   | 24200      | DC Universe™ Online                      | 32.97    | Mesma     
+  9º   | 761890     | Albion Online                            | 32.59    | Mesma     
+ 10º   | 109600     | Neverwinter                              | 29.44    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #54: The Forest (App ID: 242760)
+Gêneros Oficiais: Simulation, Adventure, Indie, Action | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 252490     | Rust                                     | 92.63    | Mesma     
+  2º   | 648800     | Raft                                     | 51.98    | Mesma     
+  3º   | 313120     | Stranded Deep                            | 40.98    | Mesma     
+  4º   | 305620     | The Long Dark                            | 28.74    | Nó 2      
+  5º   | 239140     | Dying Light                              | 24.06    | Nó 1      
+  6º   | 322330     | Don't Starve Together                    | 21.67    | Nó 0      
+  7º   | 304930     | Unturned                                 | 20.62    | Mesma     
+  8º   | 264710     | Subnautica                               | 18.28    | Nó 2      
+  9º   | 407530     | ARK: The Survival Of The Fittest         | 17.64    | Mesma     
+ 10º   | 251570     | 7 Days to Die                            | 16.94    | Nó 2      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #55: Don't Starve Together (App ID: 322330)
+Gêneros Oficiais: Simulation, Indie, Strategy, Adventure, RPG, Action | Super-Nó Louvain: 0
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 219740     | Don't Starve                             | 120.26   | Mesma     
+  2º   | 105600     | Terraria                                 | 95.27    | Mesma     
+  3º   | 211820     | Starbound                                | 55.76    | Mesma     
+  4º   | 305620     | The Long Dark                            | 23.37    | Nó 2      
+  5º   | 1621690    | Core Keeper                              | 22.15    | Mesma     
+  6º   | 242760     | The Forest                               | 17.33    | Nó 5      
+  7º   | 960090     | Bloons TD 6                              | 14.86    | Mesma     
+  8º   | 346110     | ARK: Survival Evolved                    | 14.32    | Nó 2      
+  9º   | 751780     | Forager                                  | 14.23    | Mesma     
+ 10º   | 304930     | Unturned                                 | 13.89    | Nó 5      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #56: Mount & Blade II: Bannerlord (App ID: 261550)
+Gêneros Oficiais: Simulation, Indie, Strategy, RPG, Action | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 48700      | Mount & Blade: Warband                   | 184.79   | Mesma     
+  2º   | 107410     | Arma 3                                   | 38.18    | Mesma     
+  3º   | 48720      | Mount & Blade: With Fire & Sword         | 37.22    | Mesma     
+  4º   | 379430     | Kingdom Come: Deliverance                | 36.54    | Mesma     
+  5º   | 365360     | Battle Brothers                          | 33.67    | Mesma     
+  6º   | 773951     | Freeman: Guerrilla Warfare               | 33.12    | Mesma     
+  7º   | 203770     | Crusader Kings II                        | 23.35    | Mesma     
+  8º   | 33930      | Arma 2: Operation Arrowhead              | 21.22    | Mesma     
+  9º   | 1129580    | Medieval Dynasty                         | 20.66    | Mesma     
+ 10º   | 489830     | The Elder Scrolls V: Skyrim Special Edition | 15.95    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #57: Monster Hunter: World (App ID: 582010)
+Gêneros Oficiais: Action | Super-Nó Louvain: 4
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 374320     | DARK SOULS™ III                          | 117.67   | Mesma     
+  2º   | 1245620    | ELDEN RING                               | 86.80    | Mesma     
+  3º   | 1446780    | MONSTER HUNTER RISE                      | 61.87    | Mesma     
+  4º   | 814380     | Sekiro™: Shadows Die Twice - GOTY Edition | 56.05    | Mesma     
+  5º   | 335300     | DARK SOULS™ II: Scholar of the First Sin | 46.66    | Mesma     
+  6º   | 570940     | DARK SOULS™: REMASTERED                  | 44.89    | Mesma     
+  7º   | 485510     | Nioh: Complete Edition                   | 40.40    | Mesma     
+  8º   | 678960     | CODE VEIN                                | 35.65    | Mesma     
+  9º   | 551730     | Toukiden 2                               | 20.01    | Mesma     
+ 10º   | 831560     | WARRIORS OROCHI 4                        | 19.97    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #58: Satisfactory (App ID: 526870)
+Gêneros Oficiais: Simulation, Adventure, Indie, Strategy | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1366540    | Dyson Sphere Program                     | 53.19    | Mesma     
+  2º   | 427520     | Factorio                                 | 52.10    | Mesma     
+  3º   | 1284190    | The Planet Crafter                       | 37.61    | Mesma     
+  4º   | 264710     | Subnautica                               | 31.65    | Mesma     
+  5º   | 892970     | Valheim                                  | 26.06    | Mesma     
+  6º   | 780310     | The Riftbreaker                          | 22.38    | Mesma     
+  7º   | 1129580    | Medieval Dynasty                         | 20.83    | Mesma     
+  8º   | 860890     | Factory Town                             | 20.42    | Mesma     
+  9º   | 275850     | No Man's Sky                             | 18.59    | Mesma     
+ 10º   | 1106840    | Hydroneer                                | 18.21    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #59: Stellaris (App ID: 281990)
+Gêneros Oficiais: Simulation, Strategy | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 236850     | Europa Universalis IV                    | 116.19   | Mesma     
+  2º   | 203770     | Crusader Kings II                        | 72.89    | Mesma     
+  3º   | 261470     | Distant Worlds: Universe                 | 59.43    | Mesma     
+  4º   | 1176470    | Terra Invicta                            | 57.63    | Mesma     
+  5º   | 392110     | ENDLESS™ Space 2                         | 37.55    | Mesma     
+  6º   | 255710     | Cities: Skylines                         | 34.51    | Mesma     
+  7º   | 1158310    | Crusader Kings III                       | 33.90    | Mesma     
+  8º   | 289070     | Sid Meier’s Civilization® VI             | 33.26    | Mesma     
+  9º   | 204880     | Sins of a Solar Empire®: Rebellion       | 32.90    | Mesma     
+ 10º   | 42960      | Victoria II                              | 32.28    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #60: Subnautica (App ID: 264710)
+Gêneros Oficiais: Adventure, Indie | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 848450     | Subnautica: Below Zero                   | 187.92   | Mesma     
+  2º   | 305620     | The Long Dark                            | 65.81    | Mesma     
+  3º   | 346110     | ARK: Survival Evolved                    | 31.77    | Mesma     
+  4º   | 275850     | No Man's Sky                             | 30.04    | Mesma     
+  5º   | 457140     | Oxygen Not Included                      | 27.65    | Mesma     
+  6º   | 403190     | Planetbase                               | 25.08    | Mesma     
+  7º   | 1129580    | Medieval Dynasty                         | 24.35    | Mesma     
+  8º   | 242760     | The Forest                               | 20.31    | Nó 5      
+  9º   | 327860     | Salt                                     | 20.04    | Mesma     
+ 10º   | 383120     | Empyrion - Galactic Survival             | 19.09    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #61: Jogo Desconhecido (1097150) (App ID: 1097150)
+Gêneros Oficiais: N/D | Super-Nó Louvain: -1
+--------------------------------------------------------------------------------
+  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).
+
+--------------------------------------------------------------------------------
+JOGO ALVO #62: Jogo Desconhecido (553850) (App ID: 553850)
+Gêneros Oficiais: N/D | Super-Nó Louvain: -1
+--------------------------------------------------------------------------------
+  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).
+
+--------------------------------------------------------------------------------
+JOGO ALVO #63: Ready or Not (App ID: 1144200)
+Gêneros Oficiais: Adventure, Indie, Action | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 581320     | Insurgency: Sandstorm                    | 62.90    | Mesma     
+  2º   | 16900      | GROUND BRANCH                            | 54.93    | Mesma     
+  3º   | 107410     | Arma 3                                   | 40.03    | Mesma     
+  4º   | 393380     | Squad                                    | 37.84    | Mesma     
+  5º   | 493520     | GTFO                                     | 26.88    | Mesma     
+  6º   | 1359090    | Zero Hour                                | 25.29    | Mesma     
+  7º   | 447820     | Day of Infamy                            | 24.10    | Mesma     
+  8º   | 33930      | Arma 2: Operation Arrowhead              | 15.65    | Mesma     
+  9º   | 686810     | Hell Let Loose                           | 15.40    | Mesma     
+ 10º   | 222880     | Insurgency                               | 13.41    | Nó 3      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #64: Assassin's Creed® Odyssey (App ID: 812140)
+Gêneros Oficiais: Adventure, Action, RPG | Super-Nó Louvain: 1
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 582160     | Assassin's Creed® Origins                | 148.74   | Mesma     
+  2º   | 368500     | Assassin's Creed® Syndicate              | 85.77    | Mesma     
+  3º   | 242050     | Assassin’s Creed® IV Black Flag™         | 68.43    | Mesma     
+  4º   | 292030     | The Witcher® 3: Wild Hunt                | 65.04    | Mesma     
+  5º   | 311560     | Assassin’s Creed® Rogue                  | 58.05    | Mesma     
+  6º   | 289650     | Assassin's Creed® Unity                  | 52.62    | Mesma     
+  7º   | 391220     | Rise of the Tomb Raider™                 | 48.64    | Mesma     
+  8º   | 2208920    | Assassin's Creed Valhalla                | 46.17    | Mesma     
+  9º   | 1151640    | Horizon Zero Dawn™ Complete Edition      | 42.44    | Mesma     
+ 10º   | 241930     | Middle-earth™: Shadow of Mordor™         | 40.80    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #65: Dyson Sphere Program (App ID: 1366540)
+Gêneros Oficiais: Simulation, Indie, Early Access, Strategy | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 427520     | Factorio                                 | 84.01    | Mesma     
+  2º   | 457140     | Oxygen Not Included                      | 81.89    | Mesma     
+  3º   | 860890     | Factory Town                             | 70.62    | Mesma     
+  4º   | 464920     | Surviving Mars                           | 63.78    | Mesma     
+  5º   | 526870     | Satisfactory                             | 57.38    | Mesma     
+  6º   | 1336490    | Against the Storm                        | 56.13    | Mesma     
+  7º   | 1113120    | IXION                                    | 37.94    | Mesma     
+  8º   | 294100     | RimWorld                                 | 37.09    | Mesma     
+  9º   | 220200     | Kerbal Space Program                     | 33.29    | Mesma     
+ 10º   | 255710     | Cities: Skylines                         | 33.08    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #66: Persona® 5 Strikers (App ID: 1382330)
+Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 4
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1113000    | Persona 4 Golden                         | 62.92    | Mesma     
+  2º   | 1462040    | FINAL FANTASY VII REMAKE INTERGRADE      | 44.47    | Mesma     
+  3º   | 1113560    | NieR Replicant™ ver.1.22474487139...     | 42.71    | Mesma     
+  4º   | 740130     | Tales of Arise                           | 37.29    | Mesma     
+  5º   | 524220     | NieR:Automata™                           | 35.50    | Mesma     
+  6º   | 899440     | GOD EATER 3                              | 24.99    | Mesma     
+  7º   | 1198090    | The Legend of Heroes: Trails of Cold Steel IV | 21.20    | Mesma     
+  8º   | 582010     | Monster Hunter: World                    | 20.77    | Mesma     
+  9º   | 981750     | Crystar                                  | 19.99    | Mesma     
+ 10º   | 991270     | The Legend of Heroes: Trails of Cold Steel III | 18.44    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #67: Battlefield™ V (App ID: 1238810)
+Gêneros Oficiais: Action | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1238840    | Battlefield™ 1                           | 129.87   | Mesma     
+  2º   | 1238860    | Battlefield 4™                           | 33.17    | Nó 3      
+  3º   | 107410     | Arma 3                                   | 26.82    | Mesma     
+  4º   | 581320     | Insurgency: Sandstorm                    | 19.70    | Mesma     
+  5º   | 1238820    | Battlefield 3™                           | 19.36    | Nó 3      
+  6º   | 221100     | DayZ                                     | 16.63    | Mesma     
+  7º   | 33930      | Arma 2: Operation Arrowhead              | 15.76    | Mesma     
+  8º   | 227940     | Heroes & Generals                        | 13.67    | Mesma     
+  9º   | 244450     | Men of War: Assault Squad 2              | 13.17    | Mesma     
+ 10º   | 476600     | Call of Duty®: WWII                      | 12.94    | Nó 1      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #68: Forza Horizon 5 (App ID: 1551360)
+Gêneros Oficiais: Simulation, Sports, Adventure, Racing, Action | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1293830    | Forza Horizon 4                          | 103.78   | Nó 1      
+  2º   | 646910     | The Crew™ 2                              | 69.90    | Mesma     
+  3º   | 690790     | DiRT Rally 2.0                           | 52.35    | Mesma     
+  4º   | 227300     | Euro Truck Simulator 2                   | 45.61    | Mesma     
+  5º   | 271590     | Grand Theft Auto V                       | 44.40    | Mesma     
+  6º   | 244210     | Assetto Corsa                            | 39.30    | Mesma     
+  7º   | 1271700    | HOT WHEELS UNLEASHED™                    | 36.57    | Mesma     
+  8º   | 1465360    | SnowRunner                               | 33.98    | Mesma     
+  9º   | 1222680    | Need for Speed™ Heat                     | 32.00    | Nó 1      
+ 10º   | 270880     | American Truck Simulator                 | 27.40    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #69: Vampire Survivors (App ID: 1794680)
+Gêneros Oficiais: Casual, Indie, Action, RPG | Super-Nó Louvain: 0
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1942280    | Brotato                                  | 48.55    | Mesma     
+  2º   | 1966900    | 20 Minutes Till Dawn                     | 34.59    | Mesma     
+  3º   | 2067920    | Rogue: Genesia                           | 32.35    | Mesma     
+  4º   | 1282730    | Loop Hero                                | 30.75    | Mesma     
+  5º   | 1929870    | Nomad Survival                           | 28.65    | Mesma     
+  6º   | 1944570    | Boneraiser Minions                       | 28.43    | Mesma     
+  7º   | 753420     | Dungreed                                 | 26.59    | Mesma     
+  8º   | 250900     | The Binding of Isaac: Rebirth            | 22.38    | Mesma     
+  9º   | 248820     | Risk of Rain                             | 20.27    | Mesma     
+ 10º   | 1145360    | Hades                                    | 20.12    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #70: Hogwarts Legacy (App ID: 990080)
+Gêneros Oficiais: N/D | Super-Nó Louvain: -1
+--------------------------------------------------------------------------------
+  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).
+
+--------------------------------------------------------------------------------
+JOGO ALVO #71: DOOM Eternal (App ID: 782330)
+Gêneros Oficiais: Action | Super-Nó Louvain: 3
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 379720     | DOOM                                     | 187.35   | Mesma     
+  2º   | 2300       | DOOM II                                  | 57.04    | Mesma     
+  3º   | 257420     | Serious Sam 4                            | 38.39    | Mesma     
+  4º   | 2280       | DOOM (1993)                              | 38.12    | Mesma     
+  5º   | 208200     | DOOM 3                                   | 35.98    | Mesma     
+  6º   | 2310       | Quake                                    | 31.88    | Mesma     
+  7º   | 976730     | Halo: The Master Chief Collection        | 26.46    | Mesma     
+  8º   | 1148590    | DOOM 64                                  | 24.43    | Mesma     
+  9º   | 70         | Half-Life                                | 24.38    | Mesma     
+ 10º   | 519860     | DUSK                                     | 22.73    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #72: New World (App ID: 1063730)
+Gêneros Oficiais: Adventure, Massively Multiplayer, Action, RPG | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 306130     | The Elder Scrolls® Online                | 36.33    | Mesma     
+  2º   | 1599340    | Lost Ark                                 | 34.51    | Mesma     
+  3º   | 346110     | ARK: Survival Evolved                    | 31.46    | Mesma     
+  4º   | 962130     | Grounded                                 | 30.75    | Mesma     
+  5º   | 1286830    | STAR WARS™: The Old Republic™            | 18.31    | Mesma     
+  6º   | 582660     | Black Desert                             | 17.39    | Mesma     
+  7º   | 1604030    | V Rising                                 | 16.34    | Mesma     
+  8º   | 440900     | Conan Exiles                             | 16.17    | Mesma     
+  9º   | 1284210    | Guild Wars 2                             | 15.21    | Mesma     
+ 10º   | 327070     | Gloria Victis: Medieval MMORPG           | 14.86    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #73: It Takes Two (App ID: 1426210)
+Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 1
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1222700    | A Way Out                                | 27.63    | Mesma     
+  2º   | 860510     | Little Nightmares II                     | 22.25    | Mesma     
+  3º   | 359840     | Shift Happens                            | 20.55    | Mesma     
+  4º   | 1071870    | Biped                                    | 12.61    | Nó 0      
+  5º   | 690640     | Trine 4: The Nightmare Prince            | 11.33    | Mesma     
+  6º   | 1225570    | Unravel Two                              | 10.33    | Mesma     
+  7º   | 865360     | We Were Here Together                    | 6.83     | Mesma     
+  8º   | 477160     | Human: Fall Flat                         | 6.03     | Nó 5      
+  9º   | 1515210    | The Past Within                          | 5.10     | Mesma     
+ 10º   | 238460     | BattleBlock Theater®                     | 5.08     | Nó 0      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #74: Call of Duty® (App ID: 1938090)
+Gêneros Oficiais: Action | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1174180    | Red Dead Redemption 2                    | 57.58    | Mesma     
+  2º   | 730        | Counter-Strike: Global Offensive         | 56.76    | Mesma     
+  3º   | 271590     | Grand Theft Auto V                       | 53.37    | Mesma     
+  4º   | 359550     | Tom Clancy's Rainbow Six® Siege          | 46.85    | Mesma     
+  5º   | 1238820    | Battlefield 3™                           | 17.16    | Nó 3      
+  6º   | 755790     | Ring of Elysium                          | 14.22    | Mesma     
+  7º   | 1407200    | World of Tanks                           | 11.42    | Mesma     
+  8º   | 496240     | Onward                                   | 11.15    | Mesma     
+  9º   | 550        | Left 4 Dead 2                            | 11.15    | Nó 3      
+ 10º   | 1238860    | Battlefield 4™                           | 10.30    | Nó 3      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #75: Bloons TD 6 (App ID: 960090)
+Gêneros Oficiais: Strategy | Super-Nó Louvain: 0
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 979060     | Bloons Adventure Time TD                 | 49.91    | Mesma     
+  2º   | 444640     | Bloons TD Battles                        | 48.80    | Mesma     
+  3º   | 1252780    | Bloons Monkey City                       | 32.13    | Mesma     
+  4º   | 306020     | Bloons TD 5                              | 29.21    | Mesma     
+  5º   | 246420     | Kingdom Rush  - Tower Defense            | 25.10    | Mesma     
+  6º   | 3590       | Plants vs. Zombies GOTY Edition          | 21.80    | Mesma     
+  7º   | 322330     | Don't Starve Together                    | 18.18    | Mesma     
+  8º   | 296490     | GemCraft - Chasing Shadows               | 15.54    | Mesma     
+  9º   | 363970     | Clicker Heroes                           | 15.06    | Mesma     
+ 10º   | 1276390    | Bloons TD Battles 2                      | 14.49    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #76: Jogo Desconhecido (2399830) (App ID: 2399830)
+Gêneros Oficiais: N/D | Super-Nó Louvain: -1
+--------------------------------------------------------------------------------
+  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).
+
+--------------------------------------------------------------------------------
+JOGO ALVO #77: MONSTER HUNTER RISE (App ID: 1446780)
+Gêneros Oficiais: Action | Super-Nó Louvain: 4
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 582010     | Monster Hunter: World                    | 209.18   | Mesma     
+  2º   | 1245620    | ELDEN RING                               | 75.06    | Mesma     
+  3º   | 1277400    | Monster Hunter Stories 2: Wings of Ruin  | 68.74    | Mesma     
+  4º   | 551730     | Toukiden 2                               | 63.93    | Mesma     
+  5º   | 740130     | Tales of Arise                           | 42.23    | Mesma     
+  6º   | 678960     | CODE VEIN                                | 33.72    | Mesma     
+  7º   | 899440     | GOD EATER 3                              | 29.63    | Mesma     
+  8º   | 485510     | Nioh: Complete Edition                   | 21.25    | Mesma     
+  9º   | 335300     | DARK SOULS™ II: Scholar of the First Sin | 19.69    | Mesma     
+ 10º   | 367500     | Dragon's Dogma: Dark Arisen              | 11.05    | Nó 2      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #78: Lethal Company (App ID: 1966720)
+Gêneros Oficiais: N/D | Super-Nó Louvain: -1
+--------------------------------------------------------------------------------
+  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).
+
+--------------------------------------------------------------------------------
+JOGO ALVO #79: Devil May Cry 5 (App ID: 601150)
+Gêneros Oficiais: Action | Super-Nó Louvain: 4
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 329050     | Devil May Cry 4 Special Edition          | 238.11   | Mesma     
+  2º   | 631510     | Devil May Cry HD Collection              | 180.35   | Mesma     
+  3º   | 220440     | DmC: Devil May Cry                       | 40.47    | Nó 1      
+  4º   | 524220     | NieR:Automata™                           | 39.92    | Mesma     
+  5º   | 761600     | Onimusha: Warlords                       | 17.65    | Mesma     
+  6º   | 45700      | Devil May Cry 4                          | 15.52    | Nó 3      
+  7º   | 460790     | Bayonetta                                | 14.04    | Nó 1      
+  8º   | 767930     | Assault Spy                              | 10.49    | Mesma     
+  9º   | 235460     | METAL GEAR RISING: REVENGEANCE           | 9.07     | Nó 3      
+ 10º   | 662960     | Mysteria ~Occult Shadows~                | 8.80     | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #80: Undertale (App ID: 391540)
+Gêneros Oficiais: Indie, RPG | Super-Nó Louvain: 0
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1150690    | OMORI                                    | 18.42    | Mesma     
+  2º   | 420530     | OneShot                                  | 17.04    | Mesma     
+  3º   | 814540     | Changed                                  | 13.70    | Mesma     
+  4º   | 698780     | Doki Doki Literature Club!               | 12.36    | Mesma     
+  5º   | 1067850    | Kindergarten 2                           | 9.38     | Mesma     
+  6º   | 597220     | West of Loathing                         | 8.64     | Mesma     
+  7º   | 523780     | Emily is Away Too                        | 6.95     | Mesma     
+  8º   | 335670     | LISA: The Painful                        | 6.39     | Mesma     
+  9º   | 537110     | Angels of Death                          | 5.40     | Nó 4      
+ 10º   | 1866180    | Hooked on You: A Dead by Daylight Dating Sim™ | 4.86     | Nó 5      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #81: METAL GEAR SOLID V: THE PHANTOM PAIN (App ID: 287700)
+Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 1
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 311340     | METAL GEAR SOLID V: GROUND ZEROES        | 173.33   | Mesma     
+  2º   | 204100     | Max Payne 3                              | 33.48    | Mesma     
+  3º   | 391220     | Rise of the Tomb Raider™                 | 33.28    | Mesma     
+  4º   | 235600     | Tom Clancy’s Splinter Cell Blacklist     | 30.00    | Mesma     
+  5º   | 108710     | Alan Wake                                | 20.76    | Mesma     
+  6º   | 203160     | Tomb Raider                              | 19.37    | Mesma     
+  7º   | 203140     | Hitman: Absolution™                      | 17.31    | Mesma     
+  8º   | 50130      | Mafia II (Classic)                       | 16.22    | Mesma     
+  9º   | 268050     | The Evil Within                          | 14.81    | Mesma     
+ 10º   | 582160     | Assassin's Creed® Origins                | 14.71    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #82: Neverwinter (App ID: 109600)
+Gêneros Oficiais: Massively Multiplayer, Free To Play, Adventure, RPG, Action | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 39120      | RIFT                                     | 76.55    | Mesma     
+  2º   | 9900       | Star Trek Online                         | 73.98    | Mesma     
+  3º   | 212500     | The Lord of the Rings Online™            | 67.59    | Mesma     
+  4º   | 1286830    | STAR WARS™: The Old Republic™            | 62.71    | Mesma     
+  5º   | 306130     | The Elder Scrolls® Online                | 52.45    | Mesma     
+  6º   | 212160     | Vindictus                                | 50.22    | Mesma     
+  7º   | 582660     | Black Desert                             | 47.37    | Mesma     
+  8º   | 238960     | Path of Exile                            | 42.98    | Mesma     
+  9º   | 24200      | DC Universe™ Online                      | 42.52    | Mesma     
+ 10º   | 206480     | Dungeons & Dragons Online®               | 40.95    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #83: GTFO (App ID: 493520)
+Gêneros Oficiais: Action | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1144200    | Ready or Not                             | 33.00    | Mesma     
+  2º   | 594650     | Hunt: Showdown                           | 26.42    | Mesma     
+  3º   | 500        | Left 4 Dead                              | 21.25    | Nó 3      
+  4º   | 550        | Left 4 Dead 2                            | 20.26    | Nó 3      
+  5º   | 617290     | Remnant: From the Ashes                  | 18.23    | Mesma     
+  6º   | 232090     | Killing Floor 2                          | 15.74    | Nó 3      
+  7º   | 699130     | World War Z                              | 15.05    | Nó 4      
+  8º   | 107410     | Arma 3                                   | 12.99    | Mesma     
+  9º   | 218620     | PAYDAY 2                                 | 12.94    | Nó 3      
+ 10º   | 1549970    | Aliens: Fireteam Elite                   | 12.51    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #84: Frostpunk (App ID: 323190)
+Gêneros Oficiais: Simulation, Strategy | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 938380     | Townsmen - A Kingdom Rebuilt             | 40.94    | Mesma     
+  2º   | 403190     | Planetbase                               | 38.74    | Mesma     
+  3º   | 242920     | Banished                                 | 28.64    | Mesma     
+  4º   | 464920     | Surviving Mars                           | 28.31    | Mesma     
+  5º   | 294100     | RimWorld                                 | 28.29    | Mesma     
+  6º   | 644930     | They Are Billions                        | 28.07    | Mesma     
+  7º   | 282070     | This War of Mine                         | 27.22    | Nó 1      
+  8º   | 1113120    | IXION                                    | 23.32    | Mesma     
+  9º   | 1220140    | Cartel Tycoon                            | 20.14    | Mesma     
+ 10º   | 1336490    | Against the Storm                        | 19.48    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #85: PAYDAY 2 (App ID: 218620)
+Gêneros Oficiais: Action, RPG | Super-Nó Louvain: 3
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 24240      | PAYDAY™ The Heist                        | 91.14    | Mesma     
+  2º   | 550        | Left 4 Dead 2                            | 55.77    | Mesma     
+  3º   | 1250       | Killing Floor                            | 43.72    | Mesma     
+  4º   | 49520      | Borderlands 2                            | 32.97    | Mesma     
+  5º   | 232090     | Killing Floor 2                          | 27.53    | Mesma     
+  6º   | 222880     | Insurgency                               | 21.17    | Mesma     
+  7º   | 730        | Counter-Strike: Global Offensive         | 18.42    | Nó 5      
+  8º   | 500        | Left 4 Dead                              | 18.13    | Mesma     
+  9º   | 10180      | Call of Duty®: Modern Warfare® 2 (2009)  | 13.93    | Mesma     
+ 10º   | 6000       | STAR WARS™ Republic Commando™            | 13.16    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #86: Jogo Desconhecido (24860) (App ID: 24860)
+Gêneros Oficiais: N/D | Super-Nó Louvain: -1
+--------------------------------------------------------------------------------
+  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).
+
+--------------------------------------------------------------------------------
+JOGO ALVO #87: The Last of Us™ Part I (App ID: 1888930)
+Gêneros Oficiais: N/D | Super-Nó Louvain: -1
+--------------------------------------------------------------------------------
+  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).
+
+--------------------------------------------------------------------------------
+JOGO ALVO #88: Fallout 76 (App ID: 1151340)
+Gêneros Oficiais: RPG | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 377160     | Fallout 4                                | 75.60    | Mesma     
+  2º   | 495420     | State of Decay 2: Juggernaut Edition     | 27.63    | Mesma     
+  3º   | 704270     | Generation Zero®                         | 16.20    | Mesma     
+  4º   | 588430     | Fallout Shelter                          | 15.88    | Nó 3      
+  5º   | 233860     | Kenshi                                   | 13.20    | Mesma     
+  6º   | 892970     | Valheim                                  | 13.18    | Mesma     
+  7º   | 1129580    | Medieval Dynasty                         | 13.10    | Mesma     
+  8º   | 534380     | Dying Light 2 Stay Human                 | 12.42    | Nó 1      
+  9º   | 962130     | Grounded                                 | 10.54    | Mesma     
+ 10º   | 221100     | DayZ                                     | 10.27    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #89: DARK SOULS™ II (App ID: 236430)
+Gêneros Oficiais: Action, RPG | Super-Nó Louvain: 4
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 374320     | DARK SOULS™ III                          | 142.08   | Mesma     
+  2º   | 335300     | DARK SOULS™ II: Scholar of the First Sin | 70.75    | Mesma     
+  3º   | 1245620    | ELDEN RING                               | 69.53    | Mesma     
+  4º   | 582010     | Monster Hunter: World                    | 29.01    | Mesma     
+  5º   | 485510     | Nioh: Complete Edition                   | 26.21    | Mesma     
+  6º   | 814380     | Sekiro™: Shadows Die Twice - GOTY Edition | 24.43    | Mesma     
+  7º   | 570940     | DARK SOULS™: REMASTERED                  | 21.33    | Mesma     
+  8º   | 1325200    | Nioh 2 – The Complete Edition            | 12.71    | Mesma     
+  9º   | 367500     | Dragon's Dogma: Dark Arisen              | 9.03     | Nó 2      
+ 10º   | 628670     | Hellpoint                                | 8.48     | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #90: Sid Meier's Civilization® V (App ID: 8930)
+Gêneros Oficiais: Strategy | Super-Nó Louvain: 2
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 289070     | Sid Meier’s Civilization® VI             | 94.59    | Mesma     
+  2º   | 289130     | ENDLESS™ Legend                          | 50.53    | Mesma     
+  3º   | 8800       | Civilization IV: Beyond the Sword        | 50.04    | Mesma     
+  4º   | 236850     | Europa Universalis IV                    | 44.89    | Mesma     
+  5º   | 200510     | XCOM: Enemy Unknown                      | 42.59    | Mesma     
+  6º   | 3900       | Sid Meier's Civilization® IV             | 42.33    | Nó 3      
+  7º   | 203770     | Crusader Kings II                        | 38.13    | Mesma     
+  8º   | 281990     | Stellaris                                | 27.63    | Mesma     
+  9º   | 237430     | Expeditions: Conquistador                | 26.80    | Mesma     
+ 10º   | 214950     | Total War: ROME II - Emperor Edition     | 23.00    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #91: Persona 4 Golden (App ID: 1113000)
+Gêneros Oficiais: RPG | Super-Nó Louvain: 4
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1687950    | Persona 5 Royal                          | 227.50   | Mesma     
+  2º   | 991270     | The Legend of Heroes: Trails of Cold Steel III | 44.56    | Mesma     
+  3º   | 1413480    | Shin Megami Tensei III Nocturne HD Remaster | 43.90    | Mesma     
+  4º   | 1198090    | The Legend of Heroes: Trails of Cold Steel IV | 41.19    | Mesma     
+  5º   | 538680     | The Legend of Heroes: Trails of Cold Steel | 40.89    | Mesma     
+  6º   | 738540     | Tales of Vesperia: Definitive Edition    | 36.65    | Mesma     
+  7º   | 748490     | The Legend of Heroes: Trails of Cold Steel II | 31.79    | Mesma     
+  8º   | 921570     | OCTOPATH TRAVELER™                       | 29.25    | Mesma     
+  9º   | 595520     | FINAL FANTASY XII THE ZODIAC AGE         | 28.94    | Mesma     
+ 10º   | 1235140    | Yakuza: Like a Dragon                    | 28.86    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #92: Sons Of The Forest (App ID: 1326470)
+Gêneros Oficiais: N/D | Super-Nó Louvain: -1
+--------------------------------------------------------------------------------
+  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).
+
+--------------------------------------------------------------------------------
+JOGO ALVO #93: STAR WARS Jedi: Survivor™ (App ID: 1774580)
+Gêneros Oficiais: N/D | Super-Nó Louvain: -1
+--------------------------------------------------------------------------------
+  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).
+
+--------------------------------------------------------------------------------
+JOGO ALVO #94: Tom Clancy's Rainbow Six® Siege (App ID: 359550)
+Gêneros Oficiais: Action | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 730        | Counter-Strike: Global Offensive         | 85.37    | Mesma     
+  2º   | 570        | Dota 2                                   | 42.15    | Mesma     
+  3º   | 714010     | Aimlabs                                  | 34.01    | Mesma     
+  4º   | 1172470    | Apex Legends™                            | 23.12    | Mesma     
+  5º   | 222880     | Insurgency                               | 18.59    | Nó 3      
+  6º   | 10         | Counter-Strike                           | 14.59    | Nó 3      
+  7º   | 550        | Left 4 Dead 2                            | 14.48    | Nó 3      
+  8º   | 240        | Counter-Strike: Source                   | 13.81    | Nó 3      
+  9º   | 30         | Day of Defeat                            | 13.12    | Nó 3      
+ 10º   | 107410     | Arma 3                                   | 12.05    | Nó 2      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #95: Deep Rock Galactic (App ID: 548430)
+Gêneros Oficiais: Action | Super-Nó Louvain: 0
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 552500     | Warhammer: Vermintide 2                  | 8.98     | Nó 2      
+  2º   | 49520      | Borderlands 2                            | 2.68     | Nó 3      
+  3º   | 261640     | Borderlands: The Pre-Sequel              | 2.07     | Nó 1      
+  4º   | 8980       | Borderlands Game of the Year             | 1.63     | Nó 1      
+  5º   | 1085660    | Destiny 2                                | 1.02     | Nó 5      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #96: Stray (App ID: 1332010)
+Gêneros Oficiais: Adventure, Indie | Super-Nó Louvain: 1
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1151640    | Horizon Zero Dawn™ Complete Edition      | 15.51    | Mesma     
+  2º   | 1222140    | Detroit: Become Human                    | 14.38    | Mesma     
+  3º   | 551770     | ECHO                                     | 4.91     | Mesma     
+  4º   | 378540     | The Surge                                | 1.89     | Mesma     
+  5º   | 753640     | Outer Wilds                              | 1.15     | Nó 0      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #97: Aliens vs. Predator™ (App ID: 10680)
+Gêneros Oficiais: Action | Super-Nó Louvain: 3
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 550        | Left 4 Dead 2                            | 40.70    | Mesma     
+  2º   | 214490     | Alien: Isolation                         | 26.36    | Nó 1      
+  3º   | 227780     | Serious Sam Classics: Revolution         | 25.41    | Mesma     
+  4º   | 274940     | Depth                                    | 20.44    | Mesma     
+  5º   | 220        | Half-Life 2                              | 19.74    | Mesma     
+  6º   | 1250       | Killing Floor                            | 19.25    | Mesma     
+  7º   | 41000      | Serious Sam HD: The First Encounter      | 19.01    | Mesma     
+  8º   | 379720     | DOOM                                     | 18.71    | Mesma     
+  9º   | 41070      | Serious Sam 3: BFE                       | 18.70    | Mesma     
+ 10º   | 2210       | Quake 4                                  | 16.98    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #98: Yakuza: Like a Dragon (App ID: 1235140)
+Gêneros Oficiais: Adventure, Action, RPG | Super-Nó Louvain: 4
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1388590    | Yakuza 6: The Song of Life               | 220.35   | Mesma     
+  2º   | 1105510    | Yakuza 5 Remastered                      | 160.94   | Mesma     
+  3º   | 1105500    | Yakuza 4 Remastered                      | 159.75   | Mesma     
+  4º   | 638970     | Yakuza 0                                 | 151.90   | Mesma     
+  5º   | 927380     | Yakuza Kiwami 2                          | 150.81   | Mesma     
+  6º   | 834530     | Yakuza Kiwami                            | 134.91   | Mesma     
+  7º   | 1088710    | Yakuza 3 Remastered                      | 132.66   | Mesma     
+  8º   | 740130     | Tales of Arise                           | 38.96    | Mesma     
+  9º   | 1113000    | Persona 4 Golden                         | 26.82    | Mesma     
+ 10º   | 1687950    | Persona 5 Royal                          | 24.20    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #99: NARAKA: BLADEPOINT (App ID: 1203220)
+Gêneros Oficiais: Adventure, Massively Multiplayer, Action | Super-Nó Louvain: 4
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 755790     | Ring of Elysium                          | 7.96     | Nó 5      
+  2º   | 884660     | CRSED: F.O.A.D.                          | 4.45     | Nó 5      
+  3º   | 760160     | Vampire: The Masquerade - Bloodhunt      | 4.37     | Nó 2      
+  4º   | 307690     | Sleeping Dogs: Definitive Edition        | 3.76     | Nó 1      
+  5º   | 1368910    | Super Mecha Champions                    | 3.29     | Nó 2      
+  6º   | 212160     | Vindictus                                | 2.63     | Nó 2      
+  7º   | 629760     | MORDHAU                                  | 2.02     | Nó 2      
+  8º   | 1041840    | Fight Angel Special Edition              | 1.89     | Nó 1      
+  9º   | 813820     | Realm Royale Reforged                    | 1.71     | Nó 5      
+ 10º   | 304390     | FOR HONOR™                               | 1.21     | Nó 2      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #100: Wo Long: Fallen Dynasty (App ID: 1448440)
+Gêneros Oficiais: N/D | Super-Nó Louvain: -1
+--------------------------------------------------------------------------------
+  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).
+
+--------------------------------------------------------------------------------
+JOGO ALVO #101: Brotato (App ID: 1942280)
+Gêneros Oficiais: Casual, Indie, Action, RPG | Super-Nó Louvain: 0
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1794680    | Vampire Survivors                        | 53.23    | Mesma     
+  2º   | 753420     | Dungreed                                 | 27.52    | Mesma     
+  3º   | 858210     | Nova Drift                               | 25.06    | Mesma     
+  4º   | 1145360    | Hades                                    | 24.47    | Mesma     
+  5º   | 1966900    | 20 Minutes Till Dawn                     | 20.88    | Mesma     
+  6º   | 960690     | One Step From Eden                       | 20.86    | Mesma     
+  7º   | 2067920    | Rogue: Genesia                           | 20.40    | Mesma     
+  8º   | 588650     | Dead Cells                               | 18.47    | Mesma     
+  9º   | 656350     | UnderMine                                | 16.46    | Mesma     
+ 10º   | 2088570    | Tiny Rogues                              | 15.44    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #102: Five Nights at Freddy's (App ID: 319510)
+Gêneros Oficiais: Simulation, Indie | Super-Nó Louvain: 5
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 332800     | Five Nights at Freddy's 2                | 258.91   | Mesma     
+  2º   | 388090     | Five Nights at Freddy's 4                | 224.12   | Mesma     
+  3º   | 354140     | Five Nights at Freddy's 3                | 184.81   | Mesma     
+  4º   | 506610     | Five Nights at Freddy's: Sister Location | 143.00   | Mesma     
+  5º   | 738060     | Freddy Fazbear's Pizzeria Simulator      | 35.67    | Mesma     
+  6º   | 1721470    | Poppy Playtime                           | 31.54    | Mesma     
+  7º   | 732690     | FIVE NIGHTS AT FREDDY'S: HELP WANTED     | 28.73    | Mesma     
+  8º   | 568090     | Tattletail                               | 19.54    | Mesma     
+  9º   | 489360     | CASE: Animatronics                       | 15.69    | Mesma     
+ 10º   | 871720     | Ultimate Custom Night                    | 10.86    | Mesma     
+
+--------------------------------------------------------------------------------
+JOGO ALVO #103: Grand Theft Auto IV: The Complete Edition (App ID: 12210)
+Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 3
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 12220      | Grand Theft Auto: Episodes from Liberty City | 98.57    | Mesma     
+  2º   | 271590     | Grand Theft Auto V                       | 38.52    | Nó 5      
+  3º   | 50130      | Mafia II (Classic)                       | 32.26    | Nó 1      
+  4º   | 223470     | POSTAL 2                                 | 28.54    | Mesma     
+  5º   | 6860       | Hitman: Blood Money                      | 19.80    | Mesma     
+  6º   | 6850       | Hitman 2: Silent Assassin                | 18.70    | Mesma     
+  7º   | 21780      | Driver® Parallel Lines                   | 17.69    | Mesma     
+  8º   | 6900       | Hitman: Codename 47                      | 17.11    | Mesma     
+  9º   | 203140     | Hitman: Absolution™                      | 16.21    | Nó 1      
+ 10º   | 55230      | Saints Row: The Third                    | 16.01    | Nó 1      
+
+--------------------------------------------------------------------------------
+JOGO ALVO #104: Minecraft Dungeons (App ID: 1672970)
+Gêneros Oficiais: Adventure, Action, RPG | Super-Nó Louvain: 0
+--------------------------------------------------------------------------------
+ Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
+ ------------------------------------------------------------------------------
+  1º   | 1393750    | Ocean's Heart                            | 8.97     | Mesma     
+  2º   | 606150     | Moonlighter                              | 3.97     | Mesma     
+  3º   | 914710     | Cat Quest II                             | 3.13     | Mesma     
+  4º   | 39190      | Dungeon Siege                            | 3.09     | Nó 1      
+  5º   | 894020     | Death's Door                             | 2.35     | Mesma     
+  6º   | 475150     | Titan Quest Anniversary Edition          | 2.29     | Nó 1      
+  7º   | 593280     | Cat Quest                                | 1.99     | Mesma     
+  8º   | 339200     | Oceanhorn: Monster of Uncharted Seas     | 1.34     | Nó 1      
+  9º   | 219990     | Grim Dawn                                | 1.06     | Nó 2      
+ 10º   | 238960     | Path of Exile                            | 0.71     | Nó 2      
+
+================================================================================
+ Processamento em lote finalizado com sucesso em 8.33 segundos!
+================================================================================

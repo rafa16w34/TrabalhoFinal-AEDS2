@@ -1,0 +1,110 @@
+# ==============================================================================
+# LISTA DE JOGOS PARA RECOMENDAÇÃO EM LOTE
+# Digite um App ID por linha. Linhas iniciadas com # ou vazias são ignoradas.
+# ==============================================================================
+
+1245620  # ELDEN RING
+227300   # Euro Truck Simulator 2
+678950   # DRAGON BALL FighterZ
+584400   # Sonic Mania
+945360   # Among Us
+271590   # Grand Theft Auto V
+1091500  # Cyberpunk 2077
+367520   # Hollow Knight
+21130    # LEGO Harry Potter: Years 1-4
+304240   # Resident Evil HD Remaster
+413150   # Stardew Valley
+252490   # Rust
+
+1222670 #Grand Theft Auto: San Andreas - The Definitive Edition
+12120 #Grand Theft Auto: Episodes from Liberty City
+214170 #LEGO The Lord of the Rings
+546560 #LEGO DC Super-Villains
+883710 #Resident Evil 2
+418370 #Resident Evil 7 Biohazard
+2054970 #Dragon Ball: Sparking! ZERO
+1190460 #DRAGON BALL: THE BREAKERS
+105600 #Terraria
+1145360 #Hades
+1817070 #Marvel's Spider-Man Remastered
+268910 #Cuphead
+892970 #Valheim
+250900 #The Binding of Isaac: Rebirth
+730 #Counter-Strike 2
+570 #Dota 2
+440 #Team Fortress 2
+578080 #PUBG: BATTLEGROUNDS
+221100 #DayZ
+292030 #The Witcher 3: Wild Hunt
+1086940 #Baldur's Gate 3
+2358720 #Black Myth: Wukong
+289070 #Sid Meier's Civilization VI
+1172470 #Apex Legends
+1174180 #Red Dead Redemption 2
+1085660 #Destiny 2
+814380 #Sekiro: Shadows Die Twice
+374320 #DARK SOULS III
+8870 #BioShock Infinite
+203160 #Tomb Raider
+1151640 #Horizon Zero Dawn Complete Edition
+976730 #Halo: The Master Chief Collection
+1172620 #Sea of Thieves
+504230 #Celeste
+381210 #Dead by Daylight
+252950 #Rocket League
+306130 #The Elder Scrolls Online
+1222680 #Need for Speed Heat
+646570 #Slay the Spire
+230410 #Warframe
+238960 #Path of Exile
+242760 #The Forest
+322330 #Don't Starve Together
+261550 #Mount & Blade II: Bannerlord
+582010 #Monster Hunter: World
+526870 #Satisfactory
+281990 #Stellaris
+264710 #Subnautica
+1097150 #Fall Guys
+553850 #HELLDIVERS 2
+1144200 #Ready or Not
+812140 #Assassin's Creed Odyssey
+1366540 #Dyson Sphere Program
+1382330 #Persona 5 Royal
+1238810 #Battlefield V
+1551360 #Forza Horizon 5
+1794680 #Vampire Survivors
+990080 #Hogwarts Legacy
+782330 #DOOM Eternal
+1063730 #New World
+1426210 #It Takes Two
+1938090 #Call of Duty
+960090 #Bloons TD 6
+2399830 #ARK: Survival Ascended
+1446780 #MONSTER HUNTER RISE
+1966720 #Lethal Company
+601150 #Devil May Cry 5
+391540 #Undertale
+287700 #METAL GEAR SOLID V: THE PHANTOM PAIN
+109600 #Neverwinter
+493520 #GTFO
+323190 #Frostpunk
+218620 #PAYDAY 2
+24860 #Left 4 Dead 2
+1888930 #ARMORED CORE VI FIRES OF RUBICON
+1151340 #Fallout 76
+236430 #DARK SOULS II
+8930 #Sid Meier's Civilization V
+1113000 #Persona 4 Golden
+1326470 #Sons Of The Forest
+1774580 #STAR WARS Jedi: Survivor
+359550 #Tom Clancy's Rainbow Six Siege
+548430 #Deep Rock Galactic
+1332010 #Stray
+10680 #Aliens vs. Predator
+1235140 #Yakuza: Like a Dragon
+1203220 #NARAKA: BLADEPOINT
+1448440 #Persona 3 Reload
+1942280 #Brotato
+319510 #FNAF
+12210 #GTA4
+1672970 #Minecraft Dungeons

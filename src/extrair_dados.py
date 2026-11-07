@@ -1,149 +1,196 @@
-import csv
 import os
+import sys
+import json
 import statistics
-from collections import defaultdict
+import time
+from collections import defaultdict, Counter
 
-def extrair(input_path, output_path, min_hours_piso=10.0, min_hours_teto=50.0, min_jogos_por_usuario=10, min_avaliacoes_por_jogo=50):
+def carregar_jogos_validos_com_tags(caminho_json):
     """
-    Algoritmo de 2 Passos para limpar dataset e com poda adaptativa por mediana
-    Passo 1: Descobre o grau dos vértices e a mediana de horas de cada jogo
-    Passo 2: Filtra os dados encontrados usando K-CORE
+    Carrega apenas os IDs de jogos que possuem tags semânticas cadastradas no JSON.
+    Garante que nenhum jogo sem metadados entre no grafo.
     """
-    
-    if not os.path.exists(input_path):
-        print(f"ERRO: Arquivo não encontrado.")
-        return
+    if not os.path.exists(caminho_json):
+        print(f"Aviso: {caminho_json} não encontrado. Não haverá pré-filtragem por tags.")
+        return None
 
-    print("="*50)
-    print("Iniciando Filtragem..")
-    print("="*50)
-
-    
-    contagem_usuarios = defaultdict(int)# Dicionários otimizados para contagem, para otimização
-    contagem_jogos = defaultdict(int)
-    horas_por_jogo = defaultdict(list)
-
-    # ---------------------------------------------------------
-    # Passo 1
-    # ---------------------------------------------------------
-    print("\n[PASSO 1/2] Analisando os graus dos vertices e horas por jogo...")
-    linhas_lidas_passo1 = 0
-    
-    with open(input_path, mode='r', encoding='utf-8') as f_in:
-        reader = csv.DictReader(f_in)
-        
-        for row in reader:
-            linhas_lidas_passo1 += 1
-            if linhas_lidas_passo1 % 5000000 == 0:
-                print(f"  -> Lidas {linhas_lidas_passo1} linhas...")
-
+    jogos_validos = set()
+    with open(caminho_json, mode='r', encoding='utf-8') as f:
+        for linha in f:
+            linha_str = linha.strip()
+            if not linha_str:
+                continue
             try:
-                is_recommended = str(row.get('is_recommended', '')).strip().lower()
-                hours_str = row.get('hours', '0')
-                hours = float(hours_str) if hours_str else 0.0
-
-                # Apenas recomendados e com horas mínimas
-                if is_recommended in ['true', '1'] and hours > 0:
-                    user_id = row.get('user_id')
-                    app_id = row.get('app_id')
-                    
-                    if user_id and app_id:
-                        horas_por_jogo[app_id].append(hours)
-            except ValueError:
+                dados = json.loads(linha_str)
+                app_id = str(dados.get('app_id', '')).strip()
+                tags = dados.get('tags', [])
+                if app_id and tags and len(tags) > 0:
+                    jogos_validos.add(app_id)
+            except json.JSONDecodeError:
                 continue
 
+    print(f"Metadados: {len(jogos_validos)} jogos com tags válidas identificados.")
+    return jogos_validos
 
-    #Calculo do limiar adaptativo de cada jogo travado entre piso e teto
+def extrair(input_path, output_path, json_path=None, 
+            min_hours_piso=5.0, min_hours_teto=50.0, 
+            min_jogos_por_usuario=10, min_avaliacoes_por_jogo=50):
+    """
+    Algoritmo de K-Core Iterativo Real com Poda Adaptativa por Mediana e Pré-filtro de Tags:
+    - Pré-passo: Descarta jogos sem tags válidas (evita nós órfãos de metadados).
+    - Passo 1: Calcula a mediana adaptativa de horas por jogo (travada entre piso e teto).
+    - Passo 2: Coleta todas as arestas candidatas com engajamento acima do limiar.
+    - Passo 3: Executa K-Core iterativo até convergência matemática estrita (while True).
+    - Passo 4: Grava o dataset reduzido final com 100% de consistência estrutural.
+    """
+    if not os.path.exists(input_path):
+        print(f"ERRO: Arquivo {input_path} não encontrado.")
+        return
 
+    tempo_inicio = time.time()
+    print("=" * 65)
+    print("INICIANDO FILTRAGEM COM K-CORE ITERATIVO FORMAL")
+    print(f"Parâmetros: Piso Horas={min_hours_piso}h | Teto Horas={min_hours_teto}h")
+    print(f"Critérios K-Core: Mínimo Jogos/User={min_jogos_por_usuario} | Mínimo Avaliações/Jogo={min_avaliacoes_por_jogo}")
+    print("=" * 65)
+
+    # 1. Carregar jogos com tags válidas
+    jogos_validos = None
+    if json_path:
+        jogos_validos = carregar_jogos_validos_com_tags(json_path)
+
+    # 2. Passo 1: Calcular medianas de horas por jogo (apenas avaliações positivas)
+    print("\n[PASSO 1/4] Analisando histórico de horas e calculando medianas adaptativas...")
+    horas_por_jogo = defaultdict(list)
+    linhas_lidas = 0
+
+    with open(input_path, mode='r', encoding='utf-8') as f_in:
+        _ = f_in.readline()  # Pula cabeçalho
+        for linha in f_in:
+            linhas_lidas += 1
+            if linhas_lidas % 10000000 == 0:
+                print(f"   -> {linhas_lidas // 1000000}M linhas processadas...")
+
+            parts = linha.strip().split(',')
+            if len(parts) >= 7:
+                app_id, _, _, _, is_recommended, hours_str, user_id = parts[:7]
+                if is_recommended.lower() in ('true', '1'):
+                    if jogos_validos is None or app_id in jogos_validos:
+                        try:
+                            h = float(hours_str)
+                            if h > 0:
+                                horas_por_jogo[app_id].append(h)
+                        except ValueError:
+                            continue
+
+    print(f" -> Avaliações positivas coletadas para {len(horas_por_jogo)} jogos.")
+
+    # Cálculo dos limiares individuais por jogo
     limiares_jogo = {}
     for app_id, lista_h in horas_por_jogo.items():
         mediana = statistics.median(lista_h)
         limiar = min(min_hours_teto, max(min_hours_piso, mediana))
         limiares_jogo[app_id] = limiar
 
-    #Segunda passagem para contar graus já considerando o limiar especifico 
-    with open(input_path, mode="r", encoding='utf-8') as f_in:
-        reader = csv.DictReader(f_in)
-        for row in reader:
-            try:
-                is_recommended = str(row.get('is_recommended')).strip().lower()
-                hours_str = row.get('hours','0')
-                hours = float(hours_str) if hours_str else 0.0
-                app_id = row.get('app_id')
-                user_id = row.get('user_id')
+    del horas_por_jogo  # Libera memória imediatamente
 
-                if is_recommended in ['true','1'] and app_id and user_id:
-                    if hours >= limiares_jogo.get(app_id, min_hours_piso):
-                        contagem_usuarios[user_id] += 1
-                        contagem_jogos[app_id] += 1
+    # 3. Passo 2: Coletar arestas candidatas que superam o limiar adaptativo
+    print("\n[PASSO 2/4] Coletando arestas candidatas que atendem ao limiar adaptativo...")
+    arestas_candidatas = []
+    linhas_lidas = 0
 
-            except ValueError:
-                continue
+    with open(input_path, mode='r', encoding='utf-8') as f_in:
+        _ = f_in.readline()
+        for linha in f_in:
+            linhas_lidas += 1
+            if linhas_lidas % 10000000 == 0:
+                print(f"   -> {linhas_lidas // 1000000}M linhas verificadas...")
 
-    print(f"Análise concluída! {len(contagem_usuarios)} users válidos e {len(contagem_jogos)} jogos.")
+            parts = linha.strip().split(',')
+            if len(parts) >= 7:
+                app_id, _, _, _, is_recommended, hours_str, user_id = parts[:7]
+                if is_recommended.lower() in ('true', '1') and user_id:
+                    limiar = limiares_jogo.get(app_id)
+                    if limiar is not None:
+                        try:
+                            h = float(hours_str)
+                            if h >= limiar:
+                                arestas_candidatas.append((user_id, app_id))
+                        except ValueError:
+                            continue
 
-    # ---------------------------------------------------------
-    # Passo 2
-    # ---------------------------------------------------------
-    print(f"\n[PASSO 2/2] Fazendo Filtragem K-CORE...")
-    print(f"Parametros: Minimo de jogos: {min_jogos_por_usuario} Minimo de arestas {min_avaliacoes_por_jogo}")
-    print(f"Minimo de horas piso: {min_hours_piso} | Minimo de horas teto: {min_hours_teto}")
-    
-    linhas_lidas_passo2 = 0
+    print(f" -> Total de arestas candidatas pré-K-Core: {len(arestas_candidatas)}")
+
+    # 4. Passo 3: K-Core Iterativo até Convergência
+    print("\n[PASSO 3/4] Executando K-Core Iterativo até estabilização total...")
+    pares = arestas_candidatas
+    iteracao = 0
+
+    while True:
+        iteracao += 1
+        contagem_u = Counter(u for u, _ in pares)
+        contagem_j = Counter(j for _, j in pares)
+
+        removidos_u = {u for u, c in contagem_u.items() if c < min_jogos_por_usuario}
+        removidos_j = {j for j, c in contagem_j.items() if c < min_avaliacoes_por_jogo}
+
+        if not removidos_u and not removidos_j:
+            print(f" -> CONVERGÊNCIA PLENA ALCANÇADA na Iteração {iteracao}!")
+            break
+
+        pares = [p for p in pares if p[0] not in removidos_u and p[1] not in removidos_j]
+        print(f"   Iteração {iteracao}: podados {len(removidos_u)} usuários e {len(removidos_j)} jogos. Arestas restantes: {len(pares)}")
+
+    pares_finais_set = set(pares)
+    total_users_finais = len(set(u for u, _ in pares))
+    total_jogos_finais = len(set(j for _, j in pares))
+    del pares
+    del arestas_candidatas
+
+    print(f"\nResumo da Topologia Final:")
+    print(f" * Usuários válidos (grau >= {min_jogos_por_usuario}): {total_users_finais}")
+    print(f" * Jogos válidos (grau >= {min_avaliacoes_por_jogo}): {total_jogos_finais}")
+    print(f" * Arestas convergidas: {len(pares_finais_set)}")
+
+    # 5. Passo 4: Gravar o novo arquivo CSV filtrado
+    print(f"\n[PASSO 4/4] Gravando dataset refinado em: {output_path}...")
     linhas_salvas = 0
 
     with open(input_path, mode='r', encoding='utf-8') as f_in, \
          open(output_path, mode='w', encoding='utf-8', newline='') as f_out:
-         
-        reader = csv.DictReader(f_in)
-        writer = csv.DictWriter(f_out, fieldnames=reader.fieldnames)
-        writer.writeheader()
+        
+        header = f_in.readline()
+        f_out.write(header)
 
-        for row in reader:
-            linhas_lidas_passo2 += 1
-            if linhas_lidas_passo2 % 5000000 == 0:
-                print(f"  -> Processando {linhas_lidas_passo2} linhas...")
+        for linha in f_in:
+            parts = linha.strip().split(',')
+            if len(parts) >= 7:
+                app_id, _, _, _, is_recommended, hours_str, user_id = parts[:7]
+                if (user_id, app_id) in pares_finais_set:
+                    f_out.write(linha)
+                    linhas_salvas += 1
 
-            try:
-                is_recommended = str(row.get('is_recommended', '')).strip().lower()
-                hours_str = row.get('hours', '0')
-                hours = float(hours_str) if hours_str else 0.0
-                app_id = row.get('app_id')
-                user_id = row.get('user_id')
-
-                if is_recommended in ['true', '1'] and app_id and user_id:
-
-                    limiar_jogo = limiares_jogo.get(app_id, min_hours_piso)
-
-                    if hours >= limiar_jogo:
-                        if contagem_usuarios[user_id] >= min_jogos_por_usuario and contagem_jogos[app_id] >= min_avaliacoes_por_jogo:
-                            writer.writerow(row)
-                            linhas_salvas += 1
-
-
-            except ValueError:
-                continue
-
-    print("="*50)
-    print("FILTRAGEM CONCLUÍDA!")
-    print(f"Total de arestas analisadas: {linhas_lidas_passo1}")
+    tempo_total = time.time() - tempo_inicio
+    print("=" * 65)
+    print("EXTRAÇÃO E K-CORE ITERATIVO FINALIZADOS COM SUCESSO!")
     print(f"Total de arestas salvas: {linhas_salvas}")
+    print(f"Tempo total de execução: {tempo_total:.2f} segundos ({tempo_total / 60:.2f} minutos)")
     print(f"Arquivo gerado: {output_path}")
-    print("="*50)
-
+    print("=" * 65)
 
 if __name__ == "__main__":
     SRC_DIR = os.path.dirname(os.path.abspath(__file__))
     PROJECT_ROOT = os.path.abspath(os.path.join(SRC_DIR, '..'))
     INPUT_FILE = os.path.join(PROJECT_ROOT, 'extracted_data', 'recommendations.csv')
     OUTPUT_FILE = os.path.join(PROJECT_ROOT, 'extracted_data', 'sampled_recommendations.csv')
+    JSON_FILE = os.path.join(PROJECT_ROOT, 'extracted_data', 'games_metadata.json')
 
-    #K-Core
     extrair(
         input_path=INPUT_FILE, 
         output_path=OUTPUT_FILE, 
-        min_hours_piso=10.0,            
+        json_path=JSON_FILE,
+        min_hours_piso=5.0,
         min_hours_teto=50.0,
         min_jogos_por_usuario=10,
-        min_avaliacoes_por_jogo=50     
+        min_avaliacoes_por_jogo=50
     )
