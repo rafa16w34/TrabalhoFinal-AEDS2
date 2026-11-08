@@ -203,17 +203,34 @@ def jaccard(meta_a, meta_b):
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-def construir_grafo(caminho_csv, peso_helpful=0.20):
+def construir_grafo(caminho_csv, caminho_games=None, min_positive_ratio=65.0, peso_helpful=0.20):
     """Constrói o grafo bipartido de Usuários e Jogos a partir do CSV filtrado,
-    ponderando arestas pelo tempo de jogo amortecido e pela validação social de 'helpful'"""
+    aplicando Poda Prévia de Qualidade (descarta jogos com positive_ratio < min_positive_ratio)
+    e ponderando arestas pelo tempo de jogo amortecido e pela validação social de 'helpful'"""
     if not os.path.exists(caminho_csv):
         print(f"ERRO: O arquivo {caminho_csv} não existe.")
         return None
+
+    # Carrega taxas de aprovação para a poda prévia de qualidade
+    ratings = {}
+    if caminho_games and os.path.exists(caminho_games) and min_positive_ratio > 0:
+        print(f"Carregando taxas de aprovação de {os.path.basename(caminho_games)} para poda de qualidade (< {min_positive_ratio}%)...")
+        with open(caminho_games, mode='r', encoding='utf-8') as f_games:
+            reader_games = csv.DictReader(f_games)
+            for row in reader_games:
+                aid = row.get('app_id', '').strip()
+                pr_str = row.get('positive_ratio', '')
+                try:
+                    pr = float(pr_str) if pr_str else 80.0
+                except ValueError:
+                    pr = 80.0
+                ratings[aid] = pr
 
     G = nx.Graph()
     print("Carregando grafo bipartido a partir do CSV...")
 
     linhas_lidas = 0
+    descartados_qualidade = 0
     with open(caminho_csv, mode='r', encoding='utf-8') as f:
         _ = f.readline()
         for linha in f:
@@ -236,6 +253,11 @@ def construir_grafo(caminho_csv, peso_helpful=0.20):
                 if not app_id or not user_id:
                     continue
 
+                # Poda Prévia Baseada em Qualidade: ignora títulos universalmente rejeitados pela comunidade
+                if ratings and ratings.get(app_id, 80.0) < min_positive_ratio:
+                    descartados_qualidade += 1
+                    continue
+
                 node_jogo = f"game_{app_id}"
                 node_user = f"user_{user_id}"
                 # Ponderação híbrida: engajamento temporal + credibilidade social (helpful reviews)
@@ -245,13 +267,15 @@ def construir_grafo(caminho_csv, peso_helpful=0.20):
                 G.add_node(node_user, tipo='usuario', nome_original=user_id)
                 G.add_edge(node_jogo, node_user, weight=peso)
 
+    if descartados_qualidade > 0:
+        print(f"   -> Poda Prévia de Qualidade: {descartados_qualidade} conexões de jogos com aprovação < {min_positive_ratio}% foram excluídas do grafo.")
     print(f"Grafo construído! Vértices: {G.number_of_nodes()} | Arestas: {G.number_of_edges()}")
     return G
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 def recomendar_jogos(G, jogo_alvo_id, comunidades, dicionario_tags, 
-                     top_k_users=50, top_n_jogos=10, bonus_dev=0.1,
+                     top_k_users=1000, top_n_jogos=10, bonus_dev=0.1,
                      limiar_jaccard=0.20, peso_louvain=3.0, expoente_grau=0.35,
                      min_positive_ratio=65.0, fator_dissonancia_tom=0.0,
                      silencioso=False):
@@ -266,7 +290,11 @@ def recomendar_jogos(G, jogo_alvo_id, comunidades, dicionario_tags,
     node_alvo = f"game_{jogo_alvo_id}"
     if node_alvo not in G:
         if not silencioso:
-            print(f"O jogo {jogo_alvo_id} não foi encontrado no Grafo.")
+            pr = dicionario_tags.get(str(jogo_alvo_id), {}).get('positive_ratio')
+            if pr is not None and pr < min_positive_ratio:
+                print(f"[AVISO] O jogo {jogo_alvo_id} foi excluído previamente do Grafo devido à baixa taxa de aprovação da comunidade ({pr}% positivas, corte mínimo: {min_positive_ratio}%).")
+            else:
+                print(f"O jogo {jogo_alvo_id} não foi encontrado no Grafo (filtrado na amostragem K-Core ou sem tags).")
         return [], []
 
     if not silencioso:
