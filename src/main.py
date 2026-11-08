@@ -33,8 +33,96 @@ def cabecalho():
     print(" Feito por: Gabriel Alves F. e Rafael Alves F.")
     print("-"*50)
 
+def garantir_dados_zenodo():
+    """
+    Garante a reprodutibilidade do projeto:
+    Se os dados não existirem localmente em 'extracted_data/' (ex: após clonar o repositório),
+    baixa automaticamente o dataset compactado oficial do Zenodo (DOI: 10.5281/zenodo.23861070).
+    """
+    src_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.abspath(os.path.join(src_dir, '..'))
+    dest_dir = os.path.join(project_root, 'extracted_data')
+    
+    arquivos_obrigatorios = ['games.csv', 'games_metadata.json', 'sampled_recommendations.csv']
+    if all(os.path.exists(os.path.join(dest_dir, f)) for f in arquivos_obrigatorios):
+        return True
+
+    print("\n" + "=" * 65)
+    print(" BASE DE DADOS AUSENTE EM 'extracted_data/'")
+    print(" Baixando automaticamente do Zenodo (DOI: 10.5281/zenodo.23861070)...")
+    print("=" * 65)
+    os.makedirs(dest_dir, exist_ok=True)
+    
+    url = "https://zenodo.org/records/23861070/files/Data-Steam.zip?download=1"
+    zip_temp = os.path.join(dest_dir, "temp_zenodo.zip")
+    
+    sucesso = False
+    # Tentativa 1: Biblioteca requests
+    try:
+        import requests
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+        with requests.get(url, headers=headers, stream=True, timeout=120) as r:
+            r.raise_for_status()
+            total_len = int(r.headers.get('content-length', 0))
+            baixado = 0
+            with open(zip_temp, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=1024 * 512):
+                    if chunk:
+                        f.write(chunk)
+                        baixado += len(chunk)
+                        if total_len:
+                            pct = (baixado / total_len) * 100
+                            mb = baixado / (1024 * 1024)
+                            tot_mb = total_len / (1024 * 1024)
+                            print(f"\rBaixando base de dados: {mb:.1f}MB / {tot_mb:.1f}MB ({pct:.1f}%)", end="", flush=True)
+            sucesso = True
+            print("\n✓ Download concluído via requests.")
+    except Exception:
+        # Tentativa 2: curl nativo do sistema (Linux, macOS e Windows 10+)
+        try:
+            import subprocess
+            print("\nTentando download alternativo via curl...")
+            cmd = ["curl", "-L", "-A", "Mozilla/5.0", url, "-o", zip_temp]
+            res = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            if res.returncode == 0 and os.path.exists(zip_temp) and os.path.getsize(zip_temp) > 1000000:
+                sucesso = True
+                print("✓ Download concluído via curl.")
+        except Exception:
+            pass
+
+    if not sucesso or not os.path.exists(zip_temp):
+        print("\n[ERRO] Não foi possível baixar os dados automaticamente.")
+        print(f"Por favor, baixe o arquivo Data-Steam.zip manualmente de: {url}")
+        print(f"e extraia o conteúdo na pasta: {dest_dir}\n")
+        return False
+
+    # Extração dos arquivos descompactando qualquer subpasta interna
+    try:
+        print("Descompactando arquivos na pasta 'extracted_data'...")
+        import zipfile
+        import shutil
+        with zipfile.ZipFile(zip_temp, 'r') as zf:
+            for member in zf.infolist():
+                filename = os.path.basename(member.filename)
+                if not filename:
+                    continue
+                dest_file = os.path.join(dest_dir, filename)
+                with zf.open(member) as src, open(dest_file, 'wb') as dst:
+                    shutil.copyfileobj(src, dst)
+                print(f" -> Extraído: {filename}")
+        if os.path.exists(zip_temp):
+            os.remove(zip_temp)
+        print("✓ Base de dados configurada com sucesso!\n")
+        return True
+    except Exception as e:
+        print(f"\n[ERRO] Falha ao descompactar a base: {e}")
+        if os.path.exists(zip_temp):
+            os.remove(zip_temp)
+        return False
+
 def inicializacao():
     """Carrega os dados, constrói o grafo e mapeia as comunidades"""
+    garantir_dados_zenodo()
     src_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.abspath(os.path.join(src_dir, '..'))
     caminho_amostra = os.path.join(project_root, 'extracted_data', 'sampled_recommendations.csv')
