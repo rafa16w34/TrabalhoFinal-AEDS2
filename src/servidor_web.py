@@ -102,11 +102,6 @@ class RecommenderHandler(BaseHTTPRequestHandler):
             self.servir_recomendacao(app_id)
         elif path == "/api/relatorio_lote":
             self.servir_relatorio_lote()
-        elif path in ["/config", "/health", "/api/health"]:
-            self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
-            self.end_headers()
-            self.wfile.write(json.dumps({"status": "ok", "app": "Steam Finder", "components": []}).encode('utf-8'))
         else:
             self.send_response(404)
             self.send_header('Content-Type', 'text/plain; charset=utf-8')
@@ -448,14 +443,5 @@ def iniciar_servidor(porta=5000, abrir_navegador=True, motor=None):
         servidor.server_close()
 
 if __name__ == '__main__':
-    port_env = os.environ.get('PORT')
-    if port_env and port_env.isdigit():
-        p = int(port_env)
-        abrir_nav = False
-    elif len(sys.argv) > 1 and sys.argv[1].isdigit():
-        p = int(sys.argv[1])
-        abrir_nav = True
-    else:
-        p = 5000
-        abrir_nav = True
-    iniciar_servidor(porta=p, abrir_navegador=abrir_nav)
+    p = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 5000
+    iniciar_servidor(porta=p)
