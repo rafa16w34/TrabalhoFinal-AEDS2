@@ -215,13 +215,13 @@ def recomendar(grafo, titulos, metadados, comunidades):
             titulo_rec = titulos.get(id_limpo, "Nome Desconhecido")
             print(f" {i+1:2d}º Lugar - {titulo_rec:<45} | Score: {score:.2f}")
 
-def menu_exportar():
+def menu_exportar(grafo=None, titulos=None, metadados=None, comunidades=None):
     """Executa a exportação para o Gephi."""
     print("\n" + "-"*4 + "Gerar arquivo Gephi" + "-"*4)
 
     confirmacao = input(f"Deseja gerar os arquivos .gexf agora (seed = {seed})? [s/n]: ").strip().lower()
     if confirmacao == 's':
-        exportar_para_gephi_hibrido(seed=seed)
+        exportar_para_gephi_hibrido(seed=seed, grafo=grafo, titulos=titulos, metadados=metadados, comunidades=comunidades)
     else:
         print("Voltando ao menu principal..")
 
@@ -246,7 +246,7 @@ def main():
             processar_recomendacoes_em_lote()
 
         elif escolha == "3":
-            menu_exportar()
+            menu_exportar(grafo, titulos, metadados, comunidades)
 
         elif escolha == "4":
             import servidor_web

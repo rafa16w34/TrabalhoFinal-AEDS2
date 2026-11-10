@@ -9,9 +9,10 @@ venv/
 archive.zip
 extracted_data/
 
-# Arquivos de Grafo pesados (>100MB não permitidos pelo GitHub)
+# Arquivos de Grafo estruturados (antigo grafo com 152k usuários tinha >285MB; os novos têm <5MB)
 output/*.gexf
 !output/universo_super_nos.gexf
+!output/universo_steam_hibrido.gexf
 
 # Ignorar arquivos do Mac/Windows caso alguém baixe depois
 .DS_Store

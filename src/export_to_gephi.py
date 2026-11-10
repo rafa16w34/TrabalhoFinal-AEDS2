@@ -1,152 +1,279 @@
+"""
+Módulo de Exportação para o Gephi
+Trabalho Final AEDS 2 - CEFET-MG / UFC-IMG
+Autores: Rafael Alves Faria e Gabriel Alves Faria
+
+Gera visualizações em rede estruturadas e elegantes inspiradas na Figura 2 do artigo
+clássico do Algoritmo de Louvain:
+"Fast unfolding of communities in large networks" (Blondel et al., 2008, pág. 9).
+
+Arquivos gerados:
+1. 'output/universo_super_nos.gexf':
+   Rede de comunidades e sub-comunidades (análogo direto à Figura 2 do artigo).
+   Nós representam sub-comunidades, com tamanho proporcional ao volume de membros
+   e cores mapeadas para os 7 Super-Nós.
+2. 'output/universo_steam_hibrido.gexf':
+   Universo organizado dos jogos (projeção monopartite de alta coesão sem ruído de 152k usuários),
+   com nós de jogos estilizados e pré-agrupados por comunidade no espaço 2D.
+"""
+
 import os
 import sys
-
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
 import json
+import math
+import random
+from collections import Counter, defaultdict
+
+# Garante acesso aos módulos em src/
+src_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(src_dir, '..'))
+if src_dir not in sys.path:
+    sys.path.insert(0, src_dir)
+
 import networkx as nx
 import networkx.algorithms.community as nx_comm
-from collections import Counter
+import main
 
-from recommender import construir_grafo, carregar_titulos_jogos
+# Paleta cromática oficial inspirada no artigo de Louvain (Blondel et al., Figura 2)
+# Destaque para o contraste Vermelho (JRPG/Ação) vs Verde (Indies) e nós intermediários
+CORES_SUPER_NOS = {
+    0: {"r": 46,  "g": 213, "b": 115, "hex": "#2ed573", "nome": "Indie & Roguelike 2D"},            # Verde Esmeralda
+    1: {"r": 30,  "g": 144, "b": 255, "hex": "#1e90ff", "nome": "Aventura Narrativa & Puzzle"},      # Azul Real
+    2: {"r": 155, "g": 89,  "b": 182, "hex": "#9b59b6", "nome": "Estratégia & Simulação Tática"},    # Roxo Ametista
+    3: {"r": 255, "g": 165, "b": 2,   "hex": "#ffa502", "nome": "FPS Clássico & Ação Retrô"},         # Âmbar / Laranja
+    4: {"r": 255, "g": 71,  "b": 87,  "hex": "#ff4757", "nome": "JRPG & RPG Narrativo / Anime"},     # Vermelho Carmesim
+    5: {"r": 241, "g": 196, "b": 15,  "hex": "#f1c40f", "nome": "Simulação, Direção & Mundo Aberto"}, # Ouro / Amarelo
+    6: {"r": 26,  "g": 188, "b": 156, "hex": "#1abc9c", "nome": "Expansões & Comunidades Emergentes"} # Turquesa
+}
 
-def carregar_metadados(caminho_json):
-    """Carrega tags e generos de cada jogo."""
-    metadados = {}
-    if not os.path.exists(caminho_json):
-        return metadados
-    with open(caminho_json, mode='r', encoding='utf-8') as f:
-        for linha in f:
-            dados = json.loads(linha.strip())
-            app_id = str(dados.get('app_id', ''))
-            metadados[app_id] = {
-                'tags': dados.get('tags', []),
-                'genres': dados.get('genres', [])
-            }
-    return metadados
+def exportar_para_gephi_hibrido(seed=16, grafo=None, titulos=None, metadados=None, comunidades=None):
+    """
+    Gera os arquivos GEXF estruturados e visualmente limpos para o Gephi.
+    """
+    print("=" * 68)
+    print(" EXPORTAÇÃO GEPHI: REDES ESTRUTURADAS DE COMUNIDADES (BLONDEL ET AL.)")
+    print("=" * 68)
 
-def exportar_para_gephi_hibrido(seed):
-    print("=" * 65)
-    print(f"EXPORTAÇÃO PARA GEPHI (SISTEMA HÍBRIDO COM LOUVAIN - SEED {seed})")
-    print("=" * 65)
+    output_dir = os.path.join(project_root, 'output')
+    os.makedirs(output_dir, exist_ok=True)
 
-    SRC_DIR = os.path.dirname(os.path.abspath(__file__))
-    PROJECT_ROOT = os.path.abspath(os.path.join(SRC_DIR, '..'))
-    ARQUIVO_AMOSTRA = os.path.join(PROJECT_ROOT, 'extracted_data', 'sampled_recommendations.csv')
-    ARQUIVO_GAMES = os.path.join(PROJECT_ROOT, 'extracted_data', 'games.csv')
-    ARQUIVO_JSON = os.path.join(PROJECT_ROOT, 'extracted_data', 'games_metadata.json')
-    OUTPUT_DIR = os.path.join(PROJECT_ROOT, 'output')
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    # 1. Carrega estruturas caso não tenham sido passadas em memória
+    if grafo is None or titulos is None or metadados is None or comunidades is None:
+        print("\n[1/4] Inicializando grafo limpo e metadados...")
+        grafo, titulos, metadados, comunidades = main.inicializacao()
+    else:
+        print("\n[1/4] Utilizando grafo e comunidades já carregados em memória.")
 
-    # 1. Carrega estruturas básicas
-    print("\n[1/5] Carregando títulos, metadados e construindo o grafo...")
-    dicionario_titulos = carregar_titulos_jogos(ARQUIVO_GAMES)
-    dicionario_meta = carregar_metadados(ARQUIVO_JSON)
-    G = construir_grafo(ARQUIVO_AMOSTRA)
+    jogos_nos = [n for n in grafo.nodes() if n.startswith("game_")]
+    print(f" -> Catálogo disponível no grafo limpo: {len(jogos_nos)} jogos.")
 
-    if not G:
-        print("Erro: Não foi possível construir o grafo.")
-        return
+    # 2. Constrói projeção co-play entre os jogos (eliminando o ruído de 152k usuários)
+    print("\n[2/4] Calculando Projeção Co-Play com Validação Social entre jogos...")
+    # Pega top 30 usuários mais engajados de cada jogo para filtrar ruído
+    jogo_top_u = {}
+    for g in jogos_nos:
+        viz = grafo[g]
+        top_u = sorted(viz.items(), key=lambda x: x[1]['weight'], reverse=True)[:30]
+        jogo_top_u[g] = {u: d['weight'] for u, d in top_u}
 
-    # 2. Executa Louvain com a semente configurada
-    print(f"\n[2/5] Executando Algoritmo de Louvain (seed = {seed})...")
-    lista_comunidades = nx_comm.louvain_communities(G, weight='weight', seed=seed)
-    total_comunidades = len(lista_comunidades)
-    print(f" -> Sucesso: {total_comunidades} comunidades (Super Nós) identificadas!")
-
-    # Mapeia cada nó para seu ID de comunidade
-    no_para_comunidade = {}
-    for id_comunidade, grupo_de_nos in enumerate(lista_comunidades):
-        for no in grupo_de_nos:
-            no_para_comunidade[no] = id_comunidade
-
-    caminho_cache_json = os.path.join(OUTPUT_DIR, "comunidades_louvain.json")
-    with open(caminho_cache_json, 'w', encoding='utf-8') as f_cache:
-        json.dump(no_para_comunidade, f_cache)
-    print(f" -> Cache de comunidades salvo em '{caminho_cache_json}'.")
-
-    # 3. Injeta atributos ricos em cada nó para visualização e agrupamento no Gephi
-    print("\n[3/5] Injetando atributos nos nós (Labels, Comunidade, Tipo e Gêneros)...")
-    jogos_por_comunidade = {i: [] for i in range(total_comunidades)}
-
-    for node_id, dados_do_no in G.nodes(data=True):
-        comm_id = no_para_comunidade.get(node_id, -1)
-        dados_do_no['community'] = int(comm_id)
-
-        if dados_do_no.get('tipo') == 'jogo':
-            app_id = dados_do_no.get('nome_original')
-            nome_real = dicionario_titulos.get(app_id, f"Jogo {app_id}")
-            dados_do_no['label'] = nome_real
-
-            meta = dicionario_meta.get(app_id, {})
-            generos = meta.get('genres', [])
-            tags = meta.get('tags', [])
-
-            dados_do_no['genres'] = ", ".join(generos) if generos else "Desconhecido"
-            dados_do_no['top_tags'] = ", ".join(tags[:5]) if tags else "Nenhuma"
-            dados_do_no['categoria_no'] = "Jogo"
-
-            jogos_por_comunidade[comm_id].append((G.degree(node_id, weight='weight'), nome_real, generos))
-        else:
-            user_id = dados_do_no.get('nome_original')
-            dados_do_no['label'] = f"Usuário {user_id}"
-            dados_do_no['genres'] = "N/A"
-            dados_do_no['top_tags'] = "N/A"
-            dados_do_no['categoria_no'] = "Usuario"
-
-    # 4. Exporta o Grafo Completo Híbrido
-    arquivo_completo = os.path.join(OUTPUT_DIR, "universo_steam_hibrido.gexf")
-    print(f"\n[4/5] Salvando '{arquivo_completo}'...")
-    nx.write_gexf(G, arquivo_completo)
-    print(f" -> Arquivo '{arquivo_completo}' gerado com sucesso!")
-
-    # 5. Constrói e Exporta o Meta-Grafo de Super Nós (Visão Macro de Alto Nível)
-    print("\n[5/5] Construindo o Meta-Grafo dos Super Nós (Visão Macro)...")
-    MetaG = nx.Graph()
-
-    for comm_id in range(total_comunidades):
-        jogos_comm = jogos_por_comunidade[comm_id]
-        jogos_comm.sort(reverse=True, key=lambda x: x[0])  # Ordena pelos mais populares
-
-        exemplos = [j[1] for j in jogos_comm[:4]]
-        generos_contagem = Counter([g for j in jogos_comm for g in j[2]])
-        genero_dominante = generos_contagem.most_common(1)[0][0] if generos_contagem else "Variado"
-
-        qtd_jogos = len(jogos_comm)
-        qtd_total = len(lista_comunidades[comm_id])
-
-        label_super_no = f"Super Nó {comm_id}: {genero_dominante} ({qtd_jogos} jogos)"
-        MetaG.add_node(
-            f"super_no_{comm_id}",
-            label=label_super_no,
-            comunidade=int(comm_id),
-            genero_principal=genero_dominante,
-            qtd_jogos=int(qtd_jogos),
-            qtd_total_membros=int(qtd_total),
-            exemplos=", ".join(exemplos)
+    G_jogos = nx.Graph()
+    for g in jogos_nos:
+        aid = g.replace("game_", "")
+        cid = comunidades.get(g, -1)
+        meta = metadados.get(aid, {})
+        grau_bipartido = grafo.degree(g)
+        G_jogos.add_node(
+            g,
+            app_id=aid,
+            label=titulos.get(aid, f"Jogo {aid}"),
+            community=int(cid),
+            community_name=CORES_SUPER_NOS.get(cid, {}).get("nome", f"Comunidade {cid}"),
+            genres=", ".join(meta.get('genres', [])) if meta.get('genres') else "Variado",
+            positive_ratio=float(meta.get('positive_ratio', 80.0)),
+            grau_popularidade=int(grau_bipartido)
         )
 
-    # Arestas entre super nós: número de conexões cruzadas
-    pesos_inter_comunidades = Counter()
-    for u, v, dados in G.edges(data=True):
-        comm_u = no_para_comunidade.get(u)
-        comm_v = no_para_comunidade.get(v)
-        if comm_u is not None and comm_v is not None and comm_u != comm_v:
-            par = tuple(sorted([comm_u, comm_v]))
-            pesos_inter_comunidades[par] += dados.get('weight', 1.0)
+    # Agrega arestas de co-play com pesos
+    arestas_brutas = Counter()
+    for g, u_dict in jogo_top_u.items():
+        for u, w_ug in u_dict.items():
+            for outro_g, d in grafo[u].items():
+                if outro_g != g and outro_g.startswith("game_"):
+                    par = tuple(sorted([g, outro_g]))
+                    arestas_brutas[par] += w_ug * d['weight']
 
-    for (c1, c2), peso in pesos_inter_comunidades.items():
-        MetaG.add_edge(f"super_no_{c1}", f"super_no_{c2}", weight=float(peso))
+    # Filtra arestas para manter apenas a espinha dorsal (Backbone) limpa
+    # Cada jogo mantém suas conexões mais expressivas (k=8), evitando o "hairball" preto
+    conexoes_por_jogo = defaultdict(list)
+    for (g1, g2), peso in arestas_brutas.items():
+        conexoes_por_jogo[g1].append((g2, peso))
+        conexoes_por_jogo[g2].append((g1, peso))
 
-    arquivo_super_nos = os.path.join(OUTPUT_DIR, "universo_super_nos.gexf")
-    nx.write_gexf(MetaG, arquivo_super_nos)
-    print(f" -> Arquivo '{arquivo_super_nos}' gerado com sucesso!")
+    arestas_backbone = set()
+    for g, lista in conexoes_por_jogo.items():
+        lista.sort(key=lambda x: x[1], reverse=True)
+        for outro_g, peso in lista[:8]: # Mantém os 8 parceiros mais fortes
+            par = tuple(sorted([g, outro_g]))
+            arestas_backbone.add((par[0], par[1], peso))
 
-    print("\n" + "=" * 65)
-    print("RESUMO DOS ARQUIVOS GERADOS:")
-    print(f"1. '{arquivo_completo}': Grafo completo pronto para colorir por 'community' e agrupar.")
-    print(f"2. '{arquivo_super_nos}': Meta-Grafo de Super Nós mostrando a conexão macro entre os 7 clusters.")
-    print("=" * 65)
+    for g1, g2, peso in arestas_backbone:
+        G_jogos.add_edge(g1, g2, weight=round(float(peso), 2))
+
+    print(f" -> Grafo de Jogos limpo: {G_jogos.number_of_nodes()} nós e {G_jogos.number_of_edges()} arestas (Backbone Coeso).")
+
+    # 3. Detecta Sub-Comunidades dentro de cada Super-Nó para montar a Figura 2 de Blondel et al.
+    print("\n[3/4] Construindo Rede de Comunidades e Sub-Comunidades (Figura 2 do Artigo)...")
+    MetaG = nx.Graph()
+    random.seed(seed)
+
+    # Centros orbitais das 7 macro-comunidades em coordenadas 2D (escala Gephi)
+    raio_macro = 3200.0
+    centros_comunidades = {}
+    for cid in range(7):
+        angulo = (2.0 * math.pi * cid) / 7.0
+        centros_comunidades[cid] = (raio_macro * math.cos(angulo), raio_macro * math.sin(angulo))
+
+    sub_comunidades_lista = []
+    sub_id_counter = 0
+
+    for cid in range(7):
+        nos_cid = [n for n in jogos_nos if comunidades.get(n) == cid]
+        if not nos_cid:
+            continue
+
+        subg = G_jogos.subgraph(nos_cid)
+        # Executa Louvain interno dentro de cada Super-Nó
+        try:
+            comms_internas = nx_comm.louvain_communities(subg, weight='weight', seed=seed)
+        except Exception:
+            comms_internas = [set(nos_cid)]
+
+        # Agrupa os nós pequenos em sub-comunidades significativas (>= 3 jogos)
+        for grupo in comms_internas:
+            if len(grupo) >= 3:
+                sub_id = f"subcomm_{sub_id_counter}"
+                sub_id_counter += 1
+                sub_comunidades_lista.append({
+                    "id": sub_id,
+                    "macro_cid": cid,
+                    "jogos": list(grupo)
+                })
+
+    # Mapeia cada jogo para a sua sub-comunidade
+    jogo_para_subcomm = {}
+    for sub in sub_comunidades_lista:
+        for g in sub["jogos"]:
+            jogo_para_subcomm[g] = sub["id"]
+
+    # Adiciona nós das Sub-Comunidades no Meta-Grafo
+    for sub in sub_comunidades_lista:
+        sub_id = sub["id"]
+        cid = sub["macro_cid"]
+        jogos = sub["jogos"]
+        cor = CORES_SUPER_NOS.get(cid, {"r": 200, "g": 200, "b": 200})
+
+        # Identifica os jogos mais populares desta sub-comunidade
+        jogos_ordenados = sorted(jogos, key=lambda g: grafo.degree(g), reverse=True)
+        top_nomes = [titulos.get(g.replace("game_", "")) for g in jogos_ordenados[:2] if titulos.get(g.replace("game_", ""))]
+        exemplos_str = " & ".join(top_nomes) if top_nomes else f"Cluster {sub_id}"
+
+        # Gênero mais frequente
+        generos_cluster = Counter()
+        volume_total = 0
+        for g in jogos:
+            aid = g.replace("game_", "")
+            volume_total += grafo.degree(g)
+            for gen in metadados.get(aid, {}).get("genres", []):
+                generos_cluster[gen] += 1
+        gen_dominante = generos_cluster.most_common(1)[0][0] if generos_cluster else "Indie/Ação"
+
+        label_sub = f"{gen_dominante}: {exemplos_str}"
+
+        # Posição pré-calculada orbitando o centro da sua macro-comunidade
+        cx, cy = centros_comunidades[cid]
+        r_dist = random.uniform(80.0, 750.0)
+        phi = random.uniform(0.0, 2.0 * math.pi)
+        pos_x = cx + r_dist * math.cos(phi)
+        pos_y = cy + r_dist * math.sin(phi)
+
+        # Tamanho proporcional ao volume de jogadores (análogo à Figura 2)
+        tam = max(18.0, min(85.0, math.sqrt(len(jogos)) * 7.5))
+
+        MetaG.add_node(
+            sub_id,
+            label=label_sub,
+            macro_comunidade=int(cid),
+            super_no_nome=CORES_SUPER_NOS.get(cid, {}).get("nome", ""),
+            genero_dominante=gen_dominante,
+            qtd_jogos=int(len(jogos)),
+            volume_avaliacoes=int(volume_total),
+            exemplos=exemplos_str,
+            viz={
+                "color": {"r": cor["r"], "g": cor["g"], "b": cor["b"], "a": 1.0},
+                "size": float(tam),
+                "position": {"x": round(pos_x, 2), "y": round(pos_y, 2), "z": 0.0}
+            }
+        )
+
+    # Conecta as sub-comunidades somando os pesos das arestas de jogos entre elas
+    pesos_entre_subcomms = Counter()
+    for g1, g2, d in G_jogos.edges(data=True):
+        s1 = jogo_para_subcomm.get(g1)
+        s2 = jogo_para_subcomm.get(g2)
+        if s1 and s2 and s1 != s2:
+            par = tuple(sorted([s1, s2]))
+            pesos_entre_subcomms[par] += d.get('weight', 1.0)
+
+    # Filtra arestas fracas para deixar o layout tão limpo quanto a Figura 2
+    if pesos_entre_subcomms:
+        corte_peso = max(1.0, sorted(pesos_entre_subcomms.values(), reverse=True)[min(len(pesos_entre_subcomms)-1, 350)])
+        for (s1, s2), peso in pesos_entre_subcomms.items():
+            if peso >= corte_peso:
+                MetaG.add_edge(s1, s2, weight=round(float(peso), 2))
+
+    # 4. Prepara Atributos Visuais no Grafo dos Jogos (universo_steam_hibrido.gexf)
+    print("\n[4/4] Injetando coordenadas pré-calculadas e paleta visual nos jogos...")
+    for n, d in G_jogos.nodes(data=True):
+        cid = d.get('community', 0)
+        cor = CORES_SUPER_NOS.get(cid, {"r": 180, "g": 180, "b": 180})
+        grau = d.get('grau_popularidade', 50)
+
+        # Tamanho logarítmico calibrado
+        tam_no = max(12.0, min(75.0, math.log10(max(10, grau)) * 16.0))
+
+        # Posição 2D pré-agrupada em torno da comunidade
+        cx, cy = centros_comunidades.get(cid, (0.0, 0.0))
+        r_dist = random.uniform(60.0, 950.0)
+        phi = random.uniform(0.0, 2.0 * math.pi)
+        px = cx + r_dist * math.cos(phi)
+        py = cy + r_dist * math.sin(phi)
+
+        d['viz'] = {
+            "color": {"r": cor["r"], "g": cor["g"], "b": cor["b"], "a": 1.0},
+            "size": float(tam_no),
+            "position": {"x": round(px, 2), "y": round(py, 2), "z": 0.0}
+        }
+
+    # Salva os dois arquivos GEXF limpos
+    caminho_super_nos = os.path.join(output_dir, "universo_super_nos.gexf")
+    caminho_jogos = os.path.join(output_dir, "universo_steam_hibrido.gexf")
+
+    print(f"\n -> Gravando '{os.path.basename(caminho_super_nos)}'...")
+    nx.write_gexf(MetaG, caminho_super_nos)
+
+    print(f" -> Gravando '{os.path.basename(caminho_jogos)}'...")
+    nx.write_gexf(G_jogos, caminho_jogos)
+
+    print("\n" + "=" * 68)
+    print(" EXPORTAÇÃO CONCLUÍDA COM SUCESSO!")
+    print("=" * 68)
+    print(f"1. '{caminho_super_nos}':")
+    print(f"   -> {MetaG.number_of_nodes()} sub-comunidades e {MetaG.number_of_edges()} arestas.")
+    print("   -> Idêntico à Figura 2 do artigo de Louvain (Blondel et al., 2008).")
+    print(f"2. '{caminho_jogos}':")
+    print(f"   -> {G_jogos.number_of_nodes()} jogos e {G_jogos.number_of_edges()} arestas (Backbone organizado).")
+    print("   -> Cores RGB e coordenadas espaciais já injetadas no arquivo XML.")
+    print("=" * 68)
 
 if __name__ == "__main__":
-    exportar_para_gephi_hibrido(seed=16)
+    exportar_para_gephi_hibrido()
