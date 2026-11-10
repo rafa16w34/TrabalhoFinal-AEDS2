@@ -407,11 +407,24 @@ Em experimentos preliminares com cortes semânticos brandos ($J_{corte} = 0{,}15
 A eficácia da poda adaptativa por mediana com piso de 5,0 horas é comprovada nos testes com títulos curtos. Para \textit{LEGO Harry Potter: Years 1-4}, o sistema recuperou 100\% de títulos da franquia LEGO no Top-10 (com liderança de \textit{LEGO Harry Potter: Years 5-7}, score 206,45). De forma análoga, a consulta por \textit{Resident Evil} gerou um ranqueamento composto exclusivamente por obras da saga de horror de sobrevivência da Capcom, evidenciando que a preservação de arestas de campanha curta não comprometeu a coerência interna do grafo.
 
 \subsection{Visualização Estruturada no Gephi (Inspirada em Blondel et al.)}
-A exportação de grafos para ferramentas de visualização (como o Gephi) frequentemente degenera em aglomerados opacos de difícil interpretação (\textit{hairballs}), decorrentes da sobreposição de mais de 150 mil nós de usuários anônimos e milhões de arestas cruzadas. Para solucionar essa deficiência e atender ao padrão visual de publicações científicas de alto impacto, o módulo \texttt{src/export\_to\_gephi.py} foi reformulado diretamente inspirado na célebre \textbf{Figura 2 (página 9) do artigo de Louvain} (\textit{Blondel et al.}, 2008 \cite{blondel2008}), gerando duas representações estruturadas:
+A exportação de grafos para ferramentas de visualização (como o Gephi) frequentemente degenera em aglomerados opacos de difícil interpretação (\textit{hairballs}), decorrentes da sobreposição de mais de 150 mil nós de usuários anônimos e milhões de arestas cruzadas. Para solucionar essa deficiência e atender ao padrão visual de publicações científicas de alto impacto, o módulo \texttt{src/export\_to\_gephi.py} foi reformulado diretamente inspirado na célebre \textbf{Figura 2 (página 9) do artigo de Louvain} (\textit{Blondel et al.}, 2008 \cite{blondel2008}). Conforme ilustrado na Fig.~\ref{fig:gephi_visualizacoes}, o sistema produz duas representações estruturadas complementares:
 \begin{enumerate}
-    \item \textbf{Rede Hierárquica de Sub-Comunidades (\texttt{universo\_super\_nos.gexf}):} Mapeia a rede em dois níveis de modularidade. Os nós representam 80 sub-comunidades homogêneas agrupadas dentro dos 7 macro-clusters de Louvain, conectadas por 351 arestas de fluxo de co-jogabilidade agregado. O diâmetro do nó é proporcional ao volume de jogadores e a cor codifica a macro-comunidade. Coordenadas espaciais orbitais 2D são pré-injetadas no arquivo XML via extensão \texttt{<viz:position>}, permitindo abertura instantânea e legível no Gephi sem necessidade de alocação forçada manual.
-    \item \textbf{Espinha Dorsal Monopartite dos Jogos (\texttt{universo\_steam\_hibrido.gexf}):} Projeção direta jogo-a-jogo contendo os 3.573 títulos aprovados e 25.524 arestas de co-jogabilidade de alta coesão ($k=8$ arestas mais fortes por jogo). Ao extirpar os nós de usuários, o arquivo reduz de mais de 285 MB para apenas 4,1 MB, exibindo sete galáxias temáticas nítidas que espelham a especialização industrial do catálogo.
+    \item \textbf{Rede Hierárquica de Sub-Comunidades (\texttt{universo\_super\_nos.gexf}):} Mapeia a rede em dois níveis de modularidade (Fig.~\ref{fig:gephi_supernos}). Os nós representam 80 sub-comunidades homogêneas agrupadas dentro dos 7 macro-clusters de Louvain, conectadas por 351 arestas de fluxo de co-jogabilidade agregado. O diâmetro do nó é proporcional ao volume de jogadores e a cor codifica a macro-comunidade. Coordenadas espaciais orbitais 2D são pré-injetadas no arquivo XML via extensão \texttt{<viz:position>}, permitindo abertura instantânea e legível no Gephi sem necessidade de alocação forçada manual.
+    \item \textbf{Espinha Dorsal Monopartite dos Jogos (\texttt{universo\_steam\_hibrido.gexf}):} Projeção direta jogo-a-jogo contendo os 3.573 títulos aprovados e 25.524 arestas de co-jogabilidade de alta coesão ($k=8$ arestas mais fortes por jogo), ilustrada na Fig.~\ref{fig:gephi_universo}. Ao extirpar os nós de usuários, o arquivo reduz de mais de 285 MB para apenas 4,1 MB, exibindo sete galáxias temáticas nítidas que espelham a especialização industrial do catálogo.
 \end{enumerate}
+
+\begin{figure*}[!t]
+\centering
+\subfloat[Rede hierárquica de sub-comunidades (\texttt{universo\_super\_nos.gexf}), diretamente inspirada na Figura 2 de Blondel \textit{et al.} \cite{blondel2008}. Cada nó representa uma sub-comunidade com diâmetro proporcional ao volume de membros e cores mapeadas para os 7 Super-Nós.\label{fig:gephi_supernos}]{
+    \includegraphics[width=0.48\textwidth]{fotos/grafo/super-no-artigo.png}
+}
+\hfill
+\subfloat[Espinha dorsal (\textit{backbone}) dos 3.573 jogos da plataforma Steam (\texttt{universo\_steam\_hibrido.gexf}), conectada por co-jogabilidade ($k=8$ conexões mais fortes por jogo), exibindo as sete galáxias temáticas sem o ruído de usuários anônimos.\label{fig:gephi_universo}]{
+    \includegraphics[width=0.48\textwidth]{fotos/grafo/universo-artigo.png}
+}
+\caption{Visualizações topológicas geradas no Gephi (layout ForceAtlas2 com prevenção de sobreposição) a partir dos arquivos estruturados com atributos visuais de cores RGB e coordenadas orbitais 2D pré-injetadas no formato GEXF.}
+\label{fig:gephi_visualizacoes}
+\end{figure*}
 
 \subsection{Arquitetura em Duas Camadas, Interface Web e Eficiência}
 Para atender simultaneamente aos rigores da validação científica acadêmica e às restrições de implantação em serviços de nuvem modernos, concebeu-se uma arquitetura desacoplada em duas camadas:
