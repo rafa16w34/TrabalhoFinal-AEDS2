@@ -221,7 +221,10 @@ class RecommenderHandler(BaseHTTPRequestHandler):
             recs_dict = CACHE_RECOMENDACOES.get('recomendacoes', {})
             podados_dict = CACHE_RECOMENDACOES.get('jogos_podados', {})
             if app_id in recs_dict:
-                corpo = json.dumps(recs_dict[app_id], ensure_ascii=False).encode('utf-8')
+                resposta = recs_dict[app_id]
+                if 'alvo' not in resposta and 'jogo_alvo' in resposta:
+                    resposta['alvo'] = resposta['jogo_alvo']
+                corpo = json.dumps(resposta, ensure_ascii=False).encode('utf-8')
                 self.send_response(200)
                 self.send_header('Content-Type', 'application/json; charset=utf-8')
                 self.send_header('Content-Length', str(len(corpo)))

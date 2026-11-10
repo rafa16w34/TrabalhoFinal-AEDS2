@@ -122,12 +122,14 @@ def formatar_diagnostico_jogo(app_id, grafo, comunidades, metadados, titulos):
             "imagem_capsule": f"https://cdn.cloudflare.steamstatic.com/steam/apps/{rec_id}/capsule_616x353.jpg",
             "url_steam": f"https://store.steampowered.com/app/{rec_id}",
             "score": round(score, 2),
+            "afinidade": afinidade,
             "afinidade_pct": afinidade,
             "mesma_comunidade": mesma_comm,
             "comunidade_id": comm_rec_id,
             "comunidade_nome": comm_rec_info["nome"],
             "comunidade_subtitulo": comm_rec_info["subtitulo"],
             "generos": list(meta_rec.get('genres', [])),
+            "tags_comuns": tags_comuns_topo,
             "tags_topo": tags_comuns_topo,
             "developers": list(meta_rec.get('developers', [])),
             "positive_ratio": pr,
@@ -137,6 +139,7 @@ def formatar_diagnostico_jogo(app_id, grafo, comunidades, metadados, titulos):
     return {
         "status": "ok",
         "tempo_ms": 1.0,
+        "alvo": alvo_dto,
         "jogo_alvo": alvo_dto,
         "recomendacoes": recs_dto
     }

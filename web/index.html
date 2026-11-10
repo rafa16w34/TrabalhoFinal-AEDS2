@@ -1367,7 +1367,8 @@
 
     function renderizarResultados(data) {
       dadosUltimaBusca = data;
-      const { alvo, recomendacoes, tempo_ms } = data;
+      const alvo = data.alvo || data.jogo_alvo;
+      const { recomendacoes, tempo_ms } = data;
 
       // 1. Renderiza o Card de Topo (Jogo Alvo)
       const targetCard = document.getElementById('targetHeroCard');
@@ -1499,7 +1500,7 @@
       if (!dadosUltimaBusca || !dadosUltimaBusca.recomendacoes[index]) return;
 
       const rec = dadosUltimaBusca.recomendacoes[index];
-      const alvo = dadosUltimaBusca.alvo;
+      const alvo = dadosUltimaBusca.alvo || dadosUltimaBusca.jogo_alvo;
       const d = rec.diagnostico || {};
 
       document.getElementById('modalDetalhesTitulo').innerHTML = `
