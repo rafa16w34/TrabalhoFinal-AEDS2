@@ -74,6 +74,8 @@ Entretanto, a recomendação de jogos eletrônicos apresenta peculiaridades intr
     \item \textbf{Ambiguidade e Diluição Taxonômica}: Sistemas estritamente baseados em conteúdo (\textit{Content-Based Filtering} --- CBF) dependem de metadados fornecidos pelas publicadoras, que recorrentemente atribuem categorias burocráticas genéricas (como \textit{Action} e \textit{Adventure}) a mais de 80\% das obras, gerando falsas equivalências entre jogos com mecânicas diametralmente opostas (como quebra-cabeças infantis e títulos de sobrevivência pós-apocalípticos).
 \end{enumerate}
 
+Trabalhos precursores desenvolvidos no próprio CEFET-MG (Campus Divinópolis), como o sistema híbrido de recomendação de filmes proposto por Amorim Neto \cite{amorim2024}, evidenciaram que a combinação de modelagens em grafos com o particionamento comunitário de Louvain é altamente eficaz para capturar agrupamentos orgânicos de interesse. Contudo, a aplicação dessa estratégia ao domínio de jogos exige superar desafios específicos de engajamento temporal assimétrico e contaminação semântica por termos superficiais.
+
 Diante dessa problemática, a motivação deste trabalho reside na concepção de um sistema híbrido de recomendação que explore a topologia estrutural de redes complexas em conjunto com a semântica fina de tags atribuídas pela comunidade de jogadores, sem recorrer a modelos neurais opacos que demandam treinamento custoso em aceleradores gráficos. A hipótese central investigada é que o casamento entre agrupamentos topológicos modulares e uma formulação contínua não-linear de pesos semânticos permite isolar comunidades genuínas de consumo e neutralizar a força bruta de nós onipresentes.
 
 Os objetivos fundamentais desta pesquisa são:
@@ -82,7 +84,7 @@ Os objetivos fundamentais desta pesquisa são:
     \item Identificar a macroestrutura do catálogo por meio de detecção de comunidades com o Algoritmo de Louvain, mapeando macro-clusters semânticos com reprodutibilidade determinística;
     \item Implementar um motor de busca em largura (BFS) em dois níveis suportado por indexação e memoização em tabelas de dispersão em memória principal com complexidade amortizada $O(1)$;
     \item Formular uma métrica contínua de similaridade de conteúdo baseada no Índice de Ruzicka com $\text{IDF}^2$ sobre tags comunitárias atenuadas por consenso, descarte por dissonância de tom, prior de qualidade e amortecimento topológico de grau de \textit{super-hubs};
-    \item Validar experimentalmente a solução por meio de avaliações quantitativas (\textit{Leave-One-Out}, Hit Rate@10, NDCG@10 e análises de sensibilidade) e qualitativas em 104 títulos de referência, disponibilizando código aberto no GitHub \cite{github}, base tratada no Zenodo \cite{zenodo}, interface web interativa e exportações estruturadas para o Gephi inspiradas no artigo clássico de Louvain \cite{blondel2008}.
+    \item Validar experimentalmente a solução por meio de avaliações quantitativas (\textit{Leave-One-Out}, Hit Rate@10, NDCG@10 e análises de sensibilidade) e qualitativas em 104 títulos de referência, disponibilizando código aberto no GitHub \cite{github}, base tratada no Zenodo \cite{zenodo}, interface web interativa em produção no Render \cite{render} e exportações estruturadas para o Gephi inspiradas na clássica Figura 2 de Blondel \textit{et al.} \cite{blondel2008}.
 \end{enumerate}
 
 O restante deste artigo está organizado da seguinte forma: a Seção II apresenta o referencial teórico e os fundamentos de grafos e sistemas de recomendação. A Seção III detalha a metodologia proposta, descrevendo o tratamento de dados, a modelagem matemática, o ciclo de vida da aplicação e o algoritmo de ranqueamento. A Seção IV expõe e discute criticamente os resultados quantitativos, qualitativos, a visualização no Gephi e a eficiência computacional. Por fim, a Seção V apresenta as considerações finais, limitações e propostas de trabalhos futuros.
@@ -107,7 +109,7 @@ No levantamento abrangente conduzido por Nagarnaik e Thomas \cite{nagarnaik2015}
 \begin{itemize}
     \item \textbf{Filtragem Baseada em Conteúdo (CBF):} Avalia descritores intrínsecos dos itens para sugerir produtos semelhantes àqueles previamente consumidos. Embora imune à esparsidade de interações entre usuários, tende à superespecialização e não propicia descobertas fortuitas (\textit{serendipity});
     \item \textbf{Filtragem Colaborativa (CF):} Subdividida em abordagens baseadas em memória (\textit{memory-based}) e em modelos (\textit{model-based}). Métodos puramente baseados em memória sofrem de problemas crônicos de escalabilidade ($O(|U| \cdot |V|)$) e viés de popularidade;
-    \item \textbf{Sistemas Híbridos:} Combinam a força preditiva do comportamento coletivo com os atributos semânticos de conteúdo. Nagarnaik e Thomas \cite{nagarnaik2015} enfatizam que a hibridização é a estratégia mais eficaz para mitigar as limitações individuais de esparsidade, escalabilidade e ambiguidade taxonômica.
+    \item \textbf{Sistemas Híbridos:} Combinam a força preditiva do comportamento coletivo com os atributos semânticos de conteúdo. Nagarnaik e Thomas \cite{nagarnaik2015}, assim como Amorim Neto \cite{amorim2024}, enfatizam que a hibridização é a estratégia mais eficaz para mitigar as limitações individuais de esparsidade, escalabilidade e ambiguidade taxonômica.
 \end{itemize}
 
 \subsection{Detecção de Comunidades Modulares (Algoritmo de Louvain)}
@@ -118,10 +120,10 @@ Q = \frac{1}{2m} \sum_{i,j} \left[ A_{ij} - \frac{k_i k_j}{2m} \right] \delta(c_
 \end{equation}
 onde $A_{ij}$ representa o peso da aresta entre os vértices $i$ e $j$, $k_i$ é a soma dos pesos das arestas conectadas ao vértice $i$, $m = \frac{1}{2}\sum_{ij} A_{ij}$, e $\delta(c_i, c_j)$ é a função delta de Kronecker que retorna 1 caso os vértices pertençam à mesma comunidade $c$, e 0 caso contrário. A identificação de comunidades permite atribuir um bônus de coesão topológica entre nós que compartilham o mesmo "super-nó".
 
-\subsection{Tabelas de Dispersão e Memoização em Memória Principal}
+\subsection{Tabelas de Dispersão e Estruturas de Pertinência em Memória}
 A execução de buscas em largura em redes com milhões de arestas exige estruturas de dados de alta eficiência para controle de nós visitados e cálculo de funções de custo. Conforme fundamentado por Cormen \textit{et al.} \cite{cormen2009}, tabelas de dispersão (\textit{hash tables}) e conjuntos indexados fornecem operações fundamentais de inserção, remoção e consulta em tempo computacional médio $O(1)$. 
 
-Em sistemas de recomendação em grafos esparsos, a utilização de tabelas de dispersão em memória para memoização de similaridades semânticas elimina o recálculo redundante de métricas contínuas pesadas entre pares de vértices durante a travessia da BFS. Essa abordagem supera a alocação de matrizes densas de adjacência ($O(|V|^2)$), garantindo determinismo temporal estrito, pegada de memória proporcional à esparsidade da rede ($O(|V| + |E|)$) e ausência de falsos positivos inerentes a filtros probabilísticos.
+Embora filtros probabilísticos compactos como o Filtro de Bloom \cite{bloom1970} ofereçam alta economia espacial para testes de pertinência às custas de uma taxa controlada de falsos positivos, o presente trabalho emprega tabelas de dispersão convencionais em memória principal \cite{cormen2009}. Essa escolha garante determinismo temporal estrito, ausência absoluta de falsos positivos no descarte de arestas e memoização exata das similaridades semânticas contínuas entre pares de jogos durante a travessia da BFS, operando com consumo de memória estritamente proporcional à esparsidade da rede ($O(|V| + |E|)$).
 
 \subsection{Ponderação Estatística de Termos (TF-IDF) e Índice de Ruzicka}
 O modelo TF-IDF (\textit{Term Frequency-Inverse Document Frequency}) \cite{salton1988} avalia a importância relativa de um termo $t$ dentro de uma coleção de documentos $D$. A frequência inversa do documento é dada por:
@@ -131,12 +133,7 @@ O modelo TF-IDF (\textit{Term Frequency-Inverse Document Frequency}) \cite{salto
 \end{equation}
 onde $|D|$ é a cardinalidade total do catálogo de jogos e $df(t)$ é a quantidade de títulos associados à tag $t$. Termos genéricos e onipresentes na plataforma (como \textit{Singleplayer} ou \textit{Action}) recebem valores de $\text{IDF}$ próximos a 1,0, enquanto tags descritoras de mecânicas de nicho (como \textit{Metroidvania} ou \textit{Souls-like}) obtêm valores substancialmente maiores. 
 
-Para integrar esses pesos estatísticos de forma contínua, o Índice de Ruzicka (Jaccard Generalizado) opera sobre vetores ponderados calculando a razão entre a soma dos mínimos e a soma dos máximos das componentes:
-\begin{equation}
-R(A, B) = \frac{\sum_{t \in T_A \cap T_B} \min\big(w_A(t), w_B(t)\big)}{\sum_{t \in T_A \cup T_B} \max\big(w_A(t), w_B(t)\big)}
-\label{eq:ruzicka_teoria}
-\end{equation}
-permitindo que variações contínuas de importância semântica modulem diretamente a afinidade entre itens.
+Para integrar esses pesos estatísticos de forma contínua, o Índice de Ruzicka (Jaccard Generalizado) opera sobre vetores ponderados calculando a razão entre a soma dos mínimos e a soma dos máximos das componentes, permitindo que variações contínuas de importância semântica modulem diretamente a afinidade entre itens.
 
 % ==============================================================================
 % SEÇÃO III: METODOLOGIA
@@ -146,7 +143,7 @@ permitindo que variações contínuas de importância semântica modulem diretam
 \subsection{Origem dos Dados e Poda Adaptativa por Mediana}
 A base empírica primária utilizada é originada do repositório público da plataforma Steam disponibilizado no Kaggle \cite{kaggle}, contendo originalmente mais de 41 milhões de avaliações e 40 mil títulos cadastrados. Para assegurar a reprodutibilidade científica e atender às diretrizes do projeto, os dados refinados e metadados estruturados foram compilados e hospedados permanentemente no repositório científico Zenodo sob o DOI \texttt{10.5281/zenodo.23861070} \cite{zenodo}.
 
-Contudo, a base estática bruta apresentava duas limitações severas: centenas de títulos do subgrafo principal não possuíam metadados semânticos e os atributos de gênero resumiam-se a categorias fiscais amplas. Para superar esse gargalo, desenvolveu-se um pipeline unificado e concorrente de requisições à API pública do \textit{SteamSpy}. Esse processo recuperou para cada título as 20 tags comunitárias mais votadas pelos usuários, os gêneros oficiais e os estúdios desenvolvedores normalizados por algoritmo de remoção de sufixos societários (\textit{Inc.}, \textit{LLC}, \textit{GmbH}) e descarte de empresas responsáveis exclusivamente por \textit{ports} secundários (Linux/Mac).
+Contudo, a base estática bruta apresentava duas limitações severas: centenas de títulos do subgrafo principal não possuíam metadados semânticos e os atributos de gênero resumiam-se a categorias fiscais amplas. Para superar esse gargalo, desenvolveu-se um pipeline unificado e concorrente de requisições à API pública do \textit{SteamSpy} \cite{steamspy}. Esse processo recuperou para cada título as 20 tags comunitárias mais votadas pelos usuários, os gêneros oficiais e os estúdios desenvolvedores normalizados por algoritmo de remoção de sufixos societários (\textit{Inc.}, \textit{LLC}, \textit{GmbH}) e descarte de empresas responsáveis exclusivamente por \textit{ports} secundários (Linux/Mac).
 
 Ademais, a fixação de um limiar homogêneo de tempo de jogo na filtragem $K$-Core compromete a integridade do sistema: um corte rígido de 50 horas exclui sumariamente usuários que completaram integralmente obras narrativas e lineares curtas (como as franquias \textit{LEGO} e \textit{Resident Evil}), enquanto um limiar fixo brando de 10 horas satura o grafo com arestas de contato meramente casual em jogos massivos ou mundos abertos. Para resolver essa assimetria, concebeu-se uma poda adaptativa em dois passos orientada pela mediana de engajamento:
 \begin{equation}
@@ -160,7 +157,10 @@ Para proteger o grafo de títulos universalmente rejeitados e com histórico de 
 
 O ecossistema é formalizado como um grafo não-direcionado bipartido e ponderado $G = (U \cup V, E, W)$. A função de ponderação $W: E \to \mathbb{R}^+$ deve amortecer desvios extremos de tempo de uso e valorizar avaliações com alto reconhecimento social da comunidade:
 \begin{equation}
-W(u, v) = \ln\big(1 + \text{horas}(u, v)\big) \cdot \Big[1{,}0 + 0{,}20 \ln\big(1 + \text{helpful}(u, v)\big)\Big]
+\begin{split}
+W(u, v) = {} & \ln\big(1 + \text{horas}(u, v)\big) \\
+& \times \Big[1{,}0 + 0{,}20 \ln\big(1 + \text{helpful}(u, v)\big)\Big]
+\end{split}
 \label{eq:peso_aresta}
 \end{equation}
 em que $\text{helpful}(u, v)$ representa a quantidade de votos de utilidade recebidos pela resenha de $u$ sobre o jogo $v$.
@@ -204,7 +204,7 @@ O menu principal (Fig.~\ref{fig:fluxo_menu}) expõe cinco opções operacionais:
 Dado um jogo-alvo $v_{alvo} \in V$, o algoritmo executa uma Busca em Largura (BFS) em dois níveis suportada por estruturas de dados em memória principal com complexidade amortizada de acesso $O(1)$:
 
 \subsubsection{Nível 1: Identificação da Vizinhança de Elite}
-Resgatam-se os vizinhos adjacentes a $v_{alvo}$ no grafo bipartido e selecionam-se os $K = 1000$ usuários com maior engajamento comprovado, ordenados decrescentemente por $W(u, v_{alvo})$. Para experimentos rápidos de validação cruzada, o hiperparâmetro pode ser calibrado para $K = 50$.
+Resgatam-se os vizinhos adjacentes a $v_{alvo}$ no grafo bipartido e selecionam-se os $K = 1000$ usuários com maior engajamento comprovado no título consultado, ordenados decrescentemente por $W(u, v_{alvo})$. O parâmetro operacional $K = 1000$ define a profundidade da vizinhança explorada para geração das recomendações finais entregues ao usuário (para experimentos rápidos de calibração em lote, o valor pode ser ajustado para $K = 50$).
 
 \subsubsection{Nível 2: Expansão de Candidatos e Filtros de Poda em Memória}
 A partir de cada usuário $u$ selecionado, percorrem-se suas arestas incidentes para recuperar os jogos candidatos $v_j \in V$. Para assegurar alta eficiência e fidelidade conceitual, aplicam-se três critérios de poda em tempo estrito $O(1)$:
@@ -225,12 +225,12 @@ A similaridade entre o perfil semântico de $v_{alvo}$ e do candidato $v_j$ é m
 w_A(t) = \big[\text{IDF}(t)\big]^2 \cdot \left(1{,}0 - 0{,}70 \cdot \frac{r_A(t)}{\max(1, N_A - 1)}\right)
 \label{eq:peso_tag}
 \end{equation}
-O índice de similaridade semântica $J(A, B)$ é dado por:
+Denotando a soma dos pesos do conjunto de tags de um jogo por $S_w(X) = \sum_{t \in T_X} w_X(t)$ e a soma da interseção mínima por $S_{\min}(A, B) = \sum_{t \in T_A \cap T_B} \min\big(w_A(t), w_B(t)\big)$, a formulação contínua de Ruzicka é expressa de forma compacta por:
 \begin{equation}
-J(A, B) = \frac{\sum_{t \in T_A \cap T_B} \min\big(w_A(t), w_B(t)\big)}{\sum_{t \in T_A} w_A(t) + \sum_{t \in T_B} w_B(t) - \sum_{t \in T_A \cap T_B} \min\big(w_A(t), w_B(t)\big)}
+J(A, B) = \frac{S_{\min}(A, B)}{S_w(A) + S_w(B) - S_{\min}(A, B)}
 \label{eq:ruzicka}
 \end{equation}
-Para evitar que títulos de um mesmo estúdio com mecânicas dispares sejam resgatados indevidamente, impõe-se um corte rígido de relevância semântica: se $J(v_{alvo}, v_j) < 0{,}20$, o item é descartado. Um mecanismo de memoização em tabela de dispersão (\textit{hash map}) armazena os valores calculados de $J$, garantindo que a similaridade entre cada par de jogos seja processada exatamente uma única vez durante a BFS.
+Para evitar que títulos de um mesmo estúdio com mecânicas dispares sejam resgatados indevidamente, impõe-se um corte rígido de relevância semântica: se $J(v_{alvo}, v_j) < 0{,}20$, o item é descartado. Um mecanismo de memoização em tabela de dispersão armazena os valores calculados de $J$, garantindo que a similaridade entre cada par de jogos seja processada exatamente uma única vez durante a BFS.
 
 \subsubsection{Composição do Escore e Amortecimento de Grau}
 Os candidatos que superam a barreira semântica recebem multiplicadores de ajuste topológico e taxonômico:
@@ -243,9 +243,12 @@ Os candidatos que superam a barreira semântica recebem multiplicadores de ajust
 
 A contribuição do par $(u, v_j)$ ao escore acumulado é expressa por:
 \begin{equation}
-S(u, v_j) = S_{colab}(u, v_j) \cdot \beta_{com} \cdot \beta_{gen} \cdot \Big(J(v_{alvo}, v_j) + \beta_{dev} + 0{,}1\Big) \cdot \frac{p(v_j)}{100}
+\begin{split}
+S(u, v_j) = {} & S_{colab}(u, v_j) \cdot \beta_{com} \cdot \beta_{gen} \\
+& \times \Big(J(v_{alvo}, v_j) + \beta_{dev} + 0{,}1\Big) \cdot \frac{p(v_j)}{100}
+\end{split}
 \end{equation}
-O escore bruto total decorre da agregação sobre todos os usuários do Nível 1:
+O escore bruto total decorre da agregação aditiva sobre todos os usuários selecionados do Nível 1:
 \begin{equation}
 S_{bruto}(v_j) = \sum_{u \in U_{top}} S(u, v_j)
 \end{equation}
@@ -263,39 +266,41 @@ Os itens são ordenados decrescentemente por $S_{final}$, e os 10 títulos com m
 \section{Resultados e Discussões}
 
 \subsection{Topologia da Rede e Decomposição Modular}
-A aplicação do Algoritmo de Louvain com semente pseudoaleatória fixada ($\text{seed} = 16$) sobre o grafo bipartido particionou a rede em 7 comunidades modulares principais (super-nós). A Tabela~\ref{tab:supernos} detalha as partições consolidadas a partir do arquivo exportado para o Gephi (\texttt{universo\_super\_nos.gexf}), demonstrando expressiva aderência aos nichos orgânicos da indústria de jogos.
+A aplicação do Algoritmo de Louvain com semente determinística fixa ($\text{seed} = 16$) sobre o grafo bipartido particionou a rede em 7 comunidades modulares principais (super-nós). A Tabela~\ref{tab:supernos} detalha as partições consolidadas a partir do arquivo exportado para o Gephi (\texttt{universo\_super\_nos.gexf}), demonstrando expressiva aderência aos nichos orgânicos da indústria de jogos.
 
-\begin{table}[htbp]
-\caption{Caracterização Topológica dos Super-Nós Identificados via Louvain}
-\begin{center}
+\begin{table*}[!t]
+\caption{Caracterização Topológica dos Super-Nós Identificados via Algoritmo de Louvain}
+\centering
 \begin{tabular}{c c c l l}
 \toprule
-\textbf{Nó} & \textbf{Jogos} & \textbf{Membros} & \textbf{Gênero Dominante} & \textbf{Títulos Representativos} \\
+\textbf{Super-Nó} & \textbf{Jogos} & \textbf{Membros} & \textbf{Gênero Dominante} & \textbf{Títulos Representativos do Cluster} \\
 \midrule
-0 & 946 & 28.241 & Action & \textit{The Witcher 3, DOOM, Tomb Raider} \\
-1 & 791 & 20.480 & Indie & \textit{Deep Rock Galactic, Isaac, Hades} \\
-2 & 536 & 20.203 & Action RPG & \textit{ELDEN RING, DARK SOULS III, MGS V} \\
-3 & 721 & 37.097 & Strategy / CMS & \textit{RimWorld, Factorio, Civ V} \\
-4 & 124 & 10.589 & Sci-Fi / Shooter & \textit{Cyberpunk 2077, Warframe, Destiny 2} \\
-5 & 37  & 5.243  & RPG Imersivo & \textit{Fallout 4, Skyrim, Borderlands 2} \\
-6 & 599 & 34.914 & Sandbox / Valve & \textit{TF2, Garry's Mod, L4D2, GTA V} \\
+0 & 946 & 28.241 & Action & \textit{The Witcher 3: Wild Hunt, DOOM, Tomb Raider, Grand Theft Auto V} \\
+1 & 791 & 20.480 & Indie & \textit{Deep Rock Galactic, The Binding of Isaac: Rebirth, Hades, Hollow Knight} \\
+2 & 536 & 20.203 & Action RPG & \textit{ELDEN RING, DARK SOULS III, Sekiro: Shadows Die Twice, Monster Hunter: World} \\
+3 & 721 & 37.097 & Strategy / CMS & \textit{RimWorld, Factorio, Sid Meier's Civilization V, Cities: Skylines} \\
+4 & 124 & 10.589 & Sci-Fi / Shooter & \textit{Cyberpunk 2077, Warframe, Destiny 2, Tom Clancy's Rainbow Six Siege} \\
+5 & 37  & 5.243  & RPG Imersivo & \textit{Fallout 4, The Elder Scrolls V: Skyrim, Borderlands 2, Dishonored} \\
+6 & 599 & 34.914 & Sandbox / Valve & \textit{Team Fortress 2, Garry's Mod, Left 4 Dead 2, Counter-Strike: Global Offensive} \\
 \bottomrule
 \end{tabular}
 \label{tab:supernos}
-\end{center}
-\end{table}
+\end{table*}
 
 A modularidade obtida permitiu que a propagação da BFS no Nível 2 privilegiasse vértices da mesma vizinhança topológica, reduzindo dispersões estocásticas sem confinar artificialmente títulos interdisciplinares.
 
 \subsection{Avaliação Quantitativa Experimental}
-Para validar o poder preditivo do sistema de forma rigorosa e reproduzível, implementou-se o protocolo experimental \textit{Leave-One-Out} em conformidade com as diretrizes da literatura especializada em RecSys. Selecionou-se uma amostra representativa de $N = 300$ usuários com conectividade suficiente ($\text{grau} \ge 10$, $\text{seed} = 42$). Para cada usuário, seu título de maior engajamento foi fixado como semente de entrada ($v_{alvo}$), enquanto uma de suas demais arestas de consumo comprovado ($v_{oculto}$) foi mascarada temporariamente da estrutura do grafo. Avaliou-se então a capacidade do motor em recuperar $v_{oculto}$ no Top-10 de recomendações através das métricas \textit{Hit Rate@10} (HR@10) e \textit{Normalized Discounted Cumulative Gain@10} (NDCG@10).
+Para validar o poder preditivo do sistema de forma rigorosa e reproduzível, implementou-se o protocolo experimental \textit{Leave-One-Out} em conformidade com as diretrizes canônicas da literatura especializada em RecSys. Selecionou-se uma amostra representativa de $N = 300$ usuários com conectividade suficiente ($\text{grau} \ge 10$, $\text{seed} = 42$). É crucial distinguir conceitualmente o tamanho da amostra estatística de validação ($N = 300$ usuários avaliados no experimento) da profundidade de vizinhança operacional da BFS ($K = 1000$ usuários expandidos em tempo de execução para cada consulta em produção).
+
+Para cada um dos 300 usuários avaliados, seu título de maior engajamento foi fixado como semente de entrada ($v_{alvo}$), enquanto uma de suas demais arestas de consumo comprovado ($v_{oculto}$) foi mascarada temporariamente da estrutura do grafo. Avaliou-se então a capacidade do motor em recuperar $v_{oculto}$ no Top-10 de recomendações através das métricas \textit{Hit Rate@10} (HR@10) e \textit{Normalized Discounted Cumulative Gain@10} (NDCG@10).
 
 \subsubsection{Análise de Sensibilidade: Amortecimento de Grau}
 A Tabela~\ref{tab:sensibilidade_grau} sintetiza o impacto do expoente de amortecimento $\alpha \in [0{,}0; 0{,}50]$ na mitigação do viés de popularidade.
 
 \begin{table}[htbp]
 \caption{Sensibilidade ao Amortecimento Topológico de Grau ($\alpha$)}
-\begin{center}
+\centering
+\resizebox{\columnwidth}{!}{
 \begin{tabular}{c c c}
 \toprule
 \textbf{Expoente ($\alpha$)} & \textbf{Hit Rate@10 (\%)} & \textbf{NDCG@10} \\
@@ -306,8 +311,8 @@ A Tabela~\ref{tab:sensibilidade_grau} sintetiza o impacto do expoente de amortec
 0,50 & 27,33\% & 0,1481 \\
 \bottomrule
 \end{tabular}
+}
 \label{tab:sensibilidade_grau}
-\end{center}
 \end{table}
 
 Sem o amortecimento ($\alpha = 0{,}0$), o sistema atinge apenas 17,67\% de taxa de acerto devido à dominação sistemática de títulos generalistas ultraconectados. A adoção de $\alpha = 0{,}35$ resultou no pico de eficácia preditiva (31,33\% de HR@10 e NDCG@10 de 0,1728), representando um salto relativo de \textbf{+77,3\%} em acurácia de descoberta de itens relevantes. Por outro lado, a sobrepenalização ($\alpha = 0{,}50$) prejudicou o ranqueamento ao sufocar jogos canônicos genuinamente afins.
@@ -317,24 +322,25 @@ A Tabela~\ref{tab:sensibilidade_jaccard} documenta o comportamento do motor fren
 
 \begin{table}[htbp]
 \caption{Sensibilidade ao Corte Semântico de Jaccard e Bônus de Louvain}
-\begin{center}
-\begin{tabular}{c c c c}
+\centering
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{l c c c}
 \toprule
 \textbf{Parâmetro Analisado} & \textbf{Valor} & \textbf{HR@10 (\%)} & \textbf{NDCG@10} \\
 \midrule
 Limiar $J_{corte}$ & 0,10 & 24,33\% & 0,1284 \\
-(com $\alpha=0{,}35$, $\beta_{com}=3{,}0$) & 0,15 & 28,67\% & 0,1542 \\
+($\alpha=0{,}35$, $\beta_{com}=3{,}0$) & 0,15 & 28,67\% & 0,1542 \\
 & \textbf{0,20} & \textbf{31,33\%} & \textbf{0,1728} \\
 & 0,25 & 25,00\% & 0,1365 \\
 \midrule
 Bônus Louvain $\beta_{com}$ & 1,00 (Sem Louvain) & 22,33\% & 0,1198 \\
-(com $\alpha=0{,}35$, $J_{corte}=0{,}20$) & 2,00 & 28,00\% & 0,1503 \\
+($\alpha=0{,}35$, $J_{corte}=0{,}20$) & 2,00 & 28,00\% & 0,1503 \\
 & \textbf{3,00} & \textbf{31,33\%} & \textbf{0,1728} \\
 & 5,00 & 29,67\% & 0,1611 \\
 \bottomrule
 \end{tabular}
+}
 \label{tab:sensibilidade_jaccard}
-\end{center}
 \end{table}
 
 Os resultados demonstram que limiares excessivamente brandos ($J_{corte} \le 0{,}15$) admitem ruído semântico, enquanto patamares restritivos ($J_{corte} = 0{,}25$) causam escassez de candidatos em subnichos específicos. Simultaneamente, a desativação da modulação de comunidades ($\beta_{com} = 1{,}0$) derruba a acurácia para 22,33\%, provando empiricamente que o conhecimento topológico global gerado por Louvain é determinante para guiar a BFS em direção a candidatos contextualmente legítimos.
@@ -344,7 +350,7 @@ A avaliação qualitativa foi realizada a partir do processamento do arquivo \te
 
 \begin{table*}[htbp]
 \caption{Top Recomendações Obtidas para Diferentes Perfis e Gêneros do Catálogo Steam}
-\begin{center}
+\centering
 \begin{tabular}{l l c c l}
 \toprule
 \textbf{Jogo Consultado} & \textbf{Top-5 Recomendações Obtidas} & \textbf{App ID} & \textbf{Score Híbrido} & \textbf{Comunidade Louvain} \\
@@ -387,7 +393,6 @@ A avaliação qualitativa foi realizada a partir do processamento do arquivo \te
 \bottomrule
 \end{tabular}
 \label{tab:benchmarks_expandida}
-\end{center}
 \end{table*}
 
 \subsection{Discussão Crítica de Casos Emblemáticos}
@@ -411,8 +416,8 @@ A exportação de grafos para ferramentas de visualização (como o Gephi) frequ
 \subsection{Arquitetura em Duas Camadas, Interface Web e Eficiência}
 Para atender simultaneamente aos rigores da validação científica acadêmica e às restrições de implantação em serviços de nuvem modernos, concebeu-se uma arquitetura desacoplada em duas camadas:
 \begin{itemize}
-    \item \textbf{Camada de Pesquisa e Avaliação Científica:} Opera localmente sobre a base completa do Zenodo (DOI: \texttt{10.5281/zenodo.23861070}), executando a modelagem do grafo bipartido em memória, a detecção de comunidades por Louvain, o protocolo \textit{Leave-One-Out} e a exportação para o Gephi com latência média inferior a 200 milissegundos por consulta em CPU comum (Linux Ubuntu 24.04, 8 núcleos, consumo inferior a 450 MB de RAM).
-    \item \textbf{Camada de Produção e Serviço Web:} O script \texttt{src/servidor\_web.py} expõe uma interface gráfica responsiva em HTML/CSS/JavaScript (\texttt{web/index.html}) dotada de busca com \textit{autocomplete} instantâneo. Em ambientes de hospedagem com restrição severa de recursos (como instâncias gratuitas no Render limitadas a 512 MB de RAM), o servidor pode inicializar diretamente a partir de um cache JSON estruturado (\texttt{web/cache\_recomendacoes.json}), respondendo a requisições com menos de 40 MB de memória alocada sem prescindir da acurácia híbrida.
+    \item \textbf{Camada de Pesquisa e Avaliação Científica:} Opera localmente sobre a base completa do Zenodo (DOI: \texttt{10.5281/zenodo.23861070} \cite{zenodo}), executando a modelagem do grafo bipartido em memória, a detecção de comunidades por Louvain, o protocolo \textit{Leave-One-Out} e a exportação para o Gephi com latência média inferior a 200 milissegundos por consulta em CPU comum (Linux Ubuntu 24.04, 8 núcleos, consumo inferior a 450 MB de RAM).
+    \item \textbf{Camada de Produção e Serviço Web:} O script \texttt{src/servidor\_web.py} expõe uma interface gráfica responsiva em HTML/CSS/JavaScript (\texttt{web/index.html}) dotada de busca com \textit{autocomplete} instantâneo. Em ambientes de hospedagem com restrição severa de recursos (como a instância em produção no Render \cite{render} com teto de 512 MB de RAM), o servidor inicializa diretamente a partir de um cache JSON estruturado (\texttt{web/cache\_recomendacoes.json}), respondendo a requisições com menos de 40 MB de memória alocada sem prescindir da acurácia híbrida.
 \end{itemize}
 
 A complexidade computacional do algoritmo de inferência é delimitada por:
@@ -433,7 +438,7 @@ A avaliação quantitativa formal via protocolo \textit{Leave-One-Out} comprovou
 Como limitações identificadas, destacam-se a dependência da consistência das tags atribuídas pela comunidade externa e a partida a frio estrita para títulos recém-lançados sem histórico de avaliações. Como diretrizes para trabalhos futuros, propõe-se:
 \begin{enumerate}
     \item A integração de Processamento de Linguagem Natural (NLP) sobre o conteúdo textual corrido das resenhas de usuários para extrair sentimentos implícitos sobre mecânicas de jogabilidade;
-    \item A evolução das estruturas de dispersão em memória para filtros probabilísticos dinâmicos (como \textit{Cuckoo Filters}), suportando fluxos contínuos de inserção e deleção em tempo real (\textit{streaming});
+    \item A evolução das estruturas de dispersão em memória para filtros probabilísticos dinâmicos (como variações do Filtro de Bloom \cite{bloom1970} e \textit{Cuckoo Filters}), suportando fluxos contínuos de inserção e deleção em tempo real (\textit{streaming});
     \item A investigação de técnicas de aprendizado de representação em grafos (\textit{Graph Neural Networks} ou \textit{Node2Vec}) operando de forma integrada à métrica não-linear de amortecimento de grau.
 \end{enumerate}
 
@@ -454,11 +459,20 @@ P.~Nagarnaik and A.~Thomas, ``Survey on Recommendation System Methods,'' in \tex
 \bibitem{blondel2008}
 V.~D. Blondel, J.-L. Guillaume, R.~Lambiotte, and E.~Lefebvre, ``Fast unfolding of communities in large networks,'' \textit{Journal of Statistical Mechanics: Theory and Experiment}, vol. 2008, no. 10, p. P10008, Oct. 2008.
 
+\bibitem{amorim2024}
+E.~C. Amorim Neto, ``Sistema Híbrido de Recomendação de Filmes utilizando Grafos,'' Monografia / Relatório de Pesquisa, Engenharia de Computação, Centro Federal de Educação Tecnológica de Minas Gerais (CEFET-MG), Campus V, Divinópolis, Brasil, 2024.
+
+\bibitem{bloom1970}
+B.~H. Bloom, ``Space/Time Trade-offs in Hash Coding with Allowable Errors,'' \textit{Communications of the ACM}, vol. 13, no. 7, pp. 422--426, Jul. 1970.
+
 \bibitem{cormen2009}
 T.~H. Cormen, C.~E. Leiserson, R.~L. Rivest, and C.~Stein, \textit{Introduction to Algorithms}, 3rd ed. Cambridge, MA, USA: MIT Press, 2009.
 
 \bibitem{salton1988}
 G.~Salton and C.~Buckley, ``Term-weighting approaches in automatic text retrieval,'' \textit{Information Processing \& Management}, vol. 24, no. 5, pp. 513--523, 1988.
+
+\bibitem{steamspy}
+S.~Galyonkin, ``Steam Spy: A statistical service for Steam,'' 2015. [Online]. Disponível em: \url{https://steamspy.com}.
 
 \bibitem{kaggle}
 A.~Kozyriev, ``Game Recommendations on Steam,'' \textit{Kaggle Dataset}, 2022. [Online]. Disponível em: \url{https://www.kaggle.com/datasets/antonkozyriev/game-recommendations-on-steam}.
@@ -468,6 +482,9 @@ G.~A. Faria e R.~A. Faria, ``Sistema Híbrido de Recomendação de Jogos em Graf
 
 \bibitem{zenodo}
 G.~A. Faria e R.~A. Faria, ``Steam Hybrid Graph Recommender: Sampled Dataset and Preprocessed Metadata,'' Repositório Científico Zenodo, 2026. DOI: \url{https://doi.org/10.5281/zenodo.23861070}.
+
+\bibitem{render}
+G.~A. Faria e R.~A. Faria, ``Steam Finder: Interface Web de Recomendação em Nuvem,'' Instância de Produção hospedada no Render, 2026. [Online]. Disponível em: \url{https://steam-finder.onrender.com}.
 
 \end{thebibliography}
 
