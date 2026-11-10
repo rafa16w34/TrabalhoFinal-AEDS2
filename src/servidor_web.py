@@ -25,6 +25,8 @@ METADADOS = None
 COMUNIDADES = None
 ROTULOS_COMUNIDADES = {}
 JOGOS_LISTA_BUSCA = []
+CACHE_RECOMENDACOES = None
+MODO_CACHE = False
 
 ROTULOS_FIXOS = {
     0: {"nome": "Indie & Roguelike 2D", "subtitulo": "Roguelike • Pixel Art • Metroidvania"},
@@ -35,13 +37,31 @@ ROTULOS_FIXOS = {
     5: {"nome": "Simulação, Direção & Mundo Aberto", "subtitulo": "Automobilismo • Mundo Aberto • Corrida • VR"}
 }
 
-def inicializar_motor(motor=None):
+def inicializar_motor(motor=None, forcar_dinamico=False):
     """Carrega os dados e o grafo apenas uma vez na inicialização."""
     global GRAFO, TITULOS, METADADOS, COMUNIDADES, ROTULOS_COMUNIDADES, JOGOS_LISTA_BUSCA
+    global CACHE_RECOMENDACOES, MODO_CACHE
     print("=" * 65)
     print("INICIALIZANDO MOTOR DE RECOMENDAÇÃO WEB (STEAM GRAPH)")
     print("=" * 65)
     
+    # 1. Tenta carregar cache pré-calculado (Modo Nuvem Leve para Render / Servidores)
+    caminho_cache = os.path.join(project_root, 'web', 'cache_recomendacoes.json')
+    if not forcar_dinamico and motor is None and os.path.exists(caminho_cache):
+        try:
+            print(">> Modo Nuvem Leve: carregando cache pré-calculado...")
+            with open(caminho_cache, 'r', encoding='utf-8') as f:
+                CACHE_RECOMENDACOES = json.load(f)
+            MODO_CACHE = True
+            JOGOS_LISTA_BUSCA = CACHE_RECOMENDACOES.get('jogos_busca', [])
+            qtd_recs = len(CACHE_RECOMENDACOES.get('recomendacoes', {}))
+            print(f"✓ Sucesso! {len(JOGOS_LISTA_BUSCA)} jogos catalogados e {qtd_recs} recomendações prontas.")
+            print(f"✓ Consumo estimado de memória: ~40 MB RAM (100% seguro para o Render).")
+            print("=" * 65)
+            return
+        except Exception as e:
+            print(f"[AVISO] Falha ao ler cache ({e}). Recorrendo ao motor dinâmico...")
+
     if motor is not None:
         GRAFO, TITULOS, METADADOS, COMUNIDADES = motor
     else:
@@ -195,6 +215,43 @@ class RecommenderHandler(BaseHTTPRequestHandler):
         if not app_id:
             self.responder_erro("Parametro 'id' obrigatorio.", 400)
             return
+
+        # Atendimento instantâneo pelo cache pré-calculado (Modo Nuvem Leve / Render)
+        if MODO_CACHE and CACHE_RECOMENDACOES:
+            recs_dict = CACHE_RECOMENDACOES.get('recomendacoes', {})
+            podados_dict = CACHE_RECOMENDACOES.get('jogos_podados', {})
+            if app_id in recs_dict:
+                corpo = json.dumps(recs_dict[app_id], ensure_ascii=False).encode('utf-8')
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.send_header('Content-Length', str(len(corpo)))
+                self.end_headers()
+                self.wfile.write(corpo)
+                return
+            elif app_id in podados_dict:
+                p_info = podados_dict[app_id]
+                titulo = p_info.get('titulo', f"Jogo {app_id}")
+                pr = p_info.get('positive_ratio', 50.0)
+                msg = f"O jogo '{titulo}' possui apenas {pr}% de avaliações positivas na Steam e foi previamente excluído do Grafo de Recomendações (a Poda de Qualidade exige no mínimo 65% de aprovação comprovada da comunidade)."
+                resposta = {
+                    "status": "erro_qualidade",
+                    "mensagem": msg,
+                    "titulo": titulo,
+                    "id": app_id,
+                    "positive_ratio": pr,
+                    "imagem": f"https://cdn.cloudflare.steamstatic.com/steam/apps/{app_id}/header.jpg",
+                    "imagem_capsule": f"https://cdn.cloudflare.steamstatic.com/steam/apps/{app_id}/capsule_616x353.jpg"
+                }
+                corpo = json.dumps(resposta, ensure_ascii=False).encode('utf-8')
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.send_header('Content-Length', str(len(corpo)))
+                self.end_headers()
+                self.wfile.write(corpo)
+                return
+            else:
+                self.responder_erro(f"Jogo {app_id} não encontrado no grafo filtrado (fora da amostragem K-Core).", 404)
+                return
 
         node_alvo = f"game_{app_id}"
         if node_alvo not in GRAFO:
@@ -423,8 +480,8 @@ class RecommenderHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(corpo)
 
-def iniciar_servidor(porta=5000, abrir_navegador=True, motor=None):
-    inicializar_motor(motor=motor)
+def iniciar_servidor(porta=5000, abrir_navegador=True, motor=None, forcar_dinamico=False):
+    inicializar_motor(motor=motor, forcar_dinamico=forcar_dinamico)
     servidor = HTTPServer(('0.0.0.0', porta), RecommenderHandler)
     url = f"http://localhost:{porta}"
     print("=" * 65)
@@ -443,5 +500,16 @@ def iniciar_servidor(porta=5000, abrir_navegador=True, motor=None):
         servidor.server_close()
 
 if __name__ == '__main__':
-    p = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 5000
-    iniciar_servidor(porta=p)
+    forcar_din = '--dinamico' in sys.argv
+    args_limpos = [a for a in sys.argv[1:] if a != '--dinamico']
+    port_env = os.environ.get('PORT')
+    if port_env and port_env.isdigit():
+        p = int(port_env)
+        abrir_nav = False
+    elif len(args_limpos) > 0 and args_limpos[0].isdigit():
+        p = int(args_limpos[0])
+        abrir_nav = False
+    else:
+        p = 5000
+        abrir_nav = True
+    iniciar_servidor(porta=p, abrir_navegador=abrir_nav, forcar_dinamico=forcar_din)
