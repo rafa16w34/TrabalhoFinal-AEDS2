@@ -1,0 +1,46 @@
+{
+  "Popularidade Global": {
+    "hr10": 5.0,
+    "ndcg10": 0.02287765408428461,
+    "community_match_pct": 19.0,
+    "genre_jaccard_pct": 26.760436507936507,
+    "tag_jaccard_pct": 19.276332059514964,
+    "catalog_coverage_count": 10,
+    "catalog_coverage_pct": 0.279876854184159,
+    "degree_mean": 13699.6,
+    "degree_median": 13280.0
+  },
+  "Co-ocorr\u00eancia Pura (CF)": {
+    "hr10": 7.000000000000001,
+    "ndcg10": 0.034776551344423014,
+    "community_match_pct": 53.233333333333334,
+    "genre_jaccard_pct": 39.156244588744585,
+    "tag_jaccard_pct": 27.368460498751507,
+    "catalog_coverage_count": 257,
+    "catalog_coverage_pct": 7.1928351525328855,
+    "degree_mean": 9307.700666666668,
+    "degree_median": 8829.0
+  },
+  "M\u00e9todo sem Amortecimento (a=0)": {
+    "hr10": 5.0,
+    "ndcg10": 0.02649309488987064,
+    "community_match_pct": 75.91825396825396,
+    "genre_jaccard_pct": 56.00087962962963,
+    "tag_jaccard_pct": 40.57836264602434,
+    "catalog_coverage_count": 769,
+    "catalog_coverage_pct": 21.522530086761822,
+    "degree_mean": 4021.592105263158,
+    "degree_median": 2922.0
+  },
+  "M\u00e9todo Proposto (a=0.35)": {
+    "hr10": 4.666666666666667,
+    "ndcg10": 0.02444059802743213,
+    "community_match_pct": 79.98492063492063,
+    "genre_jaccard_pct": 56.983181216931214,
+    "tag_jaccard_pct": 41.41522920550989,
+    "catalog_coverage_count": 886,
+    "catalog_coverage_pct": 24.797089280716484,
+    "degree_mean": 3455.4760458839405,
+    "degree_median": 2456.0
+  }
+}

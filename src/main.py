@@ -198,6 +198,8 @@ def recomendar(grafo, titulos, metadados, comunidades):
 
         print(f" Buscando Recomendações para: {nome_alvo} (ID: {id_alvo})")
 
+        import time
+        t_inicio = time.perf_counter()
         resultados, top_users = recomendar_jogos(
             grafo, 
             id_alvo, 
@@ -205,15 +207,18 @@ def recomendar(grafo, titulos, metadados, comunidades):
             metadados, 
             top_n_jogos=10
         )
+        t_ms = (time.perf_counter() - t_inicio) * 1000.0
+
         if not resultados:
             print("ERRO: Nenhuma recomendação encontrada ou jogo fora do grafo.")
             continue
 
-        print("\n--- TOP 10 RECOMENDAÇÕES HÍBRIDAS ---")
+        print(f"\n--- TOP 10 RECOMENDAÇÕES HÍBRIDAS (Processado em {t_ms:.1f} ms) ---")
         for i, (jogo_id, score) in enumerate(resultados):
             id_limpo = jogo_id.replace("game_", "")
             titulo_rec = titulos.get(id_limpo, "Nome Desconhecido")
             print(f" {i+1:2d}º Lugar - {titulo_rec:<45} | Score: {score:.2f}")
+        print(f" Tempo de execução: {t_ms:.1f} ms\n")
 
 def menu_exportar(grafo=None, titulos=None, metadados=None, comunidades=None):
     """Executa a exportação para o Gephi."""

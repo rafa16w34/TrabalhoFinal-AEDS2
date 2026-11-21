@@ -1091,18 +1091,6 @@
         </div>
       </a>
 
-      <div class="nav-actions">
-        <button class="btn-nav" onclick="abrirModalLote()">
-          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-          Recomendar em Lote
-        </button>
-        <button class="btn-nav" onclick="dispararGephi()">
-          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-          Exportar Gephi
-        </button>
-      </div>
-    </div>
-  </header>
 
   <!-- MAIN VIEW -->
   <main>
@@ -1177,34 +1165,7 @@
     </section>
   </main>
 
-  <!-- MODAL DE LOTE -->
-  <div class="modal-backdrop" id="modalLote">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h4 class="modal-title">Processamento em Lote (jogos_entrada.txt)</h4>
-        <button class="modal-close" onclick="fecharModalLote()">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px;">
-          Executa o algoritmo de recomendação para todos os App IDs listados no arquivo 
-          <code style="color: var(--primary);">jogos_entrada.txt</code> e gera o relatório completo.
-        </p>
-        <button class="btn-nav" style="background: var(--primary); color: #0d1218; font-weight: 700; width: 100%; justify-content: center; margin-bottom: 16px;" id="btnExecutarLote" onclick="executarLote()">
-          ▶ Executar Processamento em Lote Agora
-        </button>
-        <div id="loteResultArea" style="display: none;">
-          <div style="font-size: 0.8rem; font-weight: 600; color: var(--success); margin-bottom: 6px;">
-            ✓ Concluído com sucesso! Prévia do relatório:
-          </div>
-          <pre class="report-pre" id="reportPreview"></pre>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn-reset" onclick="fecharModalLote()">Fechar</button>
-      </div>
-    </div>
-  </div>
-
+  
   <!-- MODAL DE EXPLICABILIDADE / DETALHES DA RECOMENDAÇÃO -->
   <div class="modal-backdrop" id="modalDetalhesRec">
     <div class="modal-box modal-detalhes-box">
@@ -1699,50 +1660,7 @@
       searchInput.focus();
     }
 
-    // Modal de Lote
-    function abrirModalLote() {
-      document.getElementById('modalLote').style.display = 'flex';
-    }
-    function fecharModalLote() {
-      document.getElementById('modalLote').style.display = 'none';
-    }
-
-    async function executarLote() {
-      const btn = document.getElementById('btnExecutarLote');
-      btn.disabled = true;
-      btn.innerText = "⏳ Processando lote em segundo plano...";
-
-      try {
-        const res = await fetch('/api/lote', { method: 'POST' });
-        const data = await res.json();
-
-        if (data.status === 'ok') {
-          document.getElementById('loteResultArea').style.display = 'block';
-          document.getElementById('reportPreview').innerText = data.resumo;
-          mostrarToast("Processamento em lote finalizado com sucesso!");
-        } else {
-          mostrarToast(`Erro: ${data.mensagem}`);
-        }
-      } catch (err) {
-        mostrarToast("Erro ao conectar ao servidor para lote.");
-      } finally {
-        btn.disabled = false;
-        btn.innerText = "▶ Executar Processamento em Lote Novamente";
-      }
-    }
-
-    // Exportar Gephi
-    async function dispararGephi() {
-      mostrarToast("Iniciando exportação para o Gephi...");
-      try {
-        const res = await fetch('/api/gephi', { method: 'POST' });
-        const data = await res.json();
-        mostrarToast(data.mensagem || "Arquivos Gephi gerados com sucesso!");
-      } catch (err) {
-        mostrarToast("Erro ao solicitar exportação Gephi.");
-      }
-    }
-
+   
     function mostrarToast(msg) {
       const toast = document.getElementById('toast');
       toast.innerText = msg;
@@ -1766,9 +1684,7 @@
     document.getElementById('modalDetalhesRec').addEventListener('click', (e) => {
       if (e.target.id === 'modalDetalhesRec') fecharModalDetalhes();
     });
-    document.getElementById('modalLote').addEventListener('click', (e) => {
-      if (e.target.id === 'modalLote') fecharModalLote();
-    });
+  
   </script>
 </body>
 </html>
