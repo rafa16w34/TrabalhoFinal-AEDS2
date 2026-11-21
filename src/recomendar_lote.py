@@ -91,7 +91,11 @@ def processar_recomendacoes_em_lote(caminho_entrada=None, caminho_saida=None, mo
             f_out.write("-" * 80 + "\n")
 
             if node_alvo not in grafo:
-                f_out.write("  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).\n\n")
+                pr = meta_alvo.get('positive_ratio')
+                if pr is not None and pr < 65.0:
+                    f_out.write(f"  [AVISO] Jogo excluído previamente do grafo por baixa aprovação na Steam ({pr}% < corte de 65%).\n\n")
+                else:
+                    f_out.write("  [AVISO] Este jogo não está presente no grafo (filtrado no K-Core ou sem tags).\n\n")
                 continue
 
             # Gera recomendações
@@ -100,7 +104,6 @@ def processar_recomendacoes_em_lote(caminho_entrada=None, caminho_saida=None, mo
                 app_id, 
                 comunidades, 
                 metadados, 
-                top_k_users=50, 
                 top_n_jogos=10,
                 silencioso=True
             )

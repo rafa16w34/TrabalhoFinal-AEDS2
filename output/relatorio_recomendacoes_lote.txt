@@ -1,12 +1,12 @@
 ================================================================================
  RELATÓRIO DE RECOMENDAÇÕES EM LOTE (AEDS 2 - SISTEMA HÍBRIDO)
- Data de Geração: 06/11/2026 20:46:11
+ Data de Geração: 07/11/2026 12:22:20
  Total de Jogos Alvo Processados: 104
 ================================================================================
 
 --------------------------------------------------------------------------------
 JOGO ALVO #1: ELDEN RING (App ID: 1245620)
-Gêneros Oficiais: Action, RPG | Super-Nó Louvain: 4
+Gêneros Oficiais: RPG, Action | Super-Nó Louvain: 4
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -23,7 +23,7 @@ Gêneros Oficiais: Action, RPG | Super-Nó Louvain: 4
 
 --------------------------------------------------------------------------------
 JOGO ALVO #2: Euro Truck Simulator 2 (App ID: 227300)
-Gêneros Oficiais: Simulation, Indie | Super-Nó Louvain: 5
+Gêneros Oficiais: Indie, Simulation | Super-Nó Louvain: 5
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ Gêneros Oficiais: Action | Super-Nó Louvain: 4
 
 --------------------------------------------------------------------------------
 JOGO ALVO #4: Sonic Mania (App ID: 584400)
-Gêneros Oficiais: Casual, Adventure, Action | Super-Nó Louvain: 3
+Gêneros Oficiais: Casual, Action, Adventure | Super-Nó Louvain: 3
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -90,7 +90,7 @@ Gêneros Oficiais: Casual | Super-Nó Louvain: 5
 
 --------------------------------------------------------------------------------
 JOGO ALVO #6: Grand Theft Auto V (App ID: 271590)
-Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 5
+Gêneros Oficiais: Action, Adventure | Super-Nó Louvain: 5
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -124,7 +124,7 @@ Gêneros Oficiais: RPG | Super-Nó Louvain: 2
 
 --------------------------------------------------------------------------------
 JOGO ALVO #8: Hollow Knight (App ID: 367520)
-Gêneros Oficiais: Adventure, Indie, Action | Super-Nó Louvain: 0
+Gêneros Oficiais: Action, Adventure, Indie | Super-Nó Louvain: 0
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -141,7 +141,7 @@ Gêneros Oficiais: Adventure, Indie, Action | Super-Nó Louvain: 0
 
 --------------------------------------------------------------------------------
 JOGO ALVO #9: LEGO® Harry Potter: Years 1-4 (App ID: 21130)
-Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 1
+Gêneros Oficiais: Action, Adventure | Super-Nó Louvain: 1
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -158,7 +158,7 @@ Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 1
 
 --------------------------------------------------------------------------------
 JOGO ALVO #10: Resident Evil (App ID: 304240)
-Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 4
+Gêneros Oficiais: Action, Adventure | Super-Nó Louvain: 4
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -175,7 +175,7 @@ Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 4
 
 --------------------------------------------------------------------------------
 JOGO ALVO #11: Stardew Valley (App ID: 413150)
-Gêneros Oficiais: Simulation, Indie, RPG | Super-Nó Louvain: 0
+Gêneros Oficiais: RPG, Indie, Simulation | Super-Nó Louvain: 0
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -192,7 +192,7 @@ Gêneros Oficiais: Simulation, Indie, RPG | Super-Nó Louvain: 0
 
 --------------------------------------------------------------------------------
 JOGO ALVO #12: Rust (App ID: 252490)
-Gêneros Oficiais: Indie, Massively Multiplayer, Adventure, RPG, Action | Super-Nó Louvain: 5
+Gêneros Oficiais: Massively Multiplayer, Action, Adventure, RPG, Indie | Super-Nó Louvain: 5
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -209,7 +209,7 @@ Gêneros Oficiais: Indie, Massively Multiplayer, Adventure, RPG, Action | Super-
 
 --------------------------------------------------------------------------------
 JOGO ALVO #13: The Sims™ 4 (App ID: 1222670)
-Gêneros Oficiais: Casual, Adventure, Simulation, Free To Play | Super-Nó Louvain: 5
+Gêneros Oficiais: Simulation, Free To Play, Casual, Adventure | Super-Nó Louvain: 5
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -249,7 +249,7 @@ Gêneros Oficiais: RPG | Super-Nó Louvain: 1
 
 --------------------------------------------------------------------------------
 JOGO ALVO #16: Half-Life: Alyx (App ID: 546560)
-Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 3
+Gêneros Oficiais: Action, Adventure | Super-Nó Louvain: 3
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -283,7 +283,7 @@ Gêneros Oficiais: Action | Super-Nó Louvain: 4
 
 --------------------------------------------------------------------------------
 JOGO ALVO #18: Resident Evil 7 Biohazard (App ID: 418370)
-Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 4
+Gêneros Oficiais: Action, Adventure | Super-Nó Louvain: 4
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -312,7 +312,7 @@ Gêneros Oficiais: N/D | Super-Nó Louvain: -1
 
 --------------------------------------------------------------------------------
 JOGO ALVO #21: Terraria (App ID: 105600)
-Gêneros Oficiais: Adventure, Indie, Action, RPG | Super-Nó Louvain: 0
+Gêneros Oficiais: RPG, Action, Adventure, Indie | Super-Nó Louvain: 0
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -329,7 +329,7 @@ Gêneros Oficiais: Adventure, Indie, Action, RPG | Super-Nó Louvain: 0
 
 --------------------------------------------------------------------------------
 JOGO ALVO #22: Hades (App ID: 1145360)
-Gêneros Oficiais: Indie, Action, RPG | Super-Nó Louvain: 0
+Gêneros Oficiais: RPG, Action, Indie | Super-Nó Louvain: 0
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -346,7 +346,7 @@ Gêneros Oficiais: Indie, Action, RPG | Super-Nó Louvain: 0
 
 --------------------------------------------------------------------------------
 JOGO ALVO #23: Marvel’s Spider-Man Remastered (App ID: 1817070)
-Gêneros Oficiais: Casual, Adventure, Action | Super-Nó Louvain: 1
+Gêneros Oficiais: Casual, Action, Adventure | Super-Nó Louvain: 1
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -363,7 +363,7 @@ Gêneros Oficiais: Casual, Adventure, Action | Super-Nó Louvain: 1
 
 --------------------------------------------------------------------------------
 JOGO ALVO #24: Cuphead (App ID: 268910)
-Gêneros Oficiais: Indie, Action | Super-Nó Louvain: 0
+Gêneros Oficiais: Action, Indie | Super-Nó Louvain: 0
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -380,7 +380,7 @@ Gêneros Oficiais: Indie, Action | Super-Nó Louvain: 0
 
 --------------------------------------------------------------------------------
 JOGO ALVO #25: Valheim (App ID: 892970)
-Gêneros Oficiais: Adventure, Indie, Action, RPG | Super-Nó Louvain: 2
+Gêneros Oficiais: RPG, Action, Adventure, Indie | Super-Nó Louvain: 2
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -414,7 +414,7 @@ Gêneros Oficiais: Action | Super-Nó Louvain: 0
 
 --------------------------------------------------------------------------------
 JOGO ALVO #27: Counter-Strike: Global Offensive (App ID: 730)
-Gêneros Oficiais: Action, Free To Play | Super-Nó Louvain: 5
+Gêneros Oficiais: Free To Play, Action | Super-Nó Louvain: 5
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -431,7 +431,7 @@ Gêneros Oficiais: Action, Free To Play | Super-Nó Louvain: 5
 
 --------------------------------------------------------------------------------
 JOGO ALVO #28: Dota 2 (App ID: 570)
-Gêneros Oficiais: Action, Strategy, Free To Play | Super-Nó Louvain: 5
+Gêneros Oficiais: Free To Play, Strategy, Action | Super-Nó Louvain: 5
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -448,7 +448,7 @@ Gêneros Oficiais: Action, Strategy, Free To Play | Super-Nó Louvain: 5
 
 --------------------------------------------------------------------------------
 JOGO ALVO #29: Team Fortress 2 (App ID: 440)
-Gêneros Oficiais: Action, Free To Play | Super-Nó Louvain: 3
+Gêneros Oficiais: Free To Play, Action | Super-Nó Louvain: 3
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -465,7 +465,7 @@ Gêneros Oficiais: Action, Free To Play | Super-Nó Louvain: 3
 
 --------------------------------------------------------------------------------
 JOGO ALVO #30: PUBG: BATTLEGROUNDS (App ID: 578080)
-Gêneros Oficiais: Adventure, Massively Multiplayer, Action, Free To Play | Super-Nó Louvain: 5
+Gêneros Oficiais: Massively Multiplayer, Action, Adventure, Free To Play | Super-Nó Louvain: 5
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -482,7 +482,7 @@ Gêneros Oficiais: Adventure, Massively Multiplayer, Action, Free To Play | Supe
 
 --------------------------------------------------------------------------------
 JOGO ALVO #31: DayZ (App ID: 221100)
-Gêneros Oficiais: Adventure, Massively Multiplayer, Action | Super-Nó Louvain: 2
+Gêneros Oficiais: Massively Multiplayer, Action, Adventure | Super-Nó Louvain: 2
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -516,7 +516,7 @@ Gêneros Oficiais: RPG | Super-Nó Louvain: 1
 
 --------------------------------------------------------------------------------
 JOGO ALVO #33: Baldur's Gate 3 (App ID: 1086940)
-Gêneros Oficiais: Adventure, RPG, Strategy | Super-Nó Louvain: 2
+Gêneros Oficiais: Strategy, RPG, Adventure | Super-Nó Louvain: 2
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -556,7 +556,7 @@ Gêneros Oficiais: Strategy | Super-Nó Louvain: 2
 
 --------------------------------------------------------------------------------
 JOGO ALVO #36: Apex Legends™ (App ID: 1172470)
-Gêneros Oficiais: Adventure, Action, Free To Play | Super-Nó Louvain: 5
+Gêneros Oficiais: Free To Play, Action, Adventure | Super-Nó Louvain: 5
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -573,7 +573,7 @@ Gêneros Oficiais: Adventure, Action, Free To Play | Super-Nó Louvain: 5
 
 --------------------------------------------------------------------------------
 JOGO ALVO #37: Red Dead Redemption 2 (App ID: 1174180)
-Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 5
+Gêneros Oficiais: Action, Adventure | Super-Nó Louvain: 5
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -590,7 +590,7 @@ Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 5
 
 --------------------------------------------------------------------------------
 JOGO ALVO #38: Destiny 2 (App ID: 1085660)
-Gêneros Oficiais: Adventure, Action, Free To Play | Super-Nó Louvain: 5
+Gêneros Oficiais: Free To Play, Action, Adventure | Super-Nó Louvain: 5
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -607,7 +607,7 @@ Gêneros Oficiais: Adventure, Action, Free To Play | Super-Nó Louvain: 5
 
 --------------------------------------------------------------------------------
 JOGO ALVO #39: Sekiro™: Shadows Die Twice - GOTY Edition (App ID: 814380)
-Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 4
+Gêneros Oficiais: Action, Adventure | Super-Nó Louvain: 4
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -658,7 +658,7 @@ Gêneros Oficiais: Action | Super-Nó Louvain: 1
 
 --------------------------------------------------------------------------------
 JOGO ALVO #42: Tomb Raider (App ID: 203160)
-Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 1
+Gêneros Oficiais: Action, Adventure | Super-Nó Louvain: 1
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -675,7 +675,7 @@ Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 1
 
 --------------------------------------------------------------------------------
 JOGO ALVO #43: Horizon Zero Dawn™ Complete Edition (App ID: 1151640)
-Gêneros Oficiais: Adventure, Action, RPG | Super-Nó Louvain: 1
+Gêneros Oficiais: RPG, Action, Adventure | Super-Nó Louvain: 1
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -709,7 +709,7 @@ Gêneros Oficiais: Action | Super-Nó Louvain: 3
 
 --------------------------------------------------------------------------------
 JOGO ALVO #45: Sea of Thieves 2023 Edition (App ID: 1172620)
-Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 5
+Gêneros Oficiais: Action, Adventure | Super-Nó Louvain: 5
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -726,7 +726,7 @@ Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 5
 
 --------------------------------------------------------------------------------
 JOGO ALVO #46: Celeste (App ID: 504230)
-Gêneros Oficiais: Adventure, Indie, Action | Super-Nó Louvain: 0
+Gêneros Oficiais: Action, Adventure, Indie | Super-Nó Louvain: 0
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -766,7 +766,7 @@ Gêneros Oficiais: N/D | Super-Nó Louvain: -1
 
 --------------------------------------------------------------------------------
 JOGO ALVO #49: The Elder Scrolls® Online (App ID: 306130)
-Gêneros Oficiais: Adventure, Massively Multiplayer, Action, RPG | Super-Nó Louvain: 2
+Gêneros Oficiais: Massively Multiplayer, RPG, Action, Adventure | Super-Nó Louvain: 2
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -783,7 +783,7 @@ Gêneros Oficiais: Adventure, Massively Multiplayer, Action, RPG | Super-Nó Lou
 
 --------------------------------------------------------------------------------
 JOGO ALVO #50: Need for Speed™ Heat (App ID: 1222680)
-Gêneros Oficiais: Adventure, Action, Sports, Racing | Super-Nó Louvain: 1
+Gêneros Oficiais: Racing, Sports, Action, Adventure | Super-Nó Louvain: 1
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -800,7 +800,7 @@ Gêneros Oficiais: Adventure, Action, Sports, Racing | Super-Nó Louvain: 1
 
 --------------------------------------------------------------------------------
 JOGO ALVO #51: Slay the Spire (App ID: 646570)
-Gêneros Oficiais: Indie, Strategy | Super-Nó Louvain: 0
+Gêneros Oficiais: Strategy, Indie | Super-Nó Louvain: 0
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -817,7 +817,7 @@ Gêneros Oficiais: Indie, Strategy | Super-Nó Louvain: 0
 
 --------------------------------------------------------------------------------
 JOGO ALVO #52: Warframe (App ID: 230410)
-Gêneros Oficiais: Action, Free To Play, RPG | Super-Nó Louvain: 5
+Gêneros Oficiais: Free To Play, RPG, Action | Super-Nó Louvain: 5
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -834,7 +834,7 @@ Gêneros Oficiais: Action, Free To Play, RPG | Super-Nó Louvain: 5
 
 --------------------------------------------------------------------------------
 JOGO ALVO #53: Path of Exile (App ID: 238960)
-Gêneros Oficiais: Indie, Massively Multiplayer, Free To Play, Adventure, RPG, Action | Super-Nó Louvain: 2
+Gêneros Oficiais: Massively Multiplayer, Free To Play, Action, Adventure, RPG, Indie | Super-Nó Louvain: 2
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -851,7 +851,7 @@ Gêneros Oficiais: Indie, Massively Multiplayer, Free To Play, Adventure, RPG, A
 
 --------------------------------------------------------------------------------
 JOGO ALVO #54: The Forest (App ID: 242760)
-Gêneros Oficiais: Simulation, Adventure, Indie, Action | Super-Nó Louvain: 5
+Gêneros Oficiais: Simulation, Action, Adventure, Indie | Super-Nó Louvain: 5
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -868,7 +868,7 @@ Gêneros Oficiais: Simulation, Adventure, Indie, Action | Super-Nó Louvain: 5
 
 --------------------------------------------------------------------------------
 JOGO ALVO #55: Don't Starve Together (App ID: 322330)
-Gêneros Oficiais: Simulation, Indie, Strategy, Adventure, RPG, Action | Super-Nó Louvain: 0
+Gêneros Oficiais: Strategy, Action, Simulation, Adventure, RPG, Indie | Super-Nó Louvain: 0
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -885,7 +885,7 @@ Gêneros Oficiais: Simulation, Indie, Strategy, Adventure, RPG, Action | Super-N
 
 --------------------------------------------------------------------------------
 JOGO ALVO #56: Mount & Blade II: Bannerlord (App ID: 261550)
-Gêneros Oficiais: Simulation, Indie, Strategy, RPG, Action | Super-Nó Louvain: 2
+Gêneros Oficiais: Strategy, Action, Simulation, RPG, Indie | Super-Nó Louvain: 2
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -919,7 +919,7 @@ Gêneros Oficiais: Action | Super-Nó Louvain: 4
 
 --------------------------------------------------------------------------------
 JOGO ALVO #58: Satisfactory (App ID: 526870)
-Gêneros Oficiais: Simulation, Adventure, Indie, Strategy | Super-Nó Louvain: 2
+Gêneros Oficiais: Simulation, Strategy, Indie, Adventure | Super-Nó Louvain: 2
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -936,7 +936,7 @@ Gêneros Oficiais: Simulation, Adventure, Indie, Strategy | Super-Nó Louvain: 2
 
 --------------------------------------------------------------------------------
 JOGO ALVO #59: Stellaris (App ID: 281990)
-Gêneros Oficiais: Simulation, Strategy | Super-Nó Louvain: 2
+Gêneros Oficiais: Strategy, Simulation | Super-Nó Louvain: 2
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -953,7 +953,7 @@ Gêneros Oficiais: Simulation, Strategy | Super-Nó Louvain: 2
 
 --------------------------------------------------------------------------------
 JOGO ALVO #60: Subnautica (App ID: 264710)
-Gêneros Oficiais: Adventure, Indie | Super-Nó Louvain: 2
+Gêneros Oficiais: Indie, Adventure | Super-Nó Louvain: 2
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -982,7 +982,7 @@ Gêneros Oficiais: N/D | Super-Nó Louvain: -1
 
 --------------------------------------------------------------------------------
 JOGO ALVO #63: Ready or Not (App ID: 1144200)
-Gêneros Oficiais: Adventure, Indie, Action | Super-Nó Louvain: 2
+Gêneros Oficiais: Action, Adventure, Indie | Super-Nó Louvain: 2
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -999,7 +999,7 @@ Gêneros Oficiais: Adventure, Indie, Action | Super-Nó Louvain: 2
 
 --------------------------------------------------------------------------------
 JOGO ALVO #64: Assassin's Creed® Odyssey (App ID: 812140)
-Gêneros Oficiais: Adventure, Action, RPG | Super-Nó Louvain: 1
+Gêneros Oficiais: RPG, Action, Adventure | Super-Nó Louvain: 1
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1016,7 +1016,7 @@ Gêneros Oficiais: Adventure, Action, RPG | Super-Nó Louvain: 1
 
 --------------------------------------------------------------------------------
 JOGO ALVO #65: Dyson Sphere Program (App ID: 1366540)
-Gêneros Oficiais: Simulation, Indie, Early Access, Strategy | Super-Nó Louvain: 2
+Gêneros Oficiais: Strategy, Indie, Simulation, Early Access | Super-Nó Louvain: 2
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1033,7 +1033,7 @@ Gêneros Oficiais: Simulation, Indie, Early Access, Strategy | Super-Nó Louvain
 
 --------------------------------------------------------------------------------
 JOGO ALVO #66: Persona® 5 Strikers (App ID: 1382330)
-Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 4
+Gêneros Oficiais: Action, Adventure | Super-Nó Louvain: 4
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1067,7 +1067,7 @@ Gêneros Oficiais: Action | Super-Nó Louvain: 2
 
 --------------------------------------------------------------------------------
 JOGO ALVO #68: Forza Horizon 5 (App ID: 1551360)
-Gêneros Oficiais: Simulation, Sports, Adventure, Racing, Action | Super-Nó Louvain: 5
+Gêneros Oficiais: Action, Simulation, Adventure, Sports, Racing | Super-Nó Louvain: 5
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1084,7 +1084,7 @@ Gêneros Oficiais: Simulation, Sports, Adventure, Racing, Action | Super-Nó Lou
 
 --------------------------------------------------------------------------------
 JOGO ALVO #69: Vampire Survivors (App ID: 1794680)
-Gêneros Oficiais: Casual, Indie, Action, RPG | Super-Nó Louvain: 0
+Gêneros Oficiais: RPG, Action, Casual, Indie | Super-Nó Louvain: 0
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1124,7 +1124,7 @@ Gêneros Oficiais: Action | Super-Nó Louvain: 3
 
 --------------------------------------------------------------------------------
 JOGO ALVO #72: New World (App ID: 1063730)
-Gêneros Oficiais: Adventure, Massively Multiplayer, Action, RPG | Super-Nó Louvain: 2
+Gêneros Oficiais: Massively Multiplayer, RPG, Action, Adventure | Super-Nó Louvain: 2
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1141,7 +1141,7 @@ Gêneros Oficiais: Adventure, Massively Multiplayer, Action, RPG | Super-Nó Lou
 
 --------------------------------------------------------------------------------
 JOGO ALVO #73: It Takes Two (App ID: 1426210)
-Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 1
+Gêneros Oficiais: Action, Adventure | Super-Nó Louvain: 1
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1238,7 +1238,7 @@ Gêneros Oficiais: Action | Super-Nó Louvain: 4
 
 --------------------------------------------------------------------------------
 JOGO ALVO #80: Undertale (App ID: 391540)
-Gêneros Oficiais: Indie, RPG | Super-Nó Louvain: 0
+Gêneros Oficiais: RPG, Indie | Super-Nó Louvain: 0
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1255,7 +1255,7 @@ Gêneros Oficiais: Indie, RPG | Super-Nó Louvain: 0
 
 --------------------------------------------------------------------------------
 JOGO ALVO #81: METAL GEAR SOLID V: THE PHANTOM PAIN (App ID: 287700)
-Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 1
+Gêneros Oficiais: Action, Adventure | Super-Nó Louvain: 1
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1272,7 +1272,7 @@ Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 1
 
 --------------------------------------------------------------------------------
 JOGO ALVO #82: Neverwinter (App ID: 109600)
-Gêneros Oficiais: Massively Multiplayer, Free To Play, Adventure, RPG, Action | Super-Nó Louvain: 2
+Gêneros Oficiais: Massively Multiplayer, Free To Play, Action, Adventure, RPG | Super-Nó Louvain: 2
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1306,7 +1306,7 @@ Gêneros Oficiais: Action | Super-Nó Louvain: 2
 
 --------------------------------------------------------------------------------
 JOGO ALVO #84: Frostpunk (App ID: 323190)
-Gêneros Oficiais: Simulation, Strategy | Super-Nó Louvain: 2
+Gêneros Oficiais: Strategy, Simulation | Super-Nó Louvain: 2
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1323,7 +1323,7 @@ Gêneros Oficiais: Simulation, Strategy | Super-Nó Louvain: 2
 
 --------------------------------------------------------------------------------
 JOGO ALVO #85: PAYDAY 2 (App ID: 218620)
-Gêneros Oficiais: Action, RPG | Super-Nó Louvain: 3
+Gêneros Oficiais: RPG, Action | Super-Nó Louvain: 3
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1369,7 +1369,7 @@ Gêneros Oficiais: RPG | Super-Nó Louvain: 2
 
 --------------------------------------------------------------------------------
 JOGO ALVO #89: DARK SOULS™ II (App ID: 236430)
-Gêneros Oficiais: Action, RPG | Super-Nó Louvain: 4
+Gêneros Oficiais: RPG, Action | Super-Nó Louvain: 4
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1461,7 +1461,7 @@ Gêneros Oficiais: Action | Super-Nó Louvain: 0
 
 --------------------------------------------------------------------------------
 JOGO ALVO #96: Stray (App ID: 1332010)
-Gêneros Oficiais: Adventure, Indie | Super-Nó Louvain: 1
+Gêneros Oficiais: Indie, Adventure | Super-Nó Louvain: 1
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1490,7 +1490,7 @@ Gêneros Oficiais: Action | Super-Nó Louvain: 3
 
 --------------------------------------------------------------------------------
 JOGO ALVO #98: Yakuza: Like a Dragon (App ID: 1235140)
-Gêneros Oficiais: Adventure, Action, RPG | Super-Nó Louvain: 4
+Gêneros Oficiais: RPG, Action, Adventure | Super-Nó Louvain: 4
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1507,7 +1507,7 @@ Gêneros Oficiais: Adventure, Action, RPG | Super-Nó Louvain: 4
 
 --------------------------------------------------------------------------------
 JOGO ALVO #99: NARAKA: BLADEPOINT (App ID: 1203220)
-Gêneros Oficiais: Adventure, Massively Multiplayer, Action | Super-Nó Louvain: 4
+Gêneros Oficiais: Massively Multiplayer, Action, Adventure | Super-Nó Louvain: 4
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1530,7 +1530,7 @@ Gêneros Oficiais: N/D | Super-Nó Louvain: -1
 
 --------------------------------------------------------------------------------
 JOGO ALVO #101: Brotato (App ID: 1942280)
-Gêneros Oficiais: Casual, Indie, Action, RPG | Super-Nó Louvain: 0
+Gêneros Oficiais: RPG, Action, Casual, Indie | Super-Nó Louvain: 0
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1547,7 +1547,7 @@ Gêneros Oficiais: Casual, Indie, Action, RPG | Super-Nó Louvain: 0
 
 --------------------------------------------------------------------------------
 JOGO ALVO #102: Five Nights at Freddy's (App ID: 319510)
-Gêneros Oficiais: Simulation, Indie | Super-Nó Louvain: 5
+Gêneros Oficiais: Indie, Simulation | Super-Nó Louvain: 5
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1564,7 +1564,7 @@ Gêneros Oficiais: Simulation, Indie | Super-Nó Louvain: 5
 
 --------------------------------------------------------------------------------
 JOGO ALVO #103: Grand Theft Auto IV: The Complete Edition (App ID: 12210)
-Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 3
+Gêneros Oficiais: Action, Adventure | Super-Nó Louvain: 3
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1581,7 +1581,7 @@ Gêneros Oficiais: Adventure, Action | Super-Nó Louvain: 3
 
 --------------------------------------------------------------------------------
 JOGO ALVO #104: Minecraft Dungeons (App ID: 1672970)
-Gêneros Oficiais: Adventure, Action, RPG | Super-Nó Louvain: 0
+Gêneros Oficiais: RPG, Action, Adventure | Super-Nó Louvain: 0
 --------------------------------------------------------------------------------
  Pos.  | App ID     | Título Recomendado                       | Score    | Comunidade
  ------------------------------------------------------------------------------
@@ -1597,5 +1597,5 @@ Gêneros Oficiais: Adventure, Action, RPG | Super-Nó Louvain: 0
  10º   | 238960     | Path of Exile                            | 0.71     | Nó 2      
 
 ================================================================================
- Processamento em lote finalizado com sucesso em 8.33 segundos!
+ Processamento em lote finalizado com sucesso em 6.44 segundos!
 ================================================================================

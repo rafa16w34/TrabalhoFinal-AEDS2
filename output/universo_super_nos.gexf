@@ -1,103 +1,1411 @@
 <?xml version='1.0' encoding='utf-8'?>
-<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
-  <meta lastmodifieddate="2026-11-06">
+<gexf xmlns:viz="http://www.gexf.net/1.2draft/viz" xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2026-11-10">
     <creator>NetworkX 2.8.8</creator>
   </meta>
   <graph defaultedgetype="undirected" mode="static" name="">
     <attributes mode="static" class="node">
-      <attribute id="0" title="comunidade" type="long" />
-      <attribute id="1" title="genero_principal" type="string" />
-      <attribute id="2" title="qtd_jogos" type="long" />
-      <attribute id="3" title="qtd_total_membros" type="long" />
-      <attribute id="4" title="exemplos" type="string" />
+      <attribute id="0" title="macro_comunidade" type="long" />
+      <attribute id="1" title="super_no_nome" type="string" />
+      <attribute id="2" title="genero_dominante" type="string" />
+      <attribute id="3" title="qtd_jogos" type="long" />
+      <attribute id="4" title="volume_avaliacoes" type="long" />
+      <attribute id="5" title="exemplos" type="string" />
     </attributes>
     <nodes>
-      <node id="super_no_0" label="Super Nó 0: Action (946 jogos)">
+      <node id="subcomm_0" label="Indie: Garry's Mod &amp; A Hat in Time">
+        <viz:color r="46" g="213" b="115" a="1.0" />
+        <viz:size value="55.11351921262151" />
+        <viz:position x="2880.2" y="39.42" z="0.0" />
         <attvalues>
           <attvalue for="0" value="0" />
-          <attvalue for="1" value="Action" />
-          <attvalue for="2" value="946" />
-          <attvalue for="3" value="28241" />
-          <attvalue for="4" value="The Witcher® 3: Wild Hunt, DOOM, Dying Light, Tomb Raider" />
+          <attvalue for="1" value="Indie &amp; Roguelike 2D" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="54" />
+          <attvalue for="4" value="41423" />
+          <attvalue for="5" value="Garry's Mod &amp; A Hat in Time" />
         </attvalues>
       </node>
-      <node id="super_no_1" label="Super Nó 1: Indie (791 jogos)">
+      <node id="subcomm_1" label="Indie: Zup! S &amp; Zup! F">
+        <viz:color r="46" g="213" b="115" a="1.0" />
+        <viz:size value="18.371173070873834" />
+        <viz:position x="2860.56" y="117.98" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="0" />
+          <attvalue for="1" value="Indie &amp; Roguelike 2D" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="6" />
+          <attvalue for="4" value="1263" />
+          <attvalue for="5" value="Zup! S &amp; Zup! F" />
+        </attvalues>
+      </node>
+      <node id="subcomm_2" label="Action: Star Wars: Battlefront 2 (Classic 2005) &amp; LEGO® Star Wars™ - The Complete Saga">
+        <viz:color r="46" g="213" b="115" a="1.0" />
+        <viz:size value="31.819805153394636" />
+        <viz:position x="3005.82" y="-296.44" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="0" />
+          <attvalue for="1" value="Indie &amp; Roguelike 2D" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="18" />
+          <attvalue for="4" value="11851" />
+          <attvalue for="5" value="Star Wars: Battlefront 2 (Classic 2005) &amp; LEGO® Star Wars™ - The Complete Saga" />
+        </attvalues>
+      </node>
+      <node id="subcomm_3" label="Action: Portal 2 &amp; Left 4 Dead 2">
+        <viz:color r="46" g="213" b="115" a="1.0" />
+        <viz:size value="57.118298293979315" />
+        <viz:position x="3032.4" y="-190.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="0" />
+          <attvalue for="1" value="Indie &amp; Roguelike 2D" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="58" />
+          <attvalue for="4" value="93060" />
+          <attvalue for="5" value="Portal 2 &amp; Left 4 Dead 2" />
+        </attvalues>
+      </node>
+      <node id="subcomm_4" label="Action: Half-Life: Alyx &amp; Soundpad">
+        <viz:color r="46" g="213" b="115" a="1.0" />
+        <viz:size value="58.57687256929991" />
+        <viz:position x="3172.12" y="82.19" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="0" />
+          <attvalue for="1" value="Indie &amp; Roguelike 2D" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="61" />
+          <attvalue for="4" value="25862" />
+          <attvalue for="5" value="Half-Life: Alyx &amp; Soundpad" />
+        </attvalues>
+      </node>
+      <node id="subcomm_5" label="Indie: The Jackbox Party Pack 7 &amp; The Jackbox Party Pack 3">
+        <viz:color r="46" g="213" b="115" a="1.0" />
+        <viz:size value="21.213203435596427" />
+        <viz:position x="3391.2" y="236.98" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="0" />
+          <attvalue for="1" value="Indie &amp; Roguelike 2D" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="8" />
+          <attvalue for="4" value="1470" />
+          <attvalue for="5" value="The Jackbox Party Pack 7 &amp; The Jackbox Party Pack 3" />
+        </attvalues>
+      </node>
+      <node id="subcomm_6" label="Action: DOOM &amp; Halo: The Master Chief Collection">
+        <viz:color r="46" g="213" b="115" a="1.0" />
+        <viz:size value="45.0" />
+        <viz:position x="2986.83" y="537.35" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="0" />
+          <attvalue for="1" value="Indie &amp; Roguelike 2D" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="36" />
+          <attvalue for="4" value="45670" />
+          <attvalue for="5" value="DOOM &amp; Halo: The Master Chief Collection" />
+        </attvalues>
+      </node>
+      <node id="subcomm_7" label="Indie: Grand Theft Auto V &amp; Tom Clancy's Rainbow Six® Siege">
+        <viz:color r="46" g="213" b="115" a="1.0" />
+        <viz:size value="72.71519786124495" />
+        <viz:position x="3785.89" y="-165.42" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="0" />
+          <attvalue for="1" value="Indie &amp; Roguelike 2D" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="94" />
+          <attvalue for="4" value="101290" />
+          <attvalue for="5" value="Grand Theft Auto V &amp; Tom Clancy's Rainbow Six® Siege" />
+        </attvalues>
+      </node>
+      <node id="subcomm_8" label="Indie: Team Fortress 2 &amp; PAYDAY 2">
+        <viz:color r="46" g="213" b="115" a="1.0" />
+        <viz:size value="85.0" />
+        <viz:position x="3396.01" y="-154.94" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="0" />
+          <attvalue for="1" value="Indie &amp; Roguelike 2D" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="176" />
+          <attvalue for="4" value="171558" />
+          <attvalue for="5" value="Team Fortress 2 &amp; PAYDAY 2" />
+        </attvalues>
+      </node>
+      <node id="subcomm_9" label="Indie: Five Nights at Freddy's &amp; Bendy and the Ink Machine">
+        <viz:color r="46" g="213" b="115" a="1.0" />
+        <viz:size value="30.923292192132454" />
+        <viz:position x="2891.99" y="-539.36" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="0" />
+          <attvalue for="1" value="Indie &amp; Roguelike 2D" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="17" />
+          <attvalue for="4" value="5454" />
+          <attvalue for="5" value="Five Nights at Freddy's &amp; Bendy and the Ink Machine" />
+        </attvalues>
+      </node>
+      <node id="subcomm_10" label="Action: POSTAL 2 &amp; Hotline Miami">
+        <viz:color r="46" g="213" b="115" a="1.0" />
+        <viz:size value="27.04163456597992" />
+        <viz:position x="3105.26" y="26.37" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="0" />
+          <attvalue for="1" value="Indie &amp; Roguelike 2D" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="13" />
+          <attvalue for="4" value="24734" />
+          <attvalue for="5" value="POSTAL 2 &amp; Hotline Miami" />
+        </attvalues>
+      </node>
+      <node id="subcomm_11" label="Indie: Stardew Valley &amp; Hollow Knight">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="85.0" />
+        <viz:position x="1852.0" y="2980.84" z="0.0" />
         <attvalues>
           <attvalue for="0" value="1" />
-          <attvalue for="1" value="Indie" />
-          <attvalue for="2" value="791" />
-          <attvalue for="3" value="20480" />
-          <attvalue for="4" value="Deep Rock Galactic, The Binding of Isaac: Rebirth, Stardew Valley, Hades" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="138" />
+          <attvalue for="4" value="69391" />
+          <attvalue for="5" value="Stardew Valley &amp; Hollow Knight" />
         </attvalues>
       </node>
-      <node id="super_no_2" label="Super Nó 2: Action (536 jogos)">
+      <node id="subcomm_12" label="Indie: Don't Starve Together &amp; BattleBlock Theater®">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="48.023431780746364" />
+        <viz:position x="1910.67" y="2716.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="41" />
+          <attvalue for="4" value="26659" />
+          <attvalue for="5" value="Don't Starve Together &amp; BattleBlock Theater®" />
+        </attvalues>
+      </node>
+      <node id="subcomm_13" label="Indie: Cookie Clicker &amp; Vampire Survivors">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="71.15124735378853" />
+        <viz:position x="2054.74" y="2255.96" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="90" />
+          <attvalue for="4" value="29561" />
+          <attvalue for="5" value="Cookie Clicker &amp; Vampire Survivors" />
+        </attvalues>
+      </node>
+      <node id="subcomm_14" label="Indie: GRIS &amp; INSIDE">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="49.749371855331" />
+        <viz:position x="1717.97" y="2647.24" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="44" />
+          <attvalue for="4" value="16775" />
+          <attvalue for="5" value="GRIS &amp; INSIDE" />
+        </attvalues>
+      </node>
+      <node id="subcomm_15" label="Indie: The Binding of Isaac: Rebirth &amp; Risk of Rain 2">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="76.85213074469698" />
+        <viz:position x="2479.36" y="2339.08" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="105" />
+          <attvalue for="4" value="54197" />
+          <attvalue for="5" value="The Binding of Isaac: Rebirth &amp; Risk of Rain 2" />
+        </attvalues>
+      </node>
+      <node id="subcomm_16" label="Indie: Road Redemption &amp; Yoku's Island Express">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="29.047375096555626" />
+        <viz:position x="2261.0" y="2577.3" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="15" />
+          <attvalue for="4" value="3272" />
+          <attvalue for="5" value="Road Redemption &amp; Yoku's Island Express" />
+        </attvalues>
+      </node>
+      <node id="subcomm_17" label="RPG: FINAL FANTASY VII &amp; FINAL FANTASY IX">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="35.178118198675726" />
+        <viz:position x="2358.37" y="1865.75" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="RPG" />
+          <attvalue for="3" value="22" />
+          <attvalue for="4" value="4976" />
+          <attvalue for="5" value="FINAL FANTASY VII &amp; FINAL FANTASY IX" />
+        </attvalues>
+      </node>
+      <node id="subcomm_18" label="Adventure: Danganronpa: Trigger Happy Havoc &amp; Danganronpa 2: Goodbye Despair">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="22.5" />
+        <viz:position x="1392.21" y="2412.67" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Adventure" />
+          <attvalue for="3" value="9" />
+          <attvalue for="4" value="4726" />
+          <attvalue for="5" value="Danganronpa: Trigger Happy Havoc &amp; Danganronpa 2: Goodbye Despair" />
+        </attvalues>
+      </node>
+      <node id="subcomm_19" label="Indie: The Talos Principle &amp; Baba Is You">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="59.52940449895329" />
+        <viz:position x="2129.16" y="2697.73" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="63" />
+          <attvalue for="4" value="17422" />
+          <attvalue for="5" value="The Talos Principle &amp; Baba Is You" />
+        </attvalues>
+      </node>
+      <node id="subcomm_20" label="Strategy: Kingdom Rush  - Tower Defense &amp; Kingdom Rush Frontiers - Tower Defense">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="30.923292192132454" />
+        <viz:position x="1719.86" y="2570.92" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Strategy" />
+          <attvalue for="3" value="17" />
+          <attvalue for="4" value="3437" />
+          <attvalue for="5" value="Kingdom Rush  - Tower Defense &amp; Kingdom Rush Frontiers - Tower Defense" />
+        </attvalues>
+      </node>
+      <node id="subcomm_21" label="Indie: Muse Dash &amp; VA-11 Hall-A: Cyberpunk Bartender Action">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="57.118298293979315" />
+        <viz:position x="1956.31" y="2384.06" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="58" />
+          <attvalue for="4" value="22318" />
+          <attvalue for="5" value="Muse Dash &amp; VA-11 Hall-A: Cyberpunk Bartender Action" />
+        </attvalues>
+      </node>
+      <node id="subcomm_22" label="Indie: To the Moon &amp; Bastion">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="46.837484987987985" />
+        <viz:position x="2560.94" y="2548.42" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="39" />
+          <attvalue for="4" value="20163" />
+          <attvalue for="5" value="To the Moon &amp; Bastion" />
+        </attvalues>
+      </node>
+      <node id="subcomm_23" label="Indie: Dungeon Defenders &amp; Dungeon Defenders II">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="18.0" />
+        <viz:position x="1351.65" y="2536.13" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="3" />
+          <attvalue for="4" value="1403" />
+          <attvalue for="5" value="Dungeon Defenders &amp; Dungeon Defenders II" />
+        </attvalues>
+      </node>
+      <node id="subcomm_24" label="Indie: Deep Rock Galactic &amp; Hades">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="68.7386354243376" />
+        <viz:position x="1308.1" y="2610.33" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="84" />
+          <attvalue for="4" value="39602" />
+          <attvalue for="5" value="Deep Rock Galactic &amp; Hades" />
+        </attvalues>
+      </node>
+      <node id="subcomm_25" label="Action: Bloodstained: Ritual of the Night &amp; Streets of Rage 4">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="45.0" />
+        <viz:position x="1407.16" y="2675.63" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="36" />
+          <attvalue for="4" value="7260" />
+          <attvalue for="5" value="Bloodstained: Ritual of the Night &amp; Streets of Rage 4" />
+        </attvalues>
+      </node>
+      <node id="subcomm_26" label="Indie: Inscryption &amp; Cult of the Lamb">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="35.968736424845396" />
+        <viz:position x="1504.44" y="2504.23" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="23" />
+          <attvalue for="4" value="10517" />
+          <attvalue for="5" value="Inscryption &amp; Cult of the Lamb" />
+        </attvalues>
+      </node>
+      <node id="subcomm_27" label="Indie: Darkest Dungeon® &amp; Slay the Spire">
+        <viz:color r="30" g="144" b="255" a="1.0" />
+        <viz:size value="85.0" />
+        <viz:position x="2054.04" y="2576.73" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="1" />
+          <attvalue for="1" value="Aventura Narrativa &amp; Puzzle" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="161" />
+          <attvalue for="4" value="64138" />
+          <attvalue for="5" value="Darkest Dungeon® &amp; Slay the Spire" />
+        </attvalues>
+      </node>
+      <node id="subcomm_28" label="Simulation: Euro Truck Simulator 2 &amp; American Truck Simulator">
+        <viz:color r="155" g="89" b="182" a="1.0" />
+        <viz:size value="38.97114317029974" />
+        <viz:position x="-907.95" y="3250.71" z="0.0" />
         <attvalues>
           <attvalue for="0" value="2" />
-          <attvalue for="1" value="Action" />
-          <attvalue for="2" value="536" />
-          <attvalue for="3" value="20203" />
-          <attvalue for="4" value="DARK SOULS™ III, ELDEN RING, METAL GEAR SOLID V: THE PHANTOM PAIN, DARK SOULS™ II: Scholar of the First Sin" />
+          <attvalue for="1" value="Estratégia &amp; Simulação Tática" />
+          <attvalue for="2" value="Simulation" />
+          <attvalue for="3" value="27" />
+          <attvalue for="4" value="13674" />
+          <attvalue for="5" value="Euro Truck Simulator 2 &amp; American Truck Simulator" />
         </attvalues>
       </node>
-      <node id="super_no_3" label="Super Nó 3: Strategy (721 jogos)">
+      <node id="subcomm_29" label="Simulation: Assetto Corsa &amp; DiRT Rally 2.0">
+        <viz:color r="155" g="89" b="182" a="1.0" />
+        <viz:size value="25.980762113533157" />
+        <viz:position x="-1029.57" y="3039.91" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="2" />
+          <attvalue for="1" value="Estratégia &amp; Simulação Tática" />
+          <attvalue for="2" value="Simulation" />
+          <attvalue for="3" value="12" />
+          <attvalue for="4" value="3257" />
+          <attvalue for="5" value="Assetto Corsa &amp; DiRT Rally 2.0" />
+        </attvalues>
+      </node>
+      <node id="subcomm_30" label="Simulation: The Sims™ 3 &amp; Session: Skate Sim">
+        <viz:color r="155" g="89" b="182" a="1.0" />
+        <viz:size value="18.0" />
+        <viz:position x="-1134.21" y="3426.43" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="2" />
+          <attvalue for="1" value="Estratégia &amp; Simulação Tática" />
+          <attvalue for="2" value="Simulation" />
+          <attvalue for="3" value="5" />
+          <attvalue for="4" value="1590" />
+          <attvalue for="5" value="The Sims™ 3 &amp; Session: Skate Sim" />
+        </attvalues>
+      </node>
+      <node id="subcomm_31" label="Simulation: theHunter: Call of the Wild™ &amp; Wreckfest">
+        <viz:color r="155" g="89" b="182" a="1.0" />
+        <viz:size value="30.0" />
+        <viz:position x="-1005.33" y="3099.24" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="2" />
+          <attvalue for="1" value="Estratégia &amp; Simulação Tática" />
+          <attvalue for="2" value="Simulation" />
+          <attvalue for="3" value="16" />
+          <attvalue for="4" value="8106" />
+          <attvalue for="5" value="theHunter: Call of the Wild™ &amp; Wreckfest" />
+        </attvalues>
+      </node>
+      <node id="subcomm_32" label="Simulation: PC Building Simulator &amp; House Flipper">
+        <viz:color r="155" g="89" b="182" a="1.0" />
+        <viz:size value="33.54101966249685" />
+        <viz:position x="-564.97" y="2416.64" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="2" />
+          <attvalue for="1" value="Estratégia &amp; Simulação Tática" />
+          <attvalue for="2" value="Simulation" />
+          <attvalue for="3" value="20" />
+          <attvalue for="4" value="9176" />
+          <attvalue for="5" value="PC Building Simulator &amp; House Flipper" />
+        </attvalues>
+      </node>
+      <node id="subcomm_33" label="Simulation: Farming Simulator 19 &amp; SnowRunner">
+        <viz:color r="155" g="89" b="182" a="1.0" />
+        <viz:size value="25.980762113533157" />
+        <viz:position x="-499.96" y="2645.96" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="2" />
+          <attvalue for="1" value="Estratégia &amp; Simulação Tática" />
+          <attvalue for="2" value="Simulation" />
+          <attvalue for="3" value="12" />
+          <attvalue for="4" value="4640" />
+          <attvalue for="5" value="Farming Simulator 19 &amp; SnowRunner" />
+        </attvalues>
+      </node>
+      <node id="subcomm_34" label="RPG: Divinity: Original Sin 2 - Definitive Edition &amp; XCOM® 2">
+        <viz:color r="255" g="165" b="2" a="1.0" />
+        <viz:size value="78.66066361276137" />
+        <viz:position x="-2695.68" y="1526.23" z="0.0" />
         <attvalues>
           <attvalue for="0" value="3" />
-          <attvalue for="1" value="Strategy" />
-          <attvalue for="2" value="721" />
-          <attvalue for="3" value="37097" />
-          <attvalue for="4" value="RimWorld, No Man's Sky, Factorio, Sid Meier's Civilization® V" />
+          <attvalue for="1" value="FPS Clássico &amp; Ação Retrô" />
+          <attvalue for="2" value="RPG" />
+          <attvalue for="3" value="110" />
+          <attvalue for="4" value="61768" />
+          <attvalue for="5" value="Divinity: Original Sin 2 - Definitive Edition &amp; XCOM® 2" />
         </attvalues>
       </node>
-      <node id="super_no_4" label="Super Nó 4: Action (124 jogos)">
+      <node id="subcomm_35" label="Strategy: RimWorld &amp; Factorio">
+        <viz:color r="255" g="165" b="2" a="1.0" />
+        <viz:size value="85.0" />
+        <viz:position x="-2780.23" y="1486.89" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="3" />
+          <attvalue for="1" value="FPS Clássico &amp; Ação Retrô" />
+          <attvalue for="2" value="Strategy" />
+          <attvalue for="3" value="169" />
+          <attvalue for="4" value="101709" />
+          <attvalue for="5" value="RimWorld &amp; Factorio" />
+        </attvalues>
+      </node>
+      <node id="subcomm_36" label="RPG: Path of Exile &amp; New World">
+        <viz:color r="255" g="165" b="2" a="1.0" />
+        <viz:size value="46.837484987987985" />
+        <viz:position x="-2943.78" y="1327.31" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="3" />
+          <attvalue for="1" value="FPS Clássico &amp; Ação Retrô" />
+          <attvalue for="2" value="RPG" />
+          <attvalue for="3" value="39" />
+          <attvalue for="4" value="32577" />
+          <attvalue for="5" value="Path of Exile &amp; New World" />
+        </attvalues>
+      </node>
+      <node id="subcomm_37" label="Strategy: Total War: WARHAMMER II &amp; Warhammer: Vermintide 2">
+        <viz:color r="255" g="165" b="2" a="1.0" />
+        <viz:size value="50.31152949374527" />
+        <viz:position x="-2357.32" y="1843.81" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="3" />
+          <attvalue for="1" value="FPS Clássico &amp; Ação Retrô" />
+          <attvalue for="2" value="Strategy" />
+          <attvalue for="3" value="45" />
+          <attvalue for="4" value="27373" />
+          <attvalue for="5" value="Total War: WARHAMMER II &amp; Warhammer: Vermintide 2" />
+        </attvalues>
+      </node>
+      <node id="subcomm_38" label="Strategy: Sid Meier's Civilization® V &amp; Mount &amp; Blade: Warband">
+        <viz:color r="255" g="165" b="2" a="1.0" />
+        <viz:size value="57.118298293979315" />
+        <viz:position x="-2380.16" y="1191.41" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="3" />
+          <attvalue for="1" value="FPS Clássico &amp; Ação Retrô" />
+          <attvalue for="2" value="Strategy" />
+          <attvalue for="3" value="58" />
+          <attvalue for="4" value="57750" />
+          <attvalue for="5" value="Sid Meier's Civilization® V &amp; Mount &amp; Blade: Warband" />
+        </attvalues>
+      </node>
+      <node id="subcomm_39" label="Strategy: Arma 3 &amp; Insurgency: Sandstorm">
+        <viz:color r="255" g="165" b="2" a="1.0" />
+        <viz:size value="67.0820393249937" />
+        <viz:position x="-2544.31" y="1874.88" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="3" />
+          <attvalue for="1" value="FPS Clássico &amp; Ação Retrô" />
+          <attvalue for="2" value="Strategy" />
+          <attvalue for="3" value="80" />
+          <attvalue for="4" value="60623" />
+          <attvalue for="5" value="Arma 3 &amp; Insurgency: Sandstorm" />
+        </attvalues>
+      </node>
+      <node id="subcomm_40" label="Indie: Fallout 4 &amp; No Man's Sky">
+        <viz:color r="255" g="165" b="2" a="1.0" />
+        <viz:size value="85.0" />
+        <viz:position x="-2900.56" y="1895.82" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="3" />
+          <attvalue for="1" value="FPS Clássico &amp; Ação Retrô" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="147" />
+          <attvalue for="4" value="135478" />
+          <attvalue for="5" value="Fallout 4 &amp; No Man's Sky" />
+        </attvalues>
+      </node>
+      <node id="subcomm_41" label="Action: Call of Duty®: Modern Warfare® 2 (2009) &amp; Call of Duty®: Black Ops II">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="32.69174207655505" />
+        <viz:position x="-2684.23" y="-1374.49" z="0.0" />
         <attvalues>
           <attvalue for="0" value="4" />
-          <attvalue for="1" value="Action" />
-          <attvalue for="2" value="124" />
-          <attvalue for="3" value="10589" />
-          <attvalue for="4" value="Cyberpunk 2077, Red Dead Redemption 2, Warframe, Destiny 2" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="19" />
+          <attvalue for="4" value="10417" />
+          <attvalue for="5" value="Call of Duty®: Modern Warfare® 2 (2009) &amp; Call of Duty®: Black Ops II" />
         </attvalues>
       </node>
-      <node id="super_no_5" label="Super Nó 5: RPG (37 jogos)">
+      <node id="subcomm_42" label="RPG: The Witcher 2: Assassins of Kings Enhanced Edition &amp; The Witcher: Enhanced Edition Director's Cut">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="43.73213921133976" />
+        <viz:position x="-2505.85" y="-1598.97" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="RPG" />
+          <attvalue for="3" value="34" />
+          <attvalue for="4" value="18331" />
+          <attvalue for="5" value="The Witcher 2: Assassins of Kings Enhanced Edition &amp; The Witcher: Enhanced Edition Director's Cut" />
+        </attvalues>
+      </node>
+      <node id="subcomm_43" label="Action: LEGO® Marvel™ Super Heroes &amp; LEGO® The Hobbit™">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="34.3693177121688" />
+        <viz:position x="-2793.02" y="-1268.86" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="21" />
+          <attvalue for="4" value="7524" />
+          <attvalue for="5" value="LEGO® Marvel™ Super Heroes &amp; LEGO® The Hobbit™" />
+        </attvalues>
+      </node>
+      <node id="subcomm_44" label="Action: METAL GEAR SOLID V: THE PHANTOM PAIN &amp; Grand Theft Auto IV: The Complete Edition">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="48.023431780746364" />
+        <viz:position x="-2552.87" y="-1306.76" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="41" />
+          <attvalue for="4" value="43524" />
+          <attvalue for="5" value="METAL GEAR SOLID V: THE PHANTOM PAIN &amp; Grand Theft Auto IV: The Complete Edition" />
+        </attvalues>
+      </node>
+      <node id="subcomm_45" label="Indie: Outlast &amp; SOMA">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="32.69174207655505" />
+        <viz:position x="-2931.51" y="-1776.61" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="19" />
+          <attvalue for="4" value="19069" />
+          <attvalue for="5" value="Outlast &amp; SOMA" />
+        </attvalues>
+      </node>
+      <node id="subcomm_46" label="Adventure: Assassin’s Creed® IV Black Flag™ &amp; Assassin's Creed 2">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="21.213203435596427" />
+        <viz:position x="-2506.03" y="-1294.04" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Adventure" />
+          <attvalue for="3" value="8" />
+          <attvalue for="4" value="10670" />
+          <attvalue for="5" value="Assassin’s Creed® IV Black Flag™ &amp; Assassin's Creed 2" />
+        </attvalues>
+      </node>
+      <node id="subcomm_47" label="Action: Mortal Kombat X &amp; Zombie Army Trilogy">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="27.04163456597992" />
+        <viz:position x="-2851.02" y="-1293.37" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="13" />
+          <attvalue for="4" value="7489" />
+          <attvalue for="5" value="Mortal Kombat X &amp; Zombie Army Trilogy" />
+        </attvalues>
+      </node>
+      <node id="subcomm_48" label="Action: Borderlands 2 &amp; South Park™: The Stick of Truth™">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="51.41740950300783" />
+        <viz:position x="-2413.64" y="-1627.87" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="47" />
+          <attvalue for="4" value="38967" />
+          <attvalue for="5" value="Borderlands 2 &amp; South Park™: The Stick of Truth™" />
+        </attvalues>
+      </node>
+      <node id="subcomm_49" label="Action: Mad Max &amp; Middle-earth™: Shadow of Mordor™">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="39.68626966596886" />
+        <viz:position x="-2550.96" y="-1136.46" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="28" />
+          <attvalue for="4" value="23557" />
+          <attvalue for="5" value="Mad Max &amp; Middle-earth™: Shadow of Mordor™" />
+        </attvalues>
+      </node>
+      <node id="subcomm_50" label="Action: Metro 2033 Redux &amp; Metro: Last Light Redux">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="27.04163456597992" />
+        <viz:position x="-3077.16" y="-1275.21" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="13" />
+          <attvalue for="4" value="15273" />
+          <attvalue for="5" value="Metro 2033 Redux &amp; Metro: Last Light Redux" />
+        </attvalues>
+      </node>
+      <node id="subcomm_51" label="Action: Just Cause 2 &amp; Killing Floor">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="68.32825184358225" />
+        <viz:position x="-2769.25" y="-1286.93" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="83" />
+          <attvalue for="4" value="39014" />
+          <attvalue for="5" value="Just Cause 2 &amp; Killing Floor" />
+        </attvalues>
+      </node>
+      <node id="subcomm_52" label="Action: Tomb Raider &amp; Mirror's Edge™">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="59.055059055088584" />
+        <viz:position x="-2683.4" y="-1700.83" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="62" />
+          <attvalue for="4" value="42095" />
+          <attvalue for="5" value="Tomb Raider &amp; Mirror's Edge™" />
+        </attvalues>
+      </node>
+      <node id="subcomm_53" label="Adventure: BioShock Infinite &amp; Dishonored">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="67.0820393249937" />
+        <viz:position x="-2705.77" y="-1548.89" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Adventure" />
+          <attvalue for="3" value="80" />
+          <attvalue for="4" value="80876" />
+          <attvalue for="5" value="BioShock Infinite &amp; Dishonored" />
+        </attvalues>
+      </node>
+      <node id="subcomm_54" label="Action: Age of Empires II (2013) &amp; Warhammer 40000: Space Marine - Anniversary Edition">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="41.07919181288746" />
+        <viz:position x="-3491.58" y="-1115.27" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="30" />
+          <attvalue for="4" value="15137" />
+          <attvalue for="5" value="Age of Empires II (2013) &amp; Warhammer 40000: Space Marine - Anniversary Edition" />
+        </attvalues>
+      </node>
+      <node id="subcomm_55" label="Action: Saints Row: The Third &amp; Saints Row IV: Re-Elected">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="37.5" />
+        <viz:position x="-2790.96" y="-1176.96" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="25" />
+          <attvalue for="4" value="21103" />
+          <attvalue for="5" value="Saints Row: The Third &amp; Saints Row IV: Re-Elected" />
+        </attvalues>
+      </node>
+      <node id="subcomm_56" label="Action: Fallout: New Vegas &amp; Fallout Shelter">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="59.52940449895329" />
+        <viz:position x="-2641.72" y="-1857.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="63" />
+          <attvalue for="4" value="39308" />
+          <attvalue for="5" value="Fallout: New Vegas &amp; Fallout Shelter" />
+        </attvalues>
+      </node>
+      <node id="subcomm_57" label="Casual: Pixel Puzzles: Japan &amp; Grim Legends: The Forsaken Bride">
+        <viz:color r="255" g="71" b="87" a="1.0" />
+        <viz:size value="29.047375096555626" />
+        <viz:position x="-2714.66" y="-753.86" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="4" />
+          <attvalue for="1" value="JRPG &amp; RPG Narrativo / Anime" />
+          <attvalue for="2" value="Casual" />
+          <attvalue for="3" value="15" />
+          <attvalue for="4" value="1920" />
+          <attvalue for="5" value="Pixel Puzzles: Japan &amp; Grim Legends: The Forsaken Bride" />
+        </attvalues>
+      </node>
+      <node id="subcomm_58" label="Adventure: The Dark Pictures Anthology: Man of Medan &amp; The Dark Pictures Anthology: Little Hope">
+        <viz:color r="241" g="196" b="15" a="1.0" />
+        <viz:size value="18.371173070873834" />
+        <viz:position x="-349.73" y="-3069.45" z="0.0" />
         <attvalues>
           <attvalue for="0" value="5" />
-          <attvalue for="1" value="RPG" />
-          <attvalue for="2" value="37" />
-          <attvalue for="3" value="5243" />
-          <attvalue for="4" value="Fallout 4, Fallout: New Vegas, Borderlands 2, The Elder Scrolls V: Skyrim Special Edition" />
+          <attvalue for="1" value="Simulação, Direção &amp; Mundo Aberto" />
+          <attvalue for="2" value="Adventure" />
+          <attvalue for="3" value="6" />
+          <attvalue for="4" value="2357" />
+          <attvalue for="5" value="The Dark Pictures Anthology: Man of Medan &amp; The Dark Pictures Anthology: Little Hope" />
         </attvalues>
       </node>
-      <node id="super_no_6" label="Super Nó 6: Action (599 jogos)">
+      <node id="subcomm_59" label="RPG: NieR:Automata™ &amp; FINAL FANTASY XV WINDOWS EDITION">
+        <viz:color r="241" g="196" b="15" a="1.0" />
+        <viz:size value="45.0" />
+        <viz:position x="-791.26" y="-2846.91" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="5" />
+          <attvalue for="1" value="Simulação, Direção &amp; Mundo Aberto" />
+          <attvalue for="2" value="RPG" />
+          <attvalue for="3" value="36" />
+          <attvalue for="4" value="19767" />
+          <attvalue for="5" value="NieR:Automata™ &amp; FINAL FANTASY XV WINDOWS EDITION" />
+        </attvalues>
+      </node>
+      <node id="subcomm_60" label="Adventure: Cyberpunk 2077 &amp; God of War">
+        <viz:color r="241" g="196" b="15" a="1.0" />
+        <viz:size value="60.46693311223912" />
+        <viz:position x="-567.47" y="-3044.71" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="5" />
+          <attvalue for="1" value="Simulação, Direção &amp; Mundo Aberto" />
+          <attvalue for="2" value="Adventure" />
+          <attvalue for="3" value="65" />
+          <attvalue for="4" value="69290" />
+          <attvalue for="5" value="Cyberpunk 2077 &amp; God of War" />
+        </attvalues>
+      </node>
+      <node id="subcomm_61" label="Adventure: 古剑奇谭三(Gujian3) &amp; Firework">
+        <viz:color r="241" g="196" b="15" a="1.0" />
+        <viz:size value="28.06243040080456" />
+        <viz:position x="-964.44" y="-2418.32" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="5" />
+          <attvalue for="1" value="Simulação, Direção &amp; Mundo Aberto" />
+          <attvalue for="2" value="Adventure" />
+          <attvalue for="3" value="14" />
+          <attvalue for="4" value="2397" />
+          <attvalue for="5" value="古剑奇谭三(Gujian3) &amp; Firework" />
+        </attvalues>
+      </node>
+      <node id="subcomm_62" label="Action: DARK SOULS™ III &amp; ELDEN RING">
+        <viz:color r="241" g="196" b="15" a="1.0" />
+        <viz:size value="51.41740950300783" />
+        <viz:position x="-1116.77" y="-3208.54" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="5" />
+          <attvalue for="1" value="Simulação, Direção &amp; Mundo Aberto" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="47" />
+          <attvalue for="4" value="77461" />
+          <attvalue for="5" value="DARK SOULS™ III &amp; ELDEN RING" />
+        </attvalues>
+      </node>
+      <node id="subcomm_63" label="Action: Resident Evil 2 &amp; Resident Evil 7 Biohazard">
+        <viz:color r="241" g="196" b="15" a="1.0" />
+        <viz:size value="56.12486080160912" />
+        <viz:position x="-1047.43" y="-3331.06" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="5" />
+          <attvalue for="1" value="Simulação, Direção &amp; Mundo Aberto" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="56" />
+          <attvalue for="4" value="53979" />
+          <attvalue for="5" value="Resident Evil 2 &amp; Resident Evil 7 Biohazard" />
+        </attvalues>
+      </node>
+      <node id="subcomm_64" label="Action: DRAGON BALL XENOVERSE 2 &amp; NARUTO SHIPPUDEN: Ultimate Ninja STORM 4">
+        <viz:color r="241" g="196" b="15" a="1.0" />
+        <viz:size value="27.04163456597992" />
+        <viz:position x="-1127.93" y="-3094.44" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="5" />
+          <attvalue for="1" value="Simulação, Direção &amp; Mundo Aberto" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="13" />
+          <attvalue for="4" value="4800" />
+          <attvalue for="5" value="DRAGON BALL XENOVERSE 2 &amp; NARUTO SHIPPUDEN: Ultimate Ninja STORM 4" />
+        </attvalues>
+      </node>
+      <node id="subcomm_65" label="Action: Dying Light &amp; Rise of the Tomb Raider™">
+        <viz:color r="241" g="196" b="15" a="1.0" />
+        <viz:size value="50.86747487343951" />
+        <viz:position x="-801.79" y="-3218.34" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="5" />
+          <attvalue for="1" value="Simulação, Direção &amp; Mundo Aberto" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="46" />
+          <attvalue for="4" value="65802" />
+          <attvalue for="5" value="Dying Light &amp; Rise of the Tomb Raider™" />
+        </attvalues>
+      </node>
+      <node id="subcomm_66" label="Adventure: The Witcher® 3: Wild Hunt &amp; Red Dead Redemption 2">
+        <viz:color r="241" g="196" b="15" a="1.0" />
+        <viz:size value="71.15124735378853" />
+        <viz:position x="-798.03" y="-3640.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="5" />
+          <attvalue for="1" value="Simulação, Direção &amp; Mundo Aberto" />
+          <attvalue for="2" value="Adventure" />
+          <attvalue for="3" value="90" />
+          <attvalue for="4" value="112292" />
+          <attvalue for="5" value="The Witcher® 3: Wild Hunt &amp; Red Dead Redemption 2" />
+        </attvalues>
+      </node>
+      <node id="subcomm_67" label="Action: A Way Out &amp; SpongeBob SquarePants: Battle for Bikini Bottom - Rehydrated">
+        <viz:color r="241" g="196" b="15" a="1.0" />
+        <viz:size value="28.06243040080456" />
+        <viz:position x="-993.89" y="-3051.87" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="5" />
+          <attvalue for="1" value="Simulação, Direção &amp; Mundo Aberto" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="14" />
+          <attvalue for="4" value="7134" />
+          <attvalue for="5" value="A Way Out &amp; SpongeBob SquarePants: Battle for Bikini Bottom - Rehydrated" />
+        </attvalues>
+      </node>
+      <node id="subcomm_68" label="Action: Spyro™ Reignited Trilogy &amp; Crash Bandicoot™ N. Sane Trilogy">
+        <viz:color r="241" g="196" b="15" a="1.0" />
+        <viz:size value="18.371173070873834" />
+        <viz:position x="-797.99" y="-3734.02" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="5" />
+          <attvalue for="1" value="Simulação, Direção &amp; Mundo Aberto" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="6" />
+          <attvalue for="4" value="3629" />
+          <attvalue for="5" value="Spyro™ Reignited Trilogy &amp; Crash Bandicoot™ N. Sane Trilogy" />
+        </attvalues>
+      </node>
+      <node id="subcomm_69" label="Action: Sword Art Online: Fatal Bullet &amp; SENRAN KAGURA ESTIVAL VERSUS">
+        <viz:color r="26" g="188" b="156" a="1.0" />
+        <viz:size value="35.968736424845396" />
+        <viz:position x="1936.65" y="-2402.69" z="0.0" />
         <attvalues>
           <attvalue for="0" value="6" />
-          <attvalue for="1" value="Action" />
-          <attvalue for="2" value="599" />
-          <attvalue for="3" value="34914" />
-          <attvalue for="4" value="Team Fortress 2, Garry's Mod, Left 4 Dead 2, Grand Theft Auto V" />
+          <attvalue for="1" value="Expansões &amp; Comunidades Emergentes" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="23" />
+          <attvalue for="4" value="3746" />
+          <attvalue for="5" value="Sword Art Online: Fatal Bullet &amp; SENRAN KAGURA ESTIVAL VERSUS" />
+        </attvalues>
+      </node>
+      <node id="subcomm_70" label="Adventure: NEEDY STREAMER OVERLOAD &amp; Senren＊Banka">
+        <viz:color r="26" g="188" b="156" a="1.0" />
+        <viz:size value="41.75823272122516" />
+        <viz:position x="1947.83" y="-2690.91" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="6" />
+          <attvalue for="1" value="Expansões &amp; Comunidades Emergentes" />
+          <attvalue for="2" value="Adventure" />
+          <attvalue for="3" value="31" />
+          <attvalue for="4" value="5226" />
+          <attvalue for="5" value="NEEDY STREAMER OVERLOAD &amp; Senren＊Banka" />
+        </attvalues>
+      </node>
+      <node id="subcomm_71" label="RPG: Treasure Hunter Claire &amp; Fallen ~Makina and the City of Ruins~">
+        <viz:color r="26" g="188" b="156" a="1.0" />
+        <viz:size value="18.0" />
+        <viz:position x="1724.16" y="-2281.01" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="6" />
+          <attvalue for="1" value="Expansões &amp; Comunidades Emergentes" />
+          <attvalue for="2" value="RPG" />
+          <attvalue for="3" value="3" />
+          <attvalue for="4" value="221" />
+          <attvalue for="5" value="Treasure Hunter Claire &amp; Fallen ~Makina and the City of Ruins~" />
+        </attvalues>
+      </node>
+      <node id="subcomm_72" label="Indie: NEKOPARA Vol. 1 &amp; NEKOPARA Vol. 2">
+        <viz:color r="26" g="188" b="156" a="1.0" />
+        <viz:size value="54.60082416960388" />
+        <viz:position x="1775.25" y="-2436.64" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="6" />
+          <attvalue for="1" value="Expansões &amp; Comunidades Emergentes" />
+          <attvalue for="2" value="Indie" />
+          <attvalue for="3" value="53" />
+          <attvalue for="4" value="13983" />
+          <attvalue for="5" value="NEKOPARA Vol. 1 &amp; NEKOPARA Vol. 2" />
+        </attvalues>
+      </node>
+      <node id="subcomm_73" label="Adventure: Umineko When They Cry - Question Arcs &amp; Higurashi When They Cry Hou - Ch.2 Watanagashi">
+        <viz:color r="26" g="188" b="156" a="1.0" />
+        <viz:size value="22.5" />
+        <viz:position x="1613.62" y="-2913.55" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="6" />
+          <attvalue for="1" value="Expansões &amp; Comunidades Emergentes" />
+          <attvalue for="2" value="Adventure" />
+          <attvalue for="3" value="9" />
+          <attvalue for="4" value="884" />
+          <attvalue for="5" value="Umineko When They Cry - Question Arcs &amp; Higurashi When They Cry Hou - Ch.2 Watanagashi" />
+        </attvalues>
+      </node>
+      <node id="subcomm_74" label="Free To Play: Yu-Gi-Oh! Duel Links &amp; Phantasy Star Online 2 New Genesis">
+        <viz:color r="26" g="188" b="156" a="1.0" />
+        <viz:size value="19.84313483298443" />
+        <viz:position x="1814.46" y="-2362.01" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="6" />
+          <attvalue for="1" value="Expansões &amp; Comunidades Emergentes" />
+          <attvalue for="2" value="Free To Play" />
+          <attvalue for="3" value="7" />
+          <attvalue for="4" value="2089" />
+          <attvalue for="5" value="Yu-Gi-Oh! Duel Links &amp; Phantasy Star Online 2 New Genesis" />
+        </attvalues>
+      </node>
+      <node id="subcomm_75" label="Adventure: STEINS;GATE &amp; AI: The Somnium Files">
+        <viz:color r="26" g="188" b="156" a="1.0" />
+        <viz:size value="44.37059837324712" />
+        <viz:position x="2462.73" y="-2331.94" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="6" />
+          <attvalue for="1" value="Expansões &amp; Comunidades Emergentes" />
+          <attvalue for="2" value="Adventure" />
+          <attvalue for="3" value="35" />
+          <attvalue for="4" value="6176" />
+          <attvalue for="5" value="STEINS;GATE &amp; AI: The Somnium Files" />
+        </attvalues>
+      </node>
+      <node id="subcomm_76" label="Adventure: Yakuza 0 &amp; Yakuza: Like a Dragon">
+        <viz:color r="26" g="188" b="156" a="1.0" />
+        <viz:size value="28.06243040080456" />
+        <viz:position x="2672.65" y="-2403.59" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="6" />
+          <attvalue for="1" value="Expansões &amp; Comunidades Emergentes" />
+          <attvalue for="2" value="Adventure" />
+          <attvalue for="3" value="14" />
+          <attvalue for="4" value="15174" />
+          <attvalue for="5" value="Yakuza 0 &amp; Yakuza: Like a Dragon" />
+        </attvalues>
+      </node>
+      <node id="subcomm_77" label="RPG: Hyperdimension Neptunia Re;Birth1 &amp; Hyperdimension Neptunia Re;Birth3 V Generation">
+        <viz:color r="26" g="188" b="156" a="1.0" />
+        <viz:size value="33.54101966249685" />
+        <viz:position x="2295.13" y="-2103.35" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="6" />
+          <attvalue for="1" value="Expansões &amp; Comunidades Emergentes" />
+          <attvalue for="2" value="RPG" />
+          <attvalue for="3" value="20" />
+          <attvalue for="4" value="4285" />
+          <attvalue for="5" value="Hyperdimension Neptunia Re;Birth1 &amp; Hyperdimension Neptunia Re;Birth3 V Generation" />
+        </attvalues>
+      </node>
+      <node id="subcomm_78" label="Action: Dota 2 &amp; TEKKEN 7">
+        <viz:color r="26" g="188" b="156" a="1.0" />
+        <viz:size value="44.37059837324712" />
+        <viz:position x="1737.57" y="-3174.98" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="6" />
+          <attvalue for="1" value="Expansões &amp; Comunidades Emergentes" />
+          <attvalue for="2" value="Action" />
+          <attvalue for="3" value="35" />
+          <attvalue for="4" value="18113" />
+          <attvalue for="5" value="Dota 2 &amp; TEKKEN 7" />
+        </attvalues>
+      </node>
+      <node id="subcomm_79" label="RPG: Persona 4 Golden &amp; Persona 5 Royal">
+        <viz:color r="26" g="188" b="156" a="1.0" />
+        <viz:size value="45.0" />
+        <viz:position x="1766.1" y="-2507.05" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="6" />
+          <attvalue for="1" value="Expansões &amp; Comunidades Emergentes" />
+          <attvalue for="2" value="RPG" />
+          <attvalue for="3" value="36" />
+          <attvalue for="4" value="13469" />
+          <attvalue for="5" value="Persona 4 Golden &amp; Persona 5 Royal" />
         </attvalues>
       </node>
     </nodes>
     <edges>
-      <edge source="super_no_0" target="super_no_5" id="0" weight="130841.77264652724" />
-      <edge source="super_no_0" target="super_no_6" id="1" weight="502678.8499945228" />
-      <edge source="super_no_0" target="super_no_3" id="2" weight="440581.47822216124" />
-      <edge source="super_no_0" target="super_no_1" id="3" weight="321953.19296075834" />
-      <edge source="super_no_0" target="super_no_2" id="4" weight="348201.3953744742" />
-      <edge source="super_no_0" target="super_no_4" id="5" weight="245984.7162581349" />
-      <edge source="super_no_1" target="super_no_5" id="6" weight="56591.75848265402" />
-      <edge source="super_no_1" target="super_no_6" id="7" weight="388062.5164584082" />
-      <edge source="super_no_1" target="super_no_3" id="8" weight="355712.0426936253" />
-      <edge source="super_no_1" target="super_no_2" id="9" weight="242075.4797475117" />
-      <edge source="super_no_1" target="super_no_4" id="10" weight="90544.51201843921" />
-      <edge source="super_no_2" target="super_no_5" id="11" weight="63901.20923756806" />
-      <edge source="super_no_2" target="super_no_6" id="12" weight="278557.875267953" />
-      <edge source="super_no_2" target="super_no_3" id="13" weight="261566.4438460723" />
-      <edge source="super_no_2" target="super_no_4" id="14" weight="153971.37466631833" />
-      <edge source="super_no_3" target="super_no_5" id="15" weight="143006.6746003353" />
-      <edge source="super_no_3" target="super_no_6" id="16" weight="572171.3339213107" />
-      <edge source="super_no_3" target="super_no_4" id="17" weight="265154.5403087002" />
-      <edge source="super_no_4" target="super_no_5" id="18" weight="48527.6997516359" />
-      <edge source="super_no_4" target="super_no_6" id="19" weight="218626.90418521003" />
-      <edge source="super_no_5" target="super_no_6" id="20" weight="129020.84503822833" />
+      <edge source="subcomm_0" target="subcomm_40" id="0" weight="8423.94" />
+      <edge source="subcomm_0" target="subcomm_15" id="1" weight="4749.3" />
+      <edge source="subcomm_0" target="subcomm_8" id="2" weight="35131.18" />
+      <edge source="subcomm_0" target="subcomm_3" id="3" weight="18247.66" />
+      <edge source="subcomm_0" target="subcomm_38" id="4" weight="6698.37" />
+      <edge source="subcomm_0" target="subcomm_11" id="5" weight="4907.48" />
+      <edge source="subcomm_0" target="subcomm_28" id="6" weight="6212.21" />
+      <edge source="subcomm_0" target="subcomm_39" id="7" weight="6434.99" />
+      <edge source="subcomm_0" target="subcomm_4" id="8" weight="7205.68" />
+      <edge source="subcomm_0" target="subcomm_35" id="9" weight="10564.92" />
+      <edge source="subcomm_0" target="subcomm_32" id="10" weight="5254.84" />
+      <edge source="subcomm_0" target="subcomm_7" id="11" weight="17521.76" />
+      <edge source="subcomm_1" target="subcomm_45" id="12" weight="7127.37" />
+      <edge source="subcomm_2" target="subcomm_40" id="13" weight="5268.7" />
+      <edge source="subcomm_2" target="subcomm_25" id="14" weight="6222.68" />
+      <edge source="subcomm_2" target="subcomm_52" id="15" weight="6842.85" />
+      <edge source="subcomm_3" target="subcomm_7" id="16" weight="36453.66" />
+      <edge source="subcomm_3" target="subcomm_6" id="17" weight="5796.44" />
+      <edge source="subcomm_3" target="subcomm_15" id="18" weight="10059.11" />
+      <edge source="subcomm_3" target="subcomm_11" id="19" weight="10387.75" />
+      <edge source="subcomm_3" target="subcomm_8" id="20" weight="69033.99" />
+      <edge source="subcomm_3" target="subcomm_13" id="21" weight="5325.29" />
+      <edge source="subcomm_3" target="subcomm_54" id="22" weight="4729.62" />
+      <edge source="subcomm_3" target="subcomm_52" id="23" weight="15225.41" />
+      <edge source="subcomm_3" target="subcomm_72" id="24" weight="8302.13" />
+      <edge source="subcomm_3" target="subcomm_65" id="25" weight="14587.57" />
+      <edge source="subcomm_3" target="subcomm_51" id="26" weight="23931.69" />
+      <edge source="subcomm_3" target="subcomm_44" id="27" weight="21311.49" />
+      <edge source="subcomm_3" target="subcomm_66" id="28" weight="8997.93" />
+      <edge source="subcomm_3" target="subcomm_56" id="29" weight="12864.79" />
+      <edge source="subcomm_3" target="subcomm_53" id="30" weight="10308.82" />
+      <edge source="subcomm_3" target="subcomm_27" id="31" weight="8919.31" />
+      <edge source="subcomm_3" target="subcomm_39" id="32" weight="10484.5" />
+      <edge source="subcomm_3" target="subcomm_21" id="33" weight="5913.65" />
+      <edge source="subcomm_3" target="subcomm_12" id="34" weight="9206.3" />
+      <edge source="subcomm_3" target="subcomm_55" id="35" weight="11895.48" />
+      <edge source="subcomm_3" target="subcomm_40" id="36" weight="8627.67" />
+      <edge source="subcomm_3" target="subcomm_45" id="37" weight="12368.14" />
+      <edge source="subcomm_3" target="subcomm_22" id="38" weight="6270.61" />
+      <edge source="subcomm_3" target="subcomm_48" id="39" weight="9896.69" />
+      <edge source="subcomm_3" target="subcomm_4" id="40" weight="7318.52" />
+      <edge source="subcomm_3" target="subcomm_10" id="41" weight="7015.94" />
+      <edge source="subcomm_3" target="subcomm_50" id="42" weight="6280.96" />
+      <edge source="subcomm_4" target="subcomm_7" id="43" weight="7915.15" />
+      <edge source="subcomm_4" target="subcomm_8" id="44" weight="14330.77" />
+      <edge source="subcomm_4" target="subcomm_40" id="45" weight="8215.31" />
+      <edge source="subcomm_6" target="subcomm_8" id="46" weight="16576.52" />
+      <edge source="subcomm_6" target="subcomm_63" id="47" weight="12699.64" />
+      <edge source="subcomm_6" target="subcomm_66" id="48" weight="8151.84" />
+      <edge source="subcomm_6" target="subcomm_40" id="49" weight="5506.88" />
+      <edge source="subcomm_6" target="subcomm_41" id="50" weight="8278.43" />
+      <edge source="subcomm_6" target="subcomm_44" id="51" weight="5035.7" />
+      <edge source="subcomm_6" target="subcomm_7" id="52" weight="4537.11" />
+      <edge source="subcomm_6" target="subcomm_56" id="53" weight="7138.7" />
+      <edge source="subcomm_6" target="subcomm_48" id="54" weight="5562.82" />
+      <edge source="subcomm_6" target="subcomm_60" id="55" weight="6705.65" />
+      <edge source="subcomm_6" target="subcomm_24" id="56" weight="13205.01" />
+      <edge source="subcomm_6" target="subcomm_65" id="57" weight="7299.46" />
+      <edge source="subcomm_6" target="subcomm_51" id="58" weight="20825.5" />
+      <edge source="subcomm_7" target="subcomm_39" id="59" weight="17258.33" />
+      <edge source="subcomm_7" target="subcomm_66" id="60" weight="49337.87" />
+      <edge source="subcomm_7" target="subcomm_62" id="61" weight="15404.01" />
+      <edge source="subcomm_7" target="subcomm_8" id="62" weight="63621.19" />
+      <edge source="subcomm_7" target="subcomm_28" id="63" weight="8160.12" />
+      <edge source="subcomm_7" target="subcomm_24" id="64" weight="7790.55" />
+      <edge source="subcomm_7" target="subcomm_67" id="65" weight="10595.7" />
+      <edge source="subcomm_7" target="subcomm_15" id="66" weight="10761.11" />
+      <edge source="subcomm_7" target="subcomm_36" id="67" weight="5227.7" />
+      <edge source="subcomm_7" target="subcomm_65" id="68" weight="46515.15" />
+      <edge source="subcomm_7" target="subcomm_59" id="69" weight="4812.72" />
+      <edge source="subcomm_7" target="subcomm_40" id="70" weight="60058.13" />
+      <edge source="subcomm_7" target="subcomm_60" id="71" weight="14411.24" />
+      <edge source="subcomm_7" target="subcomm_48" id="72" weight="9120.92" />
+      <edge source="subcomm_7" target="subcomm_27" id="73" weight="10612.18" />
+      <edge source="subcomm_7" target="subcomm_12" id="74" weight="13414.56" />
+      <edge source="subcomm_7" target="subcomm_35" id="75" weight="19903.7" />
+      <edge source="subcomm_7" target="subcomm_72" id="76" weight="12459.32" />
+      <edge source="subcomm_7" target="subcomm_11" id="77" weight="4906.93" />
+      <edge source="subcomm_7" target="subcomm_38" id="78" weight="6426.9" />
+      <edge source="subcomm_7" target="subcomm_63" id="79" weight="10433.29" />
+      <edge source="subcomm_7" target="subcomm_13" id="80" weight="7478.09" />
+      <edge source="subcomm_7" target="subcomm_32" id="81" weight="9752.57" />
+      <edge source="subcomm_7" target="subcomm_51" id="82" weight="12487.93" />
+      <edge source="subcomm_7" target="subcomm_44" id="83" weight="12694.49" />
+      <edge source="subcomm_7" target="subcomm_53" id="84" weight="7633.58" />
+      <edge source="subcomm_7" target="subcomm_49" id="85" weight="4992.2" />
+      <edge source="subcomm_7" target="subcomm_52" id="86" weight="6865.82" />
+      <edge source="subcomm_7" target="subcomm_55" id="87" weight="4696.7" />
+      <edge source="subcomm_7" target="subcomm_45" id="88" weight="4520.23" />
+      <edge source="subcomm_8" target="subcomm_40" id="89" weight="40803.64" />
+      <edge source="subcomm_8" target="subcomm_62" id="90" weight="12355.12" />
+      <edge source="subcomm_8" target="subcomm_15" id="91" weight="31361.74" />
+      <edge source="subcomm_8" target="subcomm_11" id="92" weight="32968.84" />
+      <edge source="subcomm_8" target="subcomm_66" id="93" weight="27295.04" />
+      <edge source="subcomm_8" target="subcomm_60" id="94" weight="6949.2" />
+      <edge source="subcomm_8" target="subcomm_36" id="95" weight="83061.2" />
+      <edge source="subcomm_8" target="subcomm_21" id="96" weight="15329.08" />
+      <edge source="subcomm_8" target="subcomm_13" id="97" weight="41268.28" />
+      <edge source="subcomm_8" target="subcomm_27" id="98" weight="15687.3" />
+      <edge source="subcomm_8" target="subcomm_48" id="99" weight="20036.53" />
+      <edge source="subcomm_8" target="subcomm_12" id="100" weight="22270.9" />
+      <edge source="subcomm_8" target="subcomm_53" id="101" weight="16374.46" />
+      <edge source="subcomm_8" target="subcomm_24" id="102" weight="15813.78" />
+      <edge source="subcomm_8" target="subcomm_78" id="103" weight="17940.55" />
+      <edge source="subcomm_8" target="subcomm_35" id="104" weight="20365.41" />
+      <edge source="subcomm_8" target="subcomm_39" id="105" weight="36216.69" />
+      <edge source="subcomm_8" target="subcomm_54" id="106" weight="8092.18" />
+      <edge source="subcomm_8" target="subcomm_19" id="107" weight="6648.96" />
+      <edge source="subcomm_8" target="subcomm_38" id="108" weight="9328.15" />
+      <edge source="subcomm_8" target="subcomm_72" id="109" weight="11719.48" />
+      <edge source="subcomm_8" target="subcomm_65" id="110" weight="17536.77" />
+      <edge source="subcomm_8" target="subcomm_74" id="111" weight="12545.23" />
+      <edge source="subcomm_8" target="subcomm_51" id="112" weight="23766.92" />
+      <edge source="subcomm_8" target="subcomm_22" id="113" weight="4611.86" />
+      <edge source="subcomm_8" target="subcomm_56" id="114" weight="9608.42" />
+      <edge source="subcomm_8" target="subcomm_9" id="115" weight="4731.43" />
+      <edge source="subcomm_8" target="subcomm_37" id="116" weight="6966.71" />
+      <edge source="subcomm_8" target="subcomm_44" id="117" weight="14628.01" />
+      <edge source="subcomm_8" target="subcomm_52" id="118" weight="17726.62" />
+      <edge source="subcomm_8" target="subcomm_43" id="119" weight="6522.03" />
+      <edge source="subcomm_8" target="subcomm_55" id="120" weight="8497.06" />
+      <edge source="subcomm_8" target="subcomm_31" id="121" weight="30699.21" />
+      <edge source="subcomm_8" target="subcomm_45" id="122" weight="5498.01" />
+      <edge source="subcomm_8" target="subcomm_10" id="123" weight="7276.92" />
+      <edge source="subcomm_10" target="subcomm_41" id="124" weight="12824.76" />
+      <edge source="subcomm_11" target="subcomm_62" id="125" weight="33408.21" />
+      <edge source="subcomm_11" target="subcomm_15" id="126" weight="18817.14" />
+      <edge source="subcomm_11" target="subcomm_27" id="127" weight="15940.19" />
+      <edge source="subcomm_11" target="subcomm_19" id="128" weight="9959.29" />
+      <edge source="subcomm_11" target="subcomm_35" id="129" weight="8933.79" />
+      <edge source="subcomm_11" target="subcomm_12" id="130" weight="5663.86" />
+      <edge source="subcomm_11" target="subcomm_66" id="131" weight="24785.35" />
+      <edge source="subcomm_11" target="subcomm_60" id="132" weight="6333.39" />
+      <edge source="subcomm_11" target="subcomm_34" id="133" weight="13582.92" />
+      <edge source="subcomm_11" target="subcomm_13" id="134" weight="8705.54" />
+      <edge source="subcomm_11" target="subcomm_40" id="135" weight="29075.83" />
+      <edge source="subcomm_11" target="subcomm_24" id="136" weight="8397.67" />
+      <edge source="subcomm_11" target="subcomm_22" id="137" weight="5501.49" />
+      <edge source="subcomm_11" target="subcomm_21" id="138" weight="7710.44" />
+      <edge source="subcomm_11" target="subcomm_65" id="139" weight="6060.63" />
+      <edge source="subcomm_12" target="subcomm_62" id="140" weight="6671.37" />
+      <edge source="subcomm_12" target="subcomm_40" id="141" weight="6141.95" />
+      <edge source="subcomm_12" target="subcomm_35" id="142" weight="5604.51" />
+      <edge source="subcomm_13" target="subcomm_34" id="143" weight="9771.18" />
+      <edge source="subcomm_13" target="subcomm_27" id="144" weight="7909.94" />
+      <edge source="subcomm_13" target="subcomm_35" id="145" weight="9070.48" />
+      <edge source="subcomm_13" target="subcomm_24" id="146" weight="6333.01" />
+      <edge source="subcomm_13" target="subcomm_40" id="147" weight="6057.66" />
+      <edge source="subcomm_13" target="subcomm_36" id="148" weight="10663.13" />
+      <edge source="subcomm_13" target="subcomm_56" id="149" weight="4595.81" />
+      <edge source="subcomm_14" target="subcomm_66" id="150" weight="7759.48" />
+      <edge source="subcomm_15" target="subcomm_62" id="151" weight="12419.0" />
+      <edge source="subcomm_15" target="subcomm_19" id="152" weight="5357.59" />
+      <edge source="subcomm_15" target="subcomm_24" id="153" weight="13071.44" />
+      <edge source="subcomm_15" target="subcomm_66" id="154" weight="7259.5" />
+      <edge source="subcomm_15" target="subcomm_27" id="155" weight="28917.58" />
+      <edge source="subcomm_15" target="subcomm_35" id="156" weight="6982.62" />
+      <edge source="subcomm_15" target="subcomm_34" id="157" weight="7417.91" />
+      <edge source="subcomm_15" target="subcomm_78" id="158" weight="5286.91" />
+      <edge source="subcomm_15" target="subcomm_48" id="159" weight="4616.12" />
+      <edge source="subcomm_15" target="subcomm_53" id="160" weight="4754.3" />
+      <edge source="subcomm_17" target="subcomm_79" id="161" weight="9436.22" />
+      <edge source="subcomm_17" target="subcomm_55" id="162" weight="7200.65" />
+      <edge source="subcomm_17" target="subcomm_59" id="163" weight="15141.6" />
+      <edge source="subcomm_19" target="subcomm_66" id="164" weight="5486.21" />
+      <edge source="subcomm_19" target="subcomm_34" id="165" weight="4674.83" />
+      <edge source="subcomm_19" target="subcomm_40" id="166" weight="5479.12" />
+      <edge source="subcomm_19" target="subcomm_35" id="167" weight="5710.89" />
+      <edge source="subcomm_19" target="subcomm_27" id="168" weight="7163.99" />
+      <edge source="subcomm_20" target="subcomm_35" id="169" weight="4796.57" />
+      <edge source="subcomm_21" target="subcomm_62" id="170" weight="10187.0" />
+      <edge source="subcomm_21" target="subcomm_66" id="171" weight="6956.7" />
+      <edge source="subcomm_21" target="subcomm_27" id="172" weight="5860.47" />
+      <edge source="subcomm_21" target="subcomm_77" id="173" weight="7082.98" />
+      <edge source="subcomm_21" target="subcomm_75" id="174" weight="4637.06" />
+      <edge source="subcomm_21" target="subcomm_72" id="175" weight="10379.3" />
+      <edge source="subcomm_22" target="subcomm_62" id="176" weight="5585.56" />
+      <edge source="subcomm_22" target="subcomm_66" id="177" weight="8058.37" />
+      <edge source="subcomm_22" target="subcomm_48" id="178" weight="5450.33" />
+      <edge source="subcomm_24" target="subcomm_40" id="179" weight="15073.69" />
+      <edge source="subcomm_24" target="subcomm_62" id="180" weight="10328.59" />
+      <edge source="subcomm_24" target="subcomm_66" id="181" weight="7659.68" />
+      <edge source="subcomm_24" target="subcomm_60" id="182" weight="5012.29" />
+      <edge source="subcomm_24" target="subcomm_34" id="183" weight="11101.08" />
+      <edge source="subcomm_24" target="subcomm_35" id="184" weight="11814.15" />
+      <edge source="subcomm_24" target="subcomm_36" id="185" weight="4925.29" />
+      <edge source="subcomm_24" target="subcomm_27" id="186" weight="15180.78" />
+      <edge source="subcomm_24" target="subcomm_37" id="187" weight="8196.16" />
+      <edge source="subcomm_25" target="subcomm_62" id="188" weight="5030.17" />
+      <edge source="subcomm_27" target="subcomm_62" id="189" weight="14740.22" />
+      <edge source="subcomm_27" target="subcomm_66" id="190" weight="15656.89" />
+      <edge source="subcomm_27" target="subcomm_34" id="191" weight="57693.92" />
+      <edge source="subcomm_27" target="subcomm_37" id="192" weight="11436.22" />
+      <edge source="subcomm_27" target="subcomm_40" id="193" weight="17929.13" />
+      <edge source="subcomm_27" target="subcomm_35" id="194" weight="25052.09" />
+      <edge source="subcomm_27" target="subcomm_38" id="195" weight="17806.93" />
+      <edge source="subcomm_27" target="subcomm_56" id="196" weight="6449.37" />
+      <edge source="subcomm_27" target="subcomm_48" id="197" weight="8328.62" />
+      <edge source="subcomm_27" target="subcomm_63" id="198" weight="6362.32" />
+      <edge source="subcomm_27" target="subcomm_52" id="199" weight="5853.34" />
+      <edge source="subcomm_27" target="subcomm_53" id="200" weight="9617.8" />
+      <edge source="subcomm_27" target="subcomm_51" id="201" weight="11522.28" />
+      <edge source="subcomm_28" target="subcomm_35" id="202" weight="19852.59" />
+      <edge source="subcomm_28" target="subcomm_31" id="203" weight="6346.68" />
+      <edge source="subcomm_28" target="subcomm_29" id="204" weight="7467.63" />
+      <edge source="subcomm_28" target="subcomm_32" id="205" weight="12381.46" />
+      <edge source="subcomm_28" target="subcomm_33" id="206" weight="15210.49" />
+      <edge source="subcomm_31" target="subcomm_36" id="207" weight="23212.86" />
+      <edge source="subcomm_31" target="subcomm_39" id="208" weight="9436.41" />
+      <edge source="subcomm_31" target="subcomm_40" id="209" weight="6811.51" />
+      <edge source="subcomm_32" target="subcomm_40" id="210" weight="4765.99" />
+      <edge source="subcomm_32" target="subcomm_33" id="211" weight="8329.44" />
+      <edge source="subcomm_33" target="subcomm_40" id="212" weight="7155.28" />
+      <edge source="subcomm_34" target="subcomm_40" id="213" weight="28447.24" />
+      <edge source="subcomm_34" target="subcomm_62" id="214" weight="14396.21" />
+      <edge source="subcomm_34" target="subcomm_66" id="215" weight="29856.27" />
+      <edge source="subcomm_34" target="subcomm_60" id="216" weight="16949.35" />
+      <edge source="subcomm_34" target="subcomm_37" id="217" weight="25837.88" />
+      <edge source="subcomm_34" target="subcomm_56" id="218" weight="17078.27" />
+      <edge source="subcomm_34" target="subcomm_79" id="219" weight="4687.72" />
+      <edge source="subcomm_34" target="subcomm_36" id="220" weight="8503.91" />
+      <edge source="subcomm_34" target="subcomm_35" id="221" weight="34220.55" />
+      <edge source="subcomm_34" target="subcomm_42" id="222" weight="6632.16" />
+      <edge source="subcomm_34" target="subcomm_38" id="223" weight="18095.75" />
+      <edge source="subcomm_34" target="subcomm_39" id="224" weight="8138.45" />
+      <edge source="subcomm_34" target="subcomm_49" id="225" weight="5904.08" />
+      <edge source="subcomm_34" target="subcomm_51" id="226" weight="10363.13" />
+      <edge source="subcomm_34" target="subcomm_59" id="227" weight="5921.37" />
+      <edge source="subcomm_34" target="subcomm_53" id="228" weight="8840.04" />
+      <edge source="subcomm_35" target="subcomm_40" id="229" weight="76830.43" />
+      <edge source="subcomm_35" target="subcomm_62" id="230" weight="7752.02" />
+      <edge source="subcomm_35" target="subcomm_66" id="231" weight="19250.65" />
+      <edge source="subcomm_35" target="subcomm_60" id="232" weight="7075.38" />
+      <edge source="subcomm_35" target="subcomm_36" id="233" weight="5103.56" />
+      <edge source="subcomm_35" target="subcomm_37" id="234" weight="10896.11" />
+      <edge source="subcomm_35" target="subcomm_38" id="235" weight="43224.14" />
+      <edge source="subcomm_35" target="subcomm_39" id="236" weight="21629.47" />
+      <edge source="subcomm_36" target="subcomm_66" id="237" weight="7449.71" />
+      <edge source="subcomm_36" target="subcomm_40" id="238" weight="15505.34" />
+      <edge source="subcomm_36" target="subcomm_74" id="239" weight="7041.59" />
+      <edge source="subcomm_36" target="subcomm_52" id="240" weight="9294.37" />
+      <edge source="subcomm_36" target="subcomm_39" id="241" weight="5003.58" />
+      <edge source="subcomm_37" target="subcomm_66" id="242" weight="13480.07" />
+      <edge source="subcomm_37" target="subcomm_60" id="243" weight="11779.99" />
+      <edge source="subcomm_37" target="subcomm_39" id="244" weight="9967.93" />
+      <edge source="subcomm_37" target="subcomm_54" id="245" weight="11737.9" />
+      <edge source="subcomm_37" target="subcomm_38" id="246" weight="19764.68" />
+      <edge source="subcomm_37" target="subcomm_40" id="247" weight="14313.09" />
+      <edge source="subcomm_37" target="subcomm_63" id="248" weight="4701.91" />
+      <edge source="subcomm_38" target="subcomm_66" id="249" weight="11607.22" />
+      <edge source="subcomm_38" target="subcomm_39" id="250" weight="22567.59" />
+      <edge source="subcomm_38" target="subcomm_40" id="251" weight="20680.83" />
+      <edge source="subcomm_38" target="subcomm_51" id="252" weight="5928.4" />
+      <edge source="subcomm_38" target="subcomm_54" id="253" weight="5959.85" />
+      <edge source="subcomm_38" target="subcomm_56" id="254" weight="13188.86" />
+      <edge source="subcomm_38" target="subcomm_55" id="255" weight="6897.94" />
+      <edge source="subcomm_39" target="subcomm_40" id="256" weight="18044.51" />
+      <edge source="subcomm_39" target="subcomm_66" id="257" weight="10531.73" />
+      <edge source="subcomm_39" target="subcomm_50" id="258" weight="6150.15" />
+      <edge source="subcomm_39" target="subcomm_54" id="259" weight="5532.28" />
+      <edge source="subcomm_40" target="subcomm_62" id="260" weight="19602.99" />
+      <edge source="subcomm_40" target="subcomm_66" id="261" weight="53558.26" />
+      <edge source="subcomm_40" target="subcomm_60" id="262" weight="20669.17" />
+      <edge source="subcomm_40" target="subcomm_53" id="263" weight="8612.71" />
+      <edge source="subcomm_40" target="subcomm_49" id="264" weight="5799.49" />
+      <edge source="subcomm_40" target="subcomm_51" id="265" weight="7620.45" />
+      <edge source="subcomm_40" target="subcomm_56" id="266" weight="18427.28" />
+      <edge source="subcomm_40" target="subcomm_65" id="267" weight="22448.76" />
+      <edge source="subcomm_40" target="subcomm_42" id="268" weight="5152.52" />
+      <edge source="subcomm_40" target="subcomm_48" id="269" weight="5554.65" />
+      <edge source="subcomm_42" target="subcomm_66" id="270" weight="14401.48" />
+      <edge source="subcomm_42" target="subcomm_53" id="271" weight="6416.48" />
+      <edge source="subcomm_42" target="subcomm_52" id="272" weight="8060.25" />
+      <edge source="subcomm_42" target="subcomm_51" id="273" weight="5839.84" />
+      <edge source="subcomm_44" target="subcomm_66" id="274" weight="13603.13" />
+      <edge source="subcomm_44" target="subcomm_60" id="275" weight="7694.41" />
+      <edge source="subcomm_44" target="subcomm_56" id="276" weight="7113.67" />
+      <edge source="subcomm_44" target="subcomm_65" id="277" weight="15452.03" />
+      <edge source="subcomm_44" target="subcomm_52" id="278" weight="10282.34" />
+      <edge source="subcomm_44" target="subcomm_53" id="279" weight="14041.92" />
+      <edge source="subcomm_44" target="subcomm_51" id="280" weight="11290.54" />
+      <edge source="subcomm_45" target="subcomm_66" id="281" weight="7776.4" />
+      <edge source="subcomm_45" target="subcomm_63" id="282" weight="5705.84" />
+      <edge source="subcomm_46" target="subcomm_66" id="283" weight="21250.0" />
+      <edge source="subcomm_47" target="subcomm_66" id="284" weight="7872.47" />
+      <edge source="subcomm_47" target="subcomm_65" id="285" weight="8535.67" />
+      <edge source="subcomm_47" target="subcomm_64" id="286" weight="6879.02" />
+      <edge source="subcomm_48" target="subcomm_65" id="287" weight="19753.74" />
+      <edge source="subcomm_48" target="subcomm_66" id="288" weight="11218.15" />
+      <edge source="subcomm_48" target="subcomm_56" id="289" weight="5868.62" />
+      <edge source="subcomm_48" target="subcomm_52" id="290" weight="8256.53" />
+      <edge source="subcomm_48" target="subcomm_51" id="291" weight="10835.94" />
+      <edge source="subcomm_48" target="subcomm_63" id="292" weight="5893.48" />
+      <edge source="subcomm_48" target="subcomm_53" id="293" weight="14031.33" />
+      <edge source="subcomm_49" target="subcomm_66" id="294" weight="15045.0" />
+      <edge source="subcomm_49" target="subcomm_52" id="295" weight="5602.95" />
+      <edge source="subcomm_49" target="subcomm_53" id="296" weight="6689.91" />
+      <edge source="subcomm_49" target="subcomm_65" id="297" weight="11391.53" />
+      <edge source="subcomm_50" target="subcomm_65" id="298" weight="10787.86" />
+      <edge source="subcomm_51" target="subcomm_66" id="299" weight="7459.05" />
+      <edge source="subcomm_51" target="subcomm_56" id="300" weight="9625.88" />
+      <edge source="subcomm_51" target="subcomm_63" id="301" weight="6487.61" />
+      <edge source="subcomm_51" target="subcomm_52" id="302" weight="13995.36" />
+      <edge source="subcomm_51" target="subcomm_55" id="303" weight="4858.66" />
+      <edge source="subcomm_51" target="subcomm_53" id="304" weight="13912.81" />
+      <edge source="subcomm_52" target="subcomm_66" id="305" weight="14263.69" />
+      <edge source="subcomm_52" target="subcomm_63" id="306" weight="34038.31" />
+      <edge source="subcomm_52" target="subcomm_65" id="307" weight="20276.4" />
+      <edge source="subcomm_52" target="subcomm_53" id="308" weight="31560.83" />
+      <edge source="subcomm_52" target="subcomm_56" id="309" weight="6758.72" />
+      <edge source="subcomm_52" target="subcomm_55" id="310" weight="5144.6" />
+      <edge source="subcomm_53" target="subcomm_62" id="311" weight="6011.16" />
+      <edge source="subcomm_53" target="subcomm_66" id="312" weight="36553.24" />
+      <edge source="subcomm_53" target="subcomm_56" id="313" weight="7584.34" />
+      <edge source="subcomm_53" target="subcomm_65" id="314" weight="13895.62" />
+      <edge source="subcomm_53" target="subcomm_63" id="315" weight="10261.48" />
+      <edge source="subcomm_54" target="subcomm_56" id="316" weight="4560.75" />
+      <edge source="subcomm_55" target="subcomm_59" id="317" weight="7467.02" />
+      <edge source="subcomm_56" target="subcomm_66" id="318" weight="12273.85" />
+      <edge source="subcomm_56" target="subcomm_60" id="319" weight="5060.42" />
+      <edge source="subcomm_56" target="subcomm_63" id="320" weight="4795.6" />
+      <edge source="subcomm_59" target="subcomm_62" id="321" weight="12189.63" />
+      <edge source="subcomm_59" target="subcomm_66" id="322" weight="9455.06" />
+      <edge source="subcomm_59" target="subcomm_60" id="323" weight="10963.82" />
+      <edge source="subcomm_59" target="subcomm_63" id="324" weight="7540.09" />
+      <edge source="subcomm_59" target="subcomm_79" id="325" weight="30602.05" />
+      <edge source="subcomm_59" target="subcomm_69" id="326" weight="10103.55" />
+      <edge source="subcomm_60" target="subcomm_65" id="327" weight="22040.1" />
+      <edge source="subcomm_60" target="subcomm_62" id="328" weight="20881.11" />
+      <edge source="subcomm_60" target="subcomm_66" id="329" weight="70132.93" />
+      <edge source="subcomm_60" target="subcomm_63" id="330" weight="19869.4" />
+      <edge source="subcomm_60" target="subcomm_72" id="331" weight="7007.1" />
+      <edge source="subcomm_62" target="subcomm_63" id="332" weight="18541.23" />
+      <edge source="subcomm_62" target="subcomm_66" id="333" weight="29540.5" />
+      <edge source="subcomm_62" target="subcomm_79" id="334" weight="9970.03" />
+      <edge source="subcomm_62" target="subcomm_72" id="335" weight="6152.21" />
+      <edge source="subcomm_62" target="subcomm_78" id="336" weight="4730.05" />
+      <edge source="subcomm_62" target="subcomm_65" id="337" weight="5432.32" />
+      <edge source="subcomm_63" target="subcomm_65" id="338" weight="35147.36" />
+      <edge source="subcomm_63" target="subcomm_66" id="339" weight="21949.25" />
+      <edge source="subcomm_64" target="subcomm_66" id="340" weight="4530.71" />
+      <edge source="subcomm_64" target="subcomm_78" id="341" weight="4686.4" />
+      <edge source="subcomm_65" target="subcomm_66" id="342" weight="52919.36" />
+      <edge source="subcomm_66" target="subcomm_67" id="343" weight="11939.15" />
+      <edge source="subcomm_66" target="subcomm_79" id="344" weight="5790.86" />
+      <edge source="subcomm_69" target="subcomm_72" id="345" weight="6910.59" />
+      <edge source="subcomm_70" target="subcomm_75" id="346" weight="15614.74" />
+      <edge source="subcomm_70" target="subcomm_72" id="347" weight="22361.91" />
+      <edge source="subcomm_72" target="subcomm_77" id="348" weight="9890.51" />
+      <edge source="subcomm_72" target="subcomm_75" id="349" weight="13377.22" />
+      <edge source="subcomm_77" target="subcomm_79" id="350" weight="5201.56" />
     </edges>
   </graph>
 </gexf>
