@@ -327,21 +327,6 @@ TrabalhoFinal-AEDS2/
 
 ---
 
-## ☁️ Deploy gratuito no Render.com
-
-1. Crie uma conta em [Render.com](https://render.com/).
-2. Clique em **New +** → **Web Service** e conecte este repositório.
-3. Configure:
-   * **Runtime**: `Python 3`
-   * **Build Command**: `pip install -r requirements.txt`
-   * **Start Command**: `python3 src/servidor_web.py`
-   * **Instance Type**: `Free` (512 MB de RAM)
-4. Clique em **Create Web Service**. O servidor lê a porta da variável de ambiente `PORT` automaticamente.
-
-> A camada web usa apenas o servidor HTTP da biblioteca padrão, mas importa o módulo `main`, que depende do **NetworkX** — por isso o `pip install` é necessário.
-
----
-
 ## 📜 Citação
 
 ```bibtex
