@@ -8,232 +8,357 @@
 ![Institution](https://img.shields.io/badge/CEFET--MG-UFCI--MG-red)
 ![Course](https://img.shields.io/badge/AEDS_2-Prof._Michel_Pires-success)
 
-**Trabalho Final da disciplina de Algoritmos e Estruturas de Dados II**  
-*Centro Federal de Educação Tecnológica de Minas Gerais (CEFET-MG / UFCI-MG)*
+**Trabalho Final da disciplina de Algoritmos e Estruturas de Dados II**
+*Centro Federal de Educação Tecnológica de Minas Gerais (CEFET-MG / UFCI-MG) — Campus V, Divinópolis*
 
 **Autores:** [Rafael Alves Faria](https://github.com/rafa16w34) • [Gabriel Alves Faria](https://github.com/Gabriel12342)  
 **Orientador:** [Prof. Michel Pires da Silva](https://github.com/mpiress)
+
+🌐 **[Demo online](https://steam-finder.onrender.com)** • 📄 **[Artigo (PDF)](Artigo_Trabalho_Final__AEDS_2__Rafael_Gabriel.pdf)** • 📦 **[Dataset no Zenodo](https://doi.org/10.5281/zenodo.23861070)**
 
 </div>
 
 ---
 
-## 📌 Sumário Executivo
+## 📌 Sumário
 
-O **Steam Finder** é um motor híbrido de recomendação e busca semântica para jogos digitais na plataforma Steam, construído estritamente sobre **fundamentos de Teoria dos Grafos** e **Algoritmos Avançados**. O sistema modela a interação entre mais de 150 mil usuários e o catálogo de jogos através de um **Grafo Bipartido Ponderado**, combinando:
+O **Steam Finder** é um recomendador item-a-item de jogos da Steam construído sobre **Teoria dos Grafos** e **estruturas de dados clássicas** (grafo bipartido, tabelas hash, BFS). A rede de interações entre **153.013 usuários** e **3.573 jogos** (**2.390.604 arestas**) é modelada como um **grafo bipartido ponderado**, e o score de cada recomendação combina:
 
-1. **Filtragem Colaborativa Estrutural**: Busca em Largura (BFS) em 2 níveis sobre arestas com validação social $W(u,j)$;
-2. **Modulação Comunitária (Louvain)**: Agrupamento em 7 Super-Nós temáticos para reforço de congruência de nicho;
-3. **Consenso Semântico de Tags**: Índice de Jaccard Ponderado (Índice de Ruzicka) com decaimento exponencial de relevância e penalização $\text{IDF}^2$;
-4. **Poda Prévia de Qualidade**: Exclusão estrutural de jogos com aprovação pública inferior a $65\%$;
-5. **Atenuação Anti-Hub**: Penalização de títulos excessivamente populares via $1/\text{Grau}^{0.35}$;
-6. **Explicabilidade Algorítmica (XAI)**: Interface web com discriminação visual detalhada de todos os fatores que compõem o score de recomendação.
+1. **Filtragem colaborativa estrutural** — BFS em 2 níveis (jogo → usuários → jogos), com a vizinhança limitada aos `K = 1000` usuários mais engajados;
+2. **Comunidades de Louvain** — 7 super-nós temáticos, com bônus ×3,0 para candidatos da mesma comunidade;
+3. **Similaridade de tags** — Índice de Jaccard Ponderado (Ruzicka) com `IDF²` e decaimento por posição da tag, usado também como corte semântico (`J ≥ 0,20`);
+4. **Poda de qualidade** — jogos com aprovação pública `< 65%` não entram no grafo;
+5. **Filtro de dissonância de tom** — impede que títulos *mature* recomendem títulos *family friendly* (e vice-versa);
+6. **Amortecimento de hubs** — o score é dividido por `Grau(j)^0,35`;
+7. **Explicabilidade (XAI)** — a interface web mostra cada fator que compõe o score.
+
+> **Resultado em uma frase:** o método não supera a co-ocorrência pura em *Hit Rate* bruto, mas entrega recomendações **mais coerentes tematicamente, com maior cobertura do catálogo e menor viés de popularidade**, e foi preferido em **85,2%** das escolhas num teste cego com usuários. Detalhes e limitações na seção [Resultados](#-resultados).
 
 ---
 
-## 🏛️ Arquitetura em Duas Camadas: Serviço Online vs. Pesquisa Científica
+## 🏛️ Arquitetura em duas camadas
 
-Para permitir que o projeto seja simultaneamente **auditável academicamente** e **leve para deploy gratuito em nuvem** (ex: [Render.com](https://render.com/)), o repositório é desenhado em duas camadas complementares:
+O repositório separa o **serviço web** (leve, usa um cache pré-calculado) da **camada de pesquisa** (calcula tudo ao vivo sobre o grafo completo, para reprodutibilidade).
 
 ```mermaid
 flowchart TD
     subgraph Pesquisa ["🔬 CAMADA DE PESQUISA (Batch & Algoritmos)"]
-        Z[("📦 Zenodo Oficial\n(DOI: 10.5281/zenodo.23861070)")]
-        G[("🕸️ Grafo Bipartido em Memória\n156.586 Vértices | 2.390.604 Arestas")]
-        L["🧬 Particionamento de Louvain (7 Super-Nós)"]
-        Eval["📊 Avaliação Leave-One-Out (Hit Rate, MRR, NDCG)"]
-        GenCache["⚙️ Gerador de Cache Offline (src/gerar_cache_recomendacoes.py)"]
-        
-        Z -->|Download automático| G
+        Z[("📦 Zenodo<br/>DOI 10.5281/zenodo.23861070")]
+        G[("🕸️ Grafo bipartido em memória<br/>156.586 vértices | 2.390.604 arestas")]
+        L["🧬 Louvain (7 super-nós, seed=16)"]
+        Eval["📊 Avaliação Leave-One-Out<br/>(Hit Rate@10, NDCG@10) + métricas multidimensionais"]
+        GenCache["⚙️ src/gerar_cache_recomendacoes.py"]
+
+        Z -->|download automático| G
         G --> L
         G --> Eval
         G --> GenCache
     end
 
-    subgraph Producao ["🌐 CAMADA DE SERVIÇO WEB (Deploy Leve / Render)"]
-        CacheFile[("📄 web/cache_recomendacoes.json\n(~7 MB em disco)")]
-        WebServer["⚡ Servidor Web Nativo (~40 MB RAM)\n(src/servidor_web.py)"]
-        Client["🎮 Interface Steam Finder (web/index.html)\nAutocomplete + Cards + Modal XAI"]
+    subgraph Producao ["🌐 CAMADA DE SERVIÇO WEB"]
+        CacheFile[("📄 web/cache_recomendacoes.json<br/>(~50 MB, 3.573 jogos)")]
+        WebServer["⚡ src/servidor_web.py<br/>(http.server nativo)"]
+        Client["🎮 web/index.html<br/>Autocomplete + Cards + Modal XAI"]
 
-        GenCache -.->|Exporta resultados| CacheFile
-        CacheFile -->|Carrega em 0.02s| WebServer
-        WebServer <-->|API JSON em 1ms| Client
+        GenCache -.->|exporta| CacheFile
+        CacheFile --> WebServer
+        WebServer <-->|API JSON ~1 ms| Client
     end
 ```
 
-| Aspecto | 🌐 Camada Online (Web / Render) | 🔬 Camada de Pesquisa (Artigo / Zenodo) |
+| Aspecto | 🌐 Camada Web (cache) | 🔬 Camada de Pesquisa (grafo completo) |
 | :--- | :--- | :--- |
-| **Público-Alvo** | Avaliadores navegando no site, colegas, usuários finais | Professor, revisores do artigo, pesquisadores |
-| **Ponto de Entrada** | `python3 src/servidor_web.py` ou link do Render | `python3 src/main.py` ou `src/avaliar_recomendador.py` |
-| **Origem dos Dados** | `web/cache_recomendacoes.json` | Dataset bruto oficial no Zenodo (DOI: 10.5281/zenodo.23861070) |
-| **Consumo de Memória** | **~40 MB de RAM** (compatível com teto de 512 MB do Render) | **~1.18 GB de RAM** (grafo completo em memória) |
-| **Latência de Resposta** | **~1 ms** (acesso indexado O(1)) | **~150 ms** (traversal BFS em 2.4M arestas) |
-| **Objetivo** | Alta disponibilidade, rapidez e experiência interativa | Reprodutibilidade científica, auditoria e métricas formais |
+| **Público-alvo** | Quem quer apenas usar/avaliar o site | Professor, revisores, pesquisadores |
+| **Ponto de entrada** | `python3 src/servidor_web.py` | `python3 src/main.py`, `src/avaliar_recomendador.py` etc. |
+| **Origem dos dados** | `web/cache_recomendacoes.json` | Dataset bruto no Zenodo (baixado automaticamente) |
+| **Memória (RAM)** | ≈ 250 MB medidos em cache mode (cabe nos 512 MB do plano free do Render) | ≈ 1,2 GB (pico medido de 1.211 MB no artigo) |
+| **Latência por consulta** | ≈ 1 ms (lookup indexado) | mediana ≈ 474 ms (P95 ≈ 740 ms) |
+| **Objetivo** | Disponibilidade e experiência interativa | Reprodutibilidade científica e métricas formais |
 
 ---
 
-## 🚀 Guia Rápido de Execução
+## 🚀 Como executar
 
-Clone o repositório em sua máquina local:
+Python é interpretado, então **não há etapa de compilação**: basta instalar as dependências e executar os scripts. Os comandos abaixo valem para Linux/macOS; no Windows use `python` no lugar de `python3`.
+
+### 1. Preparar o ambiente
 ```bash
 git clone https://github.com/rafa16w34/TrabalhoFinal-AEDS2.git
 cd TrabalhoFinal-AEDS2
+python3 -m venv venv
+source venv/bin/activate          # Windows: venv\Scripts\activate
+pip install -r requirements.txt   # networkx, requests
 ```
 
-### Caso 1: Testar a Interface Web (Modo Rápido / Nuvem Leve)
-Para subir o servidor web local consumindo apenas **40 MB de RAM** com inicialização instantânea:
+| Requisito | Para a interface web (cache) | Para os experimentos (grafo completo) |
+| :--- | :---: | :---: |
+| Python | 3.10+ | 3.10+ |
+| RAM livre | ≈ 250 MB | ≈ 2 GB (o grafo ocupa ≈ 1,2 GB) |
+| Internet | não | sim, na 1ª execução (download de ≈ 37 MB) |
+
+### 2. Verificação rápida — interface web (usa o cache)
 ```bash
 python3 src/servidor_web.py
 ```
-> O servidor abrirá automaticamente em seu navegador padrão no endereço: `http://localhost:5000`.
+O servidor sobe em `http://localhost:5000` e abre o navegador automaticamente, sem baixar dados (usa o `web/cache_recomendacoes.json` do repositório). Busque, por exemplo, *ELDEN RING* e clique em um card para abrir o modal de explicabilidade (XAI). A mesma interface está publicada em <https://steam-finder.onrender.com>.
 
----
+Para escolher a porta, use `python3 src/servidor_web.py 8080` (ou a variável `PORT`); nesses casos o navegador não abre sozinho.
 
-### Caso 2: Reproduzir os Experimentos Científicos do Artigo (Zenodo)
-Para rodar a pesquisa formal a partir do zero utilizando os dados brutos:
-
-```bash
-# 1. Menu Interativo de Pesquisa (Jogos de Teste do Artigo, Comunidades Louvain e Grafo)
-python3 src/main.py
-
-# 2. Avaliação Formal Leave-One-Out (Hit Rate@10, MRR e NDCG citados no artigo)
-python3 src/avaliar_recomendador.py
-
-# 3. Processamento em Lote com arquivo de entrada (input/jogos_entrada.txt)
-python3 src/recomendar_lote.py
-
-# 4. Rodar o Servidor Web calculando ao vivo no grafo de 2.4M arestas (ignora o cache)
-python3 src/servidor_web.py --dinamico
-
-# 5. Reproduzir Métricas do Artigo Científico (Modularidade Louvain Q=0.3077 e Baselines)
-python3 src/reproduzir_tabelas.py
-```
+### 3. Reproduzir os experimentos do artigo (grafo completo)
 
 > [!NOTE]
-> **Reprodutibilidade Científica Automatizada**: Se você acabou de clonar o repositório e a pasta `extracted_data/` não existir, os scripts acima realizam o **download e extração automática dos 37 MB** compactados diretamente do registro oficial do **Zenodo (DOI: 10.5281/zenodo.23861070)** com barra de progresso. Nenhuma intervenção manual é necessária.
+> **Download automático dos dados.** Se a pasta `extracted_data/` não existir, qualquer comando abaixo baixa e extrai o dataset (≈ 37 MB compactado) do Zenodo — [DOI 10.5281/zenodo.23861070](https://doi.org/10.5281/zenodo.23861070) — com barra de progresso. Nenhuma intervenção manual é necessária.
 
----
+| Ordem | Comando | O que demonstra | Seção do artigo |
+| :-: | :--- | :--- | :--- |
+| 1 | `python3 src/main.py` | Constrói o grafo (156.586 vértices, 2.390.604 arestas), roda o Louvain e abre o menu de consultas | Metodologia |
+| 2 | `python3 src/reproduzir_tabelas.py` | Baselines em 5 sementes, modularidade **Q = 0,3077** e latência por faixa de grau (`--tabela1` roda só os baselines) | Resultados |
+| 3 | `python3 src/avaliar_recomendador.py` | Protocolo Leave-One-Out: Hit Rate@10 e NDCG@10 | Resultados |
+| 4 | `python3 src/avaliar_metricas_multidimensionais.py` | Sobreposição de gêneros, cobertura do catálogo e grau médio | Resultados |
+| 5 | `python3 src/recomendar_lote.py [entrada] [saída]` | Recomendações em lote (padrão: lê `input/jogos_entrada.txt` e grava `output/relatorio_recomendacoes_lote.txt`) | — |
+| 6 | `python3 src/servidor_web.py --dinamico` | Interface web calculando ao vivo no grafo, sem cache | — |
 
-### Caso 3: Recalcular o Cache Completo para a Nuvem
-Se você realizou alterações nos pesos do algoritmo em `src/recommender.py` e deseja regerar o arquivo `web/cache_recomendacoes.json`:
+As sementes fixas (`seed = 16` no Louvain e `seed = 42…46` na avaliação) garantem a repetibilidade dos resultados. Os tempos de execução variam conforme o hardware.
+
+### 4. Opcional: regenerar o cache e refazer o pré-processamento
 ```bash
-python3 src/gerar_cache_recomendacoes.py
+# Regenera web/cache_recomendacoes.json após alterar pesos em src/recommender.py
+python3 src/gerar_cache_recomendacoes.py        # todos os 3.573 jogos
+python3 src/gerar_cache_recomendacoes.py 100    # apenas os 100 primeiros (teste rápido)
+
+# Reconstrói a base do zero (o resultado já está publicado no Zenodo)
+python3 src/extrair_dados.py                    # poda por mediana adaptativa + k-core
+python3 src/enriquecer_metadados_steamspy.py    # tags e gêneros via SteamSpy API
 ```
-O script utiliza paralelismo por threads (`ThreadPoolExecutor`) e processa todos os 3.573 jogos em poucos minutos com estimativa de tempo (ETA).
+O gerador de cache usa `ThreadPoolExecutor` e grava as Top-10 recomendações e o diagnóstico XAI de cada jogo.
+
+### 5. Problemas comuns
+* **`ModuleNotFoundError: networkx`** → o ambiente virtual não está ativo ou faltou `pip install -r requirements.txt`.
+* **Falha no download do Zenodo** → baixe `Data-Steam.zip` manualmente em <https://doi.org/10.5281/zenodo.23861070> e extraia o conteúdo em `extracted_data/`, na raiz do projeto.
+* **Porta 5000 ocupada** → `python3 src/servidor_web.py 8080`.
+* **Memória insuficiente** → use apenas o passo 2, que consome ≈ 250 MB.
 
 ---
 
-## 📐 Fundamentos Teóricos e Formulação Matemática
+## 🔌 API HTTP
 
-### 1. Poda Prévia Baseada em Qualidade
-Antes da alocação de memória no grafo, jogos com aprovação pública inferior a $65\%$ são descartados:
-$$\text{positive\_ratio}(j) \ge 65.0\%$$
-Essa poda elimina **47.103 arestas espúrias** e reduz o consumo de RAM de 2.0 GB para **1.18 GB**, impedindo a propagação de títulos rejeitados pela comunidade (ex: *Artifact*). Ao consultar um jogo podado, o sistema apresenta tela informativa de justificativa algorítmica.
+O servidor expõe os endpoints usados pela interface:
 
-### 2. Validação Social das Conexões ($W(u,j)$)
-Cada aresta entre o usuário $u$ e o jogo $j$ é ponderada pelo tempo de jogo e engajamento da crítica:
-$$W(u, j) = \ln(1 + \text{horas}_{u,j}) \times \left[1 + 0.20 \cdot \ln(1 + \text{helpful}_{u,j})\right]$$
-
-### 3. Detecção de Comunidades (Louvain)
-O grafo é particionado pelo algoritmo de Louvain em **7 Super-Nós Semânticos** ($\text{seed}=16$, modularidade ótima):
-* **Comunidade 0**: Indie & Roguelike 2D (Pixel Art, Metroidvania)
-* **Comunidade 1**: Aventura Narrativa & Puzzle (Point & Click, Mistério)
-* **Comunidade 2**: Estratégia & Simulação Tática (RTS, Wargame, 4X)
-* **Comunidade 3**: FPS Clássico & Ação Retrô (Boomer Shooter, Retrô)
-* **Comunidade 4**: JRPG & RPG Narrativo / Anime (Visual Novel, Ação Japonesa)
-* **Comunidade 5**: Simulação, Direção & Mundo Aberto (Automobilismo, Corrida, VR)
-* **Comunidade 6**: Expansões & Comunidades Emergentes
-
-Jogos na mesma comunidade recebem impulso de $3.0\times$, preservando o nicho sem fechar a exploração.
-
-### 4. Consenso Ponderado de Tags (Índice de Ruzicka com $\text{IDF}^2$)
-A similaridade temática é calculada pelo Jaccard Generalizado com penalização para tags genéricas:
-$$J_{\text{tags}}(A, B) = \frac{\sum_{t \in T_A \cap T_B} \min(w_{A,t}, w_{B,t})}{\sum_{t \in T_A \cup T_B} \max(w_{A,t}, w_{B,t})}, \quad \text{onde } w_{i,t} = e^{-0.05 \cdot \text{rank}(t)} \cdot \text{IDF}(t)^2$$
-Apenas pares com $J_{\text{tags}} \ge 0.20$ recebem eventuais bônus de estúdio ($\beta_{\text{dev}} = +0.10$), eliminando contaminações cross-gênero da mesma publicadora (ex: *DMC5* recomendado para *Resident Evil*).
-
-### 5. Atenuação de Popularidade (Anti-Hub)
-Jogos hiper-populares são normalizados pelo grau no grafo para evitar recomendações triviais:
-$$\text{Score}(j) = \text{Score}_{\text{bruto}}(j) \times \frac{1}{\text{Grau}(j)^{0.35}} \times \left(\frac{\text{positive\_ratio}(j)}{100}\right)$$
+| Método | Rota | Descrição |
+| :---: | :--- | :--- |
+| `GET` | `/api/jogos` | Lista de jogos para o autocomplete (id, nome, comunidade, aprovação, gêneros) |
+| `GET` | `/api/comunidades` | Rótulos dos 7 super-nós |
+| `GET` | `/api/recomendar?id=<app_id>` | Top-10 recomendações + diagnóstico XAI |
+| `GET` | `/api/relatorio_lote` | Relatório de recomendações em lote |
+| `POST` | `/api/lote` | Processa uma lista de jogos em lote |
+| `POST` | `/api/gephi` | Gera os arquivos de exportação para o Gephi |
 
 ---
 
-## 📊 Avaliação Cega com Usuários (Pesquisa de Campo)
+## 📐 Fundamentos teóricos e formulação
 
-O método proposto foi submetido a um teste cego online com **$R = 33$ participantes** avaliando **17 títulos representativos** da Steam ($M = 472$ julgamentos válidos). Em cada questão, 3 listas Top-5 anônimas foram comparadas com rotação determinística das opções:
+### 0. Construção do grafo
+Partindo da base pública da Steam (≈ 41 milhões de avaliações, ≈ 40 mil jogos), o pré-processamento mantém apenas **avaliações positivas** e aplica: (i) poda por **mediana adaptativa de horas jogadas** por jogo; (ii) **decomposição k-core assimétrica** com `(kU, kV) = (10, 50)`; e (iii) descarte de jogos sem tags. O grafo resultante é `G = (U ∪ V, E, W)`, não-direcionado e ponderado, armazenado em dicionários (tabelas hash) com acesso esperado O(1).
 
-| Método Avaliado | Escolhas ($M$) | Proporção (\%) | IC 95\% (Wilson) | Nota Média (1–5) |
+### 1. Poda prévia de qualidade
+Jogos com aprovação pública abaixo de 65% são excluídos antes da construção do grafo:
+$$\text{positive\_ratio}(j) \ge 65{,}0\%$$
+Isso evita que títulos rejeitados pela comunidade (ex.: *Artifact*) propaguem recomendações. Ao consultar um jogo podado, a interface exibe uma tela explicando o motivo.
+
+### 2. Peso das arestas (validação social)
+$$W(u, j) = \ln(1 + \text{horas}_{u,j}) \times \left[1 + 0{,}20 \cdot \ln(1 + \text{helpful}_{u,j})\right]$$
+O `ln` amortece usuários com milhares de horas; o termo `helpful` pondera pela credibilidade da avaliação.
+
+### 3. Detecção de comunidades (Louvain)
+O grafo é particionado pelo algoritmo de Louvain (`seed = 16`, modularidade **Q = 0,3077**) em **7 super-nós**:
+
+| ID | Nome (rótulo da interface) | Tema | Jogos | Exemplos |
+| :-: | :--- | :--- | :-: | :--- |
+| 0 | Action / Co-op | FPS, cooperativo, multiplayer, clássicos | 543 | Team Fortress 2, DOOM, Portal 2, Garry's Mod |
+| 1 | Indie / Roguelike | Roguelike, pixel art, metroidvania | 996 | The Binding of Isaac, Hades, Stardew Valley |
+| 2 | Simulation | Automobilismo, caminhões, caça, simulação realista | 100 | Euro Truck Simulator 2, theHunter |
+| 3 | Strategy / CMS | Construção de base, grande estratégia, sobrevivência | 652 | Fallout 4, No Man's Sky, RimWorld, Factorio |
+| 4 | Action / Narrative | Ação em 3ª pessoa, narrativa, stealth | 616 | Fallout: New Vegas, Borderlands 2, Tomb Raider |
+| 5 | Action RPG / AAA | RPG de ação, mundo aberto, souls-like | 396 | The Witcher 3, DARK SOULS III, Cyberpunk 2077 |
+| 6 | JRPG / Competitive | JRPG, anime, luta competitiva, MOBA | 270 | Yakuza 0, Dota 2, Persona 4, TEKKEN 7 |
+
+A atribuição completa (usuários e jogos) está em `output/comunidades_louvain.json`, e a topologia pode ser aberta no Gephi (`output/universo_super_nos.gexf`).
+
+### 4. Similaridade de tags (Ruzicka com IDF²)
+Cada jogo tem até 20 tags da comunidade (SteamSpy), ordenadas por consenso. O peso da tag `t` de posição `r` entre `n` tags é:
+$$w_{i,t} = \text{IDF}(t)^2 \cdot \left(1 - 0{,}70 \cdot \frac{r}{n-1}\right), \qquad \text{IDF}(t) = \ln\frac{1+N}{1+\text{df}(t)} + 1$$
+(a 1ª tag mantém 100% do peso; a 20ª, 30%). A similaridade é o Jaccard generalizado:
+$$J_{\text{tags}}(A, B) = \frac{\sum_{t \in T_A \cap T_B} \min(w_{A,t}, w_{B,t})}{\sum_{t \in T_A \cup T_B} \max(w_{A,t}, w_{B,t})}$$
+Candidatos com `J_tags < 0,20` são descartados. Só os que passam recebem o bônus de estúdio (`β_dev = +0,10`), o que evita contaminação cross-gênero da mesma publicadora (ex.: *DMC5* recomendado para *Resident Evil*).
+
+### 5. Fatores multiplicativos auxiliares
+* **Gênero oficial** (`β_gen`): ×1,15 se os jogos compartilham ao menos um gênero; ×0,65 se não compartilham nenhum.
+* **Comunidade** (`β_com`): ×3,0 se alvo e candidato estão no mesmo super-nó.
+* **Dissonância de tom**: candidatos *mature* (ex.: `violent`, `gore`, `nudity`) são excluídos para alvos *family friendly* e vice-versa.
+* **Qualidade**: multiplicação por `p(v)/100`, onde `p(v)` é a aprovação pública do candidato.
+
+### 6. Score final e amortecimento de hubs
+Para o jogo-alvo `a`, cada caminho `a → u → v` (com `u` entre os `K = 1000` usuários de maior `W(u,a)`) contribui com:
+$$s(u,v) = W(u,a)\cdot W(u,v)\cdot \beta_{com}\cdot \beta_{gen}\cdot \left(J_{\text{tags}} + \beta_{dev} + 0{,}1\right)\cdot \frac{p(v)}{100}$$
+Os caminhos convergentes são somados e o total é amortecido pelo grau do candidato:
+$$\text{Score}(v) = \frac{\sum_{u} s(u,v)}{\text{Grau}(v)^{0{,}35}}$$
+
+### Parâmetros do método
+
+| Parâmetro | Símbolo | Valor |
+| :--- | :---: | :---: |
+| Grau mínimo k-core (usuário, item) | `(kU, kV)` | (10, 50) |
+| Aprovação mínima | — | 65% |
+| Vizinhança da BFS (nível 1) | `K` | 1000 usuários |
+| Peso do `helpful` | — | 0,20 |
+| Corte de similaridade de tags | `τ_J` | 0,20 |
+| Bônus de comunidade | `β_com` | 3,0 |
+| Bônus de estúdio | `β_dev` | 0,10 |
+| Bônus / penalidade de gênero | `β_gen` | 1,15 / 0,65 |
+| Expoente de amortecimento | `α` | 0,35 |
+| Semente do Louvain | `seed` | 16 |
+
+---
+
+## 📊 Resultados
+
+Todos os números abaixo vêm do [artigo](Artigo_Trabalho_Final__AEDS_2__Rafael_Gabriel.pdf) e podem ser reproduzidos com os scripts da [Opção 2](#opção-2--reproduzir-os-experimentos-do-artigo).
+
+### Acurácia (Leave-One-Out, 5 partições, N = 300, K = 1000)
+
+| Modelo | Hit Rate@10 | NDCG@10 |
+| :--- | :---: | :---: |
+| Aleatório (50 simulações) | 0,26% | 0,0012 |
+| Popularidade global | 5,47% ± 1,15% | 0,0268 ± 0,0064 |
+| Co-ocorrência pura (CF) | 8,80% ± 1,50% | 0,0425 ± 0,0092 |
+| **Método proposto (α = 0,35)** | **4,93% ± 1,04%** | 0,0244 (partição de referência) |
+
+O método **não** supera a co-ocorrência pura na recuperação de um item oculto — resultado esperado, já que 94,0% dos itens de teste estão acima da mediana de popularidade do catálogo, e o método foi desenhado para *moderar* esse viés.
+
+### Coerência, cobertura e popularidade (partição de referência)
+
+| Modelo | Sobreposição de gêneros | Cobertura do catálogo |
+| :--- | :---: | :---: |
+| Popularidade global | 26,8% | 10 jogos |
+| Co-ocorrência pura | 39,2% | 257 jogos |
+| Método sem amortecimento (α = 0) | 56,0% | 769 jogos |
+| **Método proposto (α = 0,35)** | **57,0%** | **886 jogos** |
+
+Além disso, o amortecimento reduz o grau médio dos itens recomendados em **14,7%** (e a mediana em 18,1%) em relação ao modelo sem amortecimento. As métricas por modelo estão em `output/metricas_multidimensionais.json`.
+
+### Avaliação cega com usuários
+
+Teste online com **R = 33 participantes** e **17 jogos** (**M = 472 julgamentos válidos**). Em cada questão, 3 listas Top-5 anônimas eram comparadas, com a ordem das opções rotacionada de forma determinística.
+
+| Método avaliado | Escolhas | Proporção | IC 95% (Wilson) | Nota média (1–5) |
 | :--- | :---: | :---: | :---: | :---: |
-| **Método Proposto ($\alpha=0{,}35$)** | **402** | **85,17\%** | **[81,7\%, 88,1\%]** | **4,29 ± 0,80** |
-| **Co-ocorrência Pura (CF)** | 64 | 13,56\% | [10,8\%, 16,9\%] | 3,97 ± 0,93 |
-| **Popularidade Global** | 6 | 1,27\% | [0,6\%, 2,7\%] | 3,33 ± 1,21 |
+| **Método proposto (α = 0,35)** | **402** | **85,17%** | **[81,7%; 88,1%]** | **4,29 ± 0,80** |
+| Co-ocorrência pura (CF) | 64 | 13,56% | [10,8%; 16,9%] | 3,97 ± 0,93 |
+| Popularidade global | 6 | 1,27% | [0,6%; 2,7%] | 3,33 ± 1,21 |
 
 <p align="center">
-  <img src="pesquisa_campo/pesquisa_campo_geral.png" alt="Distribuição Geral da Pesquisa de Campo" width="70%" />
+  <img src="pesquisa_campo/pesquisa_campo_geral.png" alt="Distribuição geral da pesquisa de campo" width="70%" />
 </p>
 
-* **Significância Estatística:** Teste qui-quadrado de aderência com $\chi^2 = 581{,}41$ ($p < 0{,}001$), teste binomial exato com $p < 10^{-119}$ e superioridade de satisfação confirmada via Mann-Whitney ($U = 15.316{,}5$, $p = 0{,}0031$).
-* **Vitória por Título:** O método híbrido obteve a maioria das preferências em **100% dos jogos testados** (17 de 17 títulos).
+* **Significância:** qui-quadrado de aderência `χ² = 581,41` (`p < 0,001`); teste binomial exato `p < 10⁻¹¹⁹`; Mann-Whitney `U = 15.316,5` (`p = 0,0031`) para a satisfação.
+* **Vitória por título:** o método proposto foi o mais escolhido nos **17 de 17** jogos. Respostas brutas em `pesquisa_campo/respostas_formulario.csv`.
 
 <p align="center">
   <img src="pesquisa_campo/pesquisa_campo_por_jogo.png" alt="Análise por título" width="70%" />
 </p>
 
+### Escala e latência (consulta com o grafo completo)
+
+100 consultas amostradas, `K = 1000`, `α = 0,35`:
+
+| Grau do jogo-alvo | Consultas | Arestas visitadas (nível 2, média) | Latência mediana | P95 |
+| :--- | :---: | :---: | :---: | :---: |
+| < 500 (nicho) | 13 | 4.738 | 108,6 ms | 259,0 ms |
+| 500 a 2.000 | 14 | 17.346 | 349,7 ms | 591,6 ms |
+| > 2.000 (hubs) | 73 | 21.863 | 492,4 ms | 733,2 ms |
+| **Global** | 100 | 19.004 | **473,8 ms** | 739,6 ms |
+
+A trava `K = 1000` estabiliza o custo nos hubs: a latência é aproximadamente proporcional ao número de arestas visitadas (≈ 0,02 ms por aresta). Com o cache, a consulta cai para ≈ 1 ms.
+
+### Limitações (conforme o artigo)
+* Hiperparâmetros calibrados na mesma partição que integra o conjunto de teste (`seed = 42`);
+* Amostra de 300 usuários com baixo poder estatístico para itens de cauda longa;
+* *Cold-start* para jogos excluídos pelo k-core;
+* Pesquisa de campo com amostra de conveniência (33 participantes).
+
 ---
 
-## 📂 Estrutura do Repositório
+## 📂 Estrutura do repositório
 
 ```text
 TrabalhoFinal-AEDS2/
-├── README.md                           # Documentação central do projeto
-├── Artigo_Trabalho_Final__AEDS_2__Rafael_Gabriel.pdf  #Artigo do projeto
+├── README.md
+├── requirements.txt                    # networkx, requests
+├── Artigo_Trabalho_Final__AEDS_2__Rafael_Gabriel.pdf   # Artigo científico
 ├── input/
-│   └── jogos_entrada.txt               # Catálogo de jogos para processamento em lote
+│   └── jogos_entrada.txt               # App IDs para processamento em lote
 ├── output/
-│   ├── comunidades_louvain.json        # Cache determinístico das 7 partições do Louvain
-│   ├── relatorio_recomendacoes_lote.txt# Relatório textual com recomendações em lote
-│   ├── metricas_multidimensionais.json # Métricas de catálogo, acurácia e cobertura
-│   └── universo_super_nos.gexf         # Exportação da topologia de Super-Nós para o Gephi
+│   ├── comunidades_louvain.json        # Partição Louvain (usuário/jogo → super-nó)
+│   ├── metricas_multidimensionais.json # Hit Rate, NDCG, coerência, cobertura por modelo
+│   ├── relatorio_recomendacoes_lote.txt# Recomendações em lote
+│   ├── universo_super_nos.gexf         # Topologia dos 7 super-nós (Gephi)
+│   └── universo_steam_hibrido.gexf     # Backbone dos 3.573 jogos (Gephi)
 ├── pesquisa_campo/
-│   ├── respostas_formulario.csv        # Respostas brutas da avaliação cega (R=33, M=472)
-│   ├── pesquisa_campo_geral.png        # Gráfico estatístico geral com intervalos de confiança
-│   └── pesquisa_campo_por_jogo.png     # Detalhamento de vitória e satisfação por jogo
+│   ├── respostas_formulario.csv        # Respostas brutas (R=33, M=472)
+│   ├── pesquisa_campo_geral.png
+│   └── pesquisa_campo_por_jogo.png
 ├── src/
-│   ├── main.py                         # Ponto de entrada do modo pesquisa (menu interativo)
-│   ├── recommender.py                  # Motor central de grafos, BFS em 2 níveis e escore híbrido
-│   ├── reproduzir_tabelas.py           # Reprodutibilidade instantânea das métricas do artigo
-│   ├── avaliar_recomendador.py         # Módulo de avaliação Leave-One-Out (Hit Rate, MRR, NDCG)
-│   ├── avaliar_metricas_multidimensionais.py # Avaliação de sobreposição de gêneros e cobertura
-│   ├── servidor_web.py                 # Servidor HTTP nativo (atende localhost e nuvem Render)
-│   ├── gerar_cache_recomendacoes.py    # Gerador multithread do cache pré-calculado
-│   ├── recomendar_lote.py              # Script de processamento em lote
-│   └── export_to_gephi.py              # Utilitário de exportação para visualização em rede
+│   ├── main.py                         # Menu interativo de pesquisa + inicialização do grafo
+│   ├── recommender.py                  # Grafo, BFS em 2 níveis, similaridade e score híbrido
+│   ├── extrair_dados.py                # Pré-processamento: mediana adaptativa + k-core
+│   ├── enriquecer_metadados_steamspy.py# Tags e gêneros via SteamSpy
+│   ├── avaliar_recomendador.py         # Leave-One-Out (Hit Rate@10, NDCG@10)
+│   ├── avaliar_metricas_multidimensionais.py # Coerência de gêneros/tags e cobertura
+│   ├── reproduzir_tabelas.py           # Tabelas do artigo (baselines, Q, latência)
+│   ├── recomendar_lote.py              # Processamento em lote
+│   ├── gerar_cache_recomendacoes.py    # Gerador multithread do cache
+│   ├── servidor_web.py                 # Servidor HTTP nativo (local e Render)
+│   └── export_to_gephi.py              # Exportação para o Gephi
 └── web/
-    ├── index.html                      # Interface visual moderna (Steam Theme, XAI Modal)
-    ├── logo.png                        # Identidade visual oficial
-    └── cache_recomendacoes.json        # Banco indexado para deploy em nuvem (~40 MB RAM)
+    ├── index.html                      # Interface (tema Steam, modal XAI)
+    ├── logo.png
+    └── cache_recomendacoes.json        # Cache pré-calculado (~50 MB)
 ```
 
+---
 
-## 📜 Citação Acadêmica e Dados
+## ☁️ Deploy gratuito no Render.com
 
-Para citar este projeto ou o dataset em trabalhos acadêmicos:
+1. Crie uma conta em [Render.com](https://render.com/).
+2. Clique em **New +** → **Web Service** e conecte este repositório.
+3. Configure:
+   * **Runtime**: `Python 3`
+   * **Build Command**: `pip install -r requirements.txt`
+   * **Start Command**: `python3 src/servidor_web.py`
+   * **Instance Type**: `Free` (512 MB de RAM)
+4. Clique em **Create Web Service**. O servidor lê a porta da variável de ambiente `PORT` automaticamente.
+
+> A camada web usa apenas o servidor HTTP da biblioteca padrão, mas importa o módulo `main`, que depende do **NetworkX** — por isso o `pip install` é necessário.
+
+---
+
+## 📜 Citação
 
 ```bibtex
-@dataset{faria2024steamgraph,
-  author       = {Rafael Alves Faria and Gabriel Alves Faria},
-  title        = {Steam Graph Dataset: Bipartite Interaction Graph and Semantic Game Metadata},
-  month        = nov,
-  year         = 2026,
-  publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.23861070},
-  url          = {https://doi.org/10.5281/zenodo.23861070}
+@dataset{faria2026steamgraph,
+  author    = {Rafael Alves Faria and Gabriel Alves Faria},
+  title     = {Steam Graph Dataset: Bipartite Interaction Graph and Semantic Game Metadata},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.23861070},
+  url       = {https://doi.org/10.5281/zenodo.23861070}
 }
 ```
 
 ---
 
 <div align="center">
-Desenvolvido com dedicação para a disciplina de <b>Algoritmos e Estruturas de Dados II</b> • <b>CEFET-MG / UFCI-MG</b>
+Desenvolvido para a disciplina de <b>Algoritmos e Estruturas de Dados II</b> • <b>CEFET-MG / UFCI-MG</b>
 </div>
 
 
@@ -242,21 +367,18 @@ Desenvolvido com dedicação para a disciplina de <b>Algoritmos e Estruturas de 
 <table>
 <tr>
            <th>
-<img src="https://github.com/user-attachments/assets/2064d81b-921e-48b2-88ce-4e9055d15b9c" alt="Description" width="100" height="100"> 
+<img src="https://github.com/user-attachments/assets/2064d81b-921e-48b2-88ce-4e9055d15b9c" alt="Rafael Alves Faria" width="100" height="100">
            </th>
            <th>
-<img  src="https://github.com/user-attachments/assets/04b156ba-f197-4980-b7bc-d1b0475639c1" alt="Description" width="80" height="100"> 
+<img src="https://github.com/user-attachments/assets/04b156ba-f197-4980-b7bc-d1b0475639c1" alt="Gabriel Alves Faria" width="80" height="100">
            </th>
-
 </tr>
   <tr>
            <td>
                       <sub><a href="https://www.linkedin.com/in/rafael-alves-faria-0a4028359/">Rafael Alves Faria</a></sub>
            </td>
            <td>
-                      <sub><a href="https://www.linkedin.com/in/gabriel-alves-443132207/">Gabriel Alves Faria</a></sub>    
+                      <sub><a href="https://www.linkedin.com/in/gabriel-alves-443132207/">Gabriel Alves Faria</a></sub>
            </td>
-
   </tr>
 </table>
-
