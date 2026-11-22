@@ -157,19 +157,19 @@ O servidor expõe os endpoints usados pela interface:
 
 ## 📐 Fundamentos teóricos e formulação
 
-### 0. Construção do grafo
+### 1. Construção do grafo
 Partindo da base pública da Steam (≈ 41 milhões de avaliações, ≈ 40 mil jogos), o pré-processamento mantém apenas **avaliações positivas** e aplica: (i) poda por **mediana adaptativa de horas jogadas** por jogo; (ii) **decomposição k-core assimétrica** com `(kU, kV) = (10, 50)`; e (iii) descarte de jogos sem tags. O grafo resultante é `G = (U ∪ V, E, W)`, não-direcionado e ponderado, armazenado em dicionários (tabelas hash) com acesso esperado O(1).
 
-### 1. Poda prévia de qualidade
+### 2. Poda prévia de qualidade
 Jogos com aprovação pública abaixo de 65% são excluídos antes da construção do grafo:
 $$\text{positive\_ratio}(j) \ge 65{,}0\%$$
 Isso evita que títulos rejeitados pela comunidade (ex.: *Artifact*) propaguem recomendações. Ao consultar um jogo podado, a interface exibe uma tela explicando o motivo.
 
-### 2. Peso das arestas (validação social)
+### 3. Peso das arestas (validação social)
 $$W(u, j) = \ln(1 + \text{horas}_{u,j}) \times \left[1 + 0{,}20 \cdot \ln(1 + \text{helpful}_{u,j})\right]$$
 O `ln` amortece usuários com milhares de horas; o termo `helpful` pondera pela credibilidade da avaliação.
 
-### 3. Detecção de comunidades (Louvain)
+### 4. Detecção de comunidades (Louvain)
 O grafo é particionado pelo algoritmo de Louvain (`seed = 16`, modularidade **Q = 0,3077**) em **7 super-nós**:
 
 | ID | Nome (rótulo da interface) | Tema | Jogos | Exemplos |
@@ -184,20 +184,20 @@ O grafo é particionado pelo algoritmo de Louvain (`seed = 16`, modularidade **Q
 
 A atribuição completa (usuários e jogos) está em `output/comunidades_louvain.json`, e a topologia pode ser aberta no Gephi (`output/universo_super_nos.gexf`).
 
-### 4. Similaridade de tags (Ruzicka com IDF²)
+### 5. Similaridade de tags (Ruzicka com IDF²)
 Cada jogo tem até 20 tags da comunidade (SteamSpy), ordenadas por consenso. O peso da tag `t` de posição `r` entre `n` tags é:
 $$w_{i,t} = \text{IDF}(t)^2 \cdot \left(1 - 0{,}70 \cdot \frac{r}{n-1}\right), \qquad \text{IDF}(t) = \ln\frac{1+N}{1+\text{df}(t)} + 1$$
 (a 1ª tag mantém 100% do peso; a 20ª, 30%). A similaridade é o Jaccard generalizado:
 $$J_{\text{tags}}(A, B) = \frac{\sum_{t \in T_A \cap T_B} \min(w_{A,t}, w_{B,t})}{\sum_{t \in T_A \cup T_B} \max(w_{A,t}, w_{B,t})}$$
 Candidatos com `J_tags < 0,20` são descartados. Só os que passam recebem o bônus de estúdio (`β_dev = +0,10`), o que evita contaminação cross-gênero da mesma publicadora (ex.: *DMC5* recomendado para *Resident Evil*).
 
-### 5. Fatores multiplicativos auxiliares
+### 6. Fatores multiplicativos auxiliares
 * **Gênero oficial** (`β_gen`): ×1,15 se os jogos compartilham ao menos um gênero; ×0,65 se não compartilham nenhum.
 * **Comunidade** (`β_com`): ×3,0 se alvo e candidato estão no mesmo super-nó.
 * **Dissonância de tom**: candidatos *mature* (ex.: `violent`, `gore`, `nudity`) são excluídos para alvos *family friendly* e vice-versa.
 * **Qualidade**: multiplicação por `p(v)/100`, onde `p(v)` é a aprovação pública do candidato.
 
-### 6. Score final e amortecimento de hubs
+### 7. Score final e amortecimento de hubs
 Para o jogo-alvo `a`, cada caminho `a → u → v` (com `u` entre os `K = 1000` usuários de maior `W(u,a)`) contribui com:
 $$s(u,v) = W(u,a)\cdot W(u,v)\cdot \beta_{com}\cdot \beta_{gen}\cdot \left(J_{\text{tags}} + \beta_{dev} + 0{,}1\right)\cdot \frac{p(v)}{100}$$
 Os caminhos convergentes são somados e o total é amortecido pelo grau do candidato:
