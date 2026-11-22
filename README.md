@@ -174,6 +174,10 @@ O método proposto foi submetido a um teste cego online com **$R = 33$ participa
 * **Significância Estatística:** Teste qui-quadrado de aderência com $\chi^2 = 581{,}41$ ($p < 0{,}001$), teste binomial exato com $p < 10^{-119}$ e superioridade de satisfação confirmada via Mann-Whitney ($U = 15.316{,}5$, $p = 0{,}0031$).
 * **Vitória por Título:** O método híbrido obteve a maioria das preferências em **100% dos jogos testados** (17 de 17 títulos).
 
+<p align="center">
+  <img src="pesquisa_campo_por_jogo.png" alt="Análise por título" width="70%" />
+</p>
+
 ---
 
 ## 📂 Estrutura do Repositório
