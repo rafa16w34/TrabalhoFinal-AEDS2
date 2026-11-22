@@ -175,7 +175,7 @@ O método proposto foi submetido a um teste cego online com **$R = 33$ participa
 * **Vitória por Título:** O método híbrido obteve a maioria das preferências em **100% dos jogos testados** (17 de 17 títulos).
 
 <p align="center">
-  <img src="pesquisa_campo_por_jogo.png" alt="Análise por título" width="70%" />
+  <img src="pesquisa_campo/pesquisa_campo_por_jogo.png" alt="Análise por título" width="70%" />
 </p>
 
 ---
@@ -185,6 +185,7 @@ O método proposto foi submetido a um teste cego online com **$R = 33$ participa
 ```text
 TrabalhoFinal-AEDS2/
 ├── README.md                           # Documentação central do projeto
+├── Artigo_Trabalho_Final__AEDS_2__Rafael_Gabriel.pdf  #Artigo do projeto
 ├── input/
 │   └── jogos_entrada.txt               # Catálogo de jogos para processamento em lote
 ├── output/
