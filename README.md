@@ -188,7 +188,8 @@ A atribuição completa (usuários e jogos) está em `output/comunidades_louvain
 Cada jogo tem até 20 tags da comunidade (SteamSpy), ordenadas por consenso. O peso da tag `t` de posição `r` entre `n` tags é:
 $$w_{i,t} = \text{IDF}(t)^2 \cdot \left(1 - 0{,}70 \cdot \frac{r}{n-1}\right), \qquad \text{IDF}(t) = \ln\frac{1+N}{1+\text{df}(t)} + 1$$
 
-(a 1ª tag mantém 100% do peso; a 20ª, 30%). A similaridade é o Jaccard generalizado:
+(a 1ª tag mantém 100% do peso; a 20ª, 30%). 
+A similaridade é o Jaccard generalizado:
 
 $$J_{\text{tags}}(A, B) = \frac{\sum_{t \in T_A \cap T_B} \min(w_{A,t}, w_{B,t})}{\sum_{t \in T_A \cup T_B} \max(w_{A,t}, w_{B,t})}$$
 
