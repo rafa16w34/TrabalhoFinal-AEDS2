@@ -337,7 +337,7 @@ TrabalhoFinal-AEDS2/
 
 ```bibtex
 @dataset{faria2026steamgraph,
-  author    = {Rafael Alves Faria and Gabriel Alves Faria},
+  author    = {Gabriel Alves Faria, Rafael Alves Faria and Michel Pires},
   title     = {Steam Graph Dataset: Bipartite Interaction Graph and Semantic Game Metadata},
   year      = {2026},
   publisher = {Zenodo},
@@ -371,5 +371,18 @@ Desenvolvido para a disciplina de <b>Algoritmos e Estruturas de Dados II</b> •
            <td>
                       <sub><a href="https://www.linkedin.com/in/gabriel-alves-443132207/">Gabriel Alves Faria</a></sub>
            </td>
+  </tr>
+</table>
+
+## Professor Orientador
+
+<table>
+<tr>
+           
+<img src="https://github.com/user-attachments/assets/95d280e5-fa5d-4b65-a56c-c746ac48f7c9" alt="Michel Pires" width="100" height="100">
+           
+<sub><a href="https://www.linkedin.com/in/michelpiressilva/">Michel Pires</a></sub>
+
+           
   </tr>
 </table>
