@@ -187,8 +187,11 @@ A atribuição completa (usuários e jogos) está em `output/comunidades_louvain
 ### 5. Similaridade de tags (Ruzicka com IDF²)
 Cada jogo tem até 20 tags da comunidade (SteamSpy), ordenadas por consenso. O peso da tag `t` de posição `r` entre `n` tags é:
 $$w_{i,t} = \text{IDF}(t)^2 \cdot \left(1 - 0{,}70 \cdot \frac{r}{n-1}\right), \qquad \text{IDF}(t) = \ln\frac{1+N}{1+\text{df}(t)} + 1$$
+
 (a 1ª tag mantém 100% do peso; a 20ª, 30%). A similaridade é o Jaccard generalizado:
+
 $$J_{\text{tags}}(A, B) = \frac{\sum_{t \in T_A \cap T_B} \min(w_{A,t}, w_{B,t})}{\sum_{t \in T_A \cup T_B} \max(w_{A,t}, w_{B,t})}$$
+
 Candidatos com `J_tags < 0,20` são descartados. Só os que passam recebem o bônus de estúdio (`β_dev = +0,10`), o que evita contaminação cross-gênero da mesma publicadora (ex.: *DMC5* recomendado para *Resident Evil*).
 
 ### 6. Fatores multiplicativos auxiliares
@@ -199,7 +202,9 @@ Candidatos com `J_tags < 0,20` são descartados. Só os que passam recebem o bô
 
 ### 7. Score final e amortecimento de hubs
 Para o jogo-alvo `a`, cada caminho `a → u → v` (com `u` entre os `K = 1000` usuários de maior `W(u,a)`) contribui com:
+
 $$s(u,v) = W(u,a)\cdot W(u,v)\cdot \beta_{com}\cdot \beta_{gen}\cdot \left(J_{\text{tags}} + \beta_{dev} + 0{,}1\right)\cdot \frac{p(v)}{100}$$
+
 Os caminhos convergentes são somados e o total é amortecido pelo grau do candidato:
 $$\text{Score}(v) = \frac{\sum_{u} s(u,v)}{\text{Grau}(v)^{0{,}35}}$$
 
