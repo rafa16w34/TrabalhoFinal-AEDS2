@@ -21,13 +21,23 @@ def processar_recomendacoes_em_lote(caminho_entrada=None, caminho_saida=None, mo
     project_root = os.path.abspath(os.path.join(src_dir, '..'))
 
     if caminho_entrada is None:
-        caminho_entrada = os.path.join(project_root, 'jogos_entrada.txt')
+        caminho_entrada_input = os.path.join(project_root, 'input', 'jogos_entrada.txt')
+        caminho_entrada_raiz = os.path.join(project_root, 'jogos_entrada.txt')
+        if os.path.exists(caminho_entrada_input):
+            caminho_entrada = caminho_entrada_input
+        elif os.path.exists(caminho_entrada_raiz):
+            caminho_entrada = caminho_entrada_raiz
+        else:
+            caminho_entrada = caminho_entrada_input
 
     if caminho_saida is None:
         caminho_saida = os.path.join(project_root, 'output', 'relatorio_recomendacoes_lote.txt')
 
     # Cria arquivo de exemplo se não existir
     if not os.path.exists(caminho_entrada):
+        dir_in = os.path.dirname(caminho_entrada)
+        if dir_in:
+            os.makedirs(dir_in, exist_ok=True)
         with open(caminho_entrada, 'w', encoding='utf-8') as f:
             f.write("# Digite um App ID por linha (linhas com # são ignoradas)\n")
             f.write("1245620  # ELDEN RING\n")
@@ -136,6 +146,11 @@ def processar_recomendacoes_em_lote(caminho_entrada=None, caminho_saida=None, mo
     print("=" * 65)
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] in ["--help", "-h"]:
+        print("Uso: python3 src/recomendar_lote.py [caminho_entrada] [caminho_saida]")
+        print("Padrão de entrada: input/jogos_entrada.txt")
+        print("Padrão de saída:   output/relatorio_recomendacoes_lote.txt")
+        sys.exit(0)
     arq_in = sys.argv[1] if len(sys.argv) > 1 else None
     arq_out = sys.argv[2] if len(sys.argv) > 2 else None
     processar_recomendacoes_em_lote(arq_in, arq_out)

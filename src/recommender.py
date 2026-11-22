@@ -95,7 +95,7 @@ def carregar_tags_jogos(caminho_json, caminho_games=None):
                 'tags': tags_lista,
                 'genres': genres,
                 'developers': devs_normalizados,
-                'positive_ratio': 80.0  # Valor padrão equilibrado
+                'positive_ratio': 0.0  # Padrão defensivo: sem aprovação conhecida é podado
             }
 
             # Acumula frequências para o IDF
@@ -133,9 +133,9 @@ def carregar_tags_jogos(caminho_json, caminho_games=None):
                 aid = str(row.get('app_id', ''))
                 if aid in metadados:
                     try:
-                        metadados[aid]['positive_ratio'] = float(row.get('positive_ratio', 80.0))
+                        metadados[aid]['positive_ratio'] = float(row.get('positive_ratio', 0.0))
                     except (ValueError, TypeError):
-                        metadados[aid]['positive_ratio'] = 80.0
+                        metadados[aid]['positive_ratio'] = 0.0
 
     return metadados
 
@@ -221,9 +221,9 @@ def construir_grafo(caminho_csv, caminho_games=None, min_positive_ratio=65.0, pe
                 aid = row.get('app_id', '').strip()
                 pr_str = row.get('positive_ratio', '')
                 try:
-                    pr = float(pr_str) if pr_str else 80.0
+                    pr = float(pr_str) if pr_str else 0.0
                 except ValueError:
-                    pr = 80.0
+                    pr = 0.0
                 ratings[aid] = pr
 
     G = nx.Graph()
@@ -254,7 +254,7 @@ def construir_grafo(caminho_csv, caminho_games=None, min_positive_ratio=65.0, pe
                     continue
 
                 # Poda Prévia Baseada em Qualidade: ignora títulos universalmente rejeitados pela comunidade
-                if ratings and ratings.get(app_id, 80.0) < min_positive_ratio:
+                if ratings and ratings.get(app_id, 0.0) < min_positive_ratio:
                     descartados_qualidade += 1
                     continue
 
@@ -327,7 +327,7 @@ def recomendar_jogos(G, jogo_alvo_id, comunidades, dicionario_tags,
             meta_recomendado = dicionario_tags.get(id_limpo, {})
 
             # 1. Filtro de qualidade mínima da comunidade (descarta jogos universalmente rejeitados)
-            pr = meta_recomendado.get('positive_ratio', 80.0)
+            pr = meta_recomendado.get('positive_ratio', 0.0)
             if pr < min_positive_ratio:
                 continue
 

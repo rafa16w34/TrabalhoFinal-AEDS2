@@ -29,12 +29,13 @@ CACHE_RECOMENDACOES = None
 MODO_CACHE = False
 
 ROTULOS_FIXOS = {
-    0: {"nome": "Indie & Roguelike 2D", "subtitulo": "Roguelike • Pixel Art • Metroidvania"},
-    1: {"nome": "Aventura Narrativa & Puzzle", "subtitulo": "Point & Click • Quebra-Cabeça • Mistério"},
-    2: {"nome": "Estratégia & Simulação Tática", "subtitulo": "Grande Estratégia • RTS • Wargame • 4X"},
-    3: {"nome": "FPS Clássico & Ação Retrô", "subtitulo": "Boomer Shooter • Tiro em 1ª Pessoa • Retrô"},
-    4: {"nome": "JRPG & RPG Narrativo / Anime", "subtitulo": "Anime • JRPG • Visual Novel • Ação Japonesa"},
-    5: {"nome": "Simulação, Direção & Mundo Aberto", "subtitulo": "Automobilismo • Mundo Aberto • Corrida • VR"}
+    0: {"nome": "Action / Co-op", "subtitulo": "FPS • Cooperativo • Multiplayer • Clássicos"},
+    1: {"nome": "Indie / Roguelike", "subtitulo": "Roguelike • Pixel Art • Metroidvania • Exploração"},
+    2: {"nome": "Simulation", "subtitulo": "Automobilismo • Caminhões • Caça • Simulação Realista"},
+    3: {"nome": "Strategy / CMS", "subtitulo": "Construção de Base • Grande Estratégia • Sobrevivência"},
+    4: {"nome": "Action / Narrative", "subtitulo": "Ação em 3ª Pessoa • Narrativa Imersiva • Stealth"},
+    5: {"nome": "Action RPG / AAA", "subtitulo": "RPG de Ação • Mundo Aberto • Souls-like • Superproduções"},
+    6: {"nome": "JRPG / Competitive", "subtitulo": "JRPG • Anime • Luta Competitiva • MOBA"}
 }
 
 def inicializar_motor(motor=None, forcar_dinamico=False):
@@ -74,7 +75,7 @@ def inicializar_motor(motor=None, forcar_dinamico=False):
         node_id = f"game_{app_id}"
         if node_id in GRAFO:
             cid = COMUNIDADES.get(node_id, -1)
-            pr = METADADOS.get(app_id, {}).get('positive_ratio', 80.0)
+            pr = METADADOS.get(app_id, {}).get('positive_ratio', 0.0)
             genres = list(METADADOS.get(app_id, {}).get('genres', []))
             jogos_busca.append({
                 "id": str(app_id),
@@ -307,7 +308,7 @@ class RecommenderHandler(BaseHTTPRequestHandler):
             "generos": list(meta_alvo.get('genres', [])),
             "tags": list(meta_alvo.get('tags', []))[:8],
             "developers": list(meta_alvo.get('developers', [])),
-            "positive_ratio": meta_alvo.get('positive_ratio', 80.0),
+            "positive_ratio": meta_alvo.get('positive_ratio', 0.0),
             "comunidade_id": comm_alvo_id,
             "comunidade_nome": comm_alvo_info["nome"],
             "comunidade_subtitulo": comm_alvo_info["subtitulo"]
@@ -349,7 +350,7 @@ class RecommenderHandler(BaseHTTPRequestHandler):
             usuarios_ponte = len([u for u in user_nodes if u in vizinhos_rec])
 
             # Prior de qualidade (positive_ratio)
-            pr = meta_rec.get('positive_ratio', 80.0)
+            pr = meta_rec.get('positive_ratio', 0.0)
             fator_qualidade = round(pr / 100.0, 2)
 
             # Grau e amortecimento de super-populares
@@ -461,7 +462,7 @@ class RecommenderHandler(BaseHTTPRequestHandler):
     def processar_gephi_api(self):
         try:
             print("[Web API] Disparando exportação Gephi...")
-            export_to_gephi.exportar_para_gephi_hibrido(seed=42)
+            export_to_gephi.exportar_para_gephi_hibrido(seed=16)
             corpo = json.dumps({
                 "status": "ok",
                 "mensagem": "Arquivos .gexf gerados na pasta 'output/' com sucesso!"
