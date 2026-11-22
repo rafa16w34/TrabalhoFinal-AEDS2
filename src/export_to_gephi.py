@@ -37,13 +37,13 @@ import main
 # Paleta cromática oficial inspirada no artigo de Louvain (Blondel et al., Figura 2)
 # Destaque para o contraste Vermelho (JRPG/Ação) vs Verde (Indies) e nós intermediários
 CORES_SUPER_NOS = {
-    0: {"r": 46,  "g": 213, "b": 115, "hex": "#2ed573", "nome": "Indie & Roguelike 2D"},            # Verde Esmeralda
-    1: {"r": 30,  "g": 144, "b": 255, "hex": "#1e90ff", "nome": "Aventura Narrativa & Puzzle"},      # Azul Real
-    2: {"r": 155, "g": 89,  "b": 182, "hex": "#9b59b6", "nome": "Estratégia & Simulação Tática"},    # Roxo Ametista
-    3: {"r": 255, "g": 165, "b": 2,   "hex": "#ffa502", "nome": "FPS Clássico & Ação Retrô"},         # Âmbar / Laranja
-    4: {"r": 255, "g": 71,  "b": 87,  "hex": "#ff4757", "nome": "JRPG & RPG Narrativo / Anime"},     # Vermelho Carmesim
-    5: {"r": 241, "g": 196, "b": 15,  "hex": "#f1c40f", "nome": "Simulação, Direção & Mundo Aberto"}, # Ouro / Amarelo
-    6: {"r": 26,  "g": 188, "b": 156, "hex": "#1abc9c", "nome": "Expansões & Comunidades Emergentes"} # Turquesa
+    0: {"r": 46,  "g": 213, "b": 115, "hex": "#2ed573", "nome": "Action / Co-op"},
+    1: {"r": 30,  "g": 144, "b": 255, "hex": "#1e90ff", "nome": "Indie / Roguelike"},
+    2: {"r": 155, "g": 89,  "b": 182, "hex": "#9b59b6", "nome": "Simulation"},
+    3: {"r": 255, "g": 165, "b": 2,   "hex": "#ffa502", "nome": "Strategy / CMS"},
+    4: {"r": 255, "g": 71,  "b": 87,  "hex": "#ff4757", "nome": "Action / Narrative"},
+    5: {"r": 241, "g": 196, "b": 15,  "hex": "#f1c40f", "nome": "Action RPG / AAA"},
+    6: {"r": 26,  "g": 188, "b": 156, "hex": "#1abc9c", "nome": "JRPG / Competitive"}
 }
 
 def exportar_para_gephi_hibrido(seed=16, grafo=None, titulos=None, metadados=None, comunidades=None):
@@ -89,7 +89,7 @@ def exportar_para_gephi_hibrido(seed=16, grafo=None, titulos=None, metadados=Non
             community=int(cid),
             community_name=CORES_SUPER_NOS.get(cid, {}).get("nome", f"Comunidade {cid}"),
             genres=", ".join(meta.get('genres', [])) if meta.get('genres') else "Variado",
-            positive_ratio=float(meta.get('positive_ratio', 80.0)),
+            positive_ratio=float(meta.get('positive_ratio', 0.0)),
             grau_popularidade=int(grau_bipartido)
         )
 

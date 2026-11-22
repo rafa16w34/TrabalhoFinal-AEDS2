@@ -237,7 +237,7 @@ def main():
     while True:
         cabecalho()
         print("  [1] Recomendar Jogos (Interativo)")
-        print("  [2] Recomendar em Lote (Arquivo jogos_entrada.txt)")
+        print("  [2] Recomendar em Lote (Arquivo input/jogos_entrada.txt)")
         print("  [3] Gerar arquivo Gephi")
         print("  [4] Iniciar Interface Web (Navegador)")
         print("  [0] Sair")

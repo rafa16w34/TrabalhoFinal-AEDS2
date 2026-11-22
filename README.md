@@ -5,11 +5,11 @@
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)
 ![NetworkX](https://img.shields.io/badge/NetworkX-Graph_Theory-orange)
 ![Zenodo DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23861070-1073B8?logo=zenodo&logoColor=white)
-![Institution](https://img.shields.io/badge/CEFET--MG-UFC--IMG-red)
+![Institution](https://img.shields.io/badge/CEFET--MG-UFCI--MG-red)
 ![Course](https://img.shields.io/badge/AEDS_2-Prof._Michel_Pires-success)
 
 **Trabalho Final da disciplina de Algoritmos e Estruturas de Dados II**  
-*Centro Federal de Educação Tecnológica de Minas Gerais (CEFET-MG / UFC-IMG)*
+*Centro Federal de Educação Tecnológica de Minas Gerais (CEFET-MG / UFCI-MG)*
 
 **Autores:** [Rafael Alves Faria](https://github.com/rafa16w34) • Gabriel Alves Faria  
 **Orientador:** Prof. Michel Pires da Silva
@@ -99,11 +99,14 @@ python3 src/main.py
 # 2. Avaliação Formal Leave-One-Out (Hit Rate@10, MRR e NDCG citados no artigo)
 python3 src/avaliar_recomendador.py
 
-# 3. Processamento em Lote com arquivo de entrada (jogos_entrada.txt)
+# 3. Processamento em Lote com arquivo de entrada (input/jogos_entrada.txt)
 python3 src/recomendar_lote.py
 
 # 4. Rodar o Servidor Web calculando ao vivo no grafo de 2.4M arestas (ignora o cache)
 python3 src/servidor_web.py --dinamico
+
+# 5. Reproduzir Métricas do Artigo Científico (Modularidade Louvain Q=0.3077 e Baselines)
+python3 src/reproduzir_tabelas.py
 ```
 
 > [!NOTE]
@@ -154,22 +157,49 @@ $$\text{Score}(j) = \text{Score}_{\text{bruto}}(j) \times \frac{1}{\text{Grau}(j
 
 ---
 
+## 📊 Avaliação Cega com Usuários (Pesquisa de Campo)
+
+O método proposto foi submetido a um teste cego online com **$R = 33$ participantes** avaliando **17 títulos representativos** da Steam ($M = 472$ julgamentos válidos). Em cada questão, 3 listas Top-5 anônimas foram comparadas com rotação determinística das opções:
+
+| Método Avaliado | Escolhas ($M$) | Proporção (\%) | IC 95\% (Wilson) | Nota Média (1–5) |
+| :--- | :---: | :---: | :---: | :---: |
+| **Método Proposto ($\alpha=0{,}35$)** | **402** | **85,17\%** | **[81,7\%, 88,1\%]** | **4,29 ± 0,80** |
+| **Co-ocorrência Pura (CF)** | 64 | 13,56\% | [10,8\%, 16,9\%] | 3,97 ± 0,93 |
+| **Popularidade Global** | 6 | 1,27\% | [0,6\%, 2,7\%] | 3,33 ± 1,21 |
+
+<p align="center">
+  <img src="pesquisa_campo/pesquisa_campo_geral.png" alt="Distribuição Geral da Pesquisa de Campo" width="70%" />
+</p>
+
+* **Significância Estatística:** Teste qui-quadrado de aderência com $\chi^2 = 581{,}41$ ($p < 0{,}001$), teste binomial exato com $p < 10^{-119}$ e superioridade de satisfação confirmada via Mann-Whitney ($U = 15.316{,}5$, $p = 0{,}0031$).
+* **Vitória por Título:** O método híbrido obteve a maioria das preferências em **100% dos jogos testados** (17 de 17 títulos).
+
+---
+
 ## 📂 Estrutura do Repositório
 
 ```text
 TrabalhoFinal-AEDS2/
 ├── README.md                           # Documentação central do projeto
-├── jogos_entrada.txt                   # Arquivo com catálogo de jogos para testes em lote
+├── input/
+│   └── jogos_entrada.txt               # Catálogo de jogos para processamento em lote
 ├── output/
 │   ├── comunidades_louvain.json        # Cache determinístico das 7 partições do Louvain
 │   ├── relatorio_recomendacoes_lote.txt# Relatório textual com recomendações em lote
+│   ├── metricas_multidimensionais.json # Métricas de catálogo, acurácia e cobertura
 │   └── universo_super_nos.gexf         # Exportação da topologia de Super-Nós para o Gephi
+├── pesquisa_campo/
+│   ├── respostas_formulario.csv        # Respostas brutas da avaliação cega (R=33, M=472)
+│   ├── pesquisa_campo_geral.png        # Gráfico estatístico geral com intervalos de confiança
+│   └── pesquisa_campo_por_jogo.png     # Detalhamento de vitória e satisfação por jogo
 ├── src/
 │   ├── main.py                         # Ponto de entrada do modo pesquisa (menu interativo)
-│   ├── recommender.py                  # Motor central de grafos, BFS, Jaccard e ponderação social
+│   ├── recommender.py                  # Motor central de grafos, BFS em 2 níveis e escore híbrido
+│   ├── reproduzir_tabelas.py           # Reprodutibilidade instantânea das métricas do artigo
+│   ├── avaliar_recomendador.py         # Módulo de avaliação Leave-One-Out (Hit Rate, MRR, NDCG)
+│   ├── avaliar_metricas_multidimensionais.py # Avaliação de sobreposição de gêneros e cobertura
 │   ├── servidor_web.py                 # Servidor HTTP nativo (atende localhost e nuvem Render)
 │   ├── gerar_cache_recomendacoes.py    # Gerador multithread do cache pré-calculado
-│   ├── avaliar_recomendador.py         # Módulo de avaliação Leave-One-Out (Hit Rate, MRR, NDCG)
 │   ├── recomendar_lote.py              # Script de processamento em lote
 │   └── export_to_gephi.py              # Utilitário de exportação para visualização em rede
 └── web/
@@ -216,5 +246,5 @@ Para citar este projeto ou o dataset em trabalhos acadêmicos:
 ---
 
 <div align="center">
-Desenvolvido com dedicação para a disciplina de <b>Algoritmos e Estruturas de Dados II</b> • <b>CEFET-MG / UFC-IMG</b>
+Desenvolvido com dedicação para a disciplina de <b>Algoritmos e Estruturas de Dados II</b> • <b>CEFET-MG / UFCI-MG</b>
 </div>
