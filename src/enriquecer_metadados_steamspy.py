@@ -1,6 +1,5 @@
 """
 Pipeline Unificado de Enriquecimento de Metadados via SteamSpy API
-Trabalho Final - AEDS 2
 
 Unifica o enriquecimento de tags da comunidade e gêneros oficiais em uma
 única requisição HTTP por jogo, eliminando redundâncias e chamadas duplicadas à API.

@@ -1,9 +1,7 @@
 """
 Módulo de Exportação para o Gephi
-Trabalho Final AEDS 2 - CEFET-MG / UFC-IMG
-Autores: Rafael Alves Faria e Gabriel Alves Faria
 
-Gera visualizações em rede estruturadas e elegantes inspiradas na Figura 2 do artigo
+Gera visualizações de grafo inspiradas na Figura 2 do artigo
 clássico do Algoritmo de Louvain:
 "Fast unfolding of communities in large networks" (Blondel et al., 2008, pág. 9).
 
@@ -34,8 +32,7 @@ import networkx as nx
 import networkx.algorithms.community as nx_comm
 import main
 
-# Paleta cromática oficial inspirada no artigo de Louvain (Blondel et al., Figura 2)
-# Destaque para o contraste Vermelho (JRPG/Ação) vs Verde (Indies) e nós intermediários
+# Paleta de cores inspirada no artigo de Louvain (Blondel et al., Figura 2)
 CORES_SUPER_NOS = {
     0: {"r": 46,  "g": 213, "b": 115, "hex": "#2ed573", "nome": "Action / Co-op"},
     1: {"r": 30,  "g": 144, "b": 255, "hex": "#1e90ff", "nome": "Indie / Roguelike"},
