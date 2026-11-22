@@ -11,8 +11,8 @@
 **Trabalho Final da disciplina de Algoritmos e Estruturas de Dados II**  
 *Centro Federal de Educação Tecnológica de Minas Gerais (CEFET-MG / UFCI-MG)*
 
-**Autores:** [Rafael Alves Faria](https://github.com/rafa16w34) • Gabriel Alves Faria  
-**Orientador:** Prof. Michel Pires da Silva
+**Autores:** [Rafael Alves Faria](https://github.com/rafa16w34) • [Gabriel Alves Faria](https://github.com/Gabriel12342)  
+**Orientador:** [Prof. Michel Pires da Silva](https://github.com/mpiress)
 
 </div>
 
@@ -208,24 +208,6 @@ TrabalhoFinal-AEDS2/
     └── cache_recomendacoes.json        # Banco indexado para deploy em nuvem (~40 MB RAM)
 ```
 
----
-
-## ☁️ Como Fazer Deploy Gratuito no Render.com
-
-1. Crie uma conta gratuita em [Render.com](https://render.com/).
-2. No painel, clique em **New +** e selecione **Web Service**.
-3. Conecte ao seu repositório GitHub `TrabalhoFinal-AEDS2`.
-4. Defina as seguintes configurações:
-   * **Name**: `steam-finder` (ou de sua escolha)
-   * **Region**: *Oregon (US West)* ou *Frankfurt (EU)*
-   * **Branch**: `Interface` (ou `main`)
-   * **Runtime**: `Python 3`
-   * **Build Command**: `pip install networkx` *(ou deixe em branco, pois a camada web é 100% nativa!)*
-   * **Start Command**: `python3 src/servidor_web.py`
-   * **Instance Type**: `Free` (0.1 CPU, 512 MB RAM)
-5. Clique em **Create Web Service**. Em instantes, o seu site estará no ar com link público HTTPS permanente!
-
----
 
 ## 📜 Citação Acadêmica e Dados
 
@@ -248,3 +230,28 @@ Para citar este projeto ou o dataset em trabalhos acadêmicos:
 <div align="center">
 Desenvolvido com dedicação para a disciplina de <b>Algoritmos e Estruturas de Dados II</b> • <b>CEFET-MG / UFCI-MG</b>
 </div>
+
+
+## Autores
+
+<table>
+<tr>
+           <th>
+<img src="https://github.com/user-attachments/assets/2064d81b-921e-48b2-88ce-4e9055d15b9c" alt="Description" width="100" height="100"> 
+           </th>
+           <th>
+<img  src="https://github.com/user-attachments/assets/04b156ba-f197-4980-b7bc-d1b0475639c1" alt="Description" width="80" height="100"> 
+           </th>
+
+</tr>
+  <tr>
+           <td>
+                      <sub><a href="https://www.linkedin.com/in/rafael-alves-faria-0a4028359/">Rafael Alves Faria</a></sub>
+           </td>
+           <td>
+                      <sub><a href="https://www.linkedin.com/in/gabriel-alves-443132207/">Gabriel Alves Faria</a></sub>    
+           </td>
+
+  </tr>
+</table>
+
