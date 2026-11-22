@@ -1,3 +1,14 @@
+"""
+Steam Finder — Sistema Híbrido de Recomendação de Jogos baseado em Grafos
+
+Trabalho Final AEDS 2 - CEFET-MG / UFCI-MG
+Autores: Rafael Alves Faria e Gabriel Alves Faria
+Orientador: Prof. Michel Pires
+
+Objetivo:
+Encontrar o top 10 jogos recomendados para um jogo disponivel da Steam :)
+"""
+
 import os 
 import sys
 import json

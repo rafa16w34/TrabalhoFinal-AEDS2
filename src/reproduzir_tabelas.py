@@ -1,7 +1,7 @@
 """
-Script de Reprodutibilidade Completa dos Experimentos (AEDS 2)
-Permite ao professor ou auditor reproduzir:
-1. Tabela 1: Desempenho dos Baselines em 5 Sementes LOO (seeds 42 a 46) + Simulação Aleatória
+Script para analise de dados dos experimentos (Artigo)
+Permite reproduzir:
+1. Tabela 1 do artigo (disponível no repositório): Desempenho dos Baselines em 5 Sementes LOO (seeds 42 a 46) + Simulação Aleatória 
 2. Modularidade Louvain Q sobre o Grafo Bipartido
 3. Tabela de Latência e Escala (100 consultas amostradas)
 """
