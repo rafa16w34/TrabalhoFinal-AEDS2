@@ -94,7 +94,7 @@ pip install -r requirements.txt   # networkx, requests
 | :--- | :---: | :---: |
 | Python | 3.10+ | 3.10+ |
 | RAM livre | ≈ 250 MB | ≈ 2 GB (o grafo ocupa ≈ 1,2 GB) |
-| Internet | não | sim, na 1ª execução (download de ≈ 37 MB) |
+| Internet | Sim (Recomendado) | sim, na 1ª execução (download de ≈ 37 MB) e para melhor visualização das imagens |
 
 ### 2. Verificação rápida — interface web (usa o cache)
 ```bash
